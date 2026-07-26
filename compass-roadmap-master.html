@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — The Master Roadmap</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--lav-line:#d9d2f7;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 30px}
+  section{padding:60px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:60px;line-height:1;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:32px;letter-spacing:-0.02em;font-weight:800;line-height:1.07;margin-bottom:8px}
+  h3{font-size:19px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:#4a4458;max-width:880px;margin-top:12px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:20px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  /* HERO */
+  .hero{min-height:82vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:280% 280%;animation:flow 18s ease infinite;color:#fff;border:none}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}.hero .sub{margin-top:22px;color:#cfc8ea;font-size:18px;max-width:700px}
+  .hero .stamp{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero .stamp div{background:rgba(255,255,255,.08);border:1px solid rgba(200,190,255,.3);border-radius:12px;padding:11px 16px;font-family:var(--mono);font-size:12px;color:#e8e3f7}
+  .hero .stamp b{color:var(--gold);font-size:17px;display:block}
+  /* STACK (build-up visual) */
+  .stack{display:flex;flex-direction:column;gap:8px;margin-top:26px}
+  .layer{border-radius:12px;padding:16px 22px;color:#fff;display:flex;align-items:center;gap:16px;position:relative}
+  .layer .wk{font-family:var(--mono);font-size:12px;font-weight:700;background:rgba(255,255,255,.2);border-radius:6px;padding:3px 9px;white-space:nowrap}
+  .layer .t{font-weight:800;font-size:17px}
+  .layer .d{font-size:13px;opacity:.92;margin-left:auto;text-align:right;max-width:52%}
+  .l1{background:linear-gradient(120deg,#5b47d6,#8b7cf6);width:60%}
+  .l2{background:linear-gradient(120deg,#2f6bff,#5b47d6);width:70%}
+  .l3{background:linear-gradient(120deg,#e0962e,#ff5a5f);width:82%}
+  .l4{background:linear-gradient(120deg,#0f8a5f,#19b57a);width:92%}
+  .l5{background:#16121f;width:100%}
+  .stack .base{font-family:var(--mono);font-size:11px;color:#8a84a0;text-align:center;margin-top:6px}
+  /* GANTT */
+  .gantt{overflow-x:auto;margin-top:24px}
+  .gtable{border-collapse:separate;border-spacing:6px;min-width:1000px;width:100%}
+  .gtable th{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase;padding:6px;text-align:center;font-weight:700}
+  .gtable td.trk{font-weight:700;font-size:13px;white-space:nowrap;padding-right:10px;text-align:left}
+  .bar{border-radius:8px;padding:9px 10px;font-size:11.5px;font-weight:700;color:#fff;line-height:1.25}
+  .b-found{background:#5b47d6}.b-sign{background:var(--coral)}.b-eng{background:var(--blue)}.b-cont{background:var(--green)}.b-grow{background:var(--amber)}.b-fund{background:#16121f}.b-empty{background:#f0eef7}
+  /* WEEK */
+  .week{border:1px solid #e8e5f2;border-radius:16px;overflow:hidden;margin-top:20px;background:#fff}
+  .week .whd{padding:18px 24px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .week .whd .wk{font-family:var(--mono);font-size:12px;letter-spacing:.08em;opacity:.9}
+  .week .whd h3{font-size:23px;color:#fff}
+  .week .whd .goal{font-size:14px;opacity:.94;max-width:480px;text-align:right}
+  .week .body{padding:22px 24px}
+  .cols3{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px}
+  .checklist{list-style:none}
+  .checklist li{padding:6px 0 6px 26px;position:relative;font-size:13.5px;border-bottom:1px solid #f4f2f8}
+  .checklist li::before{content:"";position:absolute;left:0;top:8px;width:15px;height:15px;border:2px solid var(--lav);border-radius:5px}
+  .who{display:inline-block;font-size:10px;font-family:var(--mono);border-radius:5px;padding:1px 6px;font-weight:700;margin-left:3px}
+  .w-gin{background:var(--lav-soft);color:var(--lav-deep)}.w-ai{background:#e7f8f0;color:#127a52}.w-cto{background:#eef;color:#3b47a0}.w-eli{background:#fdf1e0;color:#a86308}.w-team{background:#f0eef7;color:#555}
+  .sidebox{background:#f7f5fc;border-radius:10px;padding:14px;margin-bottom:12px}
+  .sidebox h4{font-size:11px;font-family:var(--mono);letter-spacing:.05em;color:var(--lav-deep);margin-bottom:6px}
+  .sidebox p,.sidebox li{font-size:12.5px;color:#4a4458}
+  .sidebox ul{list-style:none}.sidebox li{padding:2px 0 2px 12px;position:relative}.sidebox li::before{content:"›";position:absolute;left:0;color:var(--lav)}
+  .builds{background:#0d0a14;color:#e8e3f7;border-radius:10px;padding:14px}
+  .builds h4{color:var(--c9);font-family:var(--mono);font-size:11px;margin-bottom:6px}
+  .builds p{font-size:12.5px}.builds b{color:#fff}
+  /* MONDAY */
+  .today{background:#16121f;color:#fff}
+  .today .step{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #2c2447}
+  .today .step .n{font-family:var(--mono);font-weight:800;color:#0d0a14;background:var(--gold);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+  .today .step p{font-size:14px;color:#e8e3f7}
+  footer{padding:46px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:900px){.cols3{grid-template-columns:1fr}.g2,.g3{grid-template-columns:1fr}.layer{width:100%!important}.layer .d{display:none}h1{font-size:40px}h2{font-size:25px}.week .whd .goal{text-align:left}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:60px 0}[class^=l],[class^=b-],.week .whd,.hero,.today,.builds{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · The Master Roadmap · the whole build-up in one place 🧭</div>
+  <h1>What we build,<br>week by week,<br><span style="color:var(--gold)">up to the raise.</span></h1>
+  <p class="sub">This is THE document — the one that shows it all together: how the machine builds up layer by layer, what happens each week, who does what, and how it all accumulates until the decks go out in September. One view, the whole build-up.</p>
+  <div class="stamp"><div><b>Jul 28</b>start</div><div><b>Aug 4</b>launch</div><div><b>Aug 18</b>results</div><div><b>~Sep 1</b>decks out</div></div>
+</div></div>
+
+<!-- BUILD-UP STACK -->
+<section><div class="wrap">
+  <div class="kicker rv">How it accumulates · layer on layer</div>
+  <h2 class="rv">Each week builds ON TOP of the last.</h2>
+  <p class="lede rv">Nothing happens in isolation. We start with the foundations, and each week stacks a new layer on what's already built — until the top layer is the story the fundraise needs. This is how it grows.</p>
+  <div class="stack">
+    <div class="layer l5 rv"><span class="wk">WK 5</span><span class="t">📦 Package the story</span><span class="d">Traction → deck slide → fundraise-ready</span></div>
+    <div class="layer l4 rv"><span class="wk">WK 4</span><span class="t">📈 Results show</span><span class="d">Pilots + case study + the deck's numbers</span></div>
+    <div class="layer l3 rv"><span class="wk">WK 3</span><span class="t">🌎 Growth engine</span><span class="d">15 LATAM calls + Arca + Africa + sessions</span></div>
+    <div class="layer l2 rv"><span class="wk">WK 2</span><span class="t">🚀 Launch (the PUM)</span><span class="d">Skills + Earn campaign LIVE + first videos</span></div>
+    <div class="layer l1 rv"><span class="wk">WK 1</span><span class="t">🧱 Foundations + signup hole</span><span class="d">Sentence, claims, Attio, targets by hand, teaser</span></div>
+    <div class="base rv">▲ EVERYTHING RESTS ON WEEK 1'S FOUNDATIONS ▲</div>
+  </div>
+  <p class="note rv">Golden rule: <b>we don't skip layers.</b> The campaign (Wk 2) only works if the foundations (Wk 1) are in. Results (Wk 4) only come if growth (Wk 3) ran. Direction first, then speed.</p>
+</div></section>
+
+<!-- GANTT -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The 6 parallel tracks · the whole map</div>
+  <h2 class="rv">Everything that runs, when it runs.</h2>
+  <p class="lede rv">Six fronts working at once — nothing waits for anything. Foundations and signup start day 1; the campaign launches while skills are still being tuned; results accrue while the case study is chased.</p>
+  <div class="gantt rv"><table class="gtable">
+    <tr><th></th><th>WK 1 · Jul 28</th><th>WK 2 · Aug 4</th><th>WK 3 · Aug 11</th><th>WK 4 · Aug 18</th><th>WK 5 · Aug 25</th></tr>
+    <tr><td class="trk">1 · Foundations</td><td><div class="bar b-found">Sentence · claims · guardrails · Attio · connectors</div></td><td><div class="bar b-found" style="opacity:.55">tune</div></td><td><div class="bar b-empty">&nbsp;</div></td><td><div class="bar b-empty">&nbsp;</div></td><td><div class="bar b-empty">&nbsp;</div></td></tr>
+    <tr><td class="trk">2 · Signup hole</td><td><div class="bar b-sign">Export · score · top 30 by hand</div></td><td><div class="bar b-sign">Sequences</div></td><td><div class="bar b-sign" style="opacity:.75">Reviewed sends</div></td><td><div class="bar b-sign" style="opacity:.55">Automate</div></td><td><div class="bar b-empty">&nbsp;</div></td></tr>
+    <tr><td class="trk">3 · AI engine</td><td><div class="bar b-eng" style="opacity:.55">connect</div></td><td><div class="bar b-eng">Skills + templates (content &amp; video)</div></td><td><div class="bar b-eng" style="opacity:.7">tune live</div></td><td><div class="bar b-empty">&nbsp;</div></td><td><div class="bar b-empty">&nbsp;</div></td></tr>
+    <tr><td class="trk">4 · Content + campaign</td><td><div class="bar b-cont" style="opacity:.55">Build + teaser (Eli keeps posting)</div></td><td><div class="bar b-cont">Earn campaign LIVE + videos</div></td><td><div class="bar b-cont">2nd beat · franchises</div></td><td><div class="bar b-cont">Amplify · reviews</div></td><td><div class="bar b-cont" style="opacity:.7">keep running</div></td></tr>
+    <tr><td class="trk">5 · Growth</td><td><div class="bar b-empty">&nbsp;</div></td><td><div class="bar b-grow" style="opacity:.65">line up calls</div></td><td><div class="bar b-grow">15 calls · Arca · Africa</div></td><td><div class="bar b-grow">Sessions → pilots · case study</div></td><td><div class="bar b-grow" style="opacity:.7">expand</div></td></tr>
+    <tr><td class="trk">6 · Fundraise</td><td><div class="bar b-empty">&nbsp;</div></td><td><div class="bar b-empty">&nbsp;</div></td><td><div class="bar b-fund" style="opacity:.55">track metrics</div></td><td><div class="bar b-fund">Traction slide</div></td><td><div class="bar b-fund">Deck-ready story</div></td></tr>
+  </table></div>
+  <p class="note rv"><b>The 2 hard dependencies</b> (chase both day 1 or the plan slips): <span style="color:var(--coral);font-weight:700">signup data access</span> (needs CTO) and <span style="color:var(--coral);font-weight:700">Arca case-study approvals</span>.</p>
+</div></section>
+
+<!-- WEEK 1 -->
+<section><div class="wrap">
+  <div class="week rv">
+    <div class="whd" style="background:linear-gradient(120deg,#5b47d6,#8b7cf6)"><div><div class="wk">WEEK 1 · JUL 28 – AUG 1 · HEADS DOWN, NO POSTING</div><h3>🧱 Foundations + open the signup hole</h3></div><div class="goal">Goal: get the machine's "brain" ready and win back warm leads by hand. Eli keeps posting; we build underneath.</div></div>
+    <div class="body"><div class="cols3">
+      <ul class="checklist">
+        <li><b>Canonical sentence</b> locked + 10-operator cold test <span class="who w-gin">Gin</span><span class="who w-eli">Eli</span></li>
+        <li><b>Claims library + guardrails</b> ✅ (done) <span class="who w-ai">Norte</span></li>
+        <li><b>Attio</b>: 5 fields + [Gin] LATAM / [Funa] lists <span class="who w-gin">Gin</span></li>
+        <li><b>Connect sources</b> (Attio/Slack/Gmail/Cal) <span class="who w-gin">Gin</span></li>
+        <li><b>🔴 Signup export</b> → score → top 30 <span class="who w-cto">CTO</span><span class="who w-ai">Norte</span></li>
+        <li><b>Message top 20–30 by hand</b> (openers ready ✅) <span class="who w-gin">Gin</span></li>
+        <li><b>Teaser</b> ready for Friday <span class="who w-gin">Gin</span></li>
+      </ul>
+      <div><div class="sidebox"><h4>UNBLOCK NOW</h4><ul><li>Ask CTO for signup data</li><li>Assign Arca approval owner</li><li>Buffer + Mailchimp access</li></ul></div>
+        <div class="sidebox"><h4>WHERE</h4><p>Attio · Norte (chat) · a sheet for the export · Buffer</p></div></div>
+      <div class="builds"><h4>WHAT'S BUILT</h4><p><b>The brain:</b> sentence + claims + guardrails + measurable Attio + the who-to-contact list. The machine exists, not yet launched. Teaser is out; Eli kept the feed warm.</p></div>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- WEEK 2 -->
+<section><div class="wrap">
+  <div class="week rv">
+    <div class="whd" style="background:linear-gradient(120deg,#2f6bff,#5b47d6)"><div><div class="wk">WEEK 2 · AUG 4 – 8 · THE PUM</div><h3>🚀 Turn on the engine + launch the Earn campaign</h3></div><div class="goal">Goal: the machine stops being a plan and starts running. First campaign live, first videos.</div></div>
+    <div class="body"><div class="cols3">
+      <ul class="checklist">
+        <li><b>Core skills</b>: /weekly-signals · /campaign-brief · /activate-accounts <span class="who w-ai">Norte</span></li>
+        <li><b>Writing-mode skills</b> (partnership/product/etc.) <span class="who w-ai">Norte</span></li>
+        <li><b>Video templates</b> (1 per type) <span class="who w-gin">Gin</span></li>
+        <li><b>🚀 Earn campaign LIVE</b> (high-tempo week) <span class="who w-gin">Gin</span><span class="who w-team">team</span></li>
+        <li><b>First videos</b>: 1 objection + Gin's ES video <span class="who w-ai">Norte</span></li>
+        <li><b>Commission the first product film</b> <span class="who w-gin">Gin</span></li>
+        <li><b>Signup</b>: write the sequences (reviewed queue) <span class="who w-ai">Norte</span></li>
+      </ul>
+      <div><div class="sidebox"><h4>DEPENDS ON</h4><ul><li>Week 1 foundations locked</li><li>Claims library (safe drafts)</li><li>HeyGen confirmed (or Phase 0 no-face)</li></ul></div>
+        <div class="sidebox"><h4>ELI + TEAM</h4><ul><li>Eli signs off the campaign angle</li><li>Eli records 1 hot-take</li><li>Engineering: 15-min interview → 1 video</li></ul></div></div>
+      <div class="builds"><h4>WHAT'S BUILT</h4><p><b>The machine running:</b> the weekly rhythm ran for real once, the Earn campaign is live across channels with videos, and skills produce drafts on command. The PUM delivered what the teaser promised.</p></div>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- WEEK 3 -->
+<section><div class="wrap">
+  <div class="week rv">
+    <div class="whd" style="background:linear-gradient(120deg,#e0962e,#ff5a5f)"><div><div class="wk">WEEK 3 · AUG 11 – 15 · FILL THE PIPELINE</div><h3>🌎 Growth engine — LATAM, Africa, Arca</h3></div><div class="goal">Goal: turn attention into conversations. Fill the pipeline and lock the flagship proof.</div></div>
+    <div class="body"><div class="cols3">
+      <ul class="checklist">
+        <li><b>15 LATAM discovery calls</b> (= research) <span class="who w-gin">Gin</span></li>
+        <li><b>Africa cut</b> — same campaign, Funa's accounts <span class="who w-team">Funa</span></li>
+        <li><b>🔴 Arca case study</b> — approved, interview, drafting <span class="who w-gin">Gin</span></li>
+        <li><b>2nd campaign beat</b> (venue/proof) <span class="who w-ai">Norte</span></li>
+        <li><b>Roadmap Sessions start booking</b> <span class="who w-gin">Gin</span><span class="who w-team">Sales</span></li>
+        <li><b>Franchises in their slots</b> (Backlog, Objection, Eli) <span class="who w-team">team</span></li>
+        <li><b>Signup</b>: reviewed sends go out <span class="who w-gin">Gin</span></li>
+      </ul>
+      <div><div class="sidebox"><h4>THE OFFER</h4><p>LATAM Product Roadmap Session — 45 min, ES, walk out with an Earn scope. Target: <b>5 booked</b>.</p></div>
+        <div class="sidebox"><h4>WATCH</h4><ul><li>Arca approvals = the bottleneck</li><li>Log every objection → future content</li></ul></div></div>
+      <div class="builds"><h4>WHAT'S BUILT</h4><p><b>The live pipeline:</b> calls happening, sessions booking, Arca case study drafted &amp; approved, franchises running weekly. Pipeline is visibly moving in Attio.</p></div>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- WEEK 4 -->
+<section><div class="wrap">
+  <div class="week rv">
+    <div class="whd" style="background:linear-gradient(120deg,#0f8a5f,#19b57a)"><div><div class="wk">WEEK 4 · AUG 18 – 22 · THE PROOF</div><h3>📈 Results show — the deck's numbers</h3></div><div class="goal">Goal: turn conversations into pilots, publish the case study, and produce the numbers.</div></div>
+    <div class="body"><div class="cols3">
+      <ul class="checklist">
+        <li><b>Sessions → pilots scoped</b> — target ≥2 <span class="who w-gin">Gin</span><span class="who w-team">Sales</span></li>
+        <li><b>Publish the Arca case study</b> + amplify <span class="who w-gin">Gin</span></li>
+        <li><b>First product film live</b> (site + paid) <span class="who w-gin">Gin</span></li>
+        <li><b>Automate the safe signup sequences</b> <span class="who w-ai">Norte</span></li>
+        <li><b>7-day + 30-day reviews</b> — commercial signal <span class="who w-ai">Norte</span></li>
+        <li><b>Heartbeat + franchises keep going</b> (don't go quiet) <span class="who w-team">team</span></li>
+      </ul>
+      <div><div class="sidebox"><h4>THE NUMBERS TO HAVE</h4><ul><li>Meetings created by marketing</li><li>Accounts reactivated</li><li>Pipeline influenced (source_campaign)</li><li>Sessions booked · pilots scoped</li></ul></div></div>
+      <div class="builds"><h4>WHAT'S BUILT</h4><p><b>The proof:</b> ≥2 pilots scoped, Arca case study live, real metrics in Attio. We can now say "the motion works" with evidence, not adjectives.</p></div>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- WEEK 5 -->
+<section><div class="wrap">
+  <div class="week rv">
+    <div class="whd" style="background:linear-gradient(120deg,#16121f,#3b2c6e)"><div><div class="wk">WEEK 5 · AUG 25 – 29 · PACKAGE</div><h3>📦 Package the story — fundraise-ready</h3></div><div class="goal">Goal: turn 4 weeks of a working machine into the traction narrative the deck needs.</div></div>
+    <div class="body"><div class="cols3">
+      <ul class="checklist">
+        <li><b>Marketing-traction slide</b> (/reuse assembles it) <span class="who w-gin">Gin</span><span class="who w-ai">Norte</span></li>
+        <li><b>Investor-update narrative</b> <span class="who w-gin">Gin</span><span class="who w-eli">Eli</span></li>
+        <li><b>Reuse the winners</b> → sales slides, objections, proof <span class="who w-ai">Norte</span></li>
+        <li><b>Draft the hiring spec</b> (the marketing lead who inherits) <span class="who w-gin">Gin</span></li>
+        <li><b>The machine keeps running</b> (doesn't pause for the raise) <span class="who w-team">team</span></li>
+      </ul>
+      <div><div class="sidebox"><h4>THE DECK LINE</h4><p>"We built a repeatable commercial engine in 5 weeks, near-zero headcount, and it's already producing pipeline. Here's the proof. The round scales it."</p></div></div>
+      <div class="builds"><h4>WHAT'S BUILT → ~SEP 1</h4><p><b>Fundraise-ready:</b> decks go out on a story that's already true. Machine running, pipeline real, motion proven. The round scales a system, not a slide.</p></div>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- START MONDAY -->
+<section class="today"><div class="wrap">
+  <div class="kicker rv" style="color:var(--c9)">Don't wait · start Monday morning</div>
+  <h2 class="rv" style="color:#fff">The first 5 things you do, in order.</h2>
+  <div class="rv" style="margin-top:18px">
+    <div class="step"><div class="n">1</div><p><b>Message the CTO</b> for signup data access + assign the Arca approval owner. These two unblock everything.</p></div>
+    <div class="step"><div class="n">2</div><p><b>Lock the canonical sentence with Eli</b> (30 min). You already have the claims + guardrails ready ✅.</p></div>
+    <div class="step"><div class="n">3</div><p><b>Add the 5 Attio fields</b> + create your [Gin] LATAM list. (Ask Norte "give me the exact fields" if unsure.)</p></div>
+    <div class="step"><div class="n">4</div><p><b>Send the Tier A openers</b> (already written) — WeWire, Roqqu, Quidax… Pipeline starts today.</p></div>
+    <div class="step"><div class="n">5</div><p><b>Ask Norte for the teaser</b> so it's ready for Friday. 🧭</p></div>
+  </div>
+</div></section>
+
+<!-- STATE -->
+<section><div class="wrap">
+  <div class="kicker rv">Where you stand TODAY</div>
+  <h2 class="rv">You've already started. This is done ✅</h2>
+  <div class="grid g3">
+    <div class="card rv" style="border-top:4px solid var(--green)"><b>✅ Claims Library + Guardrails</b><p style="font-size:13px;margin-top:6px;color:#4a4458">Ready &amp; usable + the AI prompt. (Week 1 Build #1, done.)</p></div>
+    <div class="card rv" style="border-top:4px solid var(--green)"><b>✅ Prioritized Target List</b><p style="font-size:13px;margin-top:6px;color:#4a4458">Tier A + your 5 LATAM accounts, with ready-to-send openers.</p></div>
+    <div class="card rv" style="border-top:4px solid var(--lav)"><b>◻ What's next</b><p style="font-size:13px;margin-top:6px;color:#4a4458">Canonical sentence · Attio fields · the teaser · the Earn campaign. Ask Norte anytime.</p></div>
+  </div>
+  <div class="card rv" style="margin-top:16px;background:#16121f;color:#fff;text-align:center;padding:32px"><p style="font-size:22px;font-weight:800;color:#fff;line-height:1.3">5 weeks. 6 tracks. One oiled machine.<br><span style="color:var(--c9)">You've already started. Wk 1: build. Aug 4: PUM. 🧭</span></p></div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · The Master Roadmap · Gin + Norte 🧭 · July 2026 · Merges the Sprint Plan + the Do-It Guide into one view.<br>
+  ◆ <a href="START-HERE-compass.html">Start Here</a> · <a href="compass-do-it-guide.html">Do-It Guide (step by step)</a> · <a href="compass-claims-guardrails.html">Claims</a> · <a href="compass-target-list.html">Target List</a> · <a href="compass-flagship-campaign.html">Earn Campaign</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*55)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

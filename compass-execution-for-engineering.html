@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — How We Execute (for Aidar / Engineering)</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 30px}
+  section{padding:56px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:56px;line-height:1;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:31px;letter-spacing:-0.02em;font-weight:800;line-height:1.07;margin-bottom:8px}
+  h3{font-size:19px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:#4a4458;max-width:860px;margin-top:12px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .hero{min-height:70vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:280% 280%;animation:flow 18s ease infinite;color:#fff;border:none}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}.hero .sub{margin-top:22px;color:#cfc8ea;font-size:18px;max-width:680px}
+  /* week rhythm */
+  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+  .day{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:14px}
+  .day .d{font-family:var(--mono);font-size:11px;color:var(--lav-deep);font-weight:700}
+  .day h4{font-size:15px;margin:6px 0 6px}
+  .day ul{list-style:none;font-size:12px;color:#4a4458}
+  .day li{padding:2px 0 2px 12px;position:relative}.day li::before{content:"·";position:absolute;left:3px;color:var(--lav)}
+  .who{display:inline-block;font-size:9.5px;font-family:var(--mono);border-radius:4px;padding:1px 5px;font-weight:700}
+  .w-gin{background:var(--lav-soft);color:var(--lav-deep)}.w-ai{background:#e7f8f0;color:#127a52}.w-eng{background:#eef;color:#3b47a0}
+  /* RACI table */
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase;letter-spacing:.04em}
+  td.r{font-weight:800;color:var(--lav-deep)}
+  tr.eng td{background:#f2f4ff}
+  /* eng role cards */
+  .role{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:20px;border-top:5px solid var(--blue)}
+  .role .eff{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:700;margin-top:8px}
+  /* sprint */
+  .sprint{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+  .sp{border-radius:12px;padding:16px;color:#fff}
+  .sp .w{font-family:var(--mono);font-size:11px;opacity:.85}
+  .sp h4{color:#fff;margin:5px 0 6px;font-size:15px}
+  .sp p{font-size:12px;opacity:.95}
+  .sp1{background:linear-gradient(120deg,#5b47d6,#8b7cf6)}.sp2{background:linear-gradient(120deg,#2f6bff,#5b47d6)}.sp3{background:linear-gradient(120deg,#e0962e,#ff5a5f)}.sp4{background:linear-gradient(120deg,#0f8a5f,#19b57a)}.sp5{background:#16121f}
+  .dep{background:#fdf3f3;border:1px solid #f0d4d4;border-radius:12px;padding:16px;margin-top:14px}
+  .dep b{color:#a33}
+  footer{padding:44px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:900px){.week,.sprint{grid-template-columns:1fr}.g2,.g3{grid-template-columns:1fr}h1{font-size:38px}h2{font-size:24px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:56px 0}.hero,[class^=sp],.role,tr.eng td{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · How We Execute · for Engineering / Aidar</div>
+  <h1>How the marketing<br>engine actually runs.</h1>
+  <p class="sub">Who does what, when, and how — and exactly what we need from engineering (spoiler: ~30 minutes a week). Built so it's clear this is an engineered, measurable system, not "post more stuff."</p>
+</div></div>
+
+<!-- WHAT IT IS -->
+<section><div class="wrap">
+  <div class="kicker rv">In 30 seconds · what we're building</div>
+  <h2 class="rv">A repeatable commercial engine — the thing the raise scales.</h2>
+  <p class="lede rv">The fundraise use-of-funds is marketing + sales. So we're not "doing more content" — we're building a machine that turns real company signals (shipped features, customer news, partnerships, objections) into narratives → campaigns → pipeline, measured in the CRM. AI does the production; humans do judgment and taste. We validate it works <b>before</b> decks go out (early September), so investors fund a proven motion.</p>
+  <div class="card rv" style="background:var(--lav-soft);border-color:#d9d2f7"><b>The one thing to understand:</b> the whole system is designed to run on ~45 minutes of human decision-time a week + AI production. Engineering's slice of that is ~30 minutes: keep our claims honest, and occasionally explain something on camera-adjacent. That's the footprint.</p></div>
+</div></section>
+
+<!-- THE MACHINE -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The machine · the loop</div>
+  <h2 class="rv">Capture → Produce → Approve → Distribute → Measure.</h2>
+  <p class="lede rv">Signals come in from the tools we already use (Attio, Slack, Gmail, Calendar, changelog). AI scores them, drafts everything, and a human approves. It ships, gets activated on named accounts, and everything is measured in Attio with campaign tags. Winners get reused into sales + investor material.</p>
+  <div class="grid g3">
+    <div class="card rv"><span class="tag">AUTOMATED</span><h3>Capture &amp; Produce</h3><p style="font-size:13.5px;margin-top:6px">AI reads the signals, ranks them, and drafts the posts, emails, video scripts, UTMs and account lists. No human types first drafts.</p></div>
+    <div class="card rv"><span class="tag">HUMAN GATE</span><h3>Approve</h3><p style="font-size:13.5px;margin-top:6px">Gin approves voice + priority. CTO clears any new technical claim (async, ~2 min). Partner/customer mentions cleared by the relationship owner. Most content ships on the rules — no gate.</p></div>
+    <div class="card rv"><span class="tag">AUTOMATED</span><h3>Distribute &amp; Measure</h3><p style="font-size:13.5px;margin-top:6px">Buffer schedules, Attio tracks source_campaign, reports auto-generate at 7 and 30 days. Winners get reused.</p></div>
+  </div>
+</div></section>
+
+<!-- THE WEEK -->
+<section><div class="wrap">
+  <div class="kicker rv">The operating week · high-tempo mode</div>
+  <h2 class="rv">A normal week, once we're live (from Aug 4).</h2>
+  <p class="lede rv">Two publish days, async approvals — designed for engagement without meetings. This is the rhythm the whole team learns.</p>
+  <div class="week">
+    <div class="day rv"><div class="d">MON</div><h4>Decide + draft</h4><ul><li>30-min: Gin + Eli pick the week <span class="who w-gin">Gin</span></li><li>AI drafts everything <span class="who w-ai">AI</span></li></ul></div>
+    <div class="day rv"><div class="d">TUE</div><h4>Publish #1</h4><ul><li>Batch 1 goes out</li><li>Claim checks async <span class="who w-eng">Eng</span></li></ul></div>
+    <div class="day rv"><div class="d">WED</div><h4>Engage</h4><ul><li>Reply, DMs to accounts <span class="who w-gin">Gin</span></li><li>Draft batch 2 <span class="who w-ai">AI</span></li></ul></div>
+    <div class="day rv"><div class="d">THU</div><h4>Publish #2</h4><ul><li>Batch 2 + partner amp</li><li>Team reshares</li></ul></div>
+    <div class="day rv"><div class="d">FRI</div><h4>Activate + capture</h4><ul><li>Named-account DMs</li><li>Signal sweep → Monday <span class="who w-gin">Gin</span></li></ul></div>
+  </div>
+  <p class="note rv"><b>Engineering appears twice, lightly:</b> async claim checks (Tue), and — separately, when there's something worth explaining — a 15-min interview that becomes a video. Nothing daily.</p>
+</div></section>
+
+<!-- RACI -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">Who owns what · the RACI</div>
+  <h2 class="rv">Everyone has a lane. Nothing falls through.</h2>
+  <table class="rv">
+    <tr><th>Area</th><th>Owner</th><th>Does the work</th><th>Approves</th></tr>
+    <tr><td>The whole machine runs</td><td class="r">Gin</td><td>Gin + AI</td><td>—</td></tr>
+    <tr><td>Positioning &amp; priority</td><td class="r">Eli + Gin</td><td>Gin</td><td>Eli</td></tr>
+    <tr><td>Tier-1 campaign angle</td><td class="r">Gin</td><td>Gin + AI</td><td>Eli signs off</td></tr>
+    <tr class="eng"><td><b>Technical claims / architecture voice</b></td><td class="r">CTO (Aidar)</td><td>Engineering + AI</td><td><b>CTO</b></td></tr>
+    <tr class="eng"><td><b>Technical / "how it works" videos</b></td><td class="r">Engineering</td><td>AI (from a 15-min interview)</td><td>CTO</td></tr>
+    <tr><td>LATAM growth</td><td class="r">Gin</td><td>Gin + AI</td><td>—</td></tr>
+    <tr><td>Africa / ME growth</td><td class="r">Funa</td><td>Funa + AI</td><td>—</td></tr>
+    <tr><td>Founder channel</td><td class="r">Eli</td><td>Eli (+ AI drafts)</td><td>Eli</td></tr>
+    <tr class="eng"><td><b>Signup lifecycle (needs product data)</b></td><td class="r">Gin</td><td>AI + Gin</td><td><b>CTO on the data</b></td></tr>
+    <tr><td>Measurement / reporting</td><td class="r">Gin</td><td>AI auto-reports</td><td>—</td></tr>
+  </table>
+  <p class="note rv">The <b>blue rows</b> are where engineering touches the machine — and they're all light/async. Everything else runs without engineering.</p>
+</div></section>
+
+<!-- ENGINEERING ROLE -->
+<section><div class="wrap">
+  <div class="kicker rv">Aidar, this part is for you · engineering's role</div>
+  <h2 class="rv">~30 minutes a week. That's the whole ask.</h2>
+  <p class="lede rv">Engineering is not a content team. AI does production; Gin owns the machine. Your team's footprint is three light, specific things:</p>
+  <div class="grid g3">
+    <div class="role rv"><span class="tag" style="background:#eef;color:#3b47a0">ASK 1 · this week</span><h3>🔴 Signup data access</h3><p style="font-size:13.5px;margin-top:6px">An export of API/Studio signups + whatever activation events we can see (key created, first call, usage). Unblocks the signup lifecycle (our #1 fast win) and tells us who to contact + where users drop.</p><div class="eff">One export + confirm the events we can read</div></div>
+    <div class="role rv"><span class="tag" style="background:#eef;color:#3b47a0">ASK 2 · ongoing</span><h3>Fast claim checks</h3><p style="font-size:13.5px;margin-top:6px">When a post uses a NEW technical number/claim, you 👍 in Slack. Everything else ships on the approved claims library, so this is rare. You're the guardrail that keeps us honest and precise.</p><div class="eff">~15 min/week, async, no meetings</div></div>
+    <div class="role rv"><span class="tag" style="background:#eef;color:#3b47a0">ASK 3 · occasional</span><h3>15-min video interviews</h3><p style="font-size:13.5px;margin-top:6px">For technical explainer videos, you or an engineer answers questions for 15 min — AI turns it into the video. You never write or edit. This fixes why our current product videos don't land.</p><div class="eff">~15 min, every 1–2 weeks, only when worth it</div></div>
+  </div>
+  <div class="card rv" style="margin-top:16px;background:#16121f;color:#fff"><b style="color:var(--c9)">Why the video interview matters (the honest bit):</b> our current videos don't perform because they're made by whoever knows the product best — so they explain it as if it's obvious, feature-first, no hook. The fix isn't "engineers get good at video." It's: <b>the engineer brings the truth (15-min interview), AI brings the story.</b> You just answer "what did we build, why is it hard, what breaks without it?" — that's it.</div>
+</div></section>
+
+<!-- SPRINT -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The plan · 5 weeks to the raise</div>
+  <h2 class="rv">Build wk1 · launch wk2 · results wk4 · decks ~Sep 1.</h2>
+  <div class="sprint">
+    <div class="sp sp1 rv"><div class="w">WK1 · Jul 28</div><h4>Build</h4><p>Foundations + open the signup hole (needs your data). No public launch yet.</p></div>
+    <div class="sp sp2 rv"><div class="w">WK2 · Aug 4</div><h4>Launch</h4><p>Engine on + Earn campaign live + first videos.</p></div>
+    <div class="sp sp3 rv"><div class="w">WK3 · Aug 11</div><h4>Growth</h4><p>LATAM calls, Africa, Arca case study, sessions booking.</p></div>
+    <div class="sp sp4 rv"><div class="w">WK4 · Aug 18</div><h4>Results</h4><p>Pilots scoped, case study live, the deck's numbers.</p></div>
+    <div class="sp sp5 rv"><div class="w">WK5 · Aug 25</div><h4>Package</h4><p>Traction story assembled → decks out ~Sep 1.</p></div>
+  </div>
+  <div class="dep rv"><b>2 hard dependencies engineering influences (please help unblock day 1):</b> ① signup data access (you) · ② Arca case-study approvals (relationship owner). If these slip, the sprint slips — everything else is parallelized and on track.</div>
+</div></section>
+
+<!-- SAFEGUARDS -->
+<section><div class="wrap">
+  <div class="kicker rv">The safeguards · so nothing embarrassing ships</div>
+  <h2 class="rv">How we stay accurate and on-brand.</h2>
+  <div class="grid g2">
+    <div class="card rv"><h3>The claims library</h3><p style="font-size:14px;margin-top:6px">Every approved number, worded exactly. Anything not on it = <b>[NEEDS APPROVAL]</b> → comes to you before it ships. No unverified metrics, no customer financials, and nothing about compliance/KYB as a shipped feature (it's a thesis, treated as vision only).</p></div>
+    <div class="card rv"><h3>Human approval + guardrails</h3><p style="font-size:14px;margin-top:6px">Gin approves everything for voice; a NOT-list is baked into the AI (no hype, no politics, no price predictions, no naming competitors). Videos are template-based, not uncanny avatars — and we launch with no-face videos until any avatar passes a quality test.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · How We Execute · for Engineering / Aidar · by Gin 🧭 · July 2026<br>
+  Full detail: <a href="compass-roadmap-master.html">Master Roadmap</a> · <a href="compass-execution-playbook.html">Execution Playbook</a> · <a href="compass-claims-guardrails.html">Claims Library</a> · <a href="START-HERE-compass.html">Start Here</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*55)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

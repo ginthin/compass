@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Put the Money to Work / Pon el dinero a trabajar</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--pink:#ff5aa5;--mint:#3ee0b0;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+  section{padding:80px 0;position:relative}
+  h1{font-size:78px;line-height:0.96;letter-spacing:-0.035em;font-weight:800}
+  h2{font-size:42px;letter-spacing:-0.02em;font-weight:800;line-height:1.04;margin-bottom:10px}
+  h3{font-size:21px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:16px;font-weight:700}
+  .lede{font-size:20px;color:#4a4458;max-width:840px;margin-top:12px;line-height:1.5}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:16px;padding:24px;box-shadow:0 2px 10px rgba(22,18,31,.05)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:5px 11px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:12px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .grid{display:grid;gap:18px;margin-top:30px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  /* LANG TOGGLE */
+  .lang-en{display:none}
+  body.show-en .lang-en{display:revert}body.show-en .lang-es{display:none}
+  body.show-es .lang-es{display:revert}body.show-es .lang-en{display:none}
+  .langbar{position:fixed;top:18px;right:18px;z-index:50;background:rgba(13,10,20,.82);backdrop-filter:blur(8px);border:1px solid rgba(200,190,255,.3);border-radius:99px;padding:5px;display:flex;gap:4px}
+  .langbar button{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.05em;border:none;background:transparent;color:#b9b2d6;padding:7px 14px;border-radius:99px;cursor:pointer;transition:.2s}
+  body.show-en .langbar .en,body.show-es .langbar .es{background:var(--lav);color:#fff}
+  /* reveal */
+  .js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  /* HERO */
+  .hero{min-height:98vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6,#1a1330);background-size:300% 300%;animation:flow 20s ease infinite;color:#fff}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}
+  .hero h1 span{display:block}
+  .hero .sub{margin-top:26px;color:#cfc8ea;font-size:18px;max-width:660px}
+  .hero .cta{margin-top:38px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--c9);animation:bob 2.4s ease infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);padding:16px 0;margin-top:44px}
+  .marquee .track{display:inline-block;animation:scroll 30s linear infinite}
+  .marquee span{font-weight:800;font-size:20px;color:#fff;margin:0 28px;opacity:.92}
+  .marquee span b{color:var(--gold)}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  /* explainer */
+  .step3{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px}
+  .step3 .s{flex:1;min-width:210px;background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:20px}
+  .step3 .s .n{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--lav-deep)}
+  .under{background:#16121f;color:#fff;border-radius:16px;padding:26px;margin-top:20px}
+  .under b{color:var(--c9)}
+  /* manifesto */
+  .manifesto{background:var(--gold)}
+  .manifesto p{font-size:34px;font-weight:800;line-height:1.24;letter-spacing:-0.01em;color:#111;max-width:860px}
+  /* wall */
+  .wall{columns:3;column-gap:16px;margin-top:26px}
+  .bb{break-inside:avoid;border-radius:16px;padding:26px 22px;font-weight:800;font-size:21px;line-height:1.16;letter-spacing:-0.01em;margin-bottom:16px;box-shadow:0 8px 22px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s}
+  .bb:hover{transform:translateY(-6px) rotate(-.7deg);box-shadow:0 16px 34px rgba(0,0,0,.16)}
+  .bb small{display:block;font-family:var(--mono);font-size:10px;font-weight:600;opacity:.55;margin-top:12px}
+  .by{background:var(--gold);color:#111}.bd{background:#16121f;color:#fff}.bl{background:var(--lav-deep);color:#fff}
+  .bc{background:var(--coral);color:#fff}.bg{background:var(--green);color:#03271a}.bb2{background:var(--blue);color:#fff}
+  .bp{background:var(--pink);color:#3b0a24}.bm{background:var(--mint);color:#043528}.bw{background:#fff;color:#16121f;border:2px solid #e8e5f2}
+  /* film */
+  .film{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .frame{background:#0d0a14;border-radius:14px;padding:18px;color:#e8e3f7;min-height:174px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s}
+  .frame:hover{transform:scale(1.03)}
+  .frame .t{font-family:var(--mono);font-size:11px;color:#8b7cf6;font-weight:700}
+  .frame .vis{font-size:14px;font-weight:600;margin:8px 0}
+  .frame .vo{font-size:13px;color:#b9b2d6;font-style:italic}
+  /* channels */
+  .chan{background:#fff;border:1px solid #e8e5f2;border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .chan:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(22,18,31,.1)}
+  .chan .top{padding:14px 20px;color:#fff;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+  .chan .job{font-size:11px;font-family:var(--mono);opacity:.85;font-weight:600}
+  .chan .mock{padding:20px;font-size:14.5px}
+  .chan .mock p{margin-bottom:8px}
+  .chan .meta{font-family:var(--mono);font-size:11px;color:#9a93b2;border-top:1px solid #f0eef7;padding-top:10px;margin-top:10px}
+  .subject{font-family:var(--mono);font-size:12px;background:#f4f2fb;border-radius:8px;padding:8px 12px;margin-bottom:10px}
+  /* blog */
+  .blog{background:#fff;border:1px solid #e8e5f2;border-radius:16px;padding:34px;max-width:800px;margin:26px auto 0}
+  .blog h3{font-size:26px;letter-spacing:-0.01em;margin-bottom:6px}
+  .blog p{font-size:15px;color:#2c2838;margin-top:12px}
+  .blog blockquote{border-left:3px solid var(--lav);padding-left:16px;margin:16px 0;font-style:italic;color:#4a4458}
+  /* week */
+  .week{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+  .day{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:16px;transition:transform .3s}
+  .day:hover{transform:translateY(-4px)}
+  .day .d{font-family:var(--mono);font-size:11px;color:var(--lav-deep);font-weight:700}
+  .day b{display:block;margin:6px 0;font-size:15px}.day p{font-size:12.5px;color:#4a4458}
+  .fstep{background:#fff;border:1px solid #e8e5f2;border-radius:10px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:14px}
+  .fstep .r{font-family:var(--mono);color:var(--lav-deep);font-weight:700;white-space:nowrap}
+  .big{font-size:30px;font-weight:800;line-height:1.2}
+  footer{padding:52px 0;color:#8a84a0;font-size:13px;text-align:center}
+  footer a{color:#8a84a0}
+  @media(max-width:900px){.wall{columns:1}.film,.week{grid-template-columns:1fr}.g2,.g3{grid-template-columns:1fr}h1{font-size:46px}h2{font-size:28px}.manifesto p,.big{font-size:23px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}.lang-en,.lang-es{display:revert!important}.langbar{display:none}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:70px 0}.marquee .track{animation:none}.hero,.manifesto,.bb,.bd,.bl,.bc,.bg,.bb2,.bp,.bm,.frame,.under{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body class="show-es">
+
+<div class="langbar"><button class="es" onclick="setLang('es')">ES</button><button class="en" onclick="setLang('en')">EN</button></div>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap">
+  <div class="kicker"><span class="lang-es">Compass Labs · Campaña insignia · demo para el board</span><span class="lang-en">Compass Labs · Flagship Campaign · board demo</span></div>
+  <h1><span class="lang-es">Pon el dinero</span><span class="lang-en">Put the money</span><span style="color:var(--gold)"><span class="lang-es">a trabajar.</span><span class="lang-en">to work.</span></span></h1>
+  <p class="sub"><span class="lang-es">Una campaña completa, de principio a fin, para el producto #1 de Compass (Earn) en nuestro primer mercado (LATAM). Entra sin saber nada. Sal sabiéndolo todo. Cámbiala a inglés arriba a la derecha →</span><span class="lang-en">One full campaign, start to finish, for Compass's #1 product (Earn) in our first market (LATAM). Walk in knowing nothing. Walk out knowing everything. Switch to Spanish top-right →</span></p>
+  <div class="marquee"><div class="track">
+    <span class="lang-es">El que paga rendimiento, <b>se los lleva.</b></span><span class="lang-es"><b>8 meses</b> construyéndolo. La competencia: <b>esta semana.</b></span><span class="lang-es">Guardar no enamora. <b>El rendimiento, sí.</b></span><span class="lang-es">Arca lo lanzó <b>en semanas.</b></span>
+    <span class="lang-es">El que paga rendimiento, <b>se los lleva.</b></span><span class="lang-es"><b>8 meses</b> construyéndolo. La competencia: <b>esta semana.</b></span><span class="lang-es">Guardar no enamora. <b>El rendimiento, sí.</b></span><span class="lang-es">Arca lo lanzó <b>en semanas.</b></span>
+    <span class="lang-en">Whoever pays yield <b>takes your users.</b></span><span class="lang-en"><b>8 months</b> to build it. Your rival: <b>this week.</b></span><span class="lang-en">Storing wins no one. <b>Yield wins loyalty.</b></span><span class="lang-en">Arca shipped it <b>in weeks.</b></span>
+    <span class="lang-en">Whoever pays yield <b>takes your users.</b></span><span class="lang-en"><b>8 months</b> to build it. Your rival: <b>this week.</b></span><span class="lang-en">Storing wins no one. <b>Yield wins loyalty.</b></span><span class="lang-en">Arca shipped it <b>in weeks.</b></span>
+  </div></div>
+  <p class="cta"><span class="lang-es">↓ baja y velo todo</span><span class="lang-en">↓ scroll and see it all</span></p>
+</div></div>
+
+<!-- CH 0 — WHAT IS COMPASS (smart: layer underneath, not an app) -->
+<section style="background:#fff"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">Primero, por si no sabes nada — 30 segundos</span><span class="lang-en">First, in case you know nothing — 30 seconds</span></div>
+  <h2 class="rv"><span class="lang-es">¿Qué es Compass? (y qué NO es)</span><span class="lang-en">What is Compass? (and what it's NOT)</span></h2>
+  <p class="lede rv"><span class="lang-es">Compass <b>no es una app</b> que usan las personas. Compass es la <b>infraestructura</b> que usan las fintechs — las wallets, los neobancos, las apps de dólares — para lanzarle productos financieros a <i>sus</i> usuarios. Rendimiento, crédito, trading, activos tokenizados. Construir cada uno toma meses de ingeniería. <b>Compass lo resuelve con una integración.</b></span><span class="lang-en">Compass <b>is not an app</b> that people use. Compass is the <b>infrastructure</b> that fintechs — wallets, neobanks, dollar apps — use to launch financial products for <i>their</i> users. Yield, credit, trading, tokenized assets. Building each takes months of engineering. <b>Compass does it in one integration.</b></span></p>
+  <div class="step3">
+    <div class="s rv"><div class="n">1</div><h3><span class="lang-es">Una integración</span><span class="lang-en">One integration</span></h3><p style="font-size:13.5px;margin-top:6px;color:#4a4458"><span class="lang-es">La fintech conecta Compass una vez — no protocolo por protocolo.</span><span class="lang-en">The fintech connects Compass once — not protocol by protocol.</span></p></div>
+    <div class="s rv"><div class="n">6</div><h3><span class="lang-es">Productos, listos</span><span class="lang-en">Products, ready</span></h3><p style="font-size:13.5px;margin-top:6px;color:#4a4458"><span class="lang-es">Rendimiento, crédito, trading, RWAs — disponibles al instante para lanzar.</span><span class="lang-en">Yield, credit, trading, RWAs — instantly available to ship.</span></p></div>
+    <div class="s rv"><div class="n">0</div><h3><span class="lang-es">Custodia</span><span class="lang-en">Custody</span></h3><p style="font-size:13.5px;margin-top:6px;color:#4a4458"><span class="lang-es">Los usuarios de la fintech tienen sus llaves. Compass nunca toca el dinero.</span><span class="lang-en">The fintech's users hold their keys. Compass never touches the money.</span></p></div>
+  </div>
+  <div class="under rv"><span class="lang-es"><b>La forma inteligente de decirlo:</b> Compass no compite con las fintechs — las <b>potencia.</b> El héroe siempre es la fintech: ella lanza el producto, ella se queda con la relación y la marca. Compass es la capa de abajo que hace que su app pase de solo <i>guardar</i> dólares a <i>hacerlos crecer</i>. Nunca decimos "nosotros"; decimos "tú, con Compass debajo".</span><span class="lang-en"><b>The smart way to say it:</b> Compass doesn't compete with fintechs — it <b>powers</b> them. The fintech is always the hero: they ship the product, they keep the relationship and the brand. Compass is the layer underneath that turns their app from one that just <i>stores</i> dollars into one that <i>grows</i> them. We never say "we"; we say "you, with Compass underneath."</span></div>
+</div></section>
+
+<!-- INSIGHT -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">El insight · por qué existe esta campaña</span><span class="lang-en">The insight · why this campaign exists</span></div>
+  <h2 class="rv"><span class="lang-es">Sus usuarios no se van porque la app sea mala.<br>Se van porque alguien más les paga.</span><span class="lang-en">Their users don't leave because the app is bad.<br>They leave because someone else pays them.</span></h2>
+  <p class="lede rv"><span class="lang-es">En LATAM, millones guardan dólares digitales para escapar de su moneda. Pero <b>guardar</b> es donde la mayoría de las apps se detiene — el saldo se queda ahí, quieto. Y cuando un competidor ofrece 5% de rendimiento, el usuario se cambia. Para la fintech, no es un problema de features. Es la única cosa que nunca lanzó: <b>una razón para quedarse.</b></span><span class="lang-en">In LATAM, millions hold digital dollars to escape their currency. But <b>storing</b> is where most apps stop — the balance just sits there. And when a competitor offers 5% yield, the user switches. For the fintech, it's not a feature problem. It's the one thing they never shipped: <b>a reason to stay.</b></span></p>
+  <div class="grid g3">
+    <div class="card rv"><span class="tag"><span class="lang-es">EL USUARIO PIENSA</span><span class="lang-en">THE END-USER THINKS</span></span><p><span class="lang-es">"Mis dólares están seguros aquí. Pero no están <i>haciendo</i> nada. La otra app me paga."</span><span class="lang-en">"My dollars are safe here. But they're not <i>doing</i> anything. The other app pays me."</span></p></div>
+    <div class="card rv"><span class="tag"><span class="lang-es">EL FUNDADOR PIENSA</span><span class="lang-en">THE FOUNDER THINKS</span></span><p><span class="lang-es">"El rendimiento está en mi roadmap. Mi CTO dice: 8 meses y una auditoría. Siempre es el próximo trimestre."</span><span class="lang-en">"Yield is on my roadmap. My CTO says: 8 months and an audit. It's always next quarter."</span></p></div>
+    <div class="card rv" style="background:#16121f;color:#fff"><span class="tag" style="background:#2c2447;color:var(--c9)"><span class="lang-es">CON COMPASS DEBAJO</span><span class="lang-en">WITH COMPASS UNDERNEATH</span></span><p style="color:#e8e3f7"><span class="lang-es">"Esos 8 meses son una integración. Arca lo lanzó en semanas — sus usuarios con sus llaves."</span><span class="lang-en">"Those 8 months are one integration. Arca shipped it in weeks — their users kept their keys."</span></p></div>
+  </div>
+  <p class="note rv"><span class="lang-es">No es hipótesis: Arca está en vivo en LATAM con esto. Y en África, Busha ya vende 7.5% APY; NectarFi, ahorro contra la devaluación. <b>El mercado ya intenta comprar lo que Compass Earn hace posible.</b></span><span class="lang-en">Not a hunch: Arca is live in LATAM on this. And in Africa, Busha already sells 7.5% APY; NectarFi sells anti-devaluation savings. <b>The market is already trying to buy what Compass Earn makes possible.</b></span></p>
+</div></section>
+
+<!-- BIG IDEA (reframed: fintech is hero) -->
+<section class="manifesto"><div class="wrap">
+  <div class="kicker rv" style="color:#6b5900"><span class="lang-es">La gran idea</span><span class="lang-en">The big idea</span></div>
+  <p class="rv"><span class="lang-es">Todo el mundo corre por <span style="text-decoration:underline">guardar</span> el dólar.<br>Nadie construye lo que el dólar <span style="text-decoration:underline">hace</span> después.<br><br>Con Compass debajo, tu app deja de solo guardar dinero<br>y empieza a <b>hacerlo crecer</b>. En días, no en trimestres.</span><span class="lang-en">Everyone races to <span style="text-decoration:underline">store</span> the dollar.<br>Nobody builds what the dollar <span style="text-decoration:underline">does</span> next.<br><br>With Compass underneath, your app stops just storing money<br>and starts <b>growing it</b>. In days, not quarters.</span></p>
+  <div class="rv" style="font-family:var(--mono);font-size:14px;margin-top:26px;color:#6b5900"><b>PLATAFORMA · "PON EL DINERO A TRABAJAR" / "PUT THE MONEY TO WORK"</b></div>
+</div></section>
+
+<!-- THE WALL -->
+<section style="background:#16121f;color:#fff"><div class="wrap">
+  <div class="kicker rv" style="color:var(--c9)"><span class="lang-es">La biblioteca de la campaña · el muro</span><span class="lang-en">The campaign library · the wall</span></div>
+  <h2 class="rv" style="color:#fff"><span class="lang-es">Aquí ves el tono, el humor, el rango completo.</span><span class="lang-en">Here's the tone, the humor, the full range.</span></h2>
+  <p class="lede rv" style="color:#b9b2d6"><span class="lang-es">Todas frescas, todas para esta campaña — filosas, humanas, con sass. Así se siente la voz de Compass en la calle. Se rotan; una frase muere cuando ya está en todos lados.</span><span class="lang-en">All fresh, all for this campaign — sharp, human, a little sass. This is how Compass sounds in the wild. Rotate them; a line dies once it's everywhere.</span></p>
+  <div class="wall">
+    <div class="bb by rv"><span class="lang-es">El que paga rendimiento, se los lleva.</span><span class="lang-en">Whoever pays yield takes your users.</span><small>HOOK</small></div>
+    <div class="bb bl rv"><span class="lang-es">Tus usuarios ya tienen los dólares. Solo les diste dónde guardarlos.</span><span class="lang-en">Your users already hold the dollars. You just gave them a place to store them.</span><small>PROVOCATION</small></div>
+    <div class="bb bd rv"><span class="lang-es">¿Cuánto dinero está durmiendo en tu app ahorita?</span><span class="lang-en">How much money is asleep in your app right now?</span><small>QUESTION</small></div>
+    <div class="bb bc rv"><span class="lang-es">Guardar dólares es media app. La otra mitad los hace crecer.</span><span class="lang-en">Storing dollars is half an app. The other half grows them.</span><small>CATEGORY</small></div>
+    <div class="bb bg rv"><span class="lang-es">Rendimiento en días. No en juntas.</span><span class="lang-en">Yield in days. Not in meetings.</span><small>SASS</small></div>
+    <div class="bb bb2 rv"><span class="lang-es">Tu roadmap dice "rendimiento". Tu ingeniería dice "el próximo trimestre".</span><span class="lang-en">Your roadmap says "yield." Your engineering says "next quarter."</span><small>REAL PAIN</small></div>
+    <div class="bb bp rv"><span class="lang-es">No es que tu app sea fea. Es que la otra les paga.</span><span class="lang-en">It's not that your app is ugly. It's that the other one pays them.</span><small>HUMOR</small></div>
+    <div class="bb bw rv"><span class="lang-es">8 meses construyéndolo. O una tarde integrándolo.</span><span class="lang-en">8 months building it. Or one afternoon integrating it.</span><small>BUILD VS BUY</small></div>
+    <div class="bb bm rv"><span class="lang-es">Arca lo lanzó en semanas. ¿Y tu roadmap?</span><span class="lang-en">Arca shipped it in weeks. And your roadmap?</span><small>PROOF</small></div>
+    <div class="bb bd rv"><span class="lang-es">Dale a tus usuarios una razón para quedarse. Literal: págales.</span><span class="lang-en">Give your users a reason to stay. Literally: pay them.</span><small>DIRECT</small></div>
+    <div class="bb by rv"><span class="lang-es">Una integración. Cero contratos con protocolos.</span><span class="lang-en">One integration. Zero protocol contracts.</span><small>SIMPLICITY</small></div>
+    <div class="bb bl rv"><span class="lang-es">Deja de perder usuarios por un 5%.</span><span class="lang-en">Stop losing users over 5%.</span><small>URGENCY</small></div>
+  </div>
+  <p class="note rv" style="color:#8a84a0"><span class="lang-es">Cada color es un momento: amarillo Gandhi para hooks, negro para preguntas que pican, lavanda (nuestro color) para la marca, coral/rosa para humor. Nunca repetimos una frase que ya usamos en otro lado.</span><span class="lang-en">Each color is a moment: Gandhi-yellow for hooks, black for questions that sting, lavender (our color) for brand, coral/pink for humor. Never reuse a line we've used elsewhere.</span></p>
+</div></section>
+
+<!-- THE FILM -->
+<section style="background:#fff"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">El film · 45 segundos · el corazón de todo</span><span class="lang-en">The film · 45 seconds · the heart of it all</span></div>
+  <h2 class="rv"><span class="lang-es">El video que un fundador ve y piensa "esa es mi app".</span><span class="lang-en">The video a founder watches and thinks "that's my app."</span></h2>
+  <p class="lede rv"><span class="lang-es">Se produce una vez (visuales con IA, voz real), con corte en español y en inglés. Es el hero de la landing, el ad pagado, y lo que un CTO reenvía.</span><span class="lang-en">Produced once (AI visuals, real VO), cut in Spanish and English. It's the landing hero, the paid ad, the thing a CTO forwards.</span></p>
+  <div class="film">
+    <div class="frame rv"><div><div class="t">0:00–0:07</div><div class="vis"><span class="lang-es">Un teléfono. Un saldo: <b>$5,420 USDC.</b> Perfectamente quieto.</span><span class="lang-en">A phone. A balance: <b>$5,420 USDC.</b> Perfectly still.</span></div></div><div class="vo"><span class="lang-es">"Tus usuarios ya tienen dólares digitales…"</span><span class="lang-en">"Your users already hold digital dollars…"</span></div></div>
+    <div class="frame rv"><div><div class="t">0:07–0:15</div><div class="vis"><span class="lang-es">La app rival avisa: <b>"Gana 5% 🎉"</b> El usuario desliza. Se va.</span><span class="lang-en">The rival app pings: <b>"Earn 5% 🎉"</b> The user swipes. Gone.</span></div></div><div class="vo"><span class="lang-es">"…y el que paga rendimiento, se los lleva."</span><span class="lang-en">"…and whoever pays yield takes them."</span></div></div>
+    <div class="frame rv"><div><div class="t">0:15–0:23</div><div class="vis"><span class="lang-es">Pizarrón: <b>"Earn: 8 meses · 4 devs · 1 auditoría."</b> Una mano tacha "Q3".</span><span class="lang-en">Whiteboard: <b>"Earn: 8 months · 4 devs · 1 audit."</b> A hand crosses out "Q3."</span></div></div><div class="vo"><span class="lang-es">"Construirlo cuesta un año de roadmap."</span><span class="lang-en">"Building it costs a year of roadmap."</span></div></div>
+    <div class="frame rv"><div><div class="t">0:23–0:32</div><div class="vis"><span class="lang-es">El widget de Compass cae en la app. <b>10 líneas de código.</b></span><span class="lang-en">The Compass widget drops in. <b>10 lines of code.</b></span></div></div><div class="vo"><span class="lang-es">"O una integración. Sin custodia. En días."</span><span class="lang-en">"Or one integration. Non-custodial. In days."</span></div></div>
+    <div class="frame rv"><div><div class="t">0:32–0:40</div><div class="vis"><span class="lang-es">Tarjetas de prueba: <b>Arca · en vivo en LATAM.</b> <b>Thor · $1.1B en 2025.</b></span><span class="lang-en">Proof cards: <b>Arca · live in LATAM.</b> <b>Thor · $1.1B in 2025.</b></span></div></div><div class="vo"><span class="lang-es">"Ya está en producción."</span><span class="lang-en">"Already in production."</span></div></div>
+    <div class="frame rv" style="background:var(--lav-deep)"><div><div class="t" style="color:#fff">0:40–0:45</div><div class="vis"><span class="lang-es">Logo. La línea. CTA.</span><span class="lang-en">Logo. The line. CTA.</span></div></div><div class="vo" style="color:#e8e3f7"><span class="lang-es">"Pon el dinero a trabajar. → Agenda tu sesión."</span><span class="lang-en">"Put the money to work. → Book your session."</span></div></div>
+  </div>
+</div></section>
+
+<!-- SIX CHANNELS -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">Una historia, seis formas de contarla</span><span class="lang-en">One story, six ways to tell it</span></div>
+  <h2 class="rv"><span class="lang-es">Nadie ve las seis. Cada canal hace UN trabajo.</span><span class="lang-en">Nobody sees all six. Each channel does ONE job.</span></h2>
+  <p class="lede rv"><span class="lang-es">La regla más importante: <b>nunca copiamos el mismo anuncio en todos lados.</b> La misma idea se cuenta distinto en cada canal — público, trabajo y CTA diferentes. Aquí, pieza por pieza, cada una terminada.</span><span class="lang-en">The most important rule: <b>never copy the same post everywhere.</b> The same idea told differently per channel — different audience, job and CTA. Here, piece by piece, each one finished.</span></p>
+  <div class="grid g2">
+
+    <div class="chan rv"><div class="top" style="background:#16121f"><span>𝕏 · X / Twitter</span><span class="job"><span class="lang-es">TRABAJO: atención</span><span class="lang-en">JOB: attention</span></span></div><div class="mock">
+      <span class="lang-es"><p>Las apps de stablecoins tienen un problema de retención que nadie nombra:</p><p>tus usuarios guardan los dólares, y el que paga rendimiento se los lleva.</p><p>Construir Earn: 8 meses. Integrarlo: días.</p></span>
+      <span class="lang-en"><p>Stablecoin apps have a retention problem nobody names:</p><p>your users hold the dollars, and whoever pays yield takes them.</p><p>Building Earn: 8 months. Integrating it: days.</p></span>
+      <div class="meta"><span class="lang-es">Público: crypto/founders · CTA: el hilo → link a sesión</span><span class="lang-en">Audience: crypto/founders · CTA: thread → session link</span></div></div></div>
+
+    <div class="chan rv"><div class="top" style="background:#0a66c2"><span>in · LinkedIn (Compass)</span><span class="job"><span class="lang-es">TRABAJO: el beneficio claro</span><span class="lang-en">JOB: obvious benefit</span></span></div><div class="mock">
+      <span class="lang-es"><p>Tus usuarios piden rendimiento. Tus ingenieros piden que dejes de agregar integraciones al backlog.</p><p>Con Compass debajo, Arca les dio rendimiento en dólares en semanas — sin custodia. Cualquier app de stablecoins en LATAM puede hacer lo mismo. 🇲🇽🇦🇷</p><p>¿Rendimiento en tu roadmap? Te lo explico en 30 min. 👇</p></span>
+      <span class="lang-en"><p>Your users want yield. Your engineers want you to stop adding integrations to the backlog.</p><p>With Compass underneath, Arca gave their users dollar-yield in weeks — non-custodial. Any stablecoin app in LATAM can do the same. 🇲🇽🇦🇷</p><p>Yield on your roadmap? 30-min walkthrough. 👇</p></span>
+      <div class="meta"><span class="lang-es">Público: fundadores + producto · CTA: agenda una sesión</span><span class="lang-en">Audience: founders + product · CTA: book a session</span></div></div></div>
+
+    <div class="chan rv"><div class="top" style="background:var(--lav-deep)"><span>✍️ Blog</span><span class="job"><span class="lang-es">TRABAJO: la pieza definitiva</span><span class="lang-en">JOB: the definitive piece</span></span></div><div class="mock">
+      <span class="lang-es"><p><b>"LATAM ya tiene suficientes decks de stablecoins. Le faltan productos."</b></p><p style="color:#4a4458">Las apps que ganan retención no guardan saldos — los ponen a trabajar. La cuenta build-vs-buy, la custodia resuelta, y qué lanzó Arca…</p></span>
+      <span class="lang-en"><p><b>"LATAM Has Enough Stablecoin Decks. It Needs Products."</b></p><p style="color:#4a4458">The apps that win retention don't store balances — they put them to work. The build-vs-buy math, custody solved, and what Arca shipped…</p></span>
+      <div class="meta"><span class="lang-es">SEO · CTA: diagnóstico + sesión · (completo abajo ↓)</span><span class="lang-en">SEO · CTA: diagnostic + session · (full text below ↓)</span></div></div></div>
+
+    <div class="chan rv"><div class="top" style="background:var(--amber)"><span>✉️ Mailchimp <span class="lang-es">(solo segmento LATAM)</span><span class="lang-en">(LATAM segment only)</span></span><span class="job"><span class="lang-es">TRABAJO: activar</span><span class="lang-en">JOB: activate</span></span></div><div class="mock">
+      <div class="subject"><span class="lang-es">Asunto: ¿Cuánto te cuesta NO tener Earn?</span><span class="lang-en">Subject: What is NOT having Earn costing you?</span></div>
+      <span class="lang-es"><p>Armé un diagnóstico de 10 min: cuánto saldo está quieto en tu app, qué pagaría el mercado, y qué margen te queda con fee compartido. Sin landing — respóndeme y lo corro con tus números.</p></span>
+      <span class="lang-en"><p>I built a 10-min diagnostic: how much balance sits idle in your app, what the market would pay, and the margin you'd keep with a shared fee. No landing page — reply and I'll run your numbers.</p></span>
+      <div class="meta"><span class="lang-es">Activo exclusivo · CTA: responder</span><span class="lang-en">Exclusive asset · CTA: reply</span></div></div></div>
+
+    <div class="chan rv"><div class="top" style="background:var(--lav)"><span>🎥 <span class="lang-es">Gin · video</span><span class="lang-en">Gin · video</span></span><span class="job"><span class="lang-es">TRABAJO: voz operadora LATAM</span><span class="lang-en">JOB: LATAM operator voice</span></span></div><div class="mock">
+      <span class="lang-es"><p>🎬 <i>"Tu app ya tiene los dólares de tus usuarios. La pregunta es por qué se quedan…"</i></p><p>90 seg: la cuenta real de construir Earn en México vs integrarlo. Arca como prueba.</p></span>
+      <span class="lang-en"><p>🎬 <i>"Your app already holds your users' dollars. The question is why they stay…"</i></p><p>90 sec: the real math of building Earn in Mexico vs integrating it. Arca as proof. <b>(video in ES, EN subs)</b></p></span>
+      <div class="meta"><span class="lang-es">Franquicia: "Productos, no decks" · CTA: sesión</span><span class="lang-en">Franchise: "Products, not decks" · CTA: session</span></div></div></div>
+
+    <div class="chan rv"><div class="top" style="background:#e0562e"><span>🔭 <span class="lang-es">Eli · convicción</span><span class="lang-en">Eli · conviction</span></span><span class="job"><span class="lang-es">TRABAJO: la creencia</span><span class="lang-en">JOB: the belief</span></span></div><div class="mock">
+      <span class="lang-es"><p>"Toda fintech corre por guardar el dólar. Casi nadie construye lo que hace después. Ese hueco — entre guardar y crecer — es la oportunidad entera, y está abierta."</p></span>
+      <span class="lang-en"><p>"Every fintech races to store the dollar. Almost nobody builds what it does next. That gap — between storing and growing — is the whole opportunity, and it's wide open."</p></span>
+      <div class="meta"><span class="lang-es">Público: global + inversionistas · CTA: ninguno</span><span class="lang-en">Audience: global + investors · CTA: none</span></div></div></div>
+
+  </div>
+  <p class="note rv"><span class="lang-es"><b>Seis superficies. Un evento. Una posición debajo.</b> Seis argumentos y CTAs distintos — la disciplina anti-copy-paste. Plantilla de toda campaña Tier-1.</span><span class="lang-en"><b>Six surfaces. One event. One position underneath.</b> Six different arguments and CTAs — the anti-copy-paste discipline. The template for every Tier-1 campaign.</span></p>
+</div></section>
+
+<!-- THE BLOG -->
+<section style="background:#fff"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">La pieza definitiva, escrita completa</span><span class="lang-en">The definitive piece, written in full</span></div>
+  <div class="blog rv">
+    <div class="tag"><span class="lang-es">BLOG · COMPASS · ~6 MIN</span><span class="lang-en">BLOG · COMPASS · ~6 MIN READ</span></div>
+    <span class="lang-es">
+      <h3>LATAM ya tiene suficientes decks de stablecoins. Le faltan productos.</h3>
+      <p>La región hizo lo difícil: digitalizó el dólar. Millones guardan USDC porque no confían en su moneda. Pero pregúntate algo simple: una vez que el dólar está en la app, <b>¿qué hace?</b></p>
+      <p>Para la mayoría, nada. Se queda ahí. Y un saldo quieto es un usuario en fuga — cuando el competidor ofrece 5%, el usuario se cambia. No perdiste por producto. Perdiste por lo único que nunca lanzaste: una razón para quedarse.</p>
+      <p><b>¿Por qué casi nadie lanza rendimiento?</b> Porque hacerlo tú mismo es un proyecto de infraestructura, no una feature: dos o tres integraciones de protocolo, una auditoría, meses de trabajo, mantenimiento eterno. Tu CTO te lo dijo: "básicamente nos volvemos una empresa de DeFi, que no somos."</p>
+      <blockquote>El primer producto financiero es una decisión de producto. El cuarto se vuelve un problema de arquitectura.</blockquote>
+      <p><b>Build vs. integrar, la cuenta honesta.</b> Construir: 6–12 meses, 3–8 ingenieros, auditoría, ~$500k–$1M, mantenimiento continuo. Con Compass debajo: una integración, sin custodia, en vivo en días.</p>
+      <p><b>¿Qué maneja Compass y qué sigue siendo tuyo?</b> Compass maneja las conexiones a protocolos, las actualizaciones, la infraestructura battle-tested. Tú mantienes tu producto, tu marca, tu usuario — y tus usuarios mantienen sus llaves. Compass nunca custodia los fondos. Esa es la parte que le importa a tu equipo de riesgo.</p>
+      <p><b>La prueba.</b> Arca está en vivo en LATAM desde junio de 2026. Thor movió más de $1.1B a través de esta infraestructura en 2025. Constellation pasó de firmar a en-vivo en dos semanas. No te pedimos que confíes — te mostramos quién ya corre.</p>
+      <p style="margin-top:18px"><b>¿Rendimiento en tu roadmap este año?</b> Te armamos un diagnóstico de 10 minutos con tus números. → <span style="color:var(--lav-deep);font-weight:700">Agenda tu sesión de roadmap.</span></p>
+    </span>
+    <span class="lang-en">
+      <h3>LATAM Has Enough Stablecoin Decks. It Needs Products.</h3>
+      <p>The region did the hard part: it digitized the dollar. Millions hold USDC because they don't trust their currency. But ask something simple: once the dollar is inside the app, <b>what does it do?</b></p>
+      <p>For most, nothing. It just sits there. And an idle balance is a user about to leave — the moment a competitor offers 5%, they switch. You didn't lose on product. You lost on the one thing you never shipped: a reason to stay.</p>
+      <p><b>Why does almost nobody launch yield?</b> Because doing it yourself is an infrastructure project, not a feature: two or three protocol integrations, a security audit, months of work, endless maintenance. Your CTO told you: "we'd basically become a DeFi company, which we're not."</p>
+      <blockquote>The first financial product is a product decision. The fourth becomes an architecture problem.</blockquote>
+      <p><b>Build vs. integrate, the honest math.</b> Build: 6–12 months, 3–8 engineers, an audit, ~$500k–$1M, ongoing maintenance. With Compass underneath: one integration, non-custodial, live in days.</p>
+      <p><b>What does Compass handle, and what stays yours?</b> Compass handles the protocol connections, the upgrades, the battle-tested infrastructure. You keep your product, your brand, your user — and your users keep their keys. Compass never custodies the funds. That's the part your risk team cares about.</p>
+      <p><b>The proof.</b> Arca has been live in LATAM since June 2026. Thor moved over $1.1B through this infrastructure in 2025. Constellation went from signed to live in two weeks. We don't ask you to trust us — we show you who's already running.</p>
+      <p style="margin-top:18px"><b>Is yield on your roadmap this year?</b> We'll build you a 10-minute diagnostic with your numbers. → <span style="color:var(--lav-deep);font-weight:700">Book your roadmap session.</span></p>
+    </span>
+  </div>
+  <p class="note rv" style="text-align:center"><span class="lang-es">El blog no anuncia — <b>argumenta y es útil.</b> Un CTO se lo reenvía a su CEO con un "léete esto".</span><span class="lang-en">The blog doesn't announce — <b>it argues and it's useful.</b> A CTO forwards it to their CEO with "read this."</span></p>
+</div></section>
+
+<!-- LAUNCH WEEK -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">La semana de lanzamiento</span><span class="lang-en">Launch window</span></div>
+  <h2 class="rv"><span class="lang-es">21 días, en movimiento.</span><span class="lang-en">21 days, in motion.</span></h2>
+  <div class="week">
+    <div class="day rv"><div class="d"><span class="lang-es">DÍAS 1–2</span><span class="lang-en">DAYS 1–2</span></div><b><span class="lang-es">SUENA FUERTE</span><span class="lang-en">GO LOUD</span></b><p><span class="lang-es">Hilo de X + billboards + video de Gin (ES) + hot-take de Eli.</span><span class="lang-en">X thread + billboards + Gin video (ES) + Eli hot-take.</span></p></div>
+    <div class="day rv"><div class="d"><span class="lang-es">DÍAS 3–5</span><span class="lang-en">DAYS 3–5</span></div><b><span class="lang-es">VA PROFUNDO</span><span class="lang-en">GO DEEP</span></b><p><span class="lang-es">Blog + film de 45s + email diagnóstico + LinkedIn.</span><span class="lang-en">Blog + 45s film + diagnostic email + LinkedIn.</span></p></div>
+    <div class="day rv"><div class="d"><span class="lang-es">DÍAS 5–10</span><span class="lang-en">DAYS 5–10</span></div><b><span class="lang-es">SE VUELVE PERSONAL</span><span class="lang-en">GO PERSONAL</span></b><p><span class="lang-es">10–15 cuentas reciben un DM humano con su contexto. Prensa a un medio LATAM. (El contenido NO para.)</span><span class="lang-en">10–15 accounts get a human DM with their context. Press to a LATAM outlet. (Content doesn't stop.)</span></p></div>
+    <div class="day rv"><div class="d"><span class="lang-es">DÍAS 10–21</span><span class="lang-en">DAYS 10–21</span></div><b><span class="lang-es">COSECHA</span><span class="lang-en">HARVEST</span></b><p><span class="lang-es">Las sesiones pasan. Objeciones → contenido nuevo. Pilotos definidos.</span><span class="lang-en">Sessions happen. Objections → new content. Pilots scoped.</span></p></div>
+  </div>
+  <p class="note rv"><span class="lang-es">Horas humanas de toda la campaña: dirección (~30 min lunes) + aprobaciones (~15 min) + los DMs + las sesiones. Todo lo demás — borradores, video, email, billboards, UTMs, reportes — corre en el motor de IA.</span><span class="lang-en">Human hours across the campaign: direction (~30 min Monday) + approvals (~15 min) + the DMs + the sessions. Everything else — drafts, video, email, billboards, UTMs, reporting — runs on the AI engine.</span></p>
+</div></section>
+
+<!-- THE ASK -->
+<section style="background:#fff"><div class="wrap">
+  <div class="kicker rv"><span class="lang-es">Por lo que jugamos</span><span class="lang-en">What we're playing for</span></div>
+  <h2 class="rv"><span class="lang-es">El funnel, y la petición al board.</span><span class="lang-en">The funnel, and the ask to the board.</span></h2>
+  <div class="rv" style="margin-top:20px">
+    <div class="fstep"><span><span class="lang-es">Alcance — los fundadores LATAM correctos ven la idea</span><span class="lang-en">Reach — the right LATAM founders see the idea</span></span><span class="r"><span class="lang-es">atención, no vanidad</span><span class="lang-en">attention, not vanity</span></span></div>
+    <div class="fstep"><span><span class="lang-es">Interés — respuestas, DMs, solicitudes del diagnóstico</span><span class="lang-en">Interest — replies, DMs, diagnostic requests</span></span><span class="r"><span class="lang-es">interés calificado</span><span class="lang-en">qualified interest</span></span></div>
+    <div class="fstep"><span><span class="lang-es">Sesiones de Roadmap agendadas (45 min, ES, salen con un scope de Earn)</span><span class="lang-en">Roadmap Sessions booked (45 min, ES, leave with an Earn scope)</span></span><span class="r">🎯 5 / 21d</span></div>
+    <div class="fstep"><span><span class="lang-es">Pilotos definidos → pipeline creado</span><span class="lang-en">Pilots scoped → pipeline created</span></span><span class="r">🎯 ≥ 2</span></div>
+    <div class="fstep" style="background:#16121f;color:#fff"><span style="color:#fff"><span class="lang-es">Norte — oportunidades calificadas creadas o avanzadas por marketing</span><span class="lang-en">North star — qualified opportunities created or advanced by marketing</span></span><span class="r" style="color:var(--c9)"><span class="lang-es">la única que importa</span><span class="lang-en">the only one that matters</span></span></div>
+  </div>
+  <div class="card rv" style="margin-top:26px;background:#16121f;color:#fff;padding:38px">
+    <span class="tag" style="background:#2c2447;color:var(--c9)"><span class="lang-es">LA PETICIÓN AL BOARD</span><span class="lang-en">THE ASK TO THE BOARD</span></span>
+    <p class="big" style="color:#fff"><span class="lang-es">Aprueben esto como el piloto. Financien las herramientas (HeyGen + presupuesto ligero de contenido). Confirmen el plan del fundraise para contratar un líder de marketing senior que <span style="color:var(--c9)">herede — no invente</span> esta máquina.</span><span class="lang-en">Greenlight this as the pilot. Fund the tools (HeyGen + a light content budget). Confirm the fundraise plan to hire a senior marketing lead who <span style="color:var(--c9)">inherits — not invents</span> this machine.</span></p>
+    <p style="color:#b9b2d6;margin-top:16px"><span class="lang-es">Si esta campaña agenda 5 sesiones y 2 pilotos casi sin personal, no corrimos una campaña — le mostramos a la ronda exactamente qué está escalando. <b style="color:#fff">Validamos el motor ahora, para que el capital multiplique un sistema que ya funciona.</b></span><span class="lang-en">If this campaign books 5 sessions and 2 pilots on near-zero headcount, we didn't run a campaign — we showed the round exactly what it's scaling. <b style="color:#fff">We validate the engine now, so capital multiplies a system that already works.</b></span></p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span class="lang-es">Compass Labs · "Pon el dinero a trabajar" · campaña insignia por Gin · Julio 2026 · Toda la prueba del listado de claims aprobados. Concepto para el board, no creatividad publicada.</span>
+  <span class="lang-en">Compass Labs · "Put the Money to Work" · flagship campaign by Gin · July 2026 · All proof from the approved claims list. Board concept, not published creative.</span><br>
+  ◆ <a href="compass-north-star.html">North Star</a> · <a href="compass-marketing-strategy.html">Marketing Strategy</a> · <b>Flagship Campaign</b> · <a href="compass-execution-playbook.html">Execution Playbook</a> · <a href="compass-vision-board.html">Vision Board</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  function setLang(l){document.body.classList.remove('show-en','show-es');document.body.classList.add('show-'+l);document.documentElement.lang=l;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%6,5)*55)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

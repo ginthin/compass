@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Team Playbook: How This Works Now</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--pink:#ff5aa5;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 30px}
+  section{padding:60px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:62px;line-height:1;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:33px;letter-spacing:-0.02em;font-weight:800;line-height:1.07;margin-bottom:8px}
+  h3{font-size:20px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:#4a4458;max-width:880px;margin-top:12px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .hero{min-height:84vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:280% 280%;animation:flow 18s ease infinite;color:#fff;border:none}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}.hero .sub{margin-top:22px;color:#cfc8ea;font-size:19px;max-width:700px}
+  .hero .cta{margin-top:34px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--c9);animation:bob 2.4s ease infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  .big{font-size:40px;font-weight:800;line-height:1.15;letter-spacing:-0.02em}
+  /* roles */
+  .role{background:#fff;border:1px solid #e8e5f2;border-radius:16px;overflow:hidden}
+  .role .top{padding:16px 20px;color:#fff;display:flex;align-items:center;gap:12px}
+  .role .top .av{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .role .top .who{font-weight:800;font-size:17px}.role .top .fn{font-size:12px;opacity:.9;font-family:var(--mono)}
+  .role .b{padding:18px 20px}
+  .role .b .lbl{font-family:var(--mono);font-size:10.5px;color:#8a84a0;text-transform:uppercase;letter-spacing:.05em;margin-top:10px}
+  .role .b ul{list-style:none;margin-top:4px}
+  .role .b li{padding:4px 0 4px 18px;position:relative;font-size:13.5px;color:#2c2838}
+  .role .b li::before{content:"▸";position:absolute;left:0;color:var(--lav)}
+  .role .eff{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:700;margin-top:12px;background:#f2fbf7;border-radius:8px;padding:8px 10px}
+  .r-eli{background:linear-gradient(120deg,#e0962e,#ff5a5f)}
+  .r-cto{background:linear-gradient(120deg,#2f6bff,#5b47d6)}
+  .r-gin{background:linear-gradient(120deg,#5b47d6,#8b7cf6)}
+  .r-funa{background:linear-gradient(120deg,#0f8a5f,#19b57a)}
+  .r-petros{background:#16121f}
+  /* week */
+  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+  .day{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:14px}
+  .day .d{font-family:var(--mono);font-size:11px;color:var(--lav-deep);font-weight:700}
+  .day h4{font-size:15px;margin:5px 0 6px}.day p{font-size:12px;color:#4a4458}
+  /* talk track */
+  .block{border-left:3px solid var(--lav);padding:4px 0 4px 18px;margin-top:18px}
+  .block .time{font-family:var(--mono);font-size:12px;color:var(--lav-deep);font-weight:700}
+  .block h3{margin:2px 0 6px}
+  .say{background:#f7f5fc;border-radius:10px;padding:13px 15px;font-size:14.5px;margin-top:6px}
+  .say .l{font-family:var(--mono);font-size:11px;color:#8a84a0;display:block;margin-bottom:3px}
+  /* start */
+  .start{background:#16121f;color:#fff}
+  .start .step{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #2c2447}
+  .start .step .n{font-family:var(--mono);font-weight:800;color:#0d0a14;background:var(--gold);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+  .start .step p{font-size:14px;color:#e8e3f7}
+  footer{padding:46px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:900px){.g2,.g3,.week{grid-template-columns:1fr}h1{font-size:42px}h2{font-size:26px}.big{font-size:26px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:60px 0}.hero,[class^=r-],.start,.role .top{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Team Playbook · how this works now 🧭</div>
+  <h1>We're building the<br>growth engine.<br><span style="color:var(--gold)">Together, starting now.</span></h1>
+  <p class="sub">This is how marketing + commercial works from next week: what we're building, why it matters for the raise, and — the important part — exactly what each of us does. Everyone sells. Nobody's a content factory. AI does the heavy lifting.</p>
+  <p class="cta">↓ here's the plan</p>
+</div></div>
+
+<!-- THE WHY -->
+<section><div class="wrap">
+  <div class="kicker rv">Why we're doing this</div>
+  <h2 class="rv">We're more capable than our competitors — and harder to understand.</h2>
+  <p class="lede rv">That gap is the most expensive thing at Compass. We lose deals before the comparison even happens, because people don't get what we do fast enough. <b>Confusion is our #1 competitor.</b> The fix isn't "post more" — it's a machine that makes Compass instantly legible, creates demand, and turns it into pipeline. And the timing is everything:</p>
+  <div class="grid g3">
+    <div class="card rv"><span class="tag">THE STAKES</span><h3>The raise funds this</h3><p style="font-size:14px;margin-top:6px">Use-of-funds is marketing + sales. Investors back a <b>proven</b> motion. So we build the engine and prove it works <i>before</i> decks go out (~early September).</p></div>
+    <div class="card rv"><span class="tag">THE BET</span><h3>Do it now, small</h3><p style="font-size:14px;margin-top:6px">We validate the whole system with a tiny team + AI in 5 weeks. Then the round scales a machine that already works — not a wish.</p></div>
+    <div class="card rv" style="background:#16121f;color:#fff"><span class="tag" style="background:#2c2447;color:var(--c9)">THE VISION</span><h3>Bigger than an API</h3><p style="font-size:14px;margin-top:6px;color:#cfc8ea">We're the layer to <b style="color:#fff">launch and operate</b> financial products onchain. "Everyone else sells a piece. We make you able to operate." That's the story we go tell.</p></div>
+  </div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">How the machine works · in one minute</div>
+  <h2 class="rv">Signals in → AI produces → we approve → it ships → we measure.</h2>
+  <p class="lede rv">Everything you already do generates signals — a shipped feature, a customer win, a partnership, an objection on a call. Those flow into the machine. AI drafts the content, videos and outreach. A human approves. It ships across channels, lands on named accounts, and gets measured in Attio. Winners get reused into sales and the investor deck.</p>
+  <div class="grid g3">
+    <div class="card rv"><span class="tag">AI DOES</span><p style="font-size:14px">The drafts, the videos, the scoring, the account lists, the reports. The boring, heavy lifting. Nobody stares at a blank page.</p></div>
+    <div class="card rv"><span class="tag">WE DO</span><p style="font-size:14px">The judgment, the relationships, the calls, the taste. We decide what matters and approve it. ~45 min of human decision-time a week, total.</p></div>
+    <div class="card rv"><span class="tag">THE RULE</span><p style="font-size:14px"><b>Everyone sells.</b> We all have a voice and a lane. The company says "what happened + why buyers care"; each of us says "what we learned + what the market gets wrong."</p></div>
+  </div>
+</div></section>
+
+<!-- ROLES -->
+<section><div class="wrap">
+  <div class="kicker rv">Your role · this is the part that matters</div>
+  <h2 class="rv">Who does what. Small, specific, everyone in.</h2>
+  <p class="lede rv">Nobody becomes a full-time marketer. Each person has a light, clear lane — and AI (Norte) does the production behind all of it.</p>
+  <div class="grid g2">
+
+    <div class="role rv"><div class="top r-gin"><div class="av">G</div><div><div class="who">Gin · Ops &amp; Growth</div><div class="fn">runs the machine · LATAM</div></div></div><div class="b">
+      <div class="lbl">Owns</div><ul><li>The whole machine runs (with AI/Norte)</li><li>LATAM growth + the Earn campaign</li><li>Weekly direction + approvals + measurement</li></ul>
+      <div class="lbl">Voice</div><ul><li>The operator — real use cases, LATAM, EN + ES</li></ul>
+      <div class="eff">Owns the engine. Not the person who makes every asset.</div></div></div>
+
+    <div class="role rv"><div class="top r-eli"><div class="av">E</div><div><div class="who">Elisabeth · CEO</div><div class="fn">conviction + vision</div></div></div><div class="b">
+      <div class="lbl">Does</div><ul><li>Founder posts 2–3×/week (AI drafts, her words)</li><li>Signs off Tier-1 campaign angles + investor content</li><li>1 raw "hot-take" video / month · a teaser post</li></ul>
+      <div class="lbl">Voice</div><ul><li>What we learned · what the market gets wrong · where finance is going</li></ul>
+      <div class="eff">Keep posting through the build week — don't go dark.</div></div></div>
+
+    <div class="role rv"><div class="top r-cto"><div class="av">A</div><div><div class="who">Aidar · CTO / Engineering</div><div class="fn">credibility + guardrail</div></div></div><div class="b">
+      <div class="lbl">Does (~30 min/week total)</div><ul><li>🔴 Signup data access (this week — unblocks a lot)</li><li>Fast async claim checks (👍 in Slack)</li><li>Occasional 15-min interview → becomes a video</li><li>Flag product signals when things ship</li></ul>
+      <div class="lbl">Voice</div><ul><li>Architecture, custody, "what we handle vs what you own"</li></ul>
+      <div class="eff">Engineering is NOT a content team. ~30 min/week.</div></div></div>
+
+    <div class="role rv"><div class="top r-funa"><div class="av">F</div><div><div class="who">Funa · Commercial</div><div class="fn">Africa + Middle East</div></div></div><div class="b">
+      <div class="lbl">Does</div><ul><li>Runs the same Earn campaign for Africa accounts</li><li>Works the warm pipeline (Roqqu, Quidax, Luno, WeWire…)</li><li>Personal DMs to named accounts (AI drafts the openers)</li></ul>
+      <div class="lbl">Voice</div><ul><li>The operator voice for Africa/ME — real use cases, EN</li></ul>
+      <div class="eff">Same machine, your region. AI localizes it.</div></div></div>
+
+    <div class="role rv"><div class="top r-petros"><div class="av">C</div><div><div class="who">Commercial · Sales &amp; Partnerships</div><div class="fn">deals + partner amplification</div></div></div><div class="b">
+      <div class="lbl">Does</div><ul><li>Turns partner/venue wins into signals for the machine</li><li>Coordinates partner amplification on campaigns</li><li>DMs + follow-ups on active accounts (AI-drafted)</li></ul>
+      <div class="lbl">Voice</div><ul><li>The closer — context-rich outreach on active deals</li></ul>
+      <div class="eff">Every partnership landed = free content + reach.</div></div></div>
+
+    <div class="role rv"><div class="top" style="background:linear-gradient(120deg,#3ee0b0,#19b57a)"><div class="av">🧭</div><div><div class="who">Norte · your AI co-pilot</div><div class="fn">the heavy lifting</div></div></div><div class="b">
+      <div class="lbl">Does (so you don't)</div><ul><li>Drafts every post, email, video script, opener</li><li>Scores accounts, builds target lists, writes the campaign</li><li>Auto-reports results, assembles the traction story</li></ul>
+      <div class="lbl">You just</div><ul><li>Tell Norte what you need → approve → send</li></ul>
+      <div class="eff">The marketing hours we don't have.</div></div></div>
+
+  </div>
+</div></section>
+
+<!-- THE WEEK -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The rhythm everyone learns</div>
+  <h2 class="rv">A normal week, once we launch (Aug 4).</h2>
+  <div class="week">
+    <div class="day rv"><div class="d">MON</div><h4>Decide</h4><p>Gin + Eli pick the week (30 min). AI drafts everything.</p></div>
+    <div class="day rv"><div class="d">TUE</div><h4>Publish #1</h4><p>Batch 1 out. Claim checks async (Aidar).</p></div>
+    <div class="day rv"><div class="d">WED</div><h4>Engage</h4><p>Everyone replies + DMs their accounts.</p></div>
+    <div class="day rv"><div class="d">THU</div><h4>Publish #2</h4><p>Batch 2 + partner amplification. Team reshares.</p></div>
+    <div class="day rv"><div class="d">FRI</div><h4>Activate</h4><p>Named-account DMs go out. Signal sweep → Monday.</p></div>
+  </div>
+  <p class="note rv"><b>Your recurring commitment is tiny:</b> reply to comments, send a few DMs to your accounts, reshare, and drop signals in Slack when something happens. That's it. AI + Gin run the rest.</p>
+</div></section>
+
+<!-- HOW WE START -->
+<section class="start"><div class="wrap">
+  <div class="kicker rv" style="color:var(--c9)">How we start · next 2 weeks</div>
+  <h2 class="rv" style="color:#fff">Build this week. Launch the week after.</h2>
+  <div class="rv" style="margin-top:18px">
+    <div class="step"><div class="n">1</div><p><b>This week (build):</b> Gin sets up the foundations (positioning, claims, Attio) + fixes the signup hole. Aidar gets us the signup data. <b>Eli keeps posting</b> so we don't go dark. A teaser drops Friday.</p></div>
+    <div class="step"><div class="n">2</div><p><b>Week 2 (launch · Aug 4):</b> the engine turns on. We launch the Earn campaign — "Put the Money to Work" — across all channels, with videos. Everyone reshares + works their accounts.</p></div>
+    <div class="step"><div class="n">3</div><p><b>Weeks 3–5:</b> growth (LATAM + Africa calls, Arca case study), results (pilots + numbers), then we package the traction story for the raise. Decks out ~Sep 1.</p></div>
+  </div>
+  <div class="card rv" style="margin-top:16px;background:#241b3a;border-color:#3b2c6e;color:#fff"><b style="color:var(--c9)">What we need from everyone:</b> show up to the 30-min Monday, keep your voice active (a couple posts/DMs a week), drop signals in Slack, and say yes to your lane. That's the whole ask. The machine does the rest.</div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Team Playbook · Gin + Norte 🧭 · July 2026 · Pair with the Aidar 1:1 prep + the execution doc.<br>
+  ◆ <a href="compass-aidar-call-prep.html">Aidar 1:1 Prep</a> · <a href="compass-execution-for-engineering.html">Execution Doc</a> · <a href="compass-roadmap-master.html">Master Roadmap</a> · <a href="START-HERE-compass.html">Start Here</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*55)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

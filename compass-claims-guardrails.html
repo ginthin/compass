@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Claims Library + Guardrails</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--green:#19b57a;--coral:#ff5a5f;--amber:#e0962e;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:960px;margin:0 auto;padding:0 30px}
+  section{padding:44px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:44px;line-height:1.02;letter-spacing:-0.02em;font-weight:800}
+  h2{font-size:26px;font-weight:800;letter-spacing:-0.01em;margin-bottom:6px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:12px;font-weight:700}
+  .lede{font-size:18px;color:#4a4458;max-width:760px;margin-top:8px}
+  .hero{background:linear-gradient(120deg,#16121f,#3b2c6e);color:#fff;padding:64px 0 50px}
+  .hero .kicker{color:#c9befc}.hero p{color:#cfc8ea;margin-top:14px;font-size:16px;max-width:640px}
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase;letter-spacing:.04em}
+  .ok{color:var(--green);font-weight:700}.no{color:var(--coral);font-weight:700}
+  .say{font-weight:600}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;margin-top:16px}
+  .green{background:#f2fbf7;border-color:#cfe}.red{background:#fdf3f3;border-color:#f0d4d4}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:8px}
+  .notlist{columns:2;column-gap:20px;margin-top:8px}
+  .notlist .n{break-inside:avoid;font-size:13.5px;padding:8px 0;border-bottom:1px solid #f0eef7}
+  .notlist .n b{color:#a33}
+  pre{background:#0d0a14;color:#c9c3e0;border-radius:10px;padding:18px;font-size:12px;line-height:1.7;overflow-x:auto;white-space:pre-wrap;margin-top:12px}
+  pre b{color:#8b7cf6}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  footer{padding:36px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:800px){.notlist{columns:1}h1{font-size:32px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Build #1 · Claims Library + Guardrails · by Norte 🧭</div>
+  <h1>What we can say, exactly.<br>And what we never say.</h1>
+  <p>This is the single source of truth for every claim in every post, email, video and deck. If a number isn't on this list, it doesn't ship — you write [NEEDS APPROVAL] instead. Paste the prompt at the bottom into any AI draft and it will respect all of this automatically.</p>
+</div></div>
+
+<!-- APPROVED CLAIMS -->
+<section><div class="wrap">
+  <div class="kicker">✅ The approved claims — use these, worded exactly</div>
+  <h2>Say these freely.</h2>
+  <p class="lede">Every claim below is confirmed and public-safe. Use the exact wording in the "Say it like this" column so the market hears the same thing everywhere.</p>
+  <table>
+    <tr><th>Proof</th><th>Say it like this (exact)</th><th>Best for</th></tr>
+    <tr><td><b>Thor Wallet</b></td><td class="say">"Thor Wallet moved more than $1.1B in volume through Compass in 2025."</td><td>scale, production credibility</td></tr>
+    <tr><td><b>Para</b></td><td class="say">"Para — 100+ fintech apps, 15M+ users — uses Compass as its official DeFi layer."</td><td>distribution, embedded reach</td></tr>
+    <tr><td><b>Arca</b></td><td class="say">"Arca is live in LATAM on Compass (since June 2026)."</td><td>LATAM regional proof</td></tr>
+    <tr><td><b>Constellation</b></td><td class="say">"Constellation went from signed to live in two weeks — non-custodial."</td><td>speed, ease of integration</td></tr>
+    <tr><td><b>Studio</b></td><td class="say">"Six products through one integration."</td><td>breadth, the core pitch</td></tr>
+    <tr><td><b>Turnkey</b></td><td class="say">"Compass + Turnkey: policy-controlled, non-custodial agentic finance."</td><td>agentic, security</td></tr>
+    <tr><td><b>RWA venues</b></td><td class="say">"RWA venues live on Compass include Ondo, Midas, IXS (with BNB Chain), Keyrock and InvestaX."</td><td>RWA distribution</td></tr>
+    <tr><td><b>Security</b></td><td class="say">"Non-custodial — users always hold their keys. ISO 27001 certified. 99.99% uptime."</td><td>trust, the custody answer</td></tr>
+    <tr><td><b>Speed</b></td><td class="say">"Live in days."</td><td>everywhere</td></tr>
+    <tr><td><b>AI-native</b></td><td class="say">"AI-native: LLM-optimised docs, a CLI, and MCP built for agents."</td><td>technical, developer, agentic</td></tr>
+  </table>
+  <div class="card green"><span class="tag" style="background:#e7f8f0;color:#127a52">THE CUSTODY ANSWER (memorize it)</span><p style="font-size:15px"><b>"Do you hold the funds?" → "No. Users sign in their own wallets. Compass never touches the assets. Non-custodial, end to end."</b></p></div>
+</div></section>
+
+<!-- NEEDS APPROVAL -->
+<section><div class="wrap">
+  <div class="kicker">⛔ Not yet — needs approval or doesn't exist</div>
+  <h2>Never say these until they're approved &amp; added above.</h2>
+  <div class="card red">
+    <table>
+      <tr><th>Claim</th><th>Why it's blocked</th></tr>
+      <tr><td class="no">Arca's results / timeline / quote</td><td>Case study pending — approvals not secured yet. Use "Arca is live in LATAM" only, until approved.</td></tr>
+      <tr><td class="no">Any customer's revenue / retention / conversion / TVL numbers</td><td>Not approved. No customer financials in public content.</td></tr>
+      <tr><td class="no">Regulated / compliance / KYB / whitelisting as a shipped feature</td><td>Thesis in progress (Corsa). Talk about it as a market direction / vision only — never "we do this today."</td></tr>
+      <tr><td class="no">In-negotiation company names (WisdomTree, BitGo's clients, "the fund")</td><td>Confidential pipeline. Relationship owner must approve before any public mention.</td></tr>
+      <tr><td class="no">OpenTrade relationship specifics</td><td>Unverified. Logo only if already on the site; no claims.</td></tr>
+      <tr><td class="no">Any new latency / performance / chain-count number</td><td>Not in this library = CTO must sign off first, then it gets added here.</td></tr>
+    </table>
+  </div>
+  <p class="note">Rule: if you want to say something not in the "approved" section, don't guess — write <b>[NEEDS APPROVAL]</b> in the draft and ping the CTO or the relationship owner. Once they confirm, it gets added to the approved list and becomes reusable forever.</p>
+</div></section>
+
+<!-- GUARDRAILS -->
+<section><div class="wrap">
+  <div class="kicker">🛑 The guardrails — what Compass never says or does</div>
+  <h2>The lines we don't cross. Ever.</h2>
+  <div class="notlist">
+    <div class="n"><b>No politics / elections / partisan takes</b> — any country. We sell everywhere; we take no side.</div>
+    <div class="n"><b>No religion or social wedge issues.</b> Not our lane.</div>
+    <div class="n"><b>No unverified claims or numbers.</b> Approved list only, or [NEEDS APPROVAL].</div>
+    <div class="n"><b>No invented customer quotes or results.</b> Written customer approval always.</div>
+    <div class="n"><b>No financial advice or price predictions.</b> We're infrastructure, not an advisor.</div>
+    <div class="n"><b>No attacking named competitors.</b> Beat alternatives with receipts, never name-and-shame.</div>
+    <div class="n"><b>No hype words:</b> "revolutionary", "seamless", "best-in-class", "the future of finance", "thrilled to announce", 🚀. They make us invisible.</div>
+    <div class="n"><b>No fake urgency / engagement bait</b> ("🚨", "you won't believe", "tag a founder").</div>
+    <div class="n"><b>No overclaiming custody / security.</b> Be precise: non-custodial = users hold keys.</div>
+    <div class="n"><b>No memes that punch down / stereotypes.</b> Wit, never cheap shots.</div>
+    <div class="n"><b>No confidential pipeline in public.</b> No in-negotiation names without sign-off.</div>
+    <div class="n"><b>No same text across every channel.</b> One idea, adapted per channel.</div>
+  </div>
+</div></section>
+
+<!-- THE PROMPT -->
+<section><div class="wrap">
+  <div class="kicker">⌘ The AI prompt — paste this into any draft</div>
+  <h2>This makes every draft on-brand automatically.</h2>
+  <p class="lede">Copy-paste this at the top of any AI chat with "[channel] + [what happened]" and you get an on-voice, claims-safe first draft. This IS the claims library + guardrails, operationalized.</p>
+  <pre>You write for Compass Labs. Follow this exactly.
+
+WHAT COMPASS IS (canonical — never improvise a new version):
+"Compass lets fintechs, wallets and stablecoin platforms launch yield, credit,
+trading and tokenized-asset products through one integration — non-custodial,
+live in days." Compass is the LAYER UNDERNEATH — the fintech is the hero; never
+imply Compass is a consumer app.
+
+VOICE: Clear like Monzo. Sharp like Gandhi. Credible like our uptime.
+Short confident sentences. One idea per piece. One sharp line max, on proof.
+Explain the scary part (custody) before they ask. Smart enough for a CTO,
+clear enough for their CEO, human enough to remember.
+
+THE 3 ANGLES (pick ONE per piece):
+- The Integration Tax (build 6-12 months + 3-8 engineers vs one integration)
+- Proof, Not Promises (Thor $1.1B, Para 15M+ users, Arca live LATAM, ISO 27001)
+- Where Finance Is Going (RWAs need distribution; agents need boundaries)
+
+APPROVED CLAIMS ONLY (exact wording):
+- "Thor Wallet moved more than $1.1B through Compass in 2025."
+- "Para — 100+ fintech apps, 15M+ users — uses Compass as its official DeFi layer."
+- "Arca is live in LATAM on Compass (since June 2026)."  (no results/quote yet)
+- "Constellation: signed to live in two weeks, non-custodial."
+- "Six products through one integration." · "Live in days."
+- "Non-custodial — users hold their keys. ISO 27001. 99.99% uptime."
+- RWA venues: Ondo, Midas, IXS (+BNB Chain), Keyrock, InvestaX.
+- AI-native: LLM-optimised docs, CLI, MCP.
+If a claim is not listed, write [NEEDS APPROVAL] — never invent a number,
+a customer result, a quote, or the compliance/KYB capability (thesis only).
+
+NEVER: politics, religion, financial advice/price predictions, naming
+competitors, hype words ("revolutionary/seamless/best-in-class/the future of
+finance/thrilled to announce"), rocket emojis, fake urgency, in-negotiation
+names, the same text across channels.
+
+LANGUAGE: English by default. Spanish only when the target is LATAM —
+localized (local context), never machine-translated.
+
+OUTPUT: 2 versions (one safe, one sharper) + name which angle it uses.</pre>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Claims Library + Guardrails · by Gin + Norte 🧭 · July 2026 · Living doc — add every new approved claim here, once.<br>
+  ◆ <a href="START-HERE-compass.html">Start Here</a> · <a href="compass-marketing-strategy.html">Strategy</a> · <a href="compass-do-it-guide.html">Do-It Guide</a> · <a href="compass-target-list.html">Target List</a>
+</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — North Star</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--ink);color:#fff;line-height:1.5;overflow-x:hidden}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+  section{padding:96px 0;position:relative}
+  h1{font-size:96px;line-height:0.92;letter-spacing:-0.04em;font-weight:800}
+  h2{font-size:52px;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+  h3{font-size:26px;font-weight:700;letter-spacing:-0.01em}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--c9);margin-bottom:22px;font-weight:700}
+  .big{font-size:40px;line-height:1.15;letter-spacing:-0.02em;font-weight:800}
+  .lede{font-size:22px;color:#b9b2d6;max-width:760px;margin-top:18px;line-height:1.5}
+  .muted{color:#8a84a0}
+  .gold{color:var(--gold)}.pur{color:var(--c9)}
+  /* reveal */
+  .js .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  /* hero */
+  .hero{min-height:100vh;display:flex;align-items:center;background:radial-gradient(130% 130% at 15% 10%,#3b2c6e,#1a1330 55%,#0d0a14);position:relative;overflow:hidden}
+  .hero .orbit{position:absolute;right:-140px;top:50%;transform:translateY(-50%);width:620px;height:620px;border:1px solid rgba(139,124,246,.28);border-radius:50%;animation:spin 60s linear infinite}
+  .hero .orbit::before{content:"";position:absolute;inset:70px;border:1px solid rgba(139,124,246,.18);border-radius:50%}
+  .hero .orbit::after{content:"🧭";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:38px}
+  @keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+  .hero h1 span{display:block}
+  .hero .cta{margin-top:40px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--c9);animation:bob 2.6s ease infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+  /* band */
+  .band{background:var(--gold);color:#111}
+  .band .big{color:#111}
+  .band .muted{color:#6b5900}
+  .lavband{background:linear-gradient(120deg,#5b47d6,#8b7cf6)}
+  .paperband{background:var(--paper);color:var(--ink)}
+  .paperband .lede{color:#4a4458}.paperband .muted{color:#8a84a0}
+  /* horizons */
+  .hz{display:flex;gap:20px;align-items:stretch;margin-top:20px;flex-wrap:wrap}
+  .h-card{flex:1;min-width:240px;background:rgba(255,255,255,.04);border:1px solid rgba(200,190,255,.22);border-radius:16px;padding:26px}
+  .paperband .h-card{background:#fff;border-color:#e8e5f2}
+  .h-card .n{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lav)}
+  .h-card h3{margin:8px 0}
+  .h-card p{font-size:14.5px;color:#b9b2d6}
+  .paperband .h-card p{color:#4a4458}
+  .h-card .now{font-family:var(--mono);font-size:11px;margin-top:12px;color:#8a84a0}
+  /* quote lines */
+  .lines .q{font-size:34px;font-weight:800;line-height:1.18;letter-spacing:-0.02em;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .lines .q:last-child{border:none}
+  .lines .q .muted{font-size:16px;font-weight:500;display:block;margin-top:8px}
+  /* build */
+  .build{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+  .b-item{background:rgba(255,255,255,.04);border:1px solid rgba(200,190,255,.2);border-radius:14px;padding:18px}
+  .b-item b{color:#fff}.b-item p{font-size:14px;color:#b9b2d6;margin-top:4px}
+  footer{padding:60px 0;color:#8a84a0;font-size:13px;text-align:center}
+  @media(max-width:900px){h1{font-size:52px}h2{font-size:34px}.big{font-size:26px}.lines .q{font-size:24px}.build{grid-template-columns:1fr}.hero .orbit{display:none}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}.hero{min-height:auto;padding:70px 0}.hero .orbit{animation:none}section,.band,.lavband,.paperband{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero"><div class="orbit"></div><div class="wrap">
+  <div class="kicker">Compass Labs · North Star · the story of where we're going</div>
+  <h1><span>Direction</span><span class="gold">before speed.</span></h1>
+  <p class="lede">There's a reason the <b style="color:#fff">compass</b> was invented before the <b style="color:#fff">clock</b>. For most of history, knowing <i>which way</i> mattered more than knowing <i>how long</i>. We named the company after the older instrument on purpose.</p>
+  <p class="cta">↓ where we're pointing</p>
+</div></div>
+
+<!-- LABS OF WHAT -->
+<section><div class="wrap">
+  <div class="kicker rv">The name is the thesis</div>
+  <h2 class="rv">Compass points the way.<br>So — <span class="gold">Labs of what?</span></h2>
+  <p class="lede rv">Every great infra company is a "labs" of one big idea. Stripe: labs of internet payments. OpenAI: labs of intelligence. Us?</p>
+  <p class="big rv" style="margin-top:30px">Compass Labs is the lab for <span class="pur">what finance becomes</span><br>when <span class="pur">anyone</span> can launch and operate<br>financial products onchain.</p>
+  <p class="lede rv muted" style="margin-top:22px">Not "a DeFi API." Not "an RWA company." Those are features of the thing, not the thing. The thing is a <i>direction</i>: a world where a fintech in Mexico City, a wallet in Lagos, a fund in London can stand up real financial products — yield, credit, trading, tokenized assets, agentic execution — as easily as they add a login. We're building the instrument that points every one of them the same way: onchain, non-custodial, live in days.</p>
+</div></section>
+
+<!-- THE TENSION -->
+<section class="paperband"><div class="wrap">
+  <div class="kicker rv">Why this matters now</div>
+  <h2 class="rv">Money is moving onchain faster than<br>anyone can build products for it.</h2>
+  <p class="lede rv">$35 trillion moved on-chain last year. Stablecoins stopped being a crypto category and became infrastructure. Every fintech now wants to hold digital dollars — and almost none of them can do anything <i>with</i> those dollars, because building each product is a year of engineering and an audit.</p>
+  <p class="big rv" style="margin-top:26px;color:var(--ink)">The world got the rails.<br>It's still missing the <span style="color:var(--lav-deep)">products.</span></p>
+  <p class="lede rv" style="margin-top:20px">That gap — between the money being onchain and anyone being able to <i>use</i> it — is the biggest opportunity in fintech right now. It's also exactly the gap we sit in. We don't have to invent the demand. It's already here, pounding on the door, in every market at once.</p>
+</div></section>
+
+<!-- THREE HORIZONS -->
+<section><div class="wrap">
+  <div class="kicker rv">The arc · where we're going, in three moves</div>
+  <h2 class="rv">From an API… to the operating system<br>for onchain finance.</h2>
+  <div class="hz">
+    <div class="h-card rv"><div class="n">HORIZON 1 · TODAY</div><h3>The products layer</h3><p>One integration, six products. We make it trivial to launch yield, credit, trading and tokenized assets. This is what's real, live, and selling right now.</p><div class="now">Arca, Thor ($1.1B), Para (15M+ users), Constellation.</div></div>
+    <div class="h-card rv" style="border-color:var(--lav);background:rgba(139,124,246,.1)"><div class="n">HORIZON 2 · THE MOVE</div><h3>Launch <i>and operate</i></h3><p>Not just the product — everything hard around it: access control, whitelisting, compliance-aware distribution, partner venues, the regulatory rails. We stop being a way to <i>access</i> onchain markets and become the way to <i>operate</i> in them.</p><div class="now">The regulated-access thesis. The thing you build a company on.</div></div>
+    <div class="h-card rv"><div class="n">HORIZON 3 · THE VISION</div><h3>The OS for onchain finance</h3><p>Any company, any product, any market — launched, gated, distributed, monitored through Compass. The default substrate under a generation of financial apps. The layer nobody has to think about because it's everywhere.</p><div class="now">Category-defining. The reason the round exists.</div></div>
+  </div>
+  <p class="lede rv muted" style="margin-top:26px">Most companies pick one horizon and hope. Our advantage is that Horizon 1 already funds and proves Horizon 2, and Horizon 2 is the on-ramp to Horizon 3. Each step pays for the next. Direction first — then speed.</p>
+</div></section>
+
+<!-- WHAT WE'RE REALLY BUILDING -->
+<section class="lavband"><div class="wrap">
+  <div class="kicker rv" style="color:#efe9ff">Beyond the tech</div>
+  <h2 class="rv" style="color:#fff">We facilitate much more than code.</h2>
+  <p class="lede rv" style="color:#efe9ff">The trap is to describe ourselves as "the technology." The tech is the easy part. What actually blocks a fintech from launching real financial products is everything <i>around</i> the tech — and that's what we take off their plate.</p>
+  <div class="build">
+    <div class="b-item rv"><b>Access &amp; eligibility</b><p>Who is allowed to touch each product, in each country, under which rules — enforced by the infrastructure.</p></div>
+    <div class="b-item rv"><b>Compliance-aware distribution</b><p>Regulated products (gov bonds, tokenized treasuries) reaching the right buyers, safely, reusably.</p></div>
+    <div class="b-item rv"><b>Whitelisting &amp; controls</b><p>Address-level permissions and policy — the boring, critical guardrails institutions require.</p></div>
+    <div class="b-item rv"><b>Partnerships &amp; venues</b><p>Every new venue we integrate is a product our customers get for free. We do the deals; they get the reach.</p></div>
+  </div>
+  <p class="lede rv" style="color:#fff;margin-top:26px"><b>Everyone else sells you a piece. We make you able to operate.</b> That single sentence is the whole difference — and the whole moat.</p>
+</div></section>
+
+<!-- THE WORLD IF WE WIN -->
+<section><div class="wrap">
+  <div class="kicker rv">The world if we win</div>
+  <h2 class="rv">Picture it in five years.</h2>
+  <p class="lede rv">A neobank in Buenos Aires launches dollar-yield on a Tuesday — no blockchain team, no audit season, no custody risk. A wallet in Nairobi adds tokenized treasuries the way it once added a QR code. A fund in London distributes a regulated product across a dozen apps without rebuilding compliance for each. None of them mention "DeFi." None of them see the chain.</p>
+  <p class="big rv" style="margin-top:26px">They just shipped a financial product.<br><span class="pur">Compass was underneath the whole time.</span></p>
+  <p class="lede rv muted" style="margin-top:20px">That's the win: not that people talk about us — that they can't imagine building without us, and mostly forget we're there. The best infrastructure is invisible. That's the direction the needle points.</p>
+</div></section>
+
+<!-- THE LINES -->
+<section class="band"><div class="wrap">
+  <div class="kicker rv" style="color:#6b5900">The north-star lines · put these on the wall</div>
+  <div class="lines" style="margin-top:20px">
+    <div class="q rv">Direction before speed.<span class="muted">The compass came before the clock. So did we.</span></div>
+    <div class="q rv">The world got the rails. We're building the products.<span class="muted">Money moved onchain. Usefulness didn't. Yet.</span></div>
+    <div class="q rv">Everyone else sells a piece. We make you able to operate.<span class="muted">Not an API. The operating system.</span></div>
+    <div class="q rv">Tokenizing was the easy part. Distribution is the moat.<span class="muted">Access, compliance, reach — that's the real product.</span></div>
+    <div class="q rv">The best infrastructure is invisible.<span class="muted">They ship the product. We were underneath the whole time.</span></div>
+  </div>
+</div></section>
+
+<!-- WHY US -->
+<section><div class="wrap">
+  <div class="kicker rv">Why us, why now</div>
+  <h2 class="rv">We're not pitching a new belief.<br>We're the clean answer to the one investors already hold.</h2>
+  <p class="lede rv">The smartest money in fintech (QED, who back Bitso) is already saying it out loud: stablecoins are infrastructure, not a category; first-gen crypto infra wasn't built native-first for many protocols and agents; compliance belongs <i>in the architecture</i>; and lasting differentiation isn't access — it's <b style="color:#fff">what you build on top.</b></p>
+  <p class="big rv" style="margin-top:24px">Every one of those is a description of <span class="pur">Compass.</span></p>
+  <p class="lede rv muted" style="margin-top:18px">Native-first. Built for many protocols and agents. Compliance-aware. And obsessed with what we build on top — access, distribution, operation. The market is consolidating and the giants are circling. The company that becomes <i>legible</i> and <i>loved</i> first — clear enough to understand, bold enough to remember, proven enough to trust — sets the direction everyone else follows. That's the whole game. And it's ours to take.</p>
+</div></section>
+
+<!-- THE SYSTEM -->
+<section class="paperband"><div class="wrap">
+  <div class="kicker rv">How it all connects · one system, five documents</div>
+  <h2 class="rv">This is the North. Here's the whole map.</h2>
+  <p class="lede rv">Every document flows from this one. The North Star sets the <i>direction</i>; the others turn it into position, story, execution and craft. They all speak the same language — same sentence, same three angles, same proof, same voice — so nothing contradicts anything.</p>
+  <div class="hz" style="margin-top:8px">
+    <a class="h-card rv" href="compass-north-star.html" style="text-decoration:none;border-color:var(--lav);background:rgba(139,124,246,.08)"><div class="n">★ YOU ARE HERE</div><h3 style="color:var(--ink)">North Star</h3><p>The direction. Why we exist, where we're going, the vision that makes the board lean in.</p></a>
+    <a class="h-card rv" href="compass-marketing-strategy.html" style="text-decoration:none"><div class="n">01 · THE SYSTEM</div><h3 style="color:var(--ink)">Marketing Strategy</h3><p>Positioning, the 3 angles, the bench, voice, the AI engine, growth, guardrails. The full operating brain.</p></a>
+    <a class="h-card rv" href="compass-flagship-campaign.html" style="text-decoration:none"><div class="n">02 · THE PROOF</div><h3 style="color:var(--ink)">Flagship Campaign</h3><p>"Pon el dinero a trabajar" — one campaign, start to finish, so you can SEE the whole machine work.</p></a>
+  </div>
+  <div class="hz">
+    <a class="h-card rv" href="compass-execution-playbook.html" style="text-decoration:none"><div class="n">03 · THE ENGINE ROOM</div><h3 style="color:var(--ink)">Execution Playbook</h3><p>Who does what, which day, which tool. The weekly rhythm, the franchises, and the signup fix we build first.</p></a>
+    <a class="h-card rv" href="compass-vision-board.html" style="text-decoration:none"><div class="n">04 · THE CRAFT</div><h3 style="color:var(--ink)">Creative Vision Board</h3><p>The brands we steal from, aesthetic intelligence, the billboard library. The taste we're aiming at.</p></a>
+    <div class="h-card rv" style="background:transparent;border-style:dashed"><div class="n">THE THREAD</div><h3 style="color:var(--ink)">One language</h3><p>One sentence. Three angles (Integration Tax · Proof · Where Finance Is Going). One proof list. One voice. Everywhere.</p></div>
+  </div>
+  <p class="lede rv muted" style="margin-top:24px">Read top to bottom: <b>North Star</b> (why) → <b>Strategy</b> (how we think) → <b>Campaign</b> (what it looks like) → <b>Execution</b> (how we run it) → <b>Vision Board</b> (how it feels). Five documents, one direction.</p>
+</div></section>
+
+<!-- CLOSE -->
+<section class="lavband"><div class="wrap" style="text-align:center">
+  <div class="kicker rv" style="color:#efe9ff">The one line, if you remember nothing else</div>
+  <h1 class="rv" style="font-size:64px;margin-top:10px">Point the needle.<br><span class="gold">Then run.</span></h1>
+  <p class="lede rv" style="color:#efe9ff;margin:24px auto 0;max-width:640px">We get the direction unmistakably right — the position, the story, the standard — and then we move faster than anyone thought a team our size could. Direction first. Then speed. That's Compass.</p>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · North Star · by Gin · July 2026 · The vision behind the strategy.<br>
+  Companion documents: Marketing Strategy · Flagship Campaign · Execution Playbook · Creative Vision Board.<br>
+  Aspirational vision — Horizons 2 &amp; 3 are direction, not shipped claims. Proof points from the approved claims list.
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%5,4)*70)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

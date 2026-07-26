@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Creative Vision Board</title>
+<style>
+  :root{--ink:#16121f;--ink2:#4a4458;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--lav-line:#d9d2f7;--yellow:#ffd400;--coral:#ff5a5f;--green:#19b57a;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  section{padding:64px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:60px;line-height:1;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:34px;letter-spacing:-0.015em;font-weight:800;line-height:1.1;margin-bottom:8px}
+  h3{font-size:19px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:var(--ink2);max-width:820px;margin-top:12px}
+  .grid{display:grid;gap:18px;margin-top:28px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  /* HERO */
+  .hero{background:linear-gradient(120deg,#16121f,#3b2c6e);color:#fff;padding:100px 0 76px;border:none}
+  .hero .kicker{color:#c9befc}
+  .hero .sub{margin-top:22px;color:#b9b2d6;font-size:17px;max-width:720px}
+  /* AD CARD */
+  .ad{background:#fff;border:1px solid #e8e5f2;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(22,18,31,.05);display:flex;flex-direction:column}
+  .ad .visual{padding:34px 24px;min-height:180px;display:flex;flex-direction:column;justify-content:center;font-weight:800;font-size:23px;line-height:1.18;letter-spacing:-0.01em}
+  .ad .body{padding:20px 22px}
+  .ad h3{margin-bottom:2px}
+  .ad .who{font-family:var(--mono);font-size:11px;color:#9a93b2;margin-bottom:12px}
+  .ad .did{font-size:14px;margin-bottom:10px}
+  .ad .why{font-size:13.5px;background:#f7f5fc;border-radius:8px;padding:10px 12px;color:var(--ink2)}
+  .ad .steal{font-size:13.5px;background:var(--lav-soft);border-radius:8px;padding:10px 12px;color:var(--lav-deep);margin-top:8px;font-weight:600}
+  .ad .find{font-size:11.5px;font-family:var(--mono);color:#8a84a0;margin-top:10px}
+  /* swatches for visuals */
+  .v-monzo{background:linear-gradient(135deg,#ff4f5e,#ff8a5b);color:#fff}
+  .v-gandhi{background:var(--yellow);color:#111}
+  .v-nubank{background:#820ad1;color:#fff}
+  .v-stripe{background:#0a2540;color:#fff}
+  .v-bitso{background:#00d18f;color:#08221a}
+  .v-mp{background:#00b1ea;color:#04304a}
+  .v-revolut{background:#111;color:#fff}
+  .v-klarna{background:#ffb3c7;color:#3b0a1e}
+  .v-ramp{background:#f4f2ec;color:#111;border-bottom:1px solid #e8e5df}
+  .v-cash{background:#00d64f;color:#053d18}
+  /* palette */
+  .pal{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .chip{width:74px;height:74px;border-radius:12px;display:flex;align-items:flex-end;justify-content:center;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.85);padding-bottom:5px;font-weight:700}
+  /* compass mocks */
+  .bb{border-radius:14px;padding:32px 24px;font-weight:800;font-size:23px;line-height:1.2;min-height:160px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.10)}
+  .by{background:var(--yellow);color:#111}.bd{background:#16121f;color:#fff}.bl{background:var(--lav-deep);color:#fff}.bc{background:var(--coral);color:#fff}
+  .bb small{font-family:var(--mono);font-size:11px;font-weight:600;opacity:.6;margin-top:12px}
+  .do{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:16px}
+  .do .h{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em}
+  .do.good .h{color:var(--green)}.do.bad .h{color:var(--coral)}
+  footer{padding:48px 0;color:#8a84a0;font-size:12.5px}
+  footer a{color:#8a84a0}
+  @media(max-width:920px){.g2,.g3,.g4{grid-template-columns:1fr}h1{font-size:40px}}
+  @media print{section{page-break-inside:avoid}.hero,.v-monzo,.v-gandhi,.v-nubank,.v-stripe,.v-bitso,.v-mp,.v-revolut,.v-klarna,.v-cash,.bb,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Creative Vision Board · reference deck for the creative process</div>
+  <h1>The stuff we<br>want to steal.</h1>
+  <p class="sub">Real campaigns from brands that made complex or boring things feel clear, human and worth trusting — with the actual examples, why they worked, and exactly what Compass takes from each. Use this before writing any post, script or billboard. Not to copy — to calibrate. This is the taste we're aiming at.</p>
+</div></div>
+
+<!-- WHAT THIS IS / HOW TO USE (moved to top) -->
+<section style="background:#16121f;color:#fff"><div class="wrap">
+  <div class="kicker" style="color:#c9befc">Start here · what this board is &amp; how to use it</div>
+  <h2 style="color:#fff">This is our swipe file. Open it before you make anything.</h2>
+  <p class="lede" style="color:#b9b2d6;max-width:820px">A vision board isn't a strategy — it's a <b>reference deck for taste.</b> Whenever anyone is about to write a post, a script, an email or a billboard, they spend 2 minutes here first — not to copy, but to calibrate: "which great brand solved a problem like this, and what did they do?" Below: the brands we steal from, why each works, our aesthetic, and a growing library of lines. Here's the 3-step way to use it every time:</p>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="do" style="background:#241b3a;border-color:#3b2c6e"><div class="h" style="color:#c9befc">1 · PICK A REFERENCE</div><p style="font-size:13.5px;margin-top:6px;color:#b9b2d6">Which hero fits this piece? Trust → Monzo. One-liner → Gandhi. LATAM outcome → Bitso. Technical → Stripe. Bold identity → Nubank.</p></div>
+    <div class="do" style="background:#241b3a;border-color:#3b2c6e"><div class="h" style="color:#c9befc">2 · STEAL THE TECHNIQUE</div><p style="font-size:13.5px;margin-top:6px;color:#b9b2d6">Not the words — the <i>move</i>. The before/after, the single line, the named enemy, proof-as-hero, the use-case framing.</p></div>
+    <div class="do" style="background:#241b3a;border-color:#3b2c6e"><div class="h" style="color:#c9befc">3 · RUN THE TESTS</div><p style="font-size:13.5px;margin-top:6px;color:#b9b2d6">Would a CTO nod? Would her CEO get it? Would either screenshot it? Claim approved? One idea? → Ship.</p></div>
+  </div>
+  <p class="note" style="color:#8a84a0;margin-top:16px"><b>It's a living board:</b> every time anyone sees an ad that makes them stop — any brand, any industry — drop it here with one line on why. Feed it constantly, and briefing creative goes from "blank page" to "make it feel like this, with our proof."</p>
+</div></section>
+
+<!-- THE DIRECTION -->
+<section><div class="wrap">
+  <div class="kicker">The direction, in one line</div>
+  <h2>Clear like Monzo. Sharp like Gandhi. Human like Bitso.<br>Credible like Stripe. Bold like Nubank.</h2>
+  <p class="lede">Five references, each solving one piece of our problem. Everything in this board ladders up to a single idea: <b>in a category that shouts in jargon, we win by being the clearest, sharpest, most human voice in the room — always with receipts.</b></p>
+  <div style="margin-top:26px;background:#16121f;border-radius:16px;padding:38px 30px;color:#fff;text-align:center">
+    <div style="font-size:34px">🧭 → ⏱️</div>
+    <p style="font-size:26px;font-weight:800;line-height:1.3;max-width:760px;margin:14px auto 0">"There's a reason the <span style="color:#c9befc">compass</span> came before the <span style="color:#c9befc">clock</span> — your direction matters more than how fast you get there."</p>
+    <p style="color:#8a84a0;font-size:14px;margin-top:16px">Our name is our brand thesis. Every asset points the same direction before it worries about speed. This is a line we can own — put it on a wall, in a film, in the deck.</p>
+  </div>
+</div></section>
+
+<!-- AESTHETIC INTELLIGENCE -->
+<section><div class="wrap">
+  <div class="kicker">The secret weapon · Aesthetic Intelligence</div>
+  <h2>An infra company with taste is almost unheard of.<br>That's exactly why it's an advantage.</h2>
+  <p class="lede">From Pauline Brown (ex-Chairman, LVMH North America): <b>aesthetics is a business advantage, not decoration</b> — "the arousal of the senses" — and it drives <i>longevity</i>. As LVMH's Arnault put it: maybe nobody uses today's iPhone in 20 years, but people will still drink Dom Pérignon. Aesthetics = longevity. It's not just for fashion — a steakhouse wins on lighting, music and even the uniforms. So can an onchain-infra company. In our category, where everyone looks and sounds identical, <b>taste is a moat almost nobody is contesting.</b></p>
+  <div class="grid g4">
+    <div class="card"><span class="tag">TOOL 1 · ATTUNEMENT</span><h3 style="font-size:16px">Feel it</h3><p style="font-size:13px;margin-top:6px">Notice what feels sharp vs generic. Screenshot every ad that makes you stop. Build the swipe file. Taste is trained, not born.</p></div>
+    <div class="card"><span class="tag">TOOL 2 · INTERPRETATION</span><h3 style="font-size:16px">Decode it</h3><p style="font-size:13px;margin-top:6px">Ask <i>why</i> it works. Monzo = clarity as trust. Gandhi = compression as memory. Name the mechanism, then reuse it.</p></div>
+    <div class="card"><span class="tag">TOOL 3 · ARTICULATION</span><h3 style="font-size:16px">Define our codes</h3><p style="font-size:13px;margin-top:6px">Compass's aesthetic codes: <b>lavender</b>, the <b>single sharp line</b>, the <b>proof card</b>, plain-language clarity, the compass mark. Own them consistently until they're recognizable.</p></div>
+    <div class="card"><span class="tag">TOOL 4 · CURATION</span><h3 style="font-size:16px">Cut ruthlessly</h3><p style="font-size:13px;margin-top:6px">Taste is as much what you <i>reject</i> as what you make. One idea per asset. Kill the second-best line. Less, but sharper.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px;background:var(--lav-soft);border-color:var(--lav-line)"><b>Why this matters for the fundraise and for Eli:</b> aesthetic intelligence is what separates a company people <i>respect</i> from a company people <i>remember and root for</i>. It compounds — a recognizable, tasteful brand lowers the cost of every future sale and every future raise. Building it now, while we're small, is the cheapest it will ever be. This board is where we practice it.</p></div>
+</div></section>
+
+<!-- BILLBOARD LIBRARY -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker">The billboard library · be bold</div>
+  <h2>The Compass wall — a growing library of lines.</h2>
+  <p class="lede">Our Gandhi wall. One idea, one blade, a true pain — organized by angle. Pull from here for social visuals, paid units, video end-cards, deck moments, even real outdoor near fintech hubs. Add to it constantly.</p>
+
+  <h3 style="margin-top:20px">Angle 1 · The Integration Tax</h3>
+  <div class="grid g3">
+    <div class="bb bl">Nobody wants six infra projects. They want six products.<small>INTEGRATION TAX</small></div>
+    <div class="bb bd">Your backlog says: pick one. Pick three.<small>INTEGRATION TAX</small></div>
+    <div class="bb by">The first product is a decision. The fourth is an architecture problem.<small>INTEGRATION TAX</small></div>
+    <div class="bb bd">8 months of engineering, or one afternoon. Your call.<small>INTEGRATION TAX</small></div>
+    <div class="bb bl">Your best engineers, doing plumbing. Again.<small>INTEGRATION TAX</small></div>
+    <div class="bb by">Stop building rails. Start shipping products.<small>INTEGRATION TAX</small></div>
+  </div>
+
+  <h3 style="margin-top:26px">Angle 2 · Proof, Not Promises</h3>
+  <div class="grid g3">
+    <div class="bb bd">$1.1B moved through this in 2025. PowerPoint has unlimited scale. Production doesn't.<small>PROOF</small></div>
+    <div class="bb bc">Live in days. Not "coming soon." Live.<small>PROOF</small></div>
+    <div class="bb bl">Your users keep their keys. We never touch the money.<small>PROOF · NON-CUSTODIAL</small></div>
+    <div class="bb bd">Signed to live in two weeks. Ask us how.<small>PROOF</small></div>
+    <div class="bb by">Trust is spelled u-p-t-i-m-e. Ours is 99.99%.<small>PROOF</small></div>
+    <div class="bb bc">We don't ask you to believe. We show you who's already live.<small>PROOF</small></div>
+  </div>
+
+  <h3 style="margin-top:26px">Angle 3 · Where Finance Is Going</h3>
+  <div class="grid g3">
+    <div class="bb bl">Tokenizing the asset was the easy part. Distribution is the moat.<small>WHERE FINANCE IS GOING</small></div>
+    <div class="bb bd">AI doesn't need more freedom with money. It needs better boundaries.<small>AGENTIC</small></div>
+    <div class="bb by">Congrats on tokenizing it. Now who's going to distribute it?<small>RWA</small></div>
+    <div class="bb bd">One more venue for us. Zero new integrations for you.<small>RWA</small></div>
+    <div class="bb bl">Holding dollars is a wallet. Growing them is a business.<small>CATEGORY</small></div>
+    <div class="bb bc">The compass came before the clock. Direction first.<small>BRAND</small></div>
+  </div>
+
+  <h3 style="margin-top:26px">Regional · localized (español, target = LATAM)</h3>
+  <div class="grid g3">
+    <div class="bb by">Ya tienen los dólares. ¿Y tú qué les das?<small>ES · EARN</small></div>
+    <div class="bb bl">Arca ya lanzó rendimiento. ¿Y tu roadmap?<small>ES · PROOF</small></div>
+    <div class="bb bd">LATAM no necesita otro explainer de stablecoins. Necesita productos.<small>ES · CATEGORY</small></div>
+  </div>
+  <p class="note">Rule: sharp, one idea, resting on truth. Rotate them — a line stops working once it's everywhere. This library is <b>never finished</b>; every good line anyone writes goes here.</p>
+</div></section>
+
+<!-- THE GALLERY — HEROES -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker">The five heroes — study these closely</div>
+  <h2>Our starting five.</h2>
+  <div class="grid g2">
+
+    <div class="ad"><div class="visual v-monzo">A broken toilet →<br>a beautiful bird fountain.</div><div class="body">
+      <h3>Monzo</h3><div class="who">"MONEY NEVER FELT LIKE MONZO" · Uncommon Creative Studio · 2024</div>
+      <div class="did">Their first big campaign in 5 years. A 60" film of before/after comparisons — a tarantula on a head becomes a head-massager; nails on a chalkboard become a harp — showing money-stress turning into calm. Backed by an FT takeover and comparative out-of-home stills.</div>
+      <div class="why"><b>Why it works:</b> it sells a <i>feeling</i>, not features. Banking is scary; Monzo makes it feel light. Radical clarity + emotion = trust from a challenger with no right to it yet.</div>
+      <div class="steal">STEAL → sell the feeling under the product (relief from the backlog, calm about custody). Before/after is a format we can own: "8 months → 8 days."</div>
+      <div class="find">FIND IT: search "Monzo Money Never Felt Like Monzo Uncommon" on YouTube / Campaign.</div></div></div>
+
+    <div class="ad"><div class="visual v-gandhi">"Menos Face,<br>y más Book."</div><div class="body">
+      <h3>Librerías Gandhi</h3><div class="who">YELLOW/BLACK BILLBOARDS · Saatchi &amp; Saatchi · since 2001</div>
+      <div class="did">Yellow background, black letters, one witty line — nothing else. Real lines: <i>"Este no es un anuncio espectacular, es bastante normalito."</i> · <i>"Si quieres ver más carteleras como esta, compra más libros."</i> · <i>"Menos Face y más Book."</i> Went viral before social existed.</div>
+      <div class="why"><b>Why it works:</b> extreme compression + self-aware humor. It respects your intelligence and rewards you with a smile. People screenshot and quote it for years — free distribution.</div>
+      <div class="steal">STEAL → the single-line billboard as a core format. Yellow is theirs; lavender is ours. "Your backlog says: pick one." lives here.</div>
+      <div class="find">FIND IT: search "Librerías Gandhi espectaculares frases" / images.</div></div></div>
+
+    <div class="ad"><div class="visual v-nubank">Purple.<br>The most anti-bank<br>color they could find.</div><div class="body">
+      <h3>Nubank</h3><div class="who">ANTI-BUREAUCRACY PLATFORM · Wieden+Kennedy SP · 100M+ customers</div>
+      <div class="did">Chose purple by literally asking "what's the most anti-bank color?" Built the whole brand as an antidote to bureaucracy — "menos burocracia" — and grew mostly by word-of-mouth, celebrating customer impact over product specs.</div>
+      <div class="why"><b>Why it works:</b> it named an <i>enemy</i> everyone already hated (bureaucracy) and owned a color to signal "we're the opposite of them." Identity before features. Proof that LATAM rewards clarity + a villain.</div>
+      <div class="steal">STEAL → name our enemy: the integration backlog / the 8-month build. Own lavender the way they own purple. Sell outcomes, never tech.</div>
+      <div class="find">FIND IT: search "Nubank purple anti-bank Wieden Kennedy campaign."</div></div></div>
+
+    <div class="ad"><div class="visual v-stripe">"Payments infrastructure<br>for the internet."</div><div class="body">
+      <h3>Stripe</h3><div class="who">DOCS-AS-MARKETING · sells to CTO + CEO (our exact room)</div>
+      <div class="did">Owned a category in seven words. Made documentation so good developers evangelize it for free ("7 lines of code"). Publishes essays (Stripe Press) that CTOs cite. Infra made <i>desirable</i>.</div>
+      <div class="why"><b>Why it works:</b> for technical buyers, trust is built through usefulness, not ads. Great docs = the best sales rep. Clarity at the category level ("X for Y") makes you instantly placeable.</div>
+      <div class="steal">STEAL → a 7-word category line. Treat our docs, Studio, CLI &amp; MCP as marketing. Blog depth that buyers use to <i>decide</i>, not to be impressed.</div>
+      <div class="find">FIND IT: browse stripe.com + Stripe Press; note the docs tone.</div></div></div>
+
+    <div class="ad"><div class="visual v-bitso">"Descubre de lo que<br>tu dinero es capaz."</div><div class="body">
+      <h3>Bitso</h3><div class="who">"PELÍCULA DE ACCIONES" · ~$5M action-movie spot · Mexico</div>
+      <div class="did">LatAm's biggest crypto platform took investing mainstream by <i>not</i> sounding like crypto — real-life use cases, normal Spanish. Their big 2025 push was a cinematic action spot for stocks + yield, closing on "discover what your money is capable of."</div>
+      <div class="why"><b>Why it works:</b> it speaks the language of the person who needs it, about their life — not the technology. Entertainment + a clear "your money can do more" promise. This is the Compass Earn promise, one layer up.</div>
+      <div class="steal">STEAL → the "your money can do more" promise, aimed at fintech founders instead of consumers — a space nobody occupies. Spanish, use-case-first.</div>
+      <div class="find">FIND IT: search "Bitso Película de Acciones" on YouTube.</div></div></div>
+
+    <div class="ad"><div class="visual" style="background:#241b3a;color:#fff">The gap we exploit:<br>nobody in crypto-infra<br>does ANY of this.</div><div class="body">
+      <h3>The whitespace</h3><div class="who">OUR CATEGORY TODAY</div>
+      <div class="did">Our competitors write "modular DeFi orchestration layer," "composable primitives," "the future of finance 🚀." Beautiful decks, zero legibility.</div>
+      <div class="why"><b>Why it matters:</b> every reference above beat bigger incumbents on <i>clarity and humanity</i>. Our category has none of it. The lane is empty.</div>
+      <div class="steal">STEAL → all of it. Be the first infra brand in crypto that sounds like Monzo, sells like Bitso, and jokes like Gandhi.</div>
+      <div class="find">FIND IT: scroll any crypto-infra Twitter feed for 60 seconds. That's the "before".</div></div></div>
+
+  </div>
+</div></section>
+
+<!-- THE BENCH — more fintech refs -->
+<section><div class="wrap">
+  <div class="kicker">The extended bench — more to pull from</div>
+  <h2>Other fintechs worth watching.</h2>
+  <p class="lede">Different flavors of the same lesson — steal a technique from each. (Described from their known work; pull current examples when briefing creative.)</p>
+  <div class="grid g4">
+    <div class="ad"><div class="visual v-mp" style="font-size:19px;min-height:120px">Mercado Pago<br>everyday-money ads</div><div class="body"><div class="did" style="font-size:13px">LATAM scale via ordinary, relatable moments — paying, saving, getting yield — in local Spanish/Portuguese.</div><div class="steal" style="font-size:12.5px">STEAL → local, everyday framing of "money doing more."</div></div></div>
+    <div class="ad"><div class="visual v-revolut" style="font-size:19px;min-height:120px">Revolut<br>bold, data-flex</div><div class="body"><div class="did" style="font-size:13px">Confident, minimal, numbers-forward. Lets product power and scale do the talking.</div><div class="steal" style="font-size:12.5px">STEAL → let proof numbers ($1.1B) be the hero visual.</div></div></div>
+    <div class="ad"><div class="visual v-klarna" style="font-size:19px;min-height:120px">Klarna<br>smooth &amp; playful</div><div class="body"><div class="did" style="font-size:13px">Pink, irreverent, design-led; made a dull category (installments) feel cool.</div><div class="steal" style="font-size:12.5px">STEAL → design confidence; a category can be made desirable.</div></div></div>
+    <div class="ad"><div class="visual v-ramp" style="font-size:19px;min-height:120px">Ramp / Linear<br>clean product films</div><div class="body"><div class="did" style="font-size:13px">Crisp, fast, "watch the product work" explainers. Exactly our hero-film target.</div><div class="steal" style="font-size:12.5px">STEAL → the explainer film style for our 45s Earn film.</div></div></div>
+  </div>
+</div></section>
+
+<!-- COMPASS TERRITORY -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker">Now translate it — the Compass creative territory</div>
+  <h2>What our version looks like.</h2>
+  <p class="lede">The references, run through the Compass voice and our real proof. This is the mood we brief every video, billboard and post against.</p>
+
+  <h3 style="margin-top:22px">The palette</h3>
+  <div class="pal">
+    <div class="chip" style="background:#16121f">#16121f</div>
+    <div class="chip" style="background:#5b47d6">#5b47d6</div>
+    <div class="chip" style="background:#8b7cf6">#8b7cf6</div>
+    <div class="chip" style="background:#eeeaff;color:#5b47d6">#eeeaff</div>
+    <div class="chip" style="background:#ffd400;color:#111">#ffd400</div>
+    <div class="chip" style="background:#19b57a">#19b57a</div>
+    <div class="chip" style="background:#ff5a5f">#ff5a5f</div>
+  </div>
+  <p class="note">Lavender is the signature (own it like Nubank owns purple). Ink near-black for seriousness. Yellow &amp; coral as sharp accents for billboard moments. Green only for proof/"live".</p>
+
+  <h3 style="margin-top:30px">The billboards (our Gandhi wall)</h3>
+  <div class="grid g4">
+    <div class="bb bl">Nobody wants six infra projects. They want six products.<small>INTEGRATION TAX</small></div>
+    <div class="bb bd">Your backlog says: pick one. Pick three.<small>INTEGRATION TAX</small></div>
+    <div class="bb by">Ya tienen los dólares. ¿Y tú qué les das?<small>ES · LATAM · EARN</small></div>
+    <div class="bb bc">Holding dollars is a wallet. Growing them is a business.<small>CATEGORY</small></div>
+  </div>
+
+  <h3 style="margin-top:30px">The do / don't (taste guardrails for creative)</h3>
+  <div class="grid g2">
+    <div class="do good"><div class="h">✅ DO</div><p style="font-size:13.5px;margin-top:6px">One idea per asset · sell the feeling/outcome · a number on screen · plain language a CEO gets · a line sharp enough to screenshot · lavender + one accent · silence-friendly captions.</p></div>
+    <div class="do bad"><div class="h">✕ DON'T</div><p style="font-size:13.5px;margin-top:6px">Jargon stacks ("orchestration primitives") · rocket emojis · "thrilled to announce" · six products crammed in one frame · stocky "diverse team high-fiving" · uncanny fake-realistic avatars for trust content · hype without proof.</p></div>
+  </div>
+
+  <h3 style="margin-top:30px">The video moodboard (what to hand HeyGen / an editor)</h3>
+  <div class="grid g3">
+    <div class="do"><div class="h" style="color:var(--lav-deep)">THE EXPLAINER</div><p style="font-size:13px;margin-top:6px">Ramp/Linear-clean. Product UI as hero, proof cards, calm confident VO. 45s. Our Earn film.</p></div>
+    <div class="do"><div class="h" style="color:var(--lav-deep)">THE TALKING HEAD</div><p style="font-size:13px;margin-top:6px">CTO/Gin avatar, one question one answer, a simple sketch. Weekly, near-zero cost. "Objection of the Week."</p></div>
+    <div class="do"><div class="h" style="color:var(--lav-deep)">THE FOUNDER RAW</div><p style="font-size:13px;margin-top:6px">Eli, real (not avatar), Loom-grade, honest. Monzo-level human. Trust &amp; fundraise content.</p></div>
+  </div>
+</div></section>
+
+<!-- CLOSING -->
+<section style="background:#f4f2fb"><div class="wrap" style="text-align:center">
+  <div class="kicker">Keep feeding it</div>
+  <h2>The board is never finished.</h2>
+  <p class="lede" style="margin:0 auto">Great creative teams keep a swipe file forever. Every stop-worthy ad, every sharp line, every reference — drop it here. The richer this gets, the faster and bolder our own work becomes. This is where the taste lives.</p>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Creative Vision Board · by Gin · July 2026<br>
+  ◆ The 5-document system: <a href="compass-north-star.html">North Star</a> · <a href="compass-marketing-strategy.html">Marketing Strategy</a> · <a href="compass-flagship-campaign.html">Flagship Campaign</a> · <a href="compass-execution-playbook.html">Execution Playbook</a> · <b>Vision Board (here)</b>.<br>
+  Real campaign references (verify current links before use):
+  <a href="https://www.campaignlive.com/article/monzo-%E2%80%9Cmoney-felt-monzo%E2%80%9D-uncommon-creative-studio/1872301">Monzo — Campaign</a> ·
+  <a href="https://www.excelsior.com.mx/dinero/el-poder-de-la-palabra-asi-se-construyo-la-iconica-publicidad-de-librerias-gandhi/776766">Gandhi — Excélsior</a> ·
+  <a href="https://riffon.com/insight/ins_qx87sif638gw">Nubank purple — RiffOn</a> ·
+  <a href="https://lbbonline.com/news/Bitso-Turns-Stock-Trading-Into-an-Action-Movie-Inspired-Spot">Bitso — LBBOnline</a> ·
+  <a href="https://www.pentagram.com/work/nubank">Nubank — Pentagram</a>.<br>
+  Brand references are illustrative benchmarks for creative direction, not affiliations. Descriptions summarize public campaign coverage.
+</div></footer>
+
+</body>
+</html>

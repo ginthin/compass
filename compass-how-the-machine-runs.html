@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — How the Machine Runs (Forever)</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 30px}
+  section{padding:56px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:56px;line-height:1;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:31px;letter-spacing:-0.02em;font-weight:800;line-height:1.07;margin-bottom:8px}
+  h3{font-size:19px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:#4a4458;max-width:860px;margin-top:12px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .grid{display:grid;gap:16px;margin-top:20px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .js .rv{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .hero{min-height:70vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:280% 280%;animation:flow 18s ease infinite;color:#fff;border:none}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}.hero .sub{margin-top:20px;color:#cfc8ea;font-size:19px;max-width:680px}
+  /* two engines */
+  .engines{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+  .eng{flex:1;min-width:280px;border-radius:16px;padding:24px;color:#fff}
+  .eng.clock{background:linear-gradient(120deg,#5b47d6,#8b7cf6)}
+  .eng.trig{background:linear-gradient(120deg,#0f8a5f,#19b57a)}
+  .eng .ic{font-size:32px}.eng h3{color:#fff;font-size:22px;margin:8px 0}
+  .eng p{font-size:15px;opacity:.95}
+  /* clock week */
+  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+  .day{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:14px}
+  .day .d{font-family:var(--mono);font-size:11px;color:var(--lav-deep);font-weight:700}
+  .day h4{font-size:15px;margin:5px 0 6px}.day ul{list-style:none;font-size:12px;color:#4a4458}
+  .day li{padding:2px 0 2px 12px;position:relative}.day li::before{content:"·";position:absolute;left:3px;color:var(--lav)}
+  .who{display:inline-block;font-size:9.5px;font-family:var(--mono);border-radius:4px;padding:1px 5px;font-weight:700}
+  .w-gin{background:var(--lav-soft);color:var(--lav-deep)}.w-ai{background:#e7f8f0;color:#127a52}.w-team{background:#f0eef7;color:#555}
+  /* trigger table */
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase;letter-spacing:.04em}
+  td.trig{font-weight:700;color:var(--ink)}
+  td .own{font-family:var(--mono);font-size:11px;font-weight:700;border-radius:5px;padding:1px 6px;white-space:nowrap}
+  .o-gin{background:var(--lav-soft);color:var(--lav-deep)}.o-eng{background:#eef;color:#3b47a0}.o-team{background:#fdf1e0;color:#a86308}.o-any{background:#f0eef7;color:#555}
+  /* flow */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+  .fstep{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:14px;position:relative;text-align:center}
+  .fstep::after{content:"→";position:absolute;right:-11px;top:40%;color:#c6befc;font-weight:800;z-index:2}
+  .fstep:last-child::after{content:""}
+  .fstep .i{font-size:22px}.fstep b{display:block;font-size:14px;margin:6px 0 2px}.fstep p{font-size:11.5px;color:#4a4458}
+  /* ignition */
+  .ign{background:#16121f;color:#fff;border-radius:16px;padding:24px;margin-top:16px}
+  .ign b{color:var(--c9)}
+  .fear{background:#fff;border:1px solid #ffe0a3;border-left:5px solid var(--gold);border-radius:12px;padding:18px}
+  .say{background:var(--lav-soft);border-radius:12px;padding:18px;font-size:17px;font-weight:600;color:var(--lav-deep);margin-top:12px}
+  footer{padding:42px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:900px){.g2,.g3,.week,.flow,.engines{grid-template-columns:1fr;flex-direction:column}.fstep::after{content:""}h1{font-size:38px}h2{font-size:24px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:56px 0}.hero,.eng,.ign,.say{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · How the Machine Runs — Forever · by Norte 🧭</div>
+  <h1>The machine never<br>waits for ideas.<br><span style="color:var(--gold)">It runs on a clock + triggers.</span></h1>
+  <p class="sub">This is the doc that makes you feel in control — and lets you explain to the team exactly what happens, when, and who does it. Once you see it, the fear goes away: nothing depends on anyone feeling creative or remembering. It's a clock and a set of "if this → then that." That's the whole secret.</p>
+</div></div>
+
+<!-- FEAR -->
+<section><div class="wrap">
+  <div class="fear rv"><b>The thing you're afraid of — "what if the machine stalls / I don't know what to do next" — can't happen here.</b> Because the machine is never blank. Every week the <b>clock</b> tells everyone what to do (same rhythm, always). And when something happens in the business, a <b>trigger</b> fires an action with a clear owner, and Norte drafts it. You're never staring at "…now what?" — it's always either the clock or a trigger. Let me show you.</div>
+</div></section>
+
+<!-- THE TWO ENGINES -->
+<section><div class="wrap">
+  <div class="kicker rv">The whole model · in 2 pieces</div>
+  <h2 class="rv">Everything runs on two engines. That's it.</h2>
+  <div class="engines">
+    <div class="eng clock rv"><div class="ic">🕐</div><h3>Engine 1 · The Clock</h3><p>A fixed weekly rhythm that happens <b>every week no matter what</b>. Monday you decide, mid-week you publish, Friday you activate + capture. It never stops, so the feed is never dead — even in a quiet week.</p></div>
+    <div class="eng trig rv"><div class="ic">⚡</div><h3>Engine 2 · The Triggers</h3><p>When <b>something happens</b> in the business (a feature ships, a partner signs, an objection comes up, a signup goes cold) → it fires a specific piece of content or action → with a named owner → and Norte drafts it.</p></div>
+  </div>
+  <p class="note rv"><b>Why this removes the fear:</b> content is never "invented from zero." It's either the clock (routine) or a trigger (reaction to real events). Both have owners. Both hand the hard part to Norte. The machine literally cannot go blank.</p>
+</div></section>
+
+<!-- ENGINE 1: THE CLOCK -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">Engine 1 · The Clock — the rhythm that never stops</div>
+  <h2 class="rv">Same every week. Everyone learns it once.</h2>
+  <div class="week">
+    <div class="day rv"><div class="d">MONDAY</div><h4>Decide (30 min)</h4><ul><li>Norte hands you a digest of what happened <span class="who w-ai">Norte</span></li><li>Gin + Eli pick the week's content <span class="who w-gin">Gin</span></li><li>Assign owners</li></ul></div>
+    <div class="day rv"><div class="d">TUESDAY</div><h4>Draft + Publish #1</h4><ul><li>Norte drafts everything <span class="who w-ai">Norte</span></li><li>Batch 1 goes out</li></ul></div>
+    <div class="day rv"><div class="d">WEDNESDAY</div><h4>Engage</h4><ul><li>Reply to comments + DMs <span class="who w-team">all</span></li><li>Norte drafts batch 2 <span class="who w-ai">Norte</span></li></ul></div>
+    <div class="day rv"><div class="d">THURSDAY</div><h4>Publish #2</h4><ul><li>Batch 2 + partner amp</li><li>Team reshares</li></ul></div>
+    <div class="day rv"><div class="d">FRIDAY</div><h4>Activate + Capture</h4><ul><li>Named-account DMs <span class="who w-team">team</span></li><li><b>Signal sweep</b> → next Monday <span class="who w-gin">Gin</span></li></ul></div>
+  </div>
+  <p class="note rv"><b>Read this to the team:</b> "Every week is the same shape — we decide Monday, publish twice, engage, and activate Friday. You don't need to remember anything; the rhythm carries it."</p>
+</div></section>
+
+<!-- ENGINE 2: TRIGGERS -->
+<section><div class="wrap">
+  <div class="kicker rv">Engine 2 · The Triggers — "if this happens → this fires"</div>
+  <h2 class="rv">This is the part you were missing. Here it is, complete.</h2>
+  <p class="lede rv">Every one of these is an "if this, then that." When the event on the left happens, the owner flags it (usually one line in Slack), Norte drafts the content, Gin approves, it ships. That's how real events become content automatically.</p>
+  <table class="rv">
+    <tr><th>WHEN this happens (trigger)</th><th>→ THIS fires (the content/action)</th><th>Who flags it</th></tr>
+    <tr><td class="trig">A feature ships / a milestone hits</td><td>"The Boring Work" post (proof behind the number)</td><td><span class="own o-eng">Engineering</span></td></tr>
+    <tr><td class="trig">A partner / RWA venue signs or goes live</td><td>"Venue Drumbeat" — X + LinkedIn + partner amp kit</td><td><span class="own o-team">Commercial/BD</span></td></tr>
+    <tr><td class="trig">An objection comes up on a call</td><td>"Objection of the Week" — short video / post</td><td><span class="own o-any">whoever heard it</span></td></tr>
+    <tr><td class="trig">A customer hits a result / says something great</td><td>Proof drop + case-study candidate</td><td><span class="own o-team">account owner</span></td></tr>
+    <tr><td class="trig">A build-vs-buy number is worth telling</td><td>"The Backlog Files" post</td><td><span class="own o-gin">Gin</span></td></tr>
+    <tr><td class="trig">A market moment / competitor move / news</td><td>Fast reaction post or founder take (same day)</td><td><span class="own o-any">anyone</span></td></tr>
+    <tr><td class="trig">A regional use case comes from a call</td><td>"Products, Not Decks" (Gin LATAM / Funa Africa)</td><td><span class="own o-gin">Gin/Funa</span></td></tr>
+    <tr><td class="trig">Eli learns something / has a POV</td><td>"Eli's Field Notes" (her channel)</td><td><span class="own o-team">Eli</span></td></tr>
+    <tr><td class="trig">A signal scores Tier-1 on Monday</td><td>A full CAMPAIGN (2–3 weeks, all channels)</td><td><span class="own o-gin">Gin + Eli</span></td></tr>
+    <tr><td class="trig">Someone signs up for the API</td><td>Signup lifecycle email fires (welcome + value)</td><td><span class="own o-ai">automatic / Norte</span></td></tr>
+    <tr><td class="trig">A signup activates / goes cold / heavy-usage</td><td>The matching lifecycle email or a human alert</td><td><span class="own o-ai">automatic / Norte</span></td></tr>
+    <tr><td class="trig">A campaign hits +7 / +30 days</td><td>Review report + reuse winners into sales/investor</td><td><span class="own o-ai">Norte auto</span></td></tr>
+  </table>
+  <p class="note rv"><b>The magic:</b> nobody has to "write content." They just flag the event (a Slack line). Norte turns it into the post. Gin approves. Ships. <b>That's how the business feeds the machine without extra work.</b></p>
+</div></section>
+
+<!-- THE FLOW -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">One item, start to finish · the pipeline every piece follows</div>
+  <h2 class="rv">From "something happened" to "it's live."</h2>
+  <div class="flow">
+    <div class="fstep rv"><div class="i">⚡</div><b>1 · TRIGGER</b><p>An event happens, or the clock says "Monday."</p></div>
+    <div class="fstep rv"><div class="i">📥</div><b>2 · FLAG</b><p>The owner drops one line in the Slack signals channel.</p></div>
+    <div class="fstep rv"><div class="i">🧭</div><b>3 · DRAFT</b><p>Norte turns it into the post/email/video script.</p></div>
+    <div class="fstep rv"><div class="i">✅</div><b>4 · APPROVE</b><p>Gin approves voice; CTO 👍 any new claim.</p></div>
+    <div class="fstep rv"><div class="i">🚀</div><b>5 · SHIP + MEASURE</b><p>Publish, activate accounts, track in Attio.</p></div>
+  </div>
+  <p class="note rv">Every single piece — a tiny X post or a full campaign — flows through these same 5 steps. Once the team knows this flow, they know how everything works.</p>
+</div></section>
+
+<!-- IGNITION -->
+<section><div class="wrap">
+  <div class="kicker rv">What starts it each week · the ignition</div>
+  <h2 class="rv">Two moments turn the key. That's the whole "how do we begin."</h2>
+  <div class="grid g2">
+    <div class="ign rv"><span class="tag" style="background:#2c2447;color:var(--c9)">FRIDAY · THE SWEEP</span><p style="font-size:15px"><b>Gin (20 min):</b> Norte pulls the week's signals from Attio, Slack, calendar and the changelog into one list. You skim it. This is the fuel for Monday. <b>This is what makes sure nothing is forgotten.</b></p></div>
+    <div class="ign rv"><span class="tag" style="background:#2c2447;color:var(--c9)">MONDAY · THE DECISION</span><p style="font-size:15px"><b>Gin + Eli (30 min):</b> look at the signals, pick the week's content (which franchises have an episode, plus any campaign), assign owners. Norte drafts from there. <b>This is the one standing meeting.</b></p></div>
+  </div>
+  <p class="note rv"><b>That's the ignition:</b> Friday you gather the fuel, Monday you light it. Everything else flows automatically from those two moments. If you only protect two things on the calendar, protect these.</p>
+</div></section>
+
+<!-- EXPLAIN TO TEAM -->
+<section style="background:#16121f;color:#fff"><div class="wrap">
+  <div class="kicker rv" style="color:var(--c9)">How to explain the whole thing to the team · in 3 sentences</div>
+  <h2 class="rv" style="color:#fff">Say exactly this.</h2>
+  <div class="say rv" style="background:#241b3a;color:#e8e3f7;border:1px solid #3b2c6e">
+    "1 · The machine runs on a <b style="color:var(--c9)">weekly clock</b> — same rhythm every week, so the feed is never dead.<br><br>
+    2 · And on <b style="color:var(--c9)">triggers</b> — when something happens in your world (you ship a feature, land a partner, hear an objection), you drop one line in Slack, and Norte turns it into content.<br><br>
+    3 · Your job is tiny: <b style="color:var(--c9)">flag the events, send a few DMs, reshare, show up Monday.</b> Norte does the writing; Gin runs the machine. Nobody becomes a marketer."
+  </div>
+  <p class="note rv" style="color:#8a84a0">If they remember one thing: <b style="color:#fff">"flag it in Slack, Norte writes it."</b> That's the whole contribution the machine needs from each person.</p>
+</div></section>
+
+<!-- CLOSE -->
+<section><div class="wrap">
+  <div class="card rv" style="background:var(--lav-soft);border-color:#d9d2f7;text-align:center;padding:34px">
+    <p style="font-size:23px;font-weight:800;line-height:1.3;color:var(--lav-deep)">You know how the machine runs now:<br>a clock + triggers, every action with an owner, Norte doing the work.</p>
+    <p style="font-size:16px;color:#4a4458;margin-top:14px">It can't stall, because it never depends on inspiration or memory. That's why it "always jala." You're ready to explain it — and to run it. 🧭</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · How the Machine Runs (Forever) · Gin + Norte 🧭 · July 2026<br>
+  ◆ <a href="compass-execution-simple.html">Execution Made Simple</a> · <a href="compass-setup-launch-runbook.html">Setup + Launch Runbook</a> · <a href="compass-team-playbook.html">Team Playbook</a> · <a href="compass-roadmap-master.html">Master Roadmap</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*50)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>
