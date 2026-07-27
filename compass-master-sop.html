@@ -3,361 +3,334 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compass — Master SOP (How We Run Marketing)</title>
+<title>Compass — Master SOP (how it all works, step by step)</title>
 <style>
   :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
-  /* layout with sticky nav */
-  .shell{display:flex;max-width:1240px;margin:0 auto}
-  .nav{position:sticky;top:0;align-self:flex-start;width:240px;height:100vh;overflow-y:auto;padding:26px 18px;border-right:1px solid #eceaf4;background:#fff;flex-shrink:0}
-  .nav .brand{font-weight:800;font-size:16px;margin-bottom:4px}
-  .nav .brand span{color:var(--lav-deep)}
-  .nav .sub{font-family:var(--mono);font-size:10.5px;color:#8a84a0;margin-bottom:18px}
-  .nav a{display:block;font-size:13px;color:#4a4458;text-decoration:none;padding:7px 10px;border-radius:8px;margin-bottom:2px}
+  .shell{display:flex;max-width:1260px;margin:0 auto}
+  .nav{position:sticky;top:0;align-self:flex-start;width:250px;height:100vh;overflow-y:auto;padding:24px 16px;border-right:1px solid #eceaf4;background:#fff;flex-shrink:0}
+  .nav .brand{font-weight:800;font-size:16px}.nav .brand span{color:var(--lav-deep)}
+  .nav .sub{font-family:var(--mono);font-size:10px;color:#8a84a0;margin-bottom:16px}
+  .nav a{display:block;font-size:13px;color:#4a4458;text-decoration:none;padding:6px 10px;border-radius:8px;margin-bottom:1px}
   .nav a:hover{background:var(--lav-soft);color:var(--lav-deep)}
-  .nav a.grp{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#b7b1c8;margin-top:14px;pointer-events:none;padding-bottom:2px}
+  .nav a.grp{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#b7b1c8;margin-top:14px;pointer-events:none}
   .content{flex:1;min-width:0;padding:0 40px 80px}
-  section{padding:44px 0;border-bottom:1px solid #eceaf4}
+  section{padding:40px 0;border-bottom:1px solid #eceaf4}
   h1{font-size:44px;line-height:1.02;letter-spacing:-0.02em;font-weight:800}
-  h2{font-size:27px;letter-spacing:-0.01em;font-weight:800;margin-bottom:6px}
-  h3{font-size:18px;font-weight:700;margin-top:4px}
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:12px;font-weight:700}
-  .lede{font-size:18px;color:#4a4458;max-width:760px;margin-top:8px}
+  h2{font-size:27px;letter-spacing:-0.01em;font-weight:800;margin-bottom:4px}
+  h3{font-size:18px;font-weight:700;margin-top:6px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:10px;font-weight:700}
+  .lede{font-size:18px;color:#4a4458;max-width:760px;margin-top:6px}
   .note{font-size:13px;color:#8a84a0;margin-top:10px}
-  .hero{background:linear-gradient(120deg,#0d0a14,#3b2c6e);color:#fff;padding:60px 40px 46px;border-radius:0}
-  .hero .kicker{color:var(--c9)}.hero p{color:#cfc8ea;margin-top:14px;font-size:17px;max-width:660px}
-  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .hero{background:linear-gradient(120deg,#0d0a14,#3b2c6e);color:#fff;padding:56px 40px 44px}
+  .hero .kicker{color:var(--c9)}.hero p{color:#cfc8ea;margin-top:14px;font-size:17px;max-width:640px}
   .card{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:18px;margin-top:12px}
-  .grid{display:grid;gap:14px;margin-top:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
-  ol.steps{counter-reset:s;list-style:none;margin-top:12px}
-  ol.steps>li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid #f2f0f7;font-size:15px}
-  ol.steps>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:11px;font-family:var(--mono);font-weight:800;color:#fff;background:var(--lav-deep);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .grid{display:grid;gap:14px;margin-top:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:8px}
+  ol.steps{counter-reset:s;list-style:none;margin-top:10px}
+  ol.steps>li{position:relative;padding:11px 0 11px 42px;border-bottom:1px solid #f2f0f7;font-size:15px}
+  ol.steps>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:10px;font-family:var(--mono);font-weight:800;color:#fff;background:var(--lav-deep);width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px}
   ol.steps>li b{color:var(--ink)}
   .field{font-family:var(--mono);font-size:12.5px;background:#eef;border-radius:5px;padding:1px 6px;color:#3b47a0}
-  .copy{background:#0d0a14;color:#c9c3e0;border-radius:8px;padding:14px;font-size:12.5px;margin-top:10px;white-space:pre-wrap;line-height:1.6}
+  .copy{background:#0d0a14;color:#e8e3f7;border-radius:8px;padding:14px;font-size:13px;white-space:pre-wrap;line-height:1.55;margin-top:10px}
   .copy .lab{font-family:var(--mono);font-size:10px;color:#8b7cf6;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
-  .who{display:inline-block;font-size:10px;font-family:var(--mono);border-radius:5px;padding:1px 6px;font-weight:700}
-  .w-gin{background:var(--lav-soft);color:var(--lav-deep)}.w-ai{background:#e7f8f0;color:#127a52}.w-team{background:#fdf1e0;color:#a86308}.w-eng{background:#eef;color:#3b47a0}
   .tip{background:#f2fbf7;border-left:4px solid var(--green);border-radius:8px;padding:12px 14px;font-size:14px;margin-top:12px}
-  .warn{background:#fdf3f3;border-left:4px solid var(--coral);border-radius:8px;padding:12px 14px;font-size:14px;margin-top:12px}
-  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+  .warn{background:#fff3cd;border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;font-size:14px;margin-top:12px}
+  .stop{background:#fdf3f3;border-left:4px solid var(--coral);border-radius:8px;padding:12px 14px;font-size:14px;margin-top:12px}
+  .chat{background:#fff;border:1px solid #e8e5f2;border-radius:12px;overflow:hidden;margin-top:12px}
+  .chat .u{background:#f4f2fb;padding:11px 15px;font-size:14px}.chat .u b{font-family:var(--mono);font-size:10.5px;color:var(--lav-deep);display:block;margin-bottom:3px}
+  .chat .n{padding:11px 15px;font-size:13.5px;color:#2c2838}.chat .n b{font-family:var(--mono);font-size:10.5px;color:var(--green);display:block;margin-bottom:3px}
+  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
   .day{background:#fff;border:1px solid #e8e5f2;border-radius:10px;padding:12px}
   .day .d{font-family:var(--mono);font-size:10.5px;color:var(--lav-deep);font-weight:700}
   .day h4{font-size:14px;margin:4px 0 5px}.day ul{list-style:none;font-size:11.5px;color:#4a4458}
   .day li{padding:2px 0 2px 11px;position:relative}.day li::before{content:"·";position:absolute;left:3px;color:var(--lav)}
-  footer{padding:36px 0;color:#8a84a0;font-size:13px}footer a{color:#8a84a0}
-  @media(max-width:900px){.nav{display:none}.content{padding:0 24px 60px}.hero{padding:52px 24px 40px}.week,.g2,.g3{grid-template-columns:1fr}h1{font-size:34px}}
+  footer{padding:34px 0;color:#8a84a0;font-size:13px}footer a{color:#8a84a0}
+  @media(max-width:900px){.nav{display:none}.content{padding:0 22px 60px}.hero{padding:48px 22px 36px}.g2,.g3,.week{grid-template-columns:1fr}h1{font-size:32px}}
   @media print{.nav{display:none}.hero,.copy{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{page-break-inside:avoid}}
 </style>
 </head>
 <body>
 <div class="shell">
-
-  <!-- STICKY NAV -->
   <nav class="nav">
     <div class="brand">Compass <span>SOP</span> 🧭</div>
-    <div class="sub">How we run marketing</div>
-    <a href="#start">Start here (read first)</a>
-    <a class="grp">The system</a>
-    <a href="#setup">0 · Setup (one-time)</a>
-    <a href="#signals">1 · Flagging &amp; signals</a>
-    <a href="#week">2 · The weekly rhythm</a>
-    <a class="grp">Publishing</a>
-    <a href="#x">3 · Post on X</a>
-    <a href="#linkedin">4 · Post on LinkedIn</a>
-    <a href="#blog">5 · Publish the blog</a>
-    <a href="#mailchimp">6 · Send with Mailchimp</a>
-    <a href="#dms">7 · Send DMs / outreach</a>
-    <a href="#utm">8 · UTMs &amp; tracking</a>
-    <a href="#attio">9 · Log it in Attio</a>
-    <a class="grp">Bigger motions</a>
-    <a href="#campaign">10 · Run a campaign</a>
-    <a href="#signup">11 · Signup lifecycle</a>
-    <a href="#approve">12 · Approvals &amp; claims</a>
+    <div class="sub">How it all works · step by step</div>
+    <a href="#start">Read this first (2 min)</a>
+    <a class="grp">The basics</a>
+    <a href="#what">1 · What is the machine?</a>
+    <a href="#norte">2 · What is Norte?</a>
+    <a href="#words">3 · The words we use</a>
+    <a class="grp">Doing it</a>
+    <a href="#setup">4 · One-time setup</a>
+    <a href="#flag">5 · Flag a signal</a>
+    <a href="#makepost">6 · Make a post (with Norte)</a>
+    <a href="#x">7 · Post it on X</a>
+    <a href="#li">8 · Post it on LinkedIn</a>
+    <a href="#email">9 · Send an email</a>
+    <a href="#dm">10 · Send a DM</a>
+    <a href="#video">11 · Make a video</a>
+    <a href="#week">12 · The weekly rhythm</a>
+    <a href="#campaign">13 · Run a campaign</a>
+    <a href="#measure">14 · Measure it</a>
+    <a href="#rules">15 · The rules</a>
     <a class="grp">Reference</a>
-    <a href="#owners">Who owns what</a>
-    <a href="#glossary">Glossary</a>
+    <a href="#who">Who does what</a>
+    <a href="#stuck">If you're stuck</a>
   </nav>
-
   <div class="content">
 
   <div class="hero" id="top">
-    <div class="kicker">Compass Labs · Master SOP · by Gin + Norte 🧭</div>
-    <h1 style="color:#fff">How we run marketing.<br>Every step. No guessing.</h1>
-    <p>This is the operating manual. Every procedure, click by click, so nobody ever wonders "…but how do I actually do that?" Use the menu on the left to jump anywhere. If you get stuck on any step, paste it to Norte and we do it together.</p>
+    <div class="kicker">Compass Labs · Master SOP · Norte 🧭</div>
+    <h1 style="color:#fff">How marketing works here.<br>Explained like you're brand new.</h1>
+    <p>No jargon, nothing assumed. Every task, step by step, with exactly what to click and type. If you can copy and paste, you can do everything in here. Use the menu on the left to jump anywhere.</p>
   </div>
 
   <!-- START -->
   <section id="start">
     <div class="kicker">Read this first</div>
-    <h2>The whole system in 5 lines.</h2>
-    <ol class="steps">
-      <li><b>Signals come in</b> — the team drops one-line events in a Slack channel.</li>
-      <li><b>Norte drafts</b> — the AI turns signals into posts, emails, video scripts, openers.</li>
-      <li><b>Gin approves</b> — you check voice; CTO 👍 any new technical claim.</li>
-      <li><b>We publish + activate</b> — post on X/LinkedIn, send the email, DM named accounts.</li>
-      <li><b>We measure</b> — everything tagged in Attio; review at 7 and 30 days.</li>
-    </ol>
-    <div class="tip"><b>The golden rule:</b> nobody writes from a blank page. You either follow the weekly rhythm (§2) or react to a trigger (§1). Norte does the writing. You decide, approve, and send.</div>
+    <h2>The whole thing in one sentence.</h2>
+    <p class="lede"><b>Something happens → you ask Norte to write about it → Norte gives you the post → you paste it and publish → you write it down so we can measure.</b></p>
+    <div class="tip"><b>The #1 thing to understand:</b> you never write content from scratch, and you never have to be "good at marketing." You tell Norte what happened in plain words. Norte writes the post. You post it. That's it.</div>
+    <div class="warn"><b>The honest part:</b> posting is NOT automatic. Norte writes; a human (you) copies it and hits publish. Nothing goes out by itself — on purpose.</div>
   </section>
 
-  <!-- 0 SETUP -->
+  <!-- WHAT IS THE MACHINE -->
+  <section id="what">
+    <div class="kicker">1 · The basics</div>
+    <h2>What is "the machine"?</h2>
+    <p class="lede">It's just a simple, repeatable way of turning things that happen at Compass into content that brings us customers. It has two parts:</p>
+    <div class="grid g2">
+      <div class="card"><span class="tag">🕐 THE CLOCK</span><p style="font-size:14px">Every week has the same rhythm (Monday decide, mid-week post, Friday follow up). So we're never silent, even in a slow week.</p></div>
+      <div class="card"><span class="tag">⚡ THE TRIGGERS</span><p style="font-size:14px">When something real happens (we shipped X, we won Y, a customer said Z), that becomes a post. You "flag" it and Norte writes it.</p></div>
+    </div>
+    <p class="note">That's the whole machine. Nothing more complicated than that.</p>
+  </section>
+
+  <!-- NORTE -->
+  <section id="norte">
+    <div class="kicker">1 · The basics</div>
+    <h2>2 · What is Norte?</h2>
+    <p class="lede">Norte is an <b>AI assistant</b> that already knows how Compass talks, what facts we're allowed to say, and our 3 core messages. You open Claude (the AI app), and Norte is there to write anything you need — a post, an email, a message to a prospect.</p>
+    <div class="chat">
+      <div class="u"><b>YOU TYPE</b>"Norte, write a LinkedIn post — we just went live with IXS on BNB Chain."</div>
+      <div class="n"><b>NORTE GIVES YOU</b>A finished post in Compass's voice, with the right facts, ready to paste. (Usually 2 versions — pick one.)</div>
+    </div>
+    <div class="tip"><b>Everyone has Norte.</b> Eli, Aidar, Funa, Bezkat, Gin — each in their own Claude. So anyone can make an on-brand post in 30 seconds without asking anyone.</div>
+    <p class="note">How to get Norte set up in your Claude: see the "How to Use Norte" doc — you paste one prompt, once, and you're done.</p>
+  </section>
+
+  <!-- WORDS -->
+  <section id="words">
+    <div class="kicker">1 · The basics</div>
+    <h2>3 · The words we use (so nothing's confusing)</h2>
+    <div class="grid g2">
+      <div class="card"><b>Signal</b><p style="font-size:13.5px">A one-line note about something that happened. Ex: "WON: Roqqu signed." You drop these in Slack.</p></div>
+      <div class="card"><b>Post</b><p style="font-size:13.5px">Content you publish on X or LinkedIn. Norte writes it; you post it.</p></div>
+      <div class="card"><b>Franchise</b><p style="font-size:13.5px">A recurring "show" we post regularly (ex: "Objection of the Week"). A format, so you never start from zero.</p></div>
+      <div class="card"><b>Campaign</b><p style="font-size:13.5px">A bigger push over 2–3 weeks around one moment (like the Earn launch). Many posts, one theme.</p></div>
+      <div class="card"><b>Claims library</b><p style="font-size:13.5px">The list of facts we're allowed to say, worded exactly (ex: "Thor moved $1.1B"). Norte only uses these.</p></div>
+      <div class="card"><b>UTM</b><p style="font-size:13.5px">A bit of text we add to a link so we can see where a click came from. Norte makes these for you.</p></div>
+      <div class="card"><b>Attio</b><p style="font-size:13.5px">Our CRM — the list of companies we talk to. It's where we track who's interested.</p></div>
+      <div class="card"><b>Activate</b><p style="font-size:13.5px">Sending a personal message to a specific company so a campaign turns into a real conversation.</p></div>
+    </div>
+  </section>
+
+  <!-- SETUP -->
   <section id="setup">
-    <div class="kicker">0 · Setup · one-time · ~2–3 hours</div>
-    <h2>Get the tools in order (do this once).</h2>
-    <h3>0.1 · Slack signals channel</h3>
+    <div class="kicker">2 · Doing it</div>
+    <h2>4 · One-time setup (do once, ~1 hour)</h2>
     <ol class="steps">
-      <li>Create a channel <span class="field">#marketing-signals</span>. Add everyone (Eli, Aidar, Funa, Commercial, you). <span class="who w-gin">Gin</span></li>
-      <li>Pin the message below so everyone knows the format.</li>
+      <li><b>Slack channel.</b> Create <span class="field">#marketing-signals</span>, add everyone, and pin the message below. <span style="color:#8a84a0">(Gin does this.)</span></li>
+      <li><b>Everyone installs Norte.</b> Each person pastes the Norte prompt into their own Claude, once. (From the "How to Use Norte" doc.)</li>
+      <li><b>A tracking sheet.</b> One Google Sheet: columns Date · Channel · Post · Link · Result. This is where we jot what we published.</li>
     </ol>
-    <div class="copy"><span class="lab">Pinned message — paste this in the channel</span>📣 This is where we drop marketing signals. One line, 10 seconds, no need to write nicely — Norte turns it into content.
+    <div class="copy"><span class="lab">The pinned Slack message — paste this</span>📣 Marketing signals go here. One line, 10 seconds. Norte turns it into content.
 
-Format: [TYPE] what happened (+ company/link if relevant)
-
-Examples:
+Format: [TYPE] what happened (+ company/link)
 • SHIPPED: RWA latency now under X ms
-• WON: IXS venue live 🎉
+• WON: IXS + BNB Chain venue live 🎉
 • OBJECTION: [Littio] says they need Solana
 • CUSTOMER: quote from Arca call — "…"
-• MARKET: competitor X launched Y — react?
 • IDEA: blog on build-vs-buy math?
 
 When in doubt, drop it. Better a messy note than a missed signal.</div>
-    <h3 style="margin-top:22px">0.2 · Attio (measurable)</h3>
-    <ol class="steps">
-      <li>Add 5 fields to Companies: <span class="field">Segment</span> <span class="field">Country</span> <span class="field">Product interest</span> <span class="field">Source campaign</span> <span class="field">Deal value</span>. <span class="who w-gin">Gin</span></li>
-      <li>Create list <span class="field">[Gin] LATAM sales</span>; add your 5 LATAM targets.</li>
-    </ol>
-    <h3 style="margin-top:22px">0.3 · Mailchimp</h3>
-    <ol class="steps">
-      <li>One Audience: <span class="field">Compass Contacts</span>. Import from Attio (CSV).</li>
-      <li>Create Tags: <span class="field">LATAM</span> <span class="field">Africa</span> <span class="field">Stablecoin-app</span> <span class="field">Wallet</span> <span class="field">Signup</span>. Tag as you import.</li>
-    </ol>
-    <h3 style="margin-top:22px">0.4 · Tracking sheet + claims library</h3>
-    <ol class="steps">
-      <li>One Google Sheet "Launch tracker": Date · Channel · Asset · Link(UTM) · Result.</li>
-      <li>Keep the Claims Library open in a tab (approved facts, one click away).</li>
-    </ol>
-    <div class="note">Buffer = later. Until then you post by hand. Full click-steps for Attio/Mailchimp are in the Setup + Launch Runbook.</div>
+    <p class="note"><b>Not needed to start:</b> Buffer (later), fancy Attio fields (later). You can run everything with Slack + Claude + your normal accounts.</p>
   </section>
 
-  <!-- 1 SIGNALS -->
-  <section id="signals">
-    <div class="kicker">1 · Flagging &amp; signals · the "how" of turning events into content</div>
-    <h2>From a Slack line to a published post.</h2>
-    <p class="lede">This is the answer to "how do I flag it?" and "how does it become a post?" — spelled out.</p>
-    <h3>For the team — how to flag (10 seconds)</h3>
+  <!-- FLAG -->
+  <section id="flag">
+    <div class="kicker">2 · Doing it</div>
+    <h2>5 · How to flag a signal (10 seconds)</h2>
     <ol class="steps">
-      <li>Something happened in your world? Open <span class="field">#marketing-signals</span>.</li>
-      <li>Type one line in the format (TYPE + what happened). Hit enter. <b>Done.</b> <span class="who w-team">anyone</span></li>
+      <li>Something happened in your world? Open <span class="field">#marketing-signals</span> in Slack.</li>
+      <li>Type one line: the TYPE + what happened. Ex: <span class="field">OBJECTION: Belo asked about Solana</span>. Hit enter. Done.</li>
     </ol>
-    <div class="tip"><b>That's the whole job.</b> You don't write a post, you don't format anything. "OBJECTION: Belo asked about Solana" is a perfect flag. Norte takes it from there.</div>
-    <h3 style="margin-top:22px">For Gin — how the signal becomes content (the Friday sweep)</h3>
-    <ol class="steps">
-      <li><b>Friday, 20 min:</b> open <span class="field">#marketing-signals</span> and skim the week's flags. Also glance at Attio (new stages, notes) + the changelog. <span class="who w-gin">Gin</span></li>
-      <li><b>Copy the signals</b> into one message to Norte: "Here are this week's signals: [paste]. Which deserve content? Draft the strongest 3." <span class="who w-ai">Norte</span></li>
-      <li>Norte gives you drafts + tells you which angle/franchise each is. You skim, pick, adjust.</li>
-      <li>The chosen ones go into next week's plan (see §2 Monday).</li>
-    </ol>
-    <div class="warn"><b>Honest note:</b> today this is <i>collect → Norte drafts → you approve</i> — not a bot auto-posting from Slack. That's fine; it's simple and works day one. Later we can connect Slack + Attio directly to automate the collection.</div>
+    <div class="tip"><b>That is the entire job.</b> You don't write a post. You don't format anything. Norte reads these later and turns the good ones into content.</div>
+    <p class="note"><b>How does a signal become a post?</b> Gin (or you) copies the signal and asks Norte to write it (next section). Today that's a human step — Slack collects, Norte writes, a human posts. Simple and real.</p>
   </section>
 
-  <!-- 2 WEEK -->
-  <section id="week">
-    <div class="kicker">2 · The weekly rhythm · the clock that never stops</div>
-    <h2>The same shape every week.</h2>
-    <div class="week">
-      <div class="day"><div class="d">MON · DECIDE</div><h4>30 min</h4><ul><li>Review Norte's digest of the week's signals <span class="who w-ai">Norte</span></li><li>Gin + Eli pick this week's posts + any campaign <span class="who w-gin">Gin</span></li><li>Assign who posts what</li></ul></div>
-      <div class="day"><div class="d">TUE · DRAFT+SHIP</div><h4>—</h4><ul><li>Ask Norte to draft everything <span class="who w-ai">Norte</span></li><li>Approve (§12) → publish batch 1</li></ul></div>
-      <div class="day"><div class="d">WED · ENGAGE</div><h4>—</h4><ul><li>Reply to comments/DMs <span class="who w-team">all</span></li><li>Norte drafts batch 2</li></ul></div>
-      <div class="day"><div class="d">THU · SHIP #2</div><h4>—</h4><ul><li>Publish batch 2 + partner amp</li><li>Team reshares</li></ul></div>
-      <div class="day"><div class="d">FRI · ACTIVATE</div><h4>—</h4><ul><li>Send named-account DMs <span class="who w-team">team</span></li><li>The 20-min signal sweep <span class="who w-gin">Gin</span></li></ul></div>
+  <!-- MAKE POST -->
+  <section id="makepost">
+    <div class="kicker">2 · Doing it</div>
+    <h2>6 · How to make a post with Norte</h2>
+    <ol class="steps">
+      <li>Open Claude (with Norte set up).</li>
+      <li>Type what you want in plain words. Ex: <i>"Norte, write me an X post — we shipped faster RWA settlement."</i></li>
+      <li>Norte gives you 2 versions. Read them. Pick one. Change a word if you want.</li>
+      <li><b>Check:</b> does it use a NEW number that's not in the claims library? If yes → ping Aidar for a 👍 first. If it's an approved fact, you're good.</li>
+      <li>Now go post it (next sections tell you how, per channel).</li>
+    </ol>
+    <div class="chat">
+      <div class="u"><b>YOU</b>"Norte, a customer asked if we hold their funds. Give me a short post answering it."</div>
+      <div class="n"><b>NORTE</b>"Do you hold the funds? No. Users sign in their own wallets. Compass never touches the assets…" — ready to post or turn into a 30-sec video.</div>
     </div>
-    <div class="tip"><b>Your one recurring meeting:</b> the 30-min Monday. Protect it. Everything else is you + Norte async.</div>
   </section>
 
-  <!-- 3 X -->
+  <!-- X -->
   <section id="x">
-    <div class="kicker">3 · Publish · X (Twitter)</div>
-    <h2>How to post on X.</h2>
+    <div class="kicker">2 · Doing it · publishing</div>
+    <h2>7 · Post it on X (Twitter)</h2>
     <ol class="steps">
-      <li>Ask Norte: "Draft the X post/thread for [signal/topic]." You get 2 versions.</li>
-      <li>Pick one, tweak if you want. Check it against the claims library (§12).</li>
-      <li>Go to X → new post → paste. For a thread, paste each part as a reply to the previous. <span class="who w-gin">Gin</span></li>
-      <li>If there's a link, add the UTM (§8). Post.</li>
-      <li>Log it in the tracking sheet (date, "X", link). Later: reply to comments.</li>
+      <li>Copy the post Norte gave you.</li>
+      <li>Go to X → click <b>"Post"</b> → paste.</li>
+      <li>If there's a link, add the UTM (see §14). For a thread, paste part 1, then reply with part 2, etc.</li>
+      <li>Publish. Ask teammates to reshare in the first hour.</li>
+      <li>Write it in the tracking sheet (date, "X", the link).</li>
     </ol>
-    <div class="tip">Sharpest tension goes on X. One idea. No "excited to announce." Founders (Eli) reshare from their accounts.</div>
+    <div class="tip">X = the sharpest, shortest version. One idea. Never "excited to announce."</div>
   </section>
 
-  <!-- 4 LINKEDIN -->
-  <section id="linkedin">
-    <div class="kicker">4 · Publish · LinkedIn</div>
-    <h2>How to post on LinkedIn (company + personal).</h2>
+  <!-- LINKEDIN -->
+  <section id="li">
+    <div class="kicker">2 · Doing it · publishing</div>
+    <h2>8 · Post it on LinkedIn</h2>
     <ol class="steps">
-      <li>Ask Norte for the LinkedIn version (buyer outcome + proof + one CTA).</li>
-      <li>Company post → Compass LinkedIn page → Start a post → paste. Personal → each founder posts from their own profile (their voice, never a copy of the company post).</li>
-      <li>Put the link in the FIRST comment (not the post body) — LinkedIn shows posts-with-links to fewer people. Add UTM.</li>
-      <li>Everyone on the team reshares/comments in the first hour (helps reach).</li>
-      <li>Log it.</li>
+      <li>Copy Norte's LinkedIn version (a bit longer, with one clear CTA).</li>
+      <li><b>Company post:</b> go to the Compass LinkedIn page → "Start a post" → paste. <b>Personal post:</b> post from your own profile.</li>
+      <li><b>Put the link in the FIRST comment</b>, not the post body (LinkedIn shows link-posts to fewer people). Add the UTM.</li>
+      <li>Everyone reshares/comments in the first hour — it helps a lot.</li>
+      <li>Log it in the sheet.</li>
     </ol>
   </section>
 
-  <!-- 5 BLOG -->
-  <section id="blog">
-    <div class="kicker">5 · Publish · Blog</div>
-    <h2>How to publish a blog.</h2>
+  <!-- EMAIL -->
+  <section id="email">
+    <div class="kicker">2 · Doing it · publishing</div>
+    <h2>9 · Send an email (Mailchimp)</h2>
     <ol class="steps">
-      <li>Ask Norte for the full blog (thesis title, problem, build-vs-buy, objections, CTA). <span class="who w-ai">Norte</span></li>
-      <li>CTO checks any technical claim (§12).</li>
-      <li>Paste into the website blog (compasslabs.ai/blog admin). Add a clear title + one image/diagram if you have it.</li>
-      <li>Publish → grab the URL → add UTM for when you share it.</li>
-      <li>Share the blog link from LinkedIn + X + the email.</li>
+      <li>Ask Norte for the email (subject + short, personal body).</li>
+      <li>Mailchimp → <b>Campaigns → Create → Email → Regular</b>.</li>
+      <li><b>To:</b> your audience, filtered by the right Tag (ex: <span class="field">LATAM</span>). This sends it only to the right people.</li>
+      <li>Paste subject + body. Add <span class="field">utm_source=mailchimp</span> to any link.</li>
+      <li>Send a test to yourself. Then Send.</li>
+      <li>After 2 days, note replies (replies matter more than opens).</li>
     </ol>
-    <div class="note">The blog is the "definitive piece" — it sells through usefulness. A CTO should be able to forward it to their CEO.</div>
+    <div class="warn"><b>Mailchimp only for:</b> the segmented email + the monthly newsletter. <b>Personal 1-to-1 messages go from Gmail</b>, not Mailchimp — they work much better sent by a human.</div>
   </section>
 
-  <!-- 6 MAILCHIMP -->
-  <section id="mailchimp">
-    <div class="kicker">6 · Publish · Mailchimp (email)</div>
-    <h2>How to send a campaign email.</h2>
+  <!-- DM -->
+  <section id="dm">
+    <div class="kicker">2 · Doing it · publishing</div>
+    <h2>10 · Send a DM to a company (this is how we get meetings)</h2>
     <ol class="steps">
-      <li>Ask Norte for the email (subject + plain-text body). Keep it personal, not a designed template.</li>
-      <li>Mailchimp → Campaigns → Create → Email → Regular.</li>
-      <li><b>To:</b> your Audience, filtered by the right Tags (e.g. <span class="field">LATAM</span> + <span class="field">Stablecoin-app</span>). This is how you send only to the right people. <span class="who w-gin">Gin</span></li>
-      <li>Paste subject + body. Add the UTM <span class="field">utm_source=mailchimp</span> to any link.</li>
-      <li>Send a test to yourself first. Then Send (or Schedule).</li>
-      <li>Log opens/replies after 48h. Replies &gt; opens — a reply means a real conversation.</li>
+      <li>Ask Norte: <i>"Write me an opener for [company] — they're a stablecoin app in Colombia interested in yield."</i> (Or for your accounts, Gin's Target List already has these.)</li>
+      <li>Norte gives you 3 sentences: their situation → the relevant thing → one easy question.</li>
+      <li>Change [name] + one real detail so it feels personal.</li>
+      <li>Send it from LinkedIn DM or Gmail.</li>
+      <li>In Attio, open that company → add a note about it → move the stage if it advanced.</li>
     </ol>
-    <div class="warn"><b>Mailchimp is only for:</b> the segmented campaign email, the monthly newsletter, and (later) automated signup sequences. <b>Personal 1:1 outreach goes from Gmail</b>, not Mailchimp — it converts far better.</div>
+    <div class="tip"><b>Never a mass blast.</b> Each message mentions something real about them. That's why people reply.</div>
   </section>
 
-  <!-- 7 DMS -->
-  <section id="dms">
-    <div class="kicker">7 · Outreach · DMs &amp; personal email</div>
-    <h2>How to activate a named account (this is where pipeline is made).</h2>
-    <ol class="steps">
-      <li>Open the account in Attio — read its notes/history (or ask Norte: "research [company] + write me an opener").</li>
-      <li>Norte drafts a 3-sentence opener: their context → the relevant new thing → one easy question.</li>
-      <li>Personalize [name] + one real detail. Send from Gmail or LinkedIn DM. <span class="who w-team">Gin/Funa/Commercial</span></li>
-      <li>Log it in Attio: add a note, set <span class="field">Source campaign</span>, move the stage if it advances.</li>
-    </ol>
-    <div class="tip"><b>Never a blast.</b> Each DM references something real about them. That's why they reply.</div>
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="kicker">2 · Doing it · publishing</div>
+    <h2>11 · Make a video</h2>
+    <p class="lede">Two kinds. In both, <b>Norte writes the script</b> — you (or a tool) just record it.</p>
+    <div class="grid g2">
+      <div class="card"><span class="tag">PRODUCT VIDEO · Bezkat</span><p style="font-size:13.5px">1. Bezkat tells Norte the product truth (10-min brain-dump). 2. Norte writes the script (hook first, one idea). 3. Bezkat records the product + edits. 4. Gin approves.</p></div>
+      <div class="card"><span class="tag">TALKING-HEAD · later</span><p style="font-size:13.5px">For explainers/objections. Norte writes the script → HeyGen (AI avatar) generates it, or someone records it on a phone (raw is fine).</p></div>
+    </div>
+    <div class="tip">The script always comes from Norte. That's what fixes videos that "explain like it's obvious" and don't land.</div>
   </section>
 
-  <!-- 8 UTM -->
-  <section id="utm">
-    <div class="kicker">8 · Tracking · UTMs</div>
-    <h2>How to tag links so we can measure.</h2>
-    <p class="lede">A UTM is just text you add to a link so we can see where a click came from. Add it to every link you share.</p>
-    <div class="copy"><span class="lab">The pattern</span>YOUR-LINK?utm_source=CHANNEL&amp;utm_campaign=CAMPAIGN
-
-utm_source = x | linkedin | mailchimp | newsletter
-utm_campaign = the campaign code, e.g. 202608-earn-latam
-
-Examples:
-compasslabs.ai/blog/earn?utm_source=linkedin&amp;utm_campaign=202608-earn-latam
-compasslabs.ai/demo?utm_source=mailchimp&amp;utm_campaign=202608-earn-latam</div>
-    <ol class="steps">
-      <li>Before sharing a link, add <span class="field">?utm_source=…&amp;utm_campaign=…</span>.</li>
-      <li>Paste the tagged link in the tracking sheet. Done.</li>
-    </ol>
-    <div class="note">Not sure? Ask Norte "give me the UTM link for [page] on [channel] for [campaign]" and paste the result.</div>
+  <!-- WEEK -->
+  <section id="week">
+    <div class="kicker">2 · Doing it</div>
+    <h2>12 · The weekly rhythm (the clock)</h2>
+    <div class="week">
+      <div class="day"><div class="d">MON</div><h4>Decide</h4><ul><li>Norte lists the week's signals</li><li>Gin+Eli pick what to post</li></ul></div>
+      <div class="day"><div class="d">TUE</div><h4>Post #1</h4><ul><li>Norte drafts, Gin approves</li><li>Publish batch 1</li></ul></div>
+      <div class="day"><div class="d">WED</div><h4>Engage</h4><ul><li>Reply to comments</li><li>DM your accounts</li></ul></div>
+      <div class="day"><div class="d">THU</div><h4>Post #2</h4><ul><li>Publish batch 2</li><li>Team reshares</li></ul></div>
+      <div class="day"><div class="d">FRI</div><h4>Follow up</h4><ul><li>Send DMs</li><li>Gin sweeps signals</li></ul></div>
+    </div>
+    <div class="tip"><b>Your one meeting:</b> the 30-min Monday. Everything else is you + Norte, whenever it fits.</div>
   </section>
 
-  <!-- 9 ATTIO -->
-  <section id="attio">
-    <div class="kicker">9 · Measure · Log it in Attio</div>
-    <h2>How to keep Attio current (light, not heavy).</h2>
-    <ol class="steps">
-      <li>After any call or reply: open the company in Attio → add a <b>note</b> with the outcome + any objection (prefix objections with <span class="field">objection:</span>). <span class="who w-team">whoever had the call</span></li>
-      <li>Move the <b>stage</b> if it advanced (Prospecting → Meeting → etc.).</li>
-      <li>Set <span class="field">Source campaign</span> so we know what marketing touched it.</li>
-    </ol>
-    <div class="tip"><b>Why it matters:</b> Attio is how we prove "marketing created/advanced this pipeline" — the number the fundraise needs. Two minutes after a call keeps it true.</div>
-  </section>
-
-  <!-- 10 CAMPAIGN -->
+  <!-- CAMPAIGN -->
   <section id="campaign">
-    <div class="kicker">10 · Run a campaign · end to end</div>
-    <h2>How to launch a full campaign (2–3 weeks).</h2>
+    <div class="kicker">2 · Doing it</div>
+    <h2>13 · Run a campaign (a 2–3 week push)</h2>
     <ol class="steps">
-      <li><b>Trigger:</b> a signal scores big on Monday (or a planned launch). Max one campaign at a time. <span class="who w-gin">Gin+Eli</span></li>
-      <li><b>Brief:</b> ask Norte "build the campaign brief + all channels for [topic/product/segment]." You get the brief + X + LinkedIn + blog + email + video script + billboards + the account list.</li>
-      <li><b>Approve:</b> Eli signs the angle; CTO clears claims (§12).</li>
-      <li><b>Teaser (optional):</b> drop a teaser 2–3 days before to build anticipation.</li>
-      <li><b>Launch week:</b> follow the sequence — Day 1–2 go loud (X + video + billboards), Day 3 go deep (blog + LinkedIn), Day 4 email, Day 5–10 personal DMs to named accounts.</li>
-      <li><b>Activate:</b> 10–15 named accounts get a personal DM (§7), logged in Attio.</li>
-      <li><b>Review:</b> +7 days (which angle got replies) and +30 days (meetings/pipeline). Ask Norte to pull it.</li>
-      <li><b>Reuse:</b> ask Norte to turn winners into sales slides + investor-update lines.</li>
+      <li>Gin + Eli decide it's worth a campaign (on Monday).</li>
+      <li>Ask Norte: <i>"Build the full campaign for [Earn / LATAM]."</i> → you get all the posts, the email, the video script, the account list.</li>
+      <li>Eli approves the angle; Aidar clears any new claim.</li>
+      <li>Post them in order across the week (Gin's GO Battle Plan has the exact day-by-day).</li>
+      <li>Send personal DMs to the named accounts.</li>
+      <li>After 1 week and 1 month, ask Norte to review what worked. Reuse the winners.</li>
     </ol>
-    <div class="note">The full worked example ("Put the Money to Work") is in the flagship campaign doc + the launch runbook. This is the repeatable procedure for any future campaign.</div>
   </section>
 
-  <!-- 11 SIGNUP -->
-  <section id="signup">
-    <div class="kicker">11 · Signup lifecycle · the fast growth win</div>
-    <h2>How to work API signups (simple, human-first).</h2>
+  <!-- MEASURE -->
+  <section id="measure">
+    <div class="kicker">2 · Doing it</div>
+    <h2>14 · Measure it (light, not scary)</h2>
     <ol class="steps">
-      <li>Aidar sends the signup export (email, date, activation events). <span class="who w-eng">Aidar</span></li>
-      <li>Ask Norte: "score these signups + give me the top 20–30 with a personal opener each." <span class="who w-ai">Norte</span></li>
-      <li>For each warm one, send the personal email from Gmail. Log in Attio (Source = <span class="field">api-signup</span>). <span class="who w-gin">Gin</span></li>
-      <li><b>The segments:</b> Explorer (solo dev — help, don't sell) · Builder (eng — remove friction) · Buyer (real company — route to a call) · Ghost (never activated — one honest question: "what got in the way?").</li>
-      <li><b>Cap:</b> max ~4 emails in 3 weeks, each genuinely useful. Someone replies → a human takes over.</li>
-      <li>Once a sequence works by hand, automate it in Mailchimp (later).</li>
+      <li><b>UTM on links:</b> before sharing a link, add <span class="field">?utm_source=CHANNEL&amp;utm_campaign=CAMPAIGN</span>. Not sure? Ask Norte: "give me the UTM link." </li>
+      <li><b>In Attio:</b> after a call or reply, add a note + move the stage. That's how we prove marketing created pipeline.</li>
+      <li><b>The one number that matters:</b> qualified conversations/meetings marketing created — not likes.</li>
     </ol>
-    <div class="tip"><b>Watch the special trigger:</b> heavy API usage but never contacts us + never pays → reach out ("is pricing in the way?"). Could reveal a self-serve revenue line.</div>
+    <div class="note">You don't need to fill lots of data. A note + a stage move after a call is enough.</div>
   </section>
 
-  <!-- 12 APPROVE -->
-  <section id="approve">
-    <div class="kicker">12 · Approvals &amp; claims · so nothing wrong ships</div>
-    <h2>How to approve (fast) and keep claims safe.</h2>
-    <ol class="steps">
-      <li><b>Ships with no approval:</b> uses the approved sentence + approved claims + a known franchise + passes the guardrails. Just post it.</li>
-      <li><b>Needs a quick gate:</b> a NEW technical number/claim → CTO 👍 in Slack (~2 min). A named customer/partner → relationship owner clears it.</li>
-      <li><b>Needs a real decision:</b> new positioning, sensitive customer content, or anything about compliance/KYB → Eli + Gin (+ CTO).</li>
-      <li><b>If unsure of a fact:</b> Norte writes <span class="field">[NEEDS APPROVAL]</span> — never guesses. You get it confirmed, then it's added to the claims library.</li>
-    </ol>
-    <div class="warn"><b>The hard line:</b> no claim ships unless it's in the claims library. No invented metrics, no customer results without written approval, no compliance/KYB as a shipped feature. When in doubt, don't.</div>
-  </section>
-
-  <!-- OWNERS -->
-  <section id="owners">
-    <div class="kicker">Reference · who owns what</div>
-    <h2>No orphaned tasks.</h2>
+  <!-- RULES -->
+  <section id="rules">
+    <div class="kicker">2 · Doing it</div>
+    <h2>15 · The rules (so nothing wrong goes out)</h2>
     <div class="grid g2">
-      <div class="card"><b>Gin</b> — runs the machine, publishing, measurement, LATAM, the Monday + Friday sweep.</div>
-      <div class="card"><b>Aidar (CTO)</b> — claim checks (~15 min/wk), signup data, occasional 15-min video interview.</div>
-      <div class="card"><b>Eli (CEO)</b> — founder posts, positioning sign-off, case-study approvals.</div>
-      <div class="card"><b>Funa / Commercial</b> — regional + partner outreach (Africa/ME, sales &amp; partnerships), their own DMs + signals.</div>
-      <div class="card"><b>Everyone</b> — flag signals in Slack, log their calls in Attio, reshare.</div>
-      <div class="card"><b>Norte 🧭</b> — drafts everything, scores, reports. The heavy lifting.</div>
+      <div class="card"><b>✅ Ships freely</b><p style="font-size:13.5px">Uses the approved sentence + approved facts + a known franchise. Just post it.</p></div>
+      <div class="card"><b>⚠️ Needs a quick 👍</b><p style="font-size:13.5px">A NEW technical number → Aidar. A named customer/partner → the relationship owner.</p></div>
+    </div>
+    <div class="stop"><b>Never:</b> invent a number, use an unapproved fact, make a price prediction, name a competitor, use hype words ("revolutionary", "thrilled to announce", 🚀), or talk politics. If unsure, Norte writes <span class="field">[NEEDS APPROVAL]</span> and you check first.</div>
+  </section>
+
+  <!-- WHO -->
+  <section id="who">
+    <div class="kicker">Reference</div>
+    <h2>Who does what</h2>
+    <div class="grid g2">
+      <div class="card"><b>Gin</b> — runs the machine, the official accounts, the campaigns, the Monday + Friday sweep, measurement.</div>
+      <div class="card"><b>Aidar (CTO)</b> — keeps the numbers honest (claim checks), signup data. Bezkat produces product videos (script from Norte).</div>
+      <div class="card"><b>Eli (CEO)</b> — founder posts, approves campaign angles + customer stories.</div>
+      <div class="card"><b>Funa / Commercial</b> — regional + partner outreach, their own DMs + signals.</div>
+      <div class="card"><b>Everyone</b> — flag signals in Slack, use Norte for your own posts, reshare, log your calls in Attio.</div>
+      <div class="card"><b>Norte 🧭</b> — writes everything. The one thing that's automatic.</div>
     </div>
   </section>
 
-  <!-- GLOSSARY -->
-  <section id="glossary">
-    <div class="kicker">Reference · glossary (plain words)</div>
-    <h2>What the terms mean.</h2>
-    <div class="grid g2">
-      <div class="card"><b>Signal</b> — a one-line event you drop in Slack that can become content.</div>
-      <div class="card"><b>Franchise</b> — a recurring "show" (e.g. Objection of the Week). Repeatable format so nobody faces a blank page.</div>
-      <div class="card"><b>Campaign</b> — a 2–3 week multi-channel push around one big moment.</div>
-      <div class="card"><b>Angle</b> — one of our 3 arguments (Integration Tax · Proof · Where Finance Is Going). Every piece uses one.</div>
-      <div class="card"><b>UTM</b> — text added to a link so we can see where a click came from.</div>
-      <div class="card"><b>Claims library</b> — the list of approved facts with exact wording. The only claims we're allowed to make.</div>
-      <div class="card"><b>Activation</b> — sending a personal DM to a named account so a campaign becomes pipeline.</div>
-      <div class="card"><b>North star</b> — qualified opportunities created or advanced by marketing. The one number that matters.</div>
-    </div>
-    <div class="tip" style="margin-top:16px"><b>Stuck on any procedure?</b> Paste the step to Norte and say "walk me through this / do the draft." You're never on your own. 🧭</div>
+  <!-- STUCK -->
+  <section id="stuck">
+    <div class="kicker">Reference</div>
+    <h2>If you're stuck</h2>
+    <div class="tip" style="font-size:15px"><b>On any step, just ask Norte:</b> "walk me through this" or "do the draft for me." And for anything about the tools or the plan, ask Gin. You are never on your own. 🧭</div>
   </section>
 
   <footer>
-    Compass Labs · Master SOP · Gin + Norte 🧭 · July 2026 · Living document — update a procedure the moment reality changes it.<br>
-    ◆ <a href="compass-how-the-machine-runs.html">How the Machine Runs</a> · <a href="compass-setup-launch-runbook.html">Setup + Launch Runbook</a> · <a href="compass-team-playbook.html">Team Playbook</a> · <a href="compass-claims-guardrails.html">Claims Library</a> · <a href="START-HERE-compass.html">Start Here</a>
+    Compass Labs · Master SOP · Norte 🧭 · July 2026 · Living doc — update a step the moment reality changes it.<br>
+    ◆ <a href="compass-how-to-use-norte.html">How to Use Norte</a> · <a href="compass-how-the-machine-runs.html">How the Machine Runs</a> · <a href="compass-team-playbook.html">Team Playbook</a> · <a href="compass-claims-guardrails.html">Claims Library</a> · <a href="index.html">Start Here</a>
   </footer>
 
   </div>
