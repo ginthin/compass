@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Setup + Launch Runbook</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 30px}
+  section{padding:52px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:52px;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:30px;letter-spacing:-0.02em;font-weight:800;line-height:1.07;margin-bottom:6px}
+  h3{font-size:19px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:18px;color:#4a4458;max-width:840px;margin-top:10px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .grid{display:grid;gap:16px;margin-top:20px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .js .rv{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .hero{min-height:62vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:280% 280%;animation:flow 18s ease infinite;color:#fff;border:none}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}.hero .sub{margin-top:20px;color:#cfc8ea;font-size:18px;max-width:660px}
+  .partbar{background:#16121f;color:#fff;padding:10px 0}.partbar .wrap{display:flex;gap:8px;flex-wrap:wrap}
+  .partbar a{color:#c9befc;text-decoration:none;font-family:var(--mono);font-size:12px;border:1px solid #3b2c6e;border-radius:99px;padding:5px 12px}
+  /* step */
+  .step{border:1px solid #e8e5f2;border-radius:14px;margin-top:14px;overflow:hidden;background:#fff}
+  .step .sh{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#f7f5fc;border-bottom:1px solid #eee}
+  .step .sh .n{font-family:var(--mono);font-weight:800;color:#fff;background:var(--lav-deep);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .step .sh h3{font-size:17px}
+  .step .sh .t{margin-left:auto;font-family:var(--mono);font-size:11px;color:#8a84a0}
+  .step .sb{padding:16px 18px}
+  ol.clicks{margin:6px 0 0 18px;font-size:14px}ol.clicks li{margin-bottom:7px}
+  .field{font-family:var(--mono);font-size:12.5px;background:#eef;border-radius:5px;padding:1px 6px;color:#3b47a0}
+  .copy{background:#0d0a14;color:#c9c3e0;border-radius:8px;padding:14px;font-size:13px;margin-top:10px;position:relative;white-space:pre-wrap;line-height:1.6}
+  .copy .lab{font-family:var(--mono);font-size:10px;color:#8b7cf6;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
+  .sub2{font-family:var(--mono);font-size:11px;color:#8a84a0;margin-top:6px}
+  /* day */
+  .day{border-left:3px solid var(--lav);padding:2px 0 2px 18px;margin-top:18px}
+  .day .d{font-family:var(--mono);font-size:12px;color:var(--lav-deep);font-weight:700}
+  .day h3{margin:2px 0 6px}
+  .ch{display:inline-block;font-size:10px;font-family:var(--mono);border-radius:5px;padding:2px 7px;font-weight:700;margin-bottom:6px}
+  .c-x{background:#16121f;color:#fff}.c-li{background:#0a66c2;color:#fff}.c-blog{background:var(--lav-soft);color:var(--lav-deep)}.c-mail{background:#fdf1e0;color:#a86308}.c-vid{background:#e7f8f0;color:#127a52}
+  /* checklist */
+  .cl{list-style:none;margin-top:10px}
+  .cl li{padding:8px 0 8px 30px;position:relative;font-size:14.5px;border-bottom:1px solid #f0eef7}
+  .cl li::before{content:"";position:absolute;left:0;top:8px;width:17px;height:17px;border:2px solid var(--lav);border-radius:5px}
+  .fear{background:#fff;border:1px solid #ffe0a3;border-left:5px solid var(--gold);border-radius:12px;padding:18px}
+  footer{padding:42px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:900px){.g2,.g3{grid-template-columns:1fr}h1{font-size:36px}h2{font-size:23px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:52px 0}.hero,.partbar,.copy{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Setup + Launch Runbook · Gin + Norte 🧭</div>
+  <h1>Let's build the<br>machine. Together,<br><span style="color:var(--gold)">step by step.</span></h1>
+  <p class="sub">The scary part made calm and concrete. Part A: set up the machinery this week (Attio + Mailchimp, click by click). Part B: the first campaign, written and ready to paste. You don't have to figure anything out — just follow the steps in order. I'm right here.</p>
+</div></div>
+<div class="partbar"><div class="wrap"><a href="#a">PART A · Setup</a><a href="#b">PART B · The campaign</a><a href="#c">PART C · Launch day</a><a href="#fear">Feeling scared? read this</a></div></div>
+
+<!-- FEAR -->
+<section id="fear"><div class="wrap">
+  <div class="fear rv"><b>Before anything — read this if you're nervous.</b><br>You are not going to break anything, and you are not doing this alone. Every step below is small and reversible. If you get stuck on any one, you paste it to me (Norte) and I walk you through it or do the drafting part for you. The tools (Attio, Mailchimp) are things you already have or that just take a few clicks. <b>Worst case, we post the first campaign by hand and it still works.</b> There is no version of this where you fail. Let's go one step at a time. 🧭</div>
+</div></section>
+
+<!-- PART A -->
+<section id="a"><div class="wrap">
+  <div class="kicker rv">Part A · Set up the machinery · ~2–3 hours total, this week</div>
+  <h2 class="rv">Three setups, in order. Then you're live-ready.</h2>
+  <p class="lede rv">Do these top to bottom. Each is small. Check them off as you go.</p>
+
+  <div class="step rv"><div class="sh"><div class="n">A1</div><h3>Attio — make it measurable</h3><span class="t">~30 min</span></div><div class="sb">
+    <b>Add 5 fields to the Companies object</b> (Attio → Settings → Objects → Companies → Attributes → + New attribute). Create each:
+    <ol class="clicks">
+      <li><span class="field">Segment</span> — type: Select · options: Wallet, Stablecoin app, Neobank, Exchange, Broker/Wealth, Payments/Remittance, RWA issuer, AI-native, Other</li>
+      <li><span class="field">Country</span> — type: Select (or Text) · e.g. Mexico, Argentina, Colombia, Nigeria, Kenya, US, Other</li>
+      <li><span class="field">Product interest</span> — type: Multi-select · options: Earn, Credit, Trading, RWA, Agentic</li>
+      <li><span class="field">Source campaign</span> — type: Text · (you'll tag it like <span class="field">202608-earn-latam</span>)</li>
+      <li><span class="field">Deal value</span> — type: Currency (USD)</li>
+    </ol>
+    <b style="display:block;margin-top:12px">Then create your list:</b>
+    <ol class="clicks"><li>Attio → Lists → + New list → name it <span class="field">[Gin] LATAM sales</span> → parent: Companies.</li><li>Add your 5 LATAM targets to it (Littio, Belo, DolarApp, Ripio, Decaf) so it's not empty.</li></ol>
+    <p class="note"><b>Why:</b> these 5 fields are what let us answer "which segment/campaign created pipeline" later. Without them we can't measure. With them, everything is trackable. <b>Stuck? Paste me a screenshot and I'll tell you exactly what to click.</b></p>
+  </div></div>
+
+  <div class="step rv"><div class="sh"><div class="n">A2</div><h3>Mailchimp — build the audience + the campaign email</h3><span class="t">~60 min</span></div><div class="sb">
+    <b>Step 1 — one Audience, tagged by segment:</b>
+    <ol class="clicks">
+      <li>Mailchimp → Audience → if you don't have one, create a single Audience called <span class="field">Compass Contacts</span>. (One audience, not many — you segment with tags.)</li>
+      <li>Import your contacts (export from Attio → CSV → import). Map columns to fields: email, company, and add a column for <span class="field">Segment</span> and <span class="field">Country</span>.</li>
+      <li>Create Tags: <span class="field">LATAM</span>, <span class="field">Africa</span>, <span class="field">Stablecoin-app</span>, <span class="field">Wallet</span>, <span class="field">Signup</span>. Tag contacts as you import. Tags = how you send to the right slice.</li>
+    </ol>
+    <b style="display:block;margin-top:12px">Step 2 — build the campaign email (the Earn diagnostic, LATAM):</b>
+    <ol class="clicks">
+      <li>Mailchimp → Campaigns → Create → Email → Regular.</li>
+      <li>To: your Audience, filtered by Tag = <span class="field">LATAM</span> + <span class="field">Stablecoin-app</span> (this is why tags matter — you send only to the right people).</li>
+      <li>Subject + content: paste the email from Part B below. Keep it plain-text style (it feels personal, converts better than a designed template).</li>
+      <li>Don't send yet — save it as a draft. It goes out on Day 4 of the launch.</li>
+    </ol>
+    <p class="note"><b>Rule:</b> Mailchimp is ONLY for the segmented campaign email + (later) the monthly newsletter + automated signup sequences. Your personal 1:1 outreach (Tier A/B openers) goes from <b>Gmail</b>, not Mailchimp — those convert far better sent by a human.</p>
+  </div></div>
+
+  <div class="step rv"><div class="sh"><div class="n">A3</div><h3>A simple tracking sheet (instead of Buffer, for now)</h3><span class="t">~15 min</span></div><div class="sb">
+    Make one Google Sheet, tab "Launch tracker", columns: <span class="field">Date</span> · <span class="field">Channel</span> · <span class="field">Post/asset</span> · <span class="field">Link (with UTM)</span> · <span class="field">Result (replies/clicks/meetings)</span>.
+    <div class="copy"><span class="lab">UTM — add this to every link you share (so Attio/GA can see the source)</span>?utm_source=x   ?utm_source=linkedin   ?utm_source=mailchimp
+&amp;utm_campaign=202608-earn-latam
+Example: compasslabs.ai/blog/earn?utm_source=linkedin&amp;utm_campaign=202608-earn-latam</div>
+    <p class="note"><b>Buffer:</b> you said contract it last — perfect. Until then you post by hand (5 min, 2×/week) and log it in this sheet. When posting by hand feels annoying, contract Buffer and it just auto-posts your queue. Not a launch blocker.</p>
+  </div></div>
+
+  <div class="card rv" style="margin-top:16px;background:var(--lav-soft);border-color:#d9d2f7"><b>That's the whole machinery.</b> Attio measures, Mailchimp sends the campaign email to the right slice, Gmail sends the personal ones, you post the social by hand, and I draft everything. Done. You're live-ready.</div>
+</div></section>
+
+<!-- PART B -->
+<section id="b" style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">Part B · The first campaign · "Put the Money to Work / Pon el dinero a trabajar"</div>
+  <h2 class="rv">Written, ready to paste. Segment: stablecoin/wallet apps, LATAM.</h2>
+  <p class="lede rv">Everything below is ready to copy. Full creative + the EN/ES toggle lives in the flagship doc; here is the operational sequence + the exact pieces to publish, in order.</p>
+
+  <div class="day rv"><div class="d">FRIDAY (end of build week) · THE TEASER</div><h3>Build anticipation — intrigue + a date, never the product</h3>
+    <div class="copy"><span class="lab">X · @labs_compass</span>Storing dollars is half an app.
+Aug 4, we show you the other half. 🧭</div>
+    <div class="copy"><span class="lab">Eli · her channel (her voice)</span>We've been heads-down for a reason. For months I've watched LATAM fintechs hold billions in digital dollars and do… nothing with them. That changes next week. 👀</div>
+    <div class="sub2">ES option for LATAM placements: "Algo se está cocinando para las fintechs de LATAM. 4 de agosto."</div>
+  </div>
+
+  <div class="day rv"><div class="d">DAY 1–2 (Aug 4–5) · GO LOUD</div>
+    <span class="ch c-x">X THREAD</span>
+    <div class="copy"><span class="lab">post 1 of thread</span>Stablecoin apps have a retention problem nobody names:
+
+your users hold the dollars, and whoever pays yield takes them.
+
+Building Earn in-house: 8 months. Integrating it: days. The math isn't close. 🧵</div>
+    <span class="ch c-vid">GIN VIDEO (ES)</span> <span class="ch c-x">+ Eli hot-take</span>
+    <p class="note">Gin's 90-sec video (ES, from the flagship script) + Eli reshares. Post the 3 billboard images as visuals.</p>
+  </div>
+
+  <div class="day rv"><div class="d">DAY 3 (Aug 6) · GO DEEP</div>
+    <span class="ch c-blog">BLOG</span>
+    <div class="copy"><span class="lab">title + intro (full text in flagship doc)</span>"LATAM Has Enough Stablecoin Decks. It Needs Products."
+The region digitized the dollar. The apps winning retention aren't the ones holding balances — they're the ones putting balances to work…</div>
+    <span class="ch c-li">COMPANY LINKEDIN</span>
+    <div class="copy"><span class="lab">LinkedIn</span>Your users want yield. Your engineers want you to stop adding integrations to the backlog.
+
+With Compass underneath, Arca gave their users dollar-yield in weeks — non-custodial. Any stablecoin app in LATAM can do the same. 🇲🇽🇦🇷
+
+Yield on your roadmap? 30-min walkthrough. 👇</div>
+  </div>
+
+  <div class="day rv"><div class="d">DAY 4 (Aug 7) · ACTIVATE (Mailchimp goes out)</div>
+    <span class="ch c-mail">MAILCHIMP · LATAM + Stablecoin-app tags only</span>
+    <div class="copy"><span class="lab">Subject</span>What is NOT having Earn costing you?</div>
+    <div class="copy"><span class="lab">Body (plain-text, personal)</span>Hi [First name],
+
+Quick one. Your users hold digital dollars in [Company] — and right now those dollars just sit there. The moment a competitor pays yield, users move.
+
+I built a 10-minute diagnostic: how much balance sits idle in your app, what the market would pay on it, and the margin you'd keep with a shared fee. No landing page, no form.
+
+Reply "yes" and I'll run it with your numbers.
+
+Gin
+Compass Labs</div>
+    <div class="sub2">ES for LATAM: Asunto "¿Cuánto te cuesta NO tener Earn?" — mismo cuerpo, localizado.</div>
+  </div>
+
+  <div class="day rv"><div class="d">DAY 5–10 · GO PERSONAL (Gmail — the pipeline part)</div>
+    <span class="ch c-mail" style="background:#eaeaea;color:#333">GMAIL · 1:1 to Tier A + LATAM 5</span>
+    <p class="note" style="margin-top:4px">Send the ready openers from the Target List — personalize [name] + one detail. WeWire (Eben, confirmed Earn interest), Roqqu, Quidax, Luno + Littio, Belo, DolarApp, Ripio, Decaf. Log each in Attio with Source campaign = <span class="field">202608-earn-latam</span>.</p>
+  </div>
+
+  <p class="note rv"><b>The full, polished creative (all 6 channels, EN/ES toggle, the film storyboard, the blog in full) is in <a href="compass-flagship-campaign.html">compass-flagship-campaign.html</a>.</b> This runbook is the <i>operational sequence</i> — what to publish, where, when.</p>
+</div></section>
+
+<!-- PART C -->
+<section id="c"><div class="wrap">
+  <div class="kicker rv">Part C · Launch checklist · print this</div>
+  <h2 class="rv">The day-by-day, tick as you go.</h2>
+  <div class="card rv"><b>Before launch (build week):</b>
+    <ul class="cl">
+      <li>Attio: 5 fields + [Gin] LATAM list done</li>
+      <li>Mailchimp: audience imported + tagged, campaign email saved as draft</li>
+      <li>Tracking sheet created with UTMs</li>
+      <li>Eli briefed (keeps posting) + teaser scheduled for Friday</li>
+      <li>Aidar: signup data + he's briefed as claim-checker</li>
+      <li>All campaign posts reviewed &amp; approved (Norte drafted, you approved)</li>
+    </ul>
+  </div>
+  <div class="card rv" style="margin-top:14px"><b>Launch week:</b>
+    <ul class="cl">
+      <li>Fri: teaser out (X + Eli)</li>
+      <li>Mon–Tue: X thread + Gin video + billboards + Eli hot-take</li>
+      <li>Wed: blog + company LinkedIn</li>
+      <li>Thu: Mailchimp email to LATAM+Stablecoin tags</li>
+      <li>Thu–next wk: personal Gmail openers to Tier A + LATAM 5, logged in Attio</li>
+      <li>+7 days: review with Norte — which angle got real replies</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- CLOSE -->
+<section style="background:#16121f;color:#fff"><div class="wrap" style="text-align:center">
+  <div class="kicker" style="color:var(--c9)">You've got this</div>
+  <p style="font-size:24px;font-weight:800;line-height:1.3;max-width:740px;margin:0 auto">The machine is: Attio (measure) + Mailchimp (the campaign email) + Gmail (the personal ones) + you posting social + Norte drafting everything. That's it. No magic, no scary automation. <span style="color:var(--c9)">One step at a time, and I'm on every step with you. 🧭</span></p>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Setup + Launch Runbook · Gin + Norte 🧭 · July 2026 · Buffer optional/last. Stuck on any step → paste it to Norte.<br>
+  ◆ <a href="compass-execution-simple.html">Execution Made Simple</a> · <a href="compass-flagship-campaign.html">Full Campaign Creative</a> · <a href="compass-target-list.html">Target List + Openers</a> · <a href="compass-claims-guardrails.html">Claims Library</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*50)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

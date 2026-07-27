@@ -3,192 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compass — How to Use Norte (your AI co-pilot)</title>
+<title>How to use Norte — Compass</title>
 <style>
-  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavl:#8b7cf6;--lav-soft:#eeeaff;--gold:#FFE14D;--coral:#FF7A66;--green:#19b57a;--mono:'SF Mono',Consolas,monospace}
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
-  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
-  section{padding:46px 0;border-bottom:1px solid #eceaf4}
-  h1{font-size:52px;line-height:1;letter-spacing:-0.03em;font-weight:800}
-  h2{font-size:29px;letter-spacing:-0.02em;font-weight:800;margin-bottom:6px}
-  h3{font-size:19px;font-weight:700}
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:12px;font-weight:700}
-  .lede{font-size:18px;color:#4a4458;max-width:780px;margin-top:8px}
-  .note{font-size:13px;color:#8a84a0;margin-top:10px}
-  .hero{background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:260% 260%;animation:flow 16s ease infinite;color:#fff;padding:66px 0 50px}
-  @keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-  .hero .kicker{color:var(--c9)}.hero p{color:#cfc8ea;margin-top:16px;font-size:18px;max-width:640px}
-  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:20px;margin-top:14px}
-  .grid{display:grid;gap:14px;margin-top:18px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
-  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:8px}
-  ol.steps{counter-reset:s;list-style:none;margin-top:12px}
-  ol.steps>li{position:relative;padding:12px 0 12px 42px;border-bottom:1px solid #f2f0f7;font-size:15px}
-  ol.steps>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:11px;font-family:var(--mono);font-weight:800;color:#fff;background:var(--lav-deep);width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px}
-  .chat{background:#fff;border:1px solid #e8e5f2;border-radius:14px;overflow:hidden;margin-top:14px}
-  .chat .u{background:#f4f2fb;padding:12px 16px;font-size:14.5px}
-  .chat .u b{font-family:var(--mono);font-size:11px;color:var(--lav-deep);display:block;margin-bottom:3px}
-  .chat .n{padding:12px 16px;font-size:14px;color:#2c2838}
-  .chat .n b{font-family:var(--mono);font-size:11px;color:var(--green);display:block;margin-bottom:3px}
-  .skill{background:#0d0a14;color:#c9c3e0;border-radius:10px;padding:14px;font-size:13px;margin-top:6px}
-  .skill .cmd{font-family:var(--mono);color:#8b7cf6;font-weight:700}
-  pre{background:#0d0a14;color:#c9c3e0;border-radius:10px;padding:16px;font-size:11.5px;line-height:1.6;overflow-x:auto;white-space:pre-wrap;margin-top:10px}
-  pre b{color:#8b7cf6}
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
-  .box{border-radius:12px;padding:16px 18px}
-  .yes{background:#e7f8f0;border:1px solid #b8ead0}.yes h4{color:#127a52}
-  .no{background:#fdf3f3;border:1px solid #f0d4d4}.no h4{color:#a33}
-  .box h4{font-family:var(--mono);font-size:12px;margin-bottom:8px}
-  .box ul{list-style:none;font-size:14px}.box li{padding:4px 0 4px 20px;position:relative}
-  .yes li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:800}.no li::before{content:"\2717";position:absolute;left:0;color:var(--coral);font-weight:800}
-  .warn{background:#fff3cd;border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;font-size:14px;margin-top:12px}
-  footer{padding:36px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
-  @media(max-width:760px){.g2,.g3,.split{grid-template-columns:1fr}h1{font-size:36px}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:840px;margin:0 auto;padding:0 26px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:56px 0 40px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c9befc;font-weight:700;margin-bottom:12px}
+  h1{font-size:42px;line-height:1.03;letter-spacing:-.03em;font-weight:800}
+  .hero p{margin-top:14px;color:#e7e3fb;font-size:17px;max-width:600px}
+  .big{background:var(--gold);color:var(--ink);padding:22px 26px;border-radius:16px;margin:28px 0;font-size:20px;font-weight:800}
+  .big span{font-weight:500;font-size:16px;display:block;margin-top:6px;color:#5a4a00}
+  section{padding:30px 0;border-bottom:1px solid #eceaf4}
+  h2{font-size:24px;font-weight:800;margin-bottom:4px}
+  .sub{color:#6a6480;font-size:15px;margin-bottom:18px}
+  table{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid #e8e5f2;border-radius:12px;overflow:hidden}
+  th{background:var(--lav);color:#fff;text-align:left;padding:11px 14px;font-size:13px}
+  td{padding:12px 14px;border-top:1px solid #eceaf4;vertical-align:top}
+  td.say{font-weight:700}
+  td .q{font-family:var(--mono);font-size:13.5px;color:var(--lav);background:var(--lav-soft);padding:3px 8px;border-radius:6px;display:inline-block}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .col{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:20px}
+  .col h3{font-size:17px;margin-bottom:6px}
+  .col .tagx{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .txt{background:var(--lav-soft);color:var(--lav)}.file{background:#e6f7f0;color:var(--green)}
+  .col p{font-size:14px;color:#4a4458}
+  .rules{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:8px 4px}
+  .rule{display:flex;gap:12px;padding:14px 18px;border-bottom:1px solid #f0eef7;align-items:flex-start}
+  .rule:last-child{border-bottom:none}
+  .rule .n{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .rule b{font-size:15px}.rule span{color:#4a4458;font-size:14px}
+  footer{padding:30px 0;color:#8a84a0;font-size:13px;text-align:center}
 </style>
 </head>
 <body>
 
 <div class="hero"><div class="wrap">
-  <div class="kicker">Compass Labs · For the team · How to use Norte 🧭</div>
-  <h1>Meet Norte — your<br>AI marketing co-pilot.</h1>
-  <p>You don't have to be a marketer. When you need a post, an email, or an outreach message, you just ask Norte and it writes it — in the Compass voice, with the right facts. Here's how it works, in 3 minutes.</p>
+  <div class="kick">Compass Labs · How to use Norte 🧭</div>
+  <h1>Just talk to Norte.</h1>
+  <p>Norte is our AI marketing co-pilot. You don’t need to write, design, or know anything technical. You ask — it makes it on-brand.</p>
 </div></div>
 
-<!-- WHAT IS NORTE -->
-<section><div class="wrap">
-  <div class="kicker">What is Norte?</div>
-  <h2>It's Compass's marketing brain, in an AI you can talk to.</h2>
-  <p class="lede">Norte is an AI assistant that already knows how Compass talks, what we're allowed to claim, and our three core messages. <b>Everyone can use it — Eli, Aidar, Funa, Gin.</b> You open your own Claude, tell Norte what you need, and it drafts it for you. You review and post. That's it.</p>
-  <div class="warn"><b>Why this matters:</b> content no longer bottlenecks on one person. Anyone can generate an on-brand post in 30 seconds. Gin runs the big marketing + the official accounts — but for your own posts and outreach, you're self-serve.</div>
-</div></section>
+<div class="wrap">
 
-<!-- HOW YOU USE IT -->
-<section style="background:#f4f2fb"><div class="wrap">
-  <div class="kicker">How you use it · dead simple</div>
-  <h2>Ask Norte. It writes. You post.</h2>
-  <p class="lede">You talk to Norte in plain language — no commands to memorize. Just tell it what happened or what you need. Examples of exactly what you'd type and what comes back:</p>
-
-  <div class="chat">
-    <div class="u"><b>YOU TYPE</b>"Norte, write me a LinkedIn post — we just went live with IXS on BNB Chain."</div>
-    <div class="n"><b>NORTE RETURNS</b>A finished LinkedIn post in the Compass voice, using approved claims, with one clear CTA. Two versions (safe + sharper). You pick one, tweak, post.</div>
+  <div class="big">The whole trick: tell Norte what you want, in plain words.
+    <span>“Write me a post about our BNB launch.” · “Make an image that says X.” · “Build the campaign for our new customer.” That’s it.</span>
   </div>
-  <div class="chat">
-    <div class="u"><b>YOU TYPE</b>"Norte, a customer asked if we hold the funds. Give me a short post answering it."</div>
-    <div class="n"><b>NORTE RETURNS</b>An "Objection of the Week" style post: "Do you hold the funds? No. Users sign in their own wallets…" — ready to post or turn into a 30-sec video.</div>
-  </div>
-  <div class="chat">
-    <div class="u"><b>YOU TYPE</b>"Norte, I'm messaging a fintech in Colombia about yield. Draft me a short outreach note."</div>
-    <div class="n"><b>NORTE RETURNS</b>A 3-sentence personalized opener you can send from LinkedIn or email.</div>
-  </div>
-  <p class="note">You never format, you never worry about the wording or the claims — Norte handles all of that. You just say what you need in normal words.</p>
-</div></section>
 
-<!-- WHAT YOU CAN DO -->
-<section><div class="wrap">
-  <div class="kicker">The things Norte can make for you</div>
-  <h2>Your self-serve menu.</h2>
-  <div class="grid g3">
-    <div class="card"><span class="tag">POST</span><h3>Any social post</h3><p style="font-size:13.5px;margin-top:6px">Give it a signal (a win, a ship, an objection) + where it goes → an on-brand X or LinkedIn post.</p></div>
-    <div class="card"><span class="tag">FRANCHISE</span><h3>A "show" episode</h3><p style="font-size:13.5px;margin-top:6px">"Give me a Backlog Files post" or "an Objection of the Week" → the next episode, ready.</p></div>
-    <div class="card"><span class="tag">OUTREACH</span><h3>An outreach message</h3><p style="font-size:13.5px;margin-top:6px">Tell it about the company → a personalized DM/email opener to send.</p></div>
-    <div class="card"><span class="tag">EMAIL</span><h3>An email</h3><p style="font-size:13.5px;margin-top:6px">A follow-up, a customer note, a partner amplification ask — drafted in your voice.</p></div>
-    <div class="card"><span class="tag">FOUNDER</span><h3>A founder post (Eli)</h3><p style="font-size:13.5px;margin-top:6px">"Turn this thought into a post in my voice" → conviction content, her style.</p></div>
-    <div class="card"><span class="tag">CAMPAIGN</span><h3>The day's campaign content</h3><p style="font-size:13.5px;margin-top:6px">"Give me everything for Day 1 of the Earn campaign" → all the posts for that day.</p></div>
-  </div>
-</div></section>
+  <section>
+    <h2>What to say to get what you want</h2>
+    <p class="sub">Copy the phrasing. If Norte needs more, it’ll ask you — that’s normal.</p>
+    <table>
+      <tr><th>You want…</th><th>Just say…</th></tr>
+      <tr><td class="say">A social post</td><td><span class="q">“write me a post about [what happened], for LinkedIn”</span></td></tr>
+      <tr><td class="say">An image / billboard</td><td><span class="q">“make me an image that says [your line]”</span></td></tr>
+      <tr><td class="say">A whole campaign</td><td><span class="q">“build the campaign for [the moment]”</span> → posts, emails, images, plan</td></tr>
+      <tr><td class="say">An email</td><td><span class="q">“draft an email to [who] about [what]”</span></td></tr>
+      <tr><td class="say">Fix a rough draft</td><td><span class="q">“make this sound like Compass”</span> (paste your text)</td></tr>
+    </table>
+  </section>
 
-<!-- OWNERSHIP -->
-<section style="background:#f4f2fb"><div class="wrap">
-  <div class="kicker">Who does what · so it's clear</div>
-  <h2>Freedom to post — with one brand.</h2>
-  <div class="split">
-    <div class="box yes"><h4>ANYONE (with Norte)</h4><ul>
-      <li>Your own posts on your personal accounts</li>
-      <li>Your outreach DMs to your accounts</li>
-      <li>Flagging signals + turning them into content</li>
-      <li>Franchise episodes in your lane</li>
-    </ul></div>
-    <div class="box no"><h4>GIN OWNS (not self-serve)</h4><ul>
-      <li>The official Compass accounts (X, company LinkedIn)</li>
-      <li>The big campaigns + their angle</li>
-      <li>Final approval on new claims / positioning</li>
-      <li>Anything customer-sensitive</li>
-    </ul></div>
-  </div>
-  <p class="note"><b>The rule:</b> post freely from your own voice; the official channels and big pushes go through Gin. Everyone uses the same Norte so it all sounds like Compass — that's the point.</p>
-</div></section>
+  <section>
+    <h2>Two ways to use Norte</h2>
+    <p class="sub">Same Norte, two “places.” Pick based on whether you need words or real files.</p>
+    <div class="two">
+      <div class="col">
+        <span class="tagx txt">Quick text · anywhere in Claude</span>
+        <h3>Use the skills in the Claude app or web</h3>
+        <p>Type <b>/post</b>, <b>/email</b>, etc. (or just describe it). You get finished, on-brand <b>words</b> in the chat. Copy, paste, publish. Perfect for a quick post or email.</p>
+      </div>
+      <div class="col">
+        <span class="tagx file">Real files · in Cowork</span>
+        <h3>Use Norte in Cowork</h3>
+        <p>Ask the same things and you get <b>actual files</b> — image PNGs, a full campaign folder, everything ready to download. No design or technical skills needed. This is where images and full campaigns come from.</p>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:14px">Simple rule: <b>need words → anywhere. Need image files or a full campaign package → Cowork.</b></p>
+  </section>
 
-<!-- STAYS ON BRAND -->
-<section><div class="wrap">
-  <div class="kicker">You literally can't mess it up</div>
-  <h2>Norte keeps everything on-brand + accurate.</h2>
-  <p class="lede">Norte has our voice, our three messages, and our approved facts built in. So whatever you ask, it comes out sounding like Compass — and it will <b>never</b> invent a number or claim. If a fact isn't approved, it writes <span style="font-family:var(--mono);font-size:13px">[NEEDS APPROVAL]</span> so you know to check with Gin/Aidar.</p>
-  <div class="grid g3">
-    <div class="card"><b>The voice</b><p style="font-size:13px;margin-top:4px">Clear, sharp, human. Never hype.</p></div>
-    <div class="card"><b>The 3 messages</b><p style="font-size:13px;margin-top:4px">Integration Tax · Proof · Where Finance Is Going.</p></div>
-    <div class="card"><b>The safe facts only</b><p style="font-size:13px;margin-top:4px">Thor $1.1B, Para 15M+, Arca live, non-custodial, ISO 27001…</p></div>
-  </div>
-</div></section>
+  <section>
+    <h2>The 3 rules that never change</h2>
+    <div class="rules">
+      <div class="rule"><div class="n">1</div><div><b>Norte writes. A human always posts.</b> <span>Nothing publishes automatically — on purpose, so someone reviews first.</span></div></div>
+      <div class="rule"><div class="n">2</div><div><b>Only approved facts.</b> <span>If Norte writes <b>[NEEDS APPROVAL]</b>, that number or claim must be confirmed before it goes out.</span></div></div>
+      <div class="rule"><div class="n">3</div><div><b>Same voice, same message, every time.</b> <span>The Compass voice, the 3 core messages, and the guardrails are already baked into every skill. You just ask.</span></div></div>
+    </div>
+  </section>
 
-<!-- NOT AUTOMATIC -->
-<section style="background:#f4f2fb"><div class="wrap">
-  <div class="kicker">The honest part · what's NOT automatic</div>
-  <h2>Norte writes it. You still press "post."</h2>
-  <p class="lede">To be clear: Norte does the <b>writing</b> — the slow, hard part. But <b>you still post it and send it yourself.</b> Nothing publishes automatically. That's on purpose: a human always decides what goes out and hits the button. Norte = the writer. You = the editor + publisher.</p>
-</div></section>
-
-<!-- SETUP -->
-<section><div class="wrap">
-  <div class="kicker">Get set up · 2 minutes, once</div>
-  <h2>Turn your Claude into Norte.</h2>
-  <ol class="steps">
-    <li>Open Claude (web or app) in your account.</li>
-    <li>Paste the <b>Norte prompt</b> below as your first message. (Gin will share it — it's also in the Claims Library doc.)</li>
-    <li>That's it — now just talk to Norte normally: "write me a post about…", "draft an opener for…", etc.</li>
-  </ol>
-  <p class="note">Do this once and keep the chat, or paste the prompt at the top whenever you start a new one. The prompt IS Norte — it carries the voice, the messages, and the safe facts.</p>
-  <details style="margin-top:14px">
-    <summary style="cursor:pointer;font-weight:700;color:var(--lav-deep)">▸ Show the Norte prompt (copy this)</summary>
-    <pre>You are Norte, Compass Labs' marketing co-pilot. Write in our voice, using only approved facts.
-
-WHAT COMPASS IS (never improvise a new version):
-"Compass lets fintechs, wallets and stablecoin platforms launch yield, credit,
-trading and tokenized-asset products through one integration — non-custodial,
-live in days." Compass is the LAYER UNDERNEATH; the fintech is the hero.
-
-VOICE: Clear like Monzo. Sharp like Gandhi. Short confident sentences. One idea
-per piece. Explain the scary part (custody) before they ask. Smart enough for a
-CTO, clear enough for their CEO, human enough to remember. No hype words.
-
-THE 3 MESSAGES (pick ONE per piece):
-- The Integration Tax (build = 6–12 months + 3–8 engineers vs one integration)
-- Proof, Not Promises (Thor $1.1B, Para 15M+ users, Arca live in LATAM, ISO 27001)
-- Where Finance Is Going (RWAs need distribution; agents need boundaries)
-
-APPROVED FACTS ONLY (exact wording):
-- "Thor Wallet moved more than $1.1B through Compass in 2025."
-- "Para — 100+ fintech apps, 15M+ users — uses Compass as its official DeFi layer."
-- "Arca is live in LATAM on Compass (since June 2026)."
-- "Constellation: signed to live in two weeks, non-custodial."
-- "Six products, one integration." · "Live in days." · Non-custodial · ISO 27001 · 99.99% uptime.
-- RWA venues: Ondo, Midas, IXS (+BNB Chain), Keyrock, InvestaX. · AI-native: docs, CLI, MCP.
-If a fact isn't listed, write [NEEDS APPROVAL] — never invent a number, a customer
-result, a quote, or the compliance/KYB capability.
-
-NEVER: politics, financial advice/price predictions, naming competitors, hype
-("revolutionary/seamless/thrilled to announce"), rocket emojis, the same text on every channel.
-
-LANGUAGE: English by default. Spanish only when the target is LATAM — localized, not translated.
-
-OUTPUT: give 2 versions (one safe, one sharper) + say which message it uses.</pre>
-  </details>
-</div></section>
-
-<footer><div class="wrap">
-  Compass Labs · How to Use Norte 🧭 · for the team · July 2026 · Norte writes it, you post it. Questions → ask Gin.<br>
-  ◆ <a href="compass-team-playbook.html">Team Playbook</a> · <a href="compass-how-the-machine-runs.html">How the Machine Runs</a> · <a href="compass-claims-guardrails.html">Claims Library</a> · <a href="compass-master-sop.html">Master SOP</a>
-</div></footer>
-
+</div>
+<footer><div class="wrap">Compass Labs · How to use Norte 🧭 · keep it simple: just ask.</div></footer>
 </body>
 </html>

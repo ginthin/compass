@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Meeting Map: what to send &amp; present</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:920px;margin:0 auto;padding:0 30px}
+  .hero{background:linear-gradient(120deg,#0d0a14,#3b2c6e);color:#fff;padding:52px 0 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--c9);margin-bottom:12px;font-weight:700}
+  h1{font-size:44px;line-height:1.02;letter-spacing:-0.02em;font-weight:800}
+  .hero p{color:#cfc8ea;margin-top:14px;font-size:17px;max-width:640px}
+  section{padding:34px 0;border-bottom:1px solid #eceaf4}
+  h2{font-size:26px;font-weight:800;margin-bottom:4px}
+  .when{font-family:var(--mono);font-size:12px;color:var(--lav-deep);font-weight:700;letter-spacing:.05em}
+  .doc{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f2f0f7}
+  .doc .role{font-family:var(--mono);font-size:10px;font-weight:700;border-radius:6px;padding:3px 8px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+  .r-main{background:var(--lav-deep);color:#fff}.r-support{background:var(--lav-soft);color:var(--lav-deep)}.r-private{background:#16121f;color:var(--gold)}
+  .doc .fn{font-family:var(--mono);font-size:12.5px;color:#3b47a0;background:#eef;border-radius:5px;padding:1px 6px}
+  .doc p{font-size:14px}
+  .say{background:#f7f5fc;border-left:3px solid var(--lav);border-radius:0 10px 10px 0;padding:13px 15px;font-size:14.5px;margin-top:12px}
+  .say b{color:var(--lav-deep)}
+  .goal{font-family:var(--mono);font-size:12px;color:var(--green);font-weight:700;margin-top:10px}
+  .old{background:#fff;border:1px solid #ffe0a3;border-left:5px solid var(--gold);border-radius:12px;padding:18px;margin-top:14px}
+  .old b{color:#a86308}
+  footer{padding:34px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:700px){h1{font-size:32px}.doc{flex-direction:column;gap:6px}}
+  @media print{.hero,.r-main,.r-private{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Meeting Map · Gin + Norte 🧭</div>
+  <h1>What to send &amp; present — 3 moments.</h1>
+  <p>Don't overthink which of the many docs to use. Here's exactly what goes where, and what to say. Few docs per moment, on purpose.</p>
+</div></div>
+
+<!-- AIDAR PRE-READ -->
+<section><div class="wrap">
+  <div class="when">① SEND TODAY · Aidar's pre-read (before the call)</div>
+  <h2>2 docs. That's it.</h2>
+  <div class="doc"><span class="role r-main">MAIN</span><div><span class="fn">compass-execution-for-engineering.html</span><p>How the machine runs + engineering's role (~30 min/week, his 3 asks). This is the one he must read.</p></div></div>
+  <div class="doc"><span class="role r-support">OPTIONAL</span><div><span class="fn">compass-claims-guardrails.html</span><p>So he sees the claim-check guardrail he owns.</p></div></div>
+  <div class="say"><b>Message to send him:</b> "Aidar — before tomorrow, 5-min read. This is how the marketing machine runs and what I need from engineering — small and specific. We'll lock it on the call."</div>
+</div></section>
+
+<!-- TOMORROW CALL -->
+<section><div class="wrap">
+  <div class="when">② TOMORROW · your execution call (you drive)</div>
+  <h2>1 private guide + 2 on screen.</h2>
+  <div class="doc"><span class="role r-private">PRIVATE</span><div><span class="fn">compass-aidar-call-prep.html</span><p>Your minute-by-minute talk track + the CTO questions with ready answers. Keep this open for you only.</p></div></div>
+  <div class="doc"><span class="role r-support">SHARE SCREEN</span><div><span class="fn">compass-execution-for-engineering.html</span> + <span class="fn">compass-how-the-machine-runs.html</span><p>Walk him through these live so he sees it's engineered, not chaos.</p></div></div>
+  <div class="goal">GOAL: he understands the execution + says YES to the 3 asks (signup data, claim checks, video interviews).</div>
+</div></section>
+
+<!-- TUESDAY TEAM -->
+<section><div class="wrap">
+  <div class="when">③ TUESDAY · team presentation (inspire + assign roles)</div>
+  <h2>Present with 2, keep 1 private, share 1 as reference.</h2>
+  <div class="doc"><span class="role r-main">PRESENT</span><div><span class="fn">compass-team-playbook.html</span><p>The role cards — go person by person, assign, get a yes. Your main visual.</p></div></div>
+  <div class="doc"><span class="role r-main">PRESENT</span><div><span class="fn">compass-how-the-machine-runs.html</span><p>To explain how it works (clock + triggers) so nobody's confused.</p></div></div>
+  <div class="doc"><span class="role r-private">PRIVATE</span><div><span class="fn">compass-team-rehearsal-script.html</span><p>Your 90-sec script + failure-prevention. Rehearse it, keep it for you.</p></div></div>
+  <div class="doc"><span class="role r-support">SHARE AFTER</span><div><span class="fn">compass-master-sop.html</span><p>Send it as "here's the how-to for everything" — the reference they consult later.</p></div></div>
+  <div class="goal">GOAL: team is excited about the vision AND each person knows their role + says yes.</div>
+</div></section>
+
+<!-- OLD SETUP -->
+<section><div class="wrap">
+  <div class="when">HOW IT FITS WHAT YOU ALREADY HAD</div>
+  <h2>Nothing's thrown away — it's organized.</h2>
+  <div class="old">
+    <p style="font-size:15px"><b>Your old setup</b> (two tracks — Compass + Eli — Mailchimp, Buffer, the 5-channel push) doesn't disappear. It gets <b>structured into the machine</b>:</p>
+    <ul style="margin:10px 0 0 18px;font-size:14.5px;line-height:1.9">
+      <li>The two tracks → become the <b>voices + franchises</b> (everyone has a voice now, not just Compass + Eli).</li>
+      <li>Mailchimp → stays, for the campaign email + newsletter + later signup sequences.</li>
+      <li>Buffer → added at the end (post by hand until then).</li>
+      <li>The 5-channel push → is now the <b>campaign procedure</b> (§10 of the SOP), repeatable.</li>
+      <li>The old Session-2 strategy → <b>replaced</b> by the North Star + Strategy + Master SOP as the source of truth.</li>
+    </ul>
+  </div>
+  <p class="note" style="font-size:13px;color:#8a84a0;margin-top:12px">The full library (North Star, Strategy, Flagship Campaign, Vision Board, etc.) lives in <b>START-HERE-compass.html</b> — that's your index for everything else.</p>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Meeting Map · Gin + Norte 🧭 · July 2026 · Few docs per moment, on purpose.<br>
+  ◆ <a href="START-HERE-compass.html">Start Here (full index)</a> · <a href="compass-aidar-call-prep.html">Aidar Prep</a> · <a href="compass-team-playbook.html">Team Playbook</a> · <a href="compass-master-sop.html">Master SOP</a>
+</div></footer>
+
+</body>
+</html>

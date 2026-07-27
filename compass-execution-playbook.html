@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Execution &amp; Operations Playbook</title>
+<style>
+  :root{--ink:#16121f;--ink2:#4a4458;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--lav-line:#d9d2f7;--yellow:#ffd400;--coral:#ff5a5f;--green:#19b57a;--amber:#e0962e;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  section{padding:64px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:56px;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:34px;letter-spacing:-0.015em;font-weight:800;line-height:1.1;margin-bottom:8px}
+  h3{font-size:20px;font-weight:700;margin-top:6px}
+  h4{font-size:15px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:var(--ink2);max-width:840px;margin-top:12px}
+  .grid{display:grid;gap:16px;margin-top:26px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .hyp{color:#c2860a;font-weight:700}
+  /* HERO */
+  .hero{background:linear-gradient(120deg,#16121f,#3b2c6e);color:#fff;padding:100px 0 76px;border:none}
+  .hero .kicker{color:#c9befc}.hero .sub{margin-top:22px;color:#b9b2d6;font-size:17px;max-width:740px}
+  /* DAY */
+  .day{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:16px}
+  .day .d{font-family:var(--mono);font-size:12px;color:var(--lav-deep);font-weight:700;letter-spacing:.05em}
+  .day h4{margin:6px 0 8px}
+  .day ul{list-style:none;font-size:12.5px;color:var(--ink2)}
+  .day li{padding:3px 0 3px 14px;position:relative}.day li::before{content:"▸";position:absolute;left:0;color:var(--lav)}
+  .who{display:inline-block;font-size:10px;font-family:var(--mono);border-radius:5px;padding:1px 5px;font-weight:700}
+  .w-gin{background:var(--lav-soft);color:var(--lav-deep)}.w-ai{background:#e7f8f0;color:#127a52}.w-team{background:#fdf1e0;color:#a86308}.w-cto{background:#eef;color:#3b47a0}
+  /* RACI */
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #eee}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#8a84a0;text-transform:uppercase}
+  td .r{font-weight:800;color:var(--lav-deep)}
+  .lane{background:#fff;border:1px solid #e8e5f2;border-radius:12px;overflow:hidden}
+  .lane .hd{background:#16121f;color:#fff;padding:12px 16px;font-weight:700;font-size:14px}
+  .lane .bd{padding:14px 16px;font-size:13.5px;color:var(--ink2)}
+  /* trigger table */
+  .trg{border:1px solid #e8e5f2;border-radius:12px;overflow:hidden;margin-top:8px}
+  .trg .row{display:grid;grid-template-columns:1fr 1.4fr 0.8fr;border-bottom:1px solid #efedf6}
+  .trg .row>div{padding:11px 14px;font-size:13px}
+  .trg .h{background:#16121f;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+  .trg .sig{font-weight:700;color:var(--lav-deep)}
+  .seq{counter-reset:s;margin-top:8px}
+  .seq .step{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed #e3e0ee}
+  .seq .step::before{counter-increment:s;content:counter(s);font-family:var(--mono);font-weight:800;color:#fff;background:var(--lav-deep);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+  .pill{display:inline-block;font-size:11px;font-family:var(--mono);background:#f4f2fb;border-radius:6px;padding:2px 7px;color:#6d6685;margin-right:4px}
+  footer{padding:48px 0;color:#8a84a0;font-size:13px}
+  @media(max-width:920px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}.trg .row{grid-template-columns:1fr}h1{font-size:40px}}
+  @media print{section{page-break-inside:avoid}.hero{-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Execution &amp; Operations Playbook · the "how we actually run this"</div>
+  <h1>Strategy is the map.<br>This is the engine room.</h1>
+  <p class="sub">The strategy doc says what and why. This one says <b>who does what, on which day, with which tool, and in what order we build it.</b> It's the most important document because a brilliant strategy nobody can operate is just a nice PDF. Read this as the operating manual for the whole marketing machine — plus the detailed build plan for the first thing we ship: the signup lifecycle.</p>
+</div></div>
+
+<!-- THREE MOTIONS -->
+<section><div class="wrap">
+  <div class="kicker">01 · The three motions — everything we publish is one of these</div>
+  <h2>Daily heartbeat · Weekly franchises · Occasional campaigns.</h2>
+  <p class="lede">The #1 confusion to kill: "what do we make and when?" Answer: everything falls into exactly three motions, each with its own cadence, owner and how-it's-made. Learn these three and the whole calendar makes sense.</p>
+  <div class="grid g3">
+    <div class="card" style="border-top:5px solid var(--green)"><span class="tag" style="background:#e7f8f0;color:#127a52">MOTION 1 · DAILY</span><h3>The Heartbeat</h3>
+      <p style="font-size:13.5px;margin-top:6px"><b>What:</b> 1 X post + engagement + a few outbound DMs. Keeps us present and top-of-feed.<br><b>Cadence:</b> every weekday.<br><b>How made:</b> Claude drafts from the franchise menu; poster approves against the guardrail checklist; ships same day — no meeting.<br><b>Who:</b> rotates, but Gin owns consistency.</p></div>
+    <div class="card" style="border-top:5px solid var(--lav)"><span class="tag">MOTION 2 · WEEKLY</span><h3>The Franchises</h3>
+      <p style="font-size:13.5px;margin-top:6px"><b>What:</b> our 8 recurring "shows" (episodes) — blog/video/LinkedIn. This is the bulk of our content.<br><b>Cadence:</b> pick 2–4 episodes per week.<br><b>How made:</b> chosen Monday, Claude drafts, quick gate if needed, ships Thu–Fri.<br><b>Who:</b> each franchise has an owner (see §03).</p></div>
+    <div class="card" style="border-top:5px solid var(--coral)"><span class="tag" style="background:#fbeaea;color:#a33">MOTION 3 · OCCASIONAL</span><h3>The Campaigns</h3>
+      <p style="font-size:13.5px;margin-top:6px"><b>What:</b> a full multi-channel push around one big moment (a launch, a flagship partnership, a market entry). Runs ~2–3 weeks.<br><b>Cadence:</b> max 1 running at a time.<br><b>How made:</b> the full engine — brief → all channels → activation → review.<br><b>Who:</b> Gin quarterbacks; team executes lanes.</p></div>
+  </div>
+  <div class="card" style="margin-top:14px;background:var(--lav-soft);border-color:var(--lav-line)"><b>How they relate:</b> the heartbeat never stops. Franchises run every week on top of it. A campaign occasionally rises above both for a big moment — and when it does, some franchise episodes and daily posts simply become <i>part of</i> the campaign that week. Three layers, one calendar.</div>
+</div></section>
+
+<!-- THE WEEK -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker">02 · The operating week — two scenarios, pick one</div>
+  <h2>Same machine, two tempos. We recommend the high-tempo one.</h2>
+  <p class="lede">One publish day (Thursday) means a quiet feed most of the week and a bottleneck if approvals slip. For a team that wants <b>engagement and volume</b>, spreading posts across the week beats bunching them. So here are two real options with honest pros/cons — and a recommendation.</p>
+
+  <div class="card" style="margin-top:10px;border-top:5px solid #8a84a0"><span class="tag" style="background:#eee;color:#555">SCENARIO A · "CLEAN LANES" — one publish day</span>
+    <div class="grid g5" style="margin-top:6px">
+      <div class="day"><div class="d">MON</div><h4>Decide</h4><ul><li>/weekly-signals digest <span class="who w-ai">AI</span></li><li>30-min Eli + Gin <span class="who w-gin">Gin</span></li><li>Pick franchises + campaign beat</li></ul></div>
+      <div class="day"><div class="d">TUE</div><h4>Draft</h4><ul><li>Claude drafts all <span class="who w-ai">AI</span></li><li>Visuals, activation list, video queue</li></ul></div>
+      <div class="day"><div class="d">WED</div><h4>Approve</h4><ul><li>Claims/partners cleared <span class="who w-cto">CTO</span></li><li>Positioning pass, UTMs, Buffer</li></ul></div>
+      <div class="day"><div class="d">THU</div><h4>Publish</h4><ul><li>X → LinkedIn → blog</li><li>Videos live · reply</li></ul></div>
+      <div class="day"><div class="d">FRI</div><h4>Activate</h4><ul><li>Email if asset ready</li><li>Named-account DMs <span class="who w-team">team</span></li><li>Signal sweep <span class="who w-gin">Gin</span></li></ul></div>
+    </div>
+    <div class="grid g2" style="margin-top:10px">
+      <div style="background:#f2fbf7;border-radius:10px;padding:12px;font-size:13px"><b style="color:#127a52">PROS</b> · clean separation, easy to learn, low daily overhead, safe for approvals.</div>
+      <div style="background:#fdf3f3;border-radius:10px;padding:12px;font-size:13px"><b style="color:#a33">CONS</b> · feed is quiet Mon–Wed, everything rides on Thursday, one slipped approval kills the week, less engagement (algorithms reward frequency).</div>
+    </div>
+    <p class="note"><b>Best when:</b> a campaign is NOT running and we want a calm, predictable baseline.</p></div>
+
+  <div class="card" style="margin-top:14px;border-top:5px solid var(--lav-deep)"><span class="tag">SCENARIO B · "HIGH-TEMPO" — two publish days, no dedicated approval day ★ RECOMMENDED NOW</span>
+    <div class="grid g5" style="margin-top:6px">
+      <div class="day" style="border-color:var(--lav)"><div class="d">MON</div><h4>Decide + draft</h4><ul><li>Digest + 30-min Eli + Gin <span class="who w-gin">Gin</span></li><li>Claude drafts the week same day <span class="who w-ai">AI</span></li></ul></div>
+      <div class="day" style="border-color:var(--lav)"><div class="d">TUE</div><h4>Publish #1</h4><ul><li>Batch 1: X + a franchise + video</li><li>Approvals happen <b>inline/async</b> (Slack 👍), not a whole day <span class="who w-cto">CTO</span></li></ul></div>
+      <div class="day" style="border-color:var(--lav)"><div class="d">WED</div><h4>Engage</h4><ul><li>Reply to everything, DMs to named accounts <span class="who w-team">team</span></li><li>Draft batch 2 <span class="who w-ai">AI</span></li></ul></div>
+      <div class="day" style="border-color:var(--lav)"><div class="d">THU</div><h4>Publish #2</h4><ul><li>Batch 2: LinkedIn + blog/video + partner kit</li><li>Everyone reshares &amp; replies</li></ul></div>
+      <div class="day" style="border-color:var(--lav)"><div class="d">FRI</div><h4>Activate + capture</h4><ul><li>Email if asset ready · more DMs</li><li>Signal sweep → Monday <span class="who w-gin">Gin</span></li></ul></div>
+    </div>
+    <div class="grid g2" style="margin-top:10px">
+      <div style="background:#f2fbf7;border-radius:10px;padding:12px;font-size:13px"><b style="color:#127a52">PROS</b> · <b>2× the posting</b>, feed alive all week, more engagement &amp; reach, no single point of failure, approvals never block (async), faster tempo for the fundraise window.</div>
+      <div style="background:#fdf3f3;border-radius:10px;padding:12px;font-size:13px"><b style="color:#a33">CONS</b> · slightly more daily attention, approvals must be genuinely fast (the discipline: 👍 within 2h or it ships on the rules), needs the guardrails + claims library solid so async approval is safe.</div>
+    </div>
+    <p class="note"><b>Why we recommend it now:</b> we're pre-raise and need visibility + engagement, and posting frequency is the single biggest lever on reach. Cutting the dedicated Wednesday approval day (approvals go async) is what frees the room for a second publish day — <i>more output, not more meetings.</i> It only works because §14's "approve the criteria" makes most content ship without a gate.</p></div>
+  <p class="note"><b>Total human time either way:</b> ~30 min Monday + fast async approvals + the DMs + sessions. The difference isn't more work — it's <i>when</i> content lands. During a campaign, Scenario B is the default; the campaign beats slot into the two publish days.</p>
+</div></section>
+
+<!-- FRANCHISE OPERATING SYSTEM -->
+<section><div class="wrap">
+  <div class="kicker">03 · The franchise operating system — how, when, who, what</div>
+  <h2>8 shows. Each with an owner and a slot.</h2>
+  <p class="lede">A franchise is a recurring show with episodes. Here's the part that was missing: <b>who owns each, roughly when it runs, and what a "new episode" is triggered by.</b> Nobody faces a blank page — you check "does my show have an episode this week?"</p>
+  <table>
+    <tr><th>Franchise (show)</th><th>Owner</th><th>Typical slot</th><th>An episode is triggered by…</th></tr>
+    <tr><td><b>The Backlog Files</b> · build-vs-buy</td><td>Gin + <b>Eli</b> (POV)</td><td>Weekly · X/LinkedIn</td><td>any build-vs-buy number worth dramatizing</td></tr>
+    <tr><td><b>The Boring Work</b> · proof behind numbers</td><td>Gin + <b>Engineering</b> (not just CTO — whoever shipped it)</td><td>Bi-weekly · LinkedIn/blog</td><td>a milestone or a customer volume figure (approved)</td></tr>
+    <tr><td><b>Venue Drumbeat</b> · new RWA venue</td><td>BD + marketing + <b>Eli reshare</b></td><td>Weekly (when a venue lands)</td><td>a signed/live venue integration</td></tr>
+    <tr><td><b>Objection of the Week</b></td><td><b>Engineering</b> + Sales (the eng who owns that area)</td><td>Weekly · short video</td><td>a real objection logged in Attio</td></tr>
+    <tr><td><b>What We Handle / What You Own</b></td><td><b>Engineering team</b> (rotates — CTO + whichever eng knows it)</td><td>Bi-weekly · video/blog</td><td>an architecture topic worth explaining</td></tr>
+    <tr><td><b>Products, Not Decks</b> · regional</td><td>Gin (LATAM) / Funa (Africa)</td><td>Weekly · localized</td><td>a real use case or regional insight from calls</td></tr>
+    <tr><td><b>Eli's Field Notes</b> · founder</td><td><b>Elisabeth</b></td><td><b>2–3× week</b> · her channels</td><td>a lesson, a market take, a build-in-public moment</td></tr>
+    <tr><td><b>Agentic Test Logs</b> · capped 20%</td><td><b>Eli + Engineering</b> (the team running the tests)</td><td>Occasional</td><td>an agentic experiment worth showing</td></tr>
+  </table>
+  <div class="card" style="margin-top:14px;background:#eef;border-color:#c9d0f0"><b>This is a team sport — on purpose.</b> Eli isn't only "the founder channel"; she brings POV to the Backlog Files, reshares the Drumbeat, and co-owns Agentic. And the technical franchises aren't "the CTO's job" — they're <b>Engineering's</b>, rotating to whoever actually built the thing (they source via a 15-min interview, §07-style; Claude writes it). The more voices, the more the whole team is visibly building — which is itself the brand.</div>
+  <div class="card" style="margin-top:12px;background:var(--lav-soft);border-color:var(--lav-line)"><b>The Monday move, concretely:</b> open the digest → for each franchise, ask "did something happen that gives this show an episode?" → pick the 2–4 strongest → Claude drafts them same day. A franchise with no trigger this week simply doesn't run. This is how we go from "what do we post?!" to "which shows have news?"</div>
+</div></section>
+
+<!-- CAMPAIGN OPERATING SYSTEM -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker">04 · The campaign operating system — how a big push actually runs</div>
+  <h2>When something big happens, this kicks in.</h2>
+  <p class="lede">A campaign isn't "more posts." It's a coordinated 2–3 week push where every channel plays a different role toward one commercial goal. Here's the exact assembly line — what gets made, uploaded where, by whom, when.</p>
+  <div class="seq">
+    <div class="step"><div><b>Trigger &amp; score</b> — a signal scores Tier-1 (≥10/14) in the Monday meeting. Max one campaign at a time. <span class="pill">Mon</span><span class="pill">Gin+Eli</span></div></div>
+    <div class="step"><div><b>The brief</b> — /campaign-brief generates the one-page source of truth: what/who/pain/proof/CTA/accounts/partner/visual. <span class="pill">Mon–Tue</span><span class="pill">Claude→Gin</span></div></div>
+    <div class="step"><div><b>Produce the assets</b> — all channel drafts + hero/velocity video scripts + billboard set + Mailchimp asset + activation list. Uploaded to a shared campaign folder. <span class="pill">Tue</span><span class="pill">Claude</span></div></div>
+    <div class="step"><div><b>Approve</b> — CTO claims, partner mention, positioning pass. Video generated in HeyGen. Billboards designed. UTMs built. <span class="pill">Wed</span><span class="pill">CTO/owners</span></div></div>
+    <div class="step"><div><b>Schedule</b> — everything loaded into Buffer in sequence (X → LinkedIn → blog → email). Partner kit ready. <span class="pill">Wed</span><span class="pill">channel owner</span></div></div>
+    <div class="step"><div><b>Launch week</b> — publish in order, amplify, respond. The 10–15 named accounts get personal DMs. PR exclusive out. <span class="pill">Thu–next wk</span><span class="pill">whole team</span></div></div>
+    <div class="step"><div><b>Review &amp; reuse</b> — 7-day content signal, 30-day commercial signal (Attio source_campaign). Winners → sales slides, snippets, investor update via /reuse. <span class="pill">+7 / +30 days</span><span class="pill">Gin</span></div></div>
+  </div>
+  <p class="note"><b>Where things live:</b> one campaign folder per campaign (brief, all drafts, visuals, video files, activation list, tracking sheet). Everything tagged with the campaign code (e.g. <span class="pill">202608-earn-latam-t1</span>) across Buffer, Mailchimp and Attio, so measurement is automatic.</p>
+</div></section>
+
+<!-- RACI -->
+<section><div class="wrap">
+  <div class="kicker">05 · Who owns what — the RACI (no orphaned work)</div>
+  <h2>Everyone sells. But someone owns each thing.</h2>
+  <table>
+    <tr><th>Area</th><th>Owner (Accountable)</th><th>Does the work</th><th>Approves</th></tr>
+    <tr><td>The whole machine runs</td><td class="r">Gin</td><td>Gin + Claude</td><td>—</td></tr>
+    <tr><td>Positioning &amp; priority</td><td class="r">Eli + Gin</td><td>Gin</td><td>Eli</td></tr>
+    <tr><td><b>Tier-1 campaign angle &amp; narrative</b> (the big pushes)</td><td class="r">Gin</td><td>Gin + Claude</td><td><b>Eli signs off the angle</b></td></tr>
+    <tr><td>Fundraise-adjacent / investor content</td><td class="r">Eli + Gin</td><td>Gin + Claude</td><td><b>Eli</b></td></tr>
+    <tr><td>Daily heartbeat &amp; routine franchise posts</td><td class="r">Gin</td><td>whoever owns the show</td><td>— (ships on the rules)</td></tr>
+    <tr><td>Technical claims / architecture voice</td><td class="r">CTO</td><td>Engineering + Claude</td><td>CTO</td></tr>
+    <tr><td>LATAM growth</td><td class="r">Gin</td><td>Gin + Claude</td><td>—</td></tr>
+    <tr><td>Africa / Middle East growth</td><td class="r">Funa</td><td>Funa + Claude</td><td>—</td></tr>
+    <tr><td>Founder channel</td><td class="r">Eli</td><td>Eli (+ Claude drafts)</td><td>Eli</td></tr>
+    <tr><td>Partner / customer approvals</td><td class="r">Relationship owner</td><td>—</td><td>the partner/customer</td></tr>
+    <tr><td>Publishing / Buffer</td><td class="r">named channel owner</td><td>Claude preps</td><td>—</td></tr>
+    <tr><td>Signup lifecycle</td><td class="r">Gin</td><td>Claude + Gin</td><td>CTO on product data</td></tr>
+    <tr><td>Measurement / reporting</td><td class="r">Gin</td><td>Claude auto-reports</td><td>—</td></tr>
+  </table>
+  <p class="note"><b>The principle:</b> Gin owns that the machine runs and produces learning + pipeline. That does <i>not</i> mean Gin makes every asset — it means every asset has a clear owner and nothing falls through the cracks. When we hire a senior marketing lead post-raise, they inherit this table.</p>
+</div></section>
+
+<!-- SIGNUP LIFECYCLE — DETAILED BUILD -->
+<section style="background:#16121f;color:#fff"><div class="wrap">
+  <div class="kicker" style="color:#c9befc">06 · Build this FIRST — the signup lifecycle, in detail</div>
+  <h2 style="color:#fff">The warmest leads we have are falling into a hole.<br>Here's the exact plan to fix it.</h2>
+  <p class="lede" style="color:#b9b2d6">People sign up for our API free, get one email, then silence. This is the fastest money on the table and the first thing we build. The rule that keeps it good: <b style="color:#fff">quality of touchpoints over quantity.</b> Fewer, sharper, better-timed emails — triggered by what they actually do, never a spray.</p>
+
+  <div class="grid g2">
+    <div class="card" style="background:#241b3a;border-color:#3b2c6e;color:#fff"><span class="tag" style="background:#3b2c6e;color:#c9befc">THE TOUCHPOINT BUDGET (never be spammy)</span>
+      <p style="font-size:14px;color:#e8e3f7"><b>Hard cap:</b> no more than <b>~4 emails in the first 3 weeks</b> to any signup, and each must carry <i>real</i> value (a link that unblocks, an asset, a genuine question). The moment someone replies or activates, they exit the automated track and a human takes over. <b>Silence from us is better than noise.</b></p>
+      <p class="note" style="color:#8a84a0">Every email must pass one test: "would this be useful even if they never buy?" If no, don't send it.</p></div>
+    <div class="card" style="background:#241b3a;border-color:#3b2c6e;color:#fff"><span class="tag" style="background:#3b2c6e;color:#c9befc">SEGMENT FIRST (4 types)</span>
+      <p style="font-size:13.5px;color:#b9b2d6"><b>Explorer</b> (solo dev — help, don't sell) · <b>Builder</b> (eng at a real company — remove friction) · <b>Buyer</b> (fintech with a launch — route to a human fast) · <b>Ghost</b> (never activated — one honest question). Claude classifies each on signup from domain + intent + first actions.</p></div>
+  </div>
+
+  <h3 style="color:#fff;margin-top:28px">The triggers (behavior-based, not a timed drip)</h3>
+  <div class="trg">
+    <div class="row h"><div>When this happens…</div><div>…we send this (quality touchpoint)</div><div>Who</div></div>
+    <div class="row" style="background:#fff"><div class="sig">Signs up</div><div>Welcome + the ONE link to first value + "what are you building?" (one question)</div><div>AI</div></div>
+    <div class="row" style="background:#faf9fc"><div class="sig">No API key in 48h</div><div>"Stuck on setup? 3-step version + LLM-native docs." Helpful, not pushy.</div><div>AI</div></div>
+    <div class="row" style="background:#fff"><div class="sig">First API call ✅</div><div>"You're in. Teams like yours usually build [Earn] next — here's how."</div><div>AI</div></div>
+    <div class="row" style="background:#faf9fc"><div class="sig">Company domain + real usage (Buyer)</div><div>STOP automation → alert owner → personal note with full context</div><div>Human</div></div>
+    <div class="row" style="background:#fff"><div class="sig">🔥 Heavy usage, never contacts us, no upgrade</div><div>Human reach-out: "You're using a lot — is pricing/packaging in the way? What would make it worth upgrading?" (pricing &amp; subscription-model signal)</div><div>Human</div></div>
+    <div class="row" style="background:#faf9fc"><div class="sig">Activated, then went quiet</div><div>"You tested [X] — want a hand getting it production-ready?"</div><div>AI</div></div>
+    <div class="row" style="background:#fff"><div class="sig">Never activated (day 14)</div><div>The one-question email: "What got in the way — setup, fit, or timing?"</div><div>AI</div></div>
+    <div class="row" style="background:#faf9fc"><div class="sig">Replies / books a call</div><div>Exit automation → human + logged in Attio with source</div><div>Human</div></div>
+  </div>
+
+  <h3 style="color:#fff;margin-top:28px">The build sequence (what we do, in order)</h3>
+  <div class="grid g4">
+    <div class="card" style="background:#241b3a;border-color:#3b2c6e;color:#fff"><span class="tag" style="background:#3b2c6e;color:#c9befc">WEEK 1</span><h4 style="color:#fff">See the hole</h4><p style="font-size:13px;color:#b9b2d6">Get access to signup + activation data. Export everyone. Claude enriches + scores. Answer: how big is the hole, who's in it, where do they drop.</p></div>
+    <div class="card" style="background:#241b3a;border-color:#3b2c6e;color:#fff"><span class="tag" style="background:#3b2c6e;color:#c9befc">WEEK 1–2</span><h4 style="color:#fff">Hit the warm ones by hand</h4><p style="font-size:13px;color:#b9b2d6">Top 20–30 (company domain + intent) get a personal note this week. Manual — and it teaches the automation what "good" looks like.</p></div>
+    <div class="card" style="background:#241b3a;border-color:#3b2c6e;color:#fff"><span class="tag" style="background:#3b2c6e;color:#c9befc">WEEK 2–3</span><h4 style="color:#fff">Draft the sequences</h4><p style="font-size:13px;color:#b9b2d6">Write each triggered email in the Compass voice. /signup-lifecycle drafts, humans approve every send at first (1-click queue).</p></div>
+    <div class="card" style="background:#241b3a;border-color:#3b2c6e;color:#fff"><span class="tag" style="background:#3b2c6e;color:#c9befc">WEEK 4+</span><h4 style="color:#fff">Automate the safe ones</h4><p style="font-size:13px;color:#b9b2d6">Once we trust a sequence, let it run auto — keeping the Buyer &amp; heavy-usage triggers human. Measure replies, activations, meetings.</p></div>
+  </div>
+  <p class="note" style="color:#8a84a0;margin-top:14px"><b>What we need to confirm to build (this is the ask to CTO/product):</b> where signups live, what activation events we can see (key created, first call, usage volume), and whether we send via Mailchimp or a lifecycle tool. <span class="hyp">Signup volume &amp; tooling still unknown — this is the half-day scoping task that unblocks everything.</span></p>
+</div></section>
+
+<!-- WHAT WE BUILD FIRST -->
+<section><div class="wrap">
+  <div class="kicker">07 · The build order — a 5-week sprint to the raise, NOT a 2-month plan</div>
+  <h2>We're late July. Decks go out early September. So we move fast.</h2>
+  <p class="lede">Forget "week 8+." The fundraise sets the clock: the machine has to be visibly working <b>before the decks go out</b>, because "we validated a repeatable motion" IS part of the pitch. Everything below is parallelized and compressed into ~5 weeks. Ambitious on purpose — this is the fundraise timeline, and AI is what makes it possible with a tiny team.</p>
+  <div class="grid g3">
+    <div class="card" style="border-top:5px solid var(--coral)"><span class="tag" style="background:#fbeaea;color:#a33">WEEK OF JUL 28 · everything at once</span><h4>Foundations + signup, day 1</h4><p style="font-size:13.5px;margin-top:6px">Lock the sentence · claims library v1 · guardrails · Attio fields + growth lists · connect sources. <b>In parallel:</b> pull the signup export, score it, and hit the top 20–30 by hand this week. Don't wait for anything to be perfect.</p></div>
+    <div class="card" style="border-top:5px solid var(--lav)"><span class="tag">WEEK OF AUG 4 · the engine + first campaign live</span><h4>Skills + Earn pilot launches</h4><p style="font-size:13.5px;margin-top:6px">Stand up /weekly-signals, /campaign-brief, /activate-accounts. <b>Launch the Earn Tier-1 campaign for real</b> (high-tempo week). First HeyGen videos + the first product film in production. The machine is now running, not planned.</p></div>
+    <div class="card" style="border-top:5px solid var(--lav)"><span class="tag">WEEK OF AUG 11 · proof + growth</span><h4>LATAM sprint + Arca push</h4><p style="font-size:13.5px;margin-top:6px">15 discovery calls underway (they double as market research). Arca case-study approvals chased hard. Africa cut running via Funa. Second campaign beat. Roadmap Sessions start booking.</p></div>
+    <div class="card" style="border-top:5px solid var(--green)"><span class="tag">WEEK OF AUG 18 · evidence accumulates</span><h4>Results start showing</h4><p style="font-size:13.5px;margin-top:6px">Sessions → pilots scoped. Signup sequences automated (the safe ones). Case study published. The 7/30-day reviews produce the <b>numbers the deck needs</b>: engagement on target accounts, meetings, pipeline influenced.</p></div>
+    <div class="card" style="border-top:5px solid var(--green)"><span class="tag">WEEK OF AUG 25 · package the story</span><h4>Fundraise-ready</h4><p style="font-size:13.5px;margin-top:6px">/reuse assembles the marketing traction slide: "validated motion — here's the proof." Investor-update narrative written. The machine + early results become part of the deck.</p></div>
+    <div class="card" style="border-top:5px solid #16121f"><span class="tag" style="background:#16121f;color:#fff">EARLY SEPT · decks out</span><h4>Raise</h4><p style="font-size:13.5px;margin-top:6px">Decks go out on a story that's already true: a working commercial engine, real pipeline, a repeatable motion the round scales. Then we keep running it, louder, with the capital.</p></div>
+  </div>
+  <div class="card" style="margin-top:14px;background:var(--lav-soft);border-color:var(--lav-line)"><b>How a team this small moves this fast:</b> AI does the production, so "build the engine" is really "build the skills + templates once" (days, not months). We run the manual version and the automated version <i>at the same time</i> — hit accounts by hand THIS week while the sequences get built. We don't wait for perfect; we ship the pilot in week 2 and improve live. <span class="hyp">Aggressive but real — the only hard dependencies are the signup data access (CTO) and Arca's approvals. Chase both day one.</span></div>
+  <div class="card" style="margin-top:14px;background:#16121f;color:#fff;text-align:center;padding:34px"><p style="font-size:22px;font-weight:800;color:#fff;line-height:1.3">The raise doesn't wait, so neither do we.<br><span style="color:#c9befc">Machine live in 2 weeks. Proof in 4. Decks out in 6.</span></p></div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Execution &amp; Operations Playbook · by Gin · July 2026<br>
+  ◆ The 5-document system: <a href="compass-north-star.html">North Star</a> · <a href="compass-marketing-strategy.html">Marketing Strategy</a> · <a href="compass-flagship-campaign.html">Flagship Campaign</a> · <b>Execution Playbook (here)</b> · <a href="compass-vision-board.html">Vision Board</a>.<br>
+  Hypotheses labeled. Signup tooling/volume to be confirmed with product before build.
+</div></footer>
+
+</body>
+</html>

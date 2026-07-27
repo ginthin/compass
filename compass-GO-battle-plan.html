@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — GO · The Battle Plan + All Content</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--pink:#ff5aa5;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:900px;margin:0 auto;padding:0 26px}
+  section{padding:40px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:48px;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:28px;letter-spacing:-0.02em;font-weight:800;margin-bottom:4px}
+  h3{font-size:18px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:12px;font-weight:700}
+  .lede{font-size:18px;color:#4a4458;max-width:760px;margin-top:8px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .hero{background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:260% 260%;animation:flow 16s ease infinite;color:#fff;padding:64px 0 48px}
+  @keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+  .hero .kicker{color:var(--c9)}.hero p{color:#cfc8ea;margin-top:14px;font-size:18px;max-width:640px}
+  .nav{background:#16121f;padding:10px 0;position:sticky;top:0;z-index:10}
+  .nav .wrap{display:flex;gap:8px;flex-wrap:wrap}
+  .nav a{color:#c9befc;text-decoration:none;font-family:var(--mono);font-size:12px;border:1px solid #3b2c6e;border-radius:99px;padding:5px 12px}
+  .nav a:hover{background:#3b2c6e;color:#fff}
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .box{border-radius:12px;padding:16px 18px}
+  .youdo{background:#fff3cd;border:1px solid #ffe08a}.youdo h4{color:#8a6d00}
+  .done{background:#e7f8f0;border:1px solid #b8ead0}.done h4{color:#127a52}
+  .box h4{font-family:var(--mono);font-size:12px;letter-spacing:.05em;margin-bottom:8px}
+  .box ul{list-style:none;font-size:14px}.box li{padding:4px 0 4px 20px;position:relative}
+  .youdo li::before{content:"\2610";position:absolute;left:0}.done li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:800}
+  /* calendar */
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase}
+  .cmp1{color:var(--lav-deep);font-weight:700}.cmp2{color:var(--amber);font-weight:700}.fr{color:var(--green);font-weight:700}
+  /* copy block */
+  .post{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:16px 18px;margin-top:14px}
+  .post .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .chip{font-family:var(--mono);font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 7px}
+  .c-x{background:#16121f;color:#fff}.c-li{background:#0a66c2;color:#fff}.c-blog{background:var(--lav-soft);color:var(--lav-deep)}.c-mail{background:#fdf1e0;color:#a86308}.c-vid{background:#e7f8f0;color:#127a52}.c-eli{background:#ffe0cc;color:#b5480f}
+  .copy{background:#0d0a14;color:#e8e3f7;border-radius:8px;padding:14px;font-size:13.5px;white-space:pre-wrap;line-height:1.55;margin-top:4px}
+  .who{font-family:var(--mono);font-size:11px;color:#8a84a0;margin-top:8px}
+  .badge{display:inline-block;background:var(--gold);color:#111;font-family:var(--mono);font-size:10px;font-weight:800;border-radius:5px;padding:2px 7px;margin-left:auto}
+  .warn{background:#fdf3f3;border-left:4px solid var(--coral);border-radius:8px;padding:12px 14px;font-size:14px;margin-top:12px}
+  footer{padding:36px 0;color:#8a84a0;font-size:13px;text-align:center}
+  @media(max-width:760px){.split{grid-template-columns:1fr}h1{font-size:34px}}
+  @media print{.hero,.nav,.copy,[class^=c-]{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · GO · everything ready to paste · Norte 🧭</div>
+  <h1>Stop thinking. Just paste.</h1>
+  <p>Everything is written for you below — 2 campaigns + the franchise starters. You copy, paste, post. This page is the whole test week in one place. Nothing to figure out.</p>
+</div></div>
+
+<div class="nav"><div class="wrap">
+  <a href="#split">You vs me</a>
+  <a href="#cal">The calendar</a>
+  <a href="#c1">Campaign 1 · Earn</a>
+  <a href="#c2">Campaign 2 · BNB</a>
+  <a href="#fr">Franchise starters</a>
+</div></div>
+
+<!-- SPLIT -->
+<section id="split"><div class="wrap">
+  <div class="kicker">First · who does what (clear)</div>
+  <h2>I already wrote everything. You post + send.</h2>
+  <div class="split">
+    <div class="box done"><h4>✓ DONE FOR YOU (Norte)</h4><ul>
+      <li>All campaign posts, written</li>
+      <li>The video scripts</li>
+      <li>The email</li>
+      <li>The franchise starter posts</li>
+      <li>The openers (in your Target List)</li>
+    </ul></div>
+    <div class="box youdo"><h4>☐ YOU DO (10 min/day)</h4><ul>
+      <li>Copy → paste → post on X / LinkedIn</li>
+      <li>Send the email (Mailchimp) + the DMs (Gmail)</li>
+      <li>Ask Eli to post her 1–2</li>
+      <li>Reply to comments</li>
+    </ul></div>
+  </div>
+  <div class="warn"><b>Reminder (you were right):</b> posting &amp; sending is NOT automatic — you press the button. What's automatic is that <b>the writing is already done.</b> That's the whole deal.</div>
+</div></section>
+
+<!-- CALENDAR -->
+<section id="cal"><div class="wrap">
+  <div class="kicker">The calendar · 2 campaigns + franchise, one week</div>
+  <h2>What goes out each day.</h2>
+  <p class="lede">Campaign 1 (Earn) is the main pilot. Campaign 2 (BNB) runs as the partnership beat. Franchise posts fill the gaps so the feed never goes quiet. Start whenever you're ready — the days are relative.</p>
+  <table>
+    <tr><th>Day</th><th>What to post</th><th>Where</th><th>Who</th></tr>
+    <tr><td><b>Day 0 (Fri/eve)</b></td><td><span class="cmp1">Teaser</span> — build anticipation</td><td>X + Eli's LinkedIn</td><td>Gin + Eli</td></tr>
+    <tr><td><b>Day 1</b></td><td><span class="cmp1">Earn: X thread</span> + <span class="fr">Backlog Files post</span></td><td>X · LinkedIn</td><td>Gin</td></tr>
+    <tr><td><b>Day 2</b></td><td><span class="cmp1">Earn: Gin video (ES)</span> + <span class="c-eli" style="padding:1px 5px;border-radius:4px">Eli hot-take</span></td><td>LinkedIn · X</td><td>Gin + Eli</td></tr>
+    <tr><td><b>Day 3</b></td><td><span class="cmp2">BNB: X post</span> + <span class="cmp2">BNB company LinkedIn</span> + partner reshare</td><td>X · LinkedIn</td><td>Gin (+ BNB/IXS amplify)</td></tr>
+    <tr><td><b>Day 4</b></td><td><span class="cmp1">Earn: blog</span> + <span class="cmp1">Earn company LinkedIn</span></td><td>Blog · LinkedIn</td><td>Gin</td></tr>
+    <tr><td><b>Day 5</b></td><td><span class="cmp1">Earn: Mailchimp email</span> (LATAM) + <span class="fr">Objection of the Week</span></td><td>Email · LinkedIn</td><td>Gin</td></tr>
+    <tr><td><b>Day 5–10</b></td><td><b>The DMs</b> — personal openers to your accounts (from Target List)</td><td>Gmail / LinkedIn</td><td>Gin + Funa</td></tr>
+  </table>
+  <p class="note"><b>If it feels like too much:</b> run ONLY Campaign 1 (Earn) this week as the test, and slot BNB next week. The Earn campaign alone is a complete, clean test.</p>
+</div></section>
+
+<!-- CAMPAIGN 1 -->
+<section id="c1"><div class="wrap">
+  <div class="kicker cmp1">CAMPAIGN 1 · Earn / LATAM · "Put the Money to Work"</div>
+  <h2>Stablecoin apps: give idle dollars a reason to stay.</h2>
+
+  <div class="post"><div class="meta"><span class="chip c-x">TEASER · X</span><span class="badge">COPY</span></div>
+    <div class="copy">Storing dollars is half an app.
+
+Next week, we show you the other half. 🧭</div><div class="who">Post from @labs_compass. Eli reshares.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-eli">TEASER · Eli (her voice)</span><span class="badge">COPY</span></div>
+    <div class="copy">We've been heads-down for a reason. For months I've watched LATAM fintechs hold billions in digital dollars and do… nothing with them. That changes next week. 👀</div><div class="who">Eli posts from her own LinkedIn.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-x">DAY 1 · X THREAD</span><span class="badge">COPY</span></div>
+    <div class="copy">Stablecoin apps have a retention problem nobody names:
+
+your users hold the dollars, and whoever pays yield takes them.
+
+Building Earn in-house: 8 months, an audit, a team you don't have.
+Integrating it: days.
+
+The math isn't close. 🧵
+
+—
+
+We're Compass — the layer underneath fintechs. One integration and your app can offer yield, non-custodial, users keep their keys.
+
+Arca did exactly this, live in LATAM. Thor moved $1.1B through it in 2025.
+
+If yield's on your roadmap, the walkthrough is 30 min → [link]</div><div class="who">2-post thread on @labs_compass. Add UTM to the link.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-vid">DAY 2 · GIN VIDEO SCRIPT (record in ES)</span><span class="badge">SCRIPT</span></div>
+    <div class="copy">[ES — 60–90 sec, talking head or voice-over]
+
+"Tu app ya tiene los dólares de tus usuarios. La pregunta es por qué se quedan.
+
+Hoy, el que paga rendimiento se los lleva. Así de simple.
+
+Construir rendimiento tú mismo son ~8 meses y una auditoría. O una integración con Compass — sin custodia, tus usuarios con sus llaves, en vivo en días.
+
+Arca lo lanzó en semanas, no en meses.
+
+Si el rendimiento está en tu roadmap, hablemos 30 minutos y te muestro cómo encaja en tu app."</div><div class="who">Grábalo tú (Loom o cámara). Súbelo a LinkedIn con caption en inglés.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-eli">DAY 2 · ELI HOT-TAKE</span><span class="badge">COPY</span></div>
+    <div class="copy">Every fintech is racing to hold the dollar. Almost nobody is building what the dollar does next.
+
+That gap — between storing money and growing it — is the whole opportunity. And it's wide open.</div><div class="who">Eli, her LinkedIn.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-li">DAY 4 · COMPANY LINKEDIN</span><span class="badge">COPY</span></div>
+    <div class="copy">Your users want yield. Your engineers want you to stop adding integrations to the backlog.
+
+With Compass underneath, Arca gave their users dollar-yield in weeks — non-custodial, users kept their keys — through one integration. Any stablecoin app in LATAM can do the same. 🇲🇽🇦🇷
+
+Six products, one integration. Thor moved $1.1B through it in 2025.
+
+Is yield on your roadmap this year? 30-minute walkthrough 👇 (link in comments)</div><div class="who">Compass LinkedIn page. Put the link in the FIRST comment. Team reshares.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-blog">DAY 4 · BLOG</span><span class="badge">READY</span></div>
+    <div class="copy">Title: "LATAM Has Enough Stablecoin Decks. It Needs Products."
+
+[Full blog already written in your flagship campaign doc — paste it into the website blog. It covers: the retention problem, build-vs-buy math, what Compass handles vs what you own, the proof (Arca, Thor, Constellation), and the CTA to a roadmap session.]</div><div class="who">Publish on compasslabs.ai/blog. Then share the link from X + LinkedIn + the email.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-mail">DAY 5 · MAILCHIMP EMAIL (LATAM tag)</span><span class="badge">COPY</span></div>
+    <div class="copy">Subject: ¿Cuánto te cuesta NO tener Earn?
+
+Hola [Nombre],
+
+Rápido. Tus usuarios tienen dólares digitales en [Empresa] — y ahora mismo esos dólares están quietos. En cuanto un competidor paga rendimiento, se cambian.
+
+Armé un diagnóstico de 10 minutos: cuánto saldo está quieto en tu app, qué pagaría el mercado, y qué margen te queda con fee compartido. Sin landing, sin formulario.
+
+Respóndeme "sí" y lo corro con tus números.
+
+Gin
+Compass Labs</div><div class="who">Mailchimp → filtra por tag LATAM + Stablecoin-app. Manda prueba a ti primero.</div></div>
+
+  <p class="note"><b>Day 5–10 · the DMs:</b> your personal openers to WeWire, Roqqu, Quidax, Littio, Belo, DolarApp, Ripio, Decaf are ready in your <b>Target List</b> doc. Personalize [name] + one detail, send from Gmail/LinkedIn.</p>
+</div></section>
+
+<!-- CAMPAIGN 2 -->
+<section id="c2"><div class="wrap">
+  <div class="kicker cmp2">CAMPAIGN 2 · BNB Chain · RWA yield for agents</div>
+  <h2>Compass + IXS + BNB Chain: institutional RWA yield, now reachable.</h2>
+  <p class="lede">Angle: <b>Where Finance Is Going</b> — tokenizing assets was the easy part; distribution is the moat. This is the partnership beat. Target: fintechs/brokers wanting RWAs + AI-native/agent platforms.</p>
+  <div class="warn"><b>Norte's assumption (confirm):</b> built on your published partnership — "Compass + IXS Finance + BNB Chain bring institutional RWA yield to human allocators and AI agents." If the campaign is actually a customer case study or something else, tell me and I'll rebuild in 2 min.</div>
+
+  <div class="post"><div class="meta"><span class="chip c-x">BNB · X (tension)</span><span class="badge">COPY</span></div>
+    <div class="copy">Everyone's tokenizing assets.
+
+Almost nobody can distribute them.
+
+IXS's institutional RWA vault is now live on Compass — on BNB Chain — reachable by any fintech, and by AI agents, through one integration.
+
+Tokenizing was the easy part. Distribution is the moat.</div><div class="who">@labs_compass. Tag @BNBChain + @IXSFinance so they reshare.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-li">BNB · COMPANY LINKEDIN (buyer outcome)</span><span class="badge">COPY</span></div>
+    <div class="copy">Your users want treasury-grade yield. You don't want to integrate a venue for every asset.
+
+As of now, IXS's institutional RWA vault is live on Compass on BNB Chain — which means every platform on Compass can offer it without writing a new integration. Reachable by human allocators and, natively, by AI agents.
+
+One more venue for us. Zero new integrations for you.
+
+Building RWAs into your app? Let's walk the venue map — 30 min 👇 (link in comments)</div><div class="who">Compass LinkedIn. Link in first comment. BNB + IXS amplify.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-eli">BNB · ELI (founder take)</span><span class="badge">COPY</span></div>
+    <div class="copy">The RWA race is loud on the supply side — everyone's tokenizing treasuries, credit, funds.
+
+The quiet truth: none of it matters until a fintech (or an agent) can actually reach it. That's the layer we're building. IXS on BNB Chain is one more proof point on that path.</div><div class="who">Eli, her LinkedIn.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-blog">BNB · BLOG ANGLE</span><span class="badge">BRIEF</span></div>
+    <div class="copy">Title: "Tokenized Assets Have a Distribution Problem."
+
+Covers: the RWA supply boom vs the distribution gap · who feels it (fintechs, brokers, agents) · what Compass handles (one integration to reach every venue, human + agent) · the IXS + BNB Chain integration as evidence · non-custodial + policy control (Turnkey) for agentic access · CTA to the venue walkthrough.
+
+[Say the word and I write the full blog now.]</div><div class="who">Publish on the blog when ready. Not required for the test.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-mail">BNB · PARTNER AMPLIFICATION KIT</span><span class="badge">COPY</span></div>
+    <div class="copy">Send to BNB Chain + IXS marketing contacts:
+
+"Hi team — we're announcing the IXS vault live on Compass on BNB Chain this week. Here are 2 ready-to-post lines + the visual if you'd like to amplify:
+
+1. 'Institutional RWA yield on @BNBCHAIN is now reachable by any fintech — and by AI agents — through @labs_compass. One integration. [link]'
+
+2. 'Tokenizing was the easy part. Distribution is the moat. IXS + Compass + BNB Chain, live. [link]'
+
+Would love a reshare on launch day 🙏"</div><div class="who">You (Gin) or Commercial sends to the partners. Their reshare = free reach.</div></div>
+</div></section>
+
+<!-- FRANCHISE -->
+<section id="fr"><div class="wrap">
+  <div class="kicker fr">FRANCHISE STARTERS · the recurring "shows" begin</div>
+  <h2>First episode of each show — to fill the gaps.</h2>
+  <p class="lede">These run <i>between</i> the campaigns so the feed stays alive. Post one when a campaign day is light. Each is a repeatable format — every week gets a new episode.</p>
+
+  <div class="post"><div class="meta"><span class="chip c-x">📁 THE BACKLOG FILES · ep.1</span><span class="badge">COPY</span></div>
+    <div class="copy">Building "Earn" in-house:
+→ 8 months
+→ 3–8 blockchain engineers
+→ 1 security audit
+→ then maintenance, forever
+
+Integrating it with Compass:
+→ days
+
+The first product is a product decision. The fourth is an architecture problem.</div><div class="who">X + LinkedIn.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-li">⚙️ THE BORING WORK · ep.1</span><span class="badge">COPY</span></div>
+    <div class="copy">$1.1B moved through Thor Wallet on our infrastructure in 2025.
+
+Nobody claps for the retry logic, the failovers, the venue integrations that just… work. But that's the boring machinery that lets a wallet offer yield without becoming a DeFi company.
+
+Non-custodial the whole way. Users held their keys the entire time.
+
+That's the part we're proud of.</div><div class="who">Compass LinkedIn.</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-x">❓ OBJECTION OF THE WEEK · ep.1</span><span class="badge">COPY</span></div>
+    <div class="copy">Real question from a call this week: "Do you hold the funds?"
+
+Answer: No.
+
+Users sign in their own wallets. Compass never touches the assets. Non-custodial, end to end — that's not a feature we added, it's the architecture.
+
+It's the first thing your risk team will ask. Good — it's our best answer.</div><div class="who">X or a 30-sec CTO/Gin video. (Pulled from a real objection — that's the format.)</div></div>
+
+  <div class="post"><div class="meta"><span class="chip c-eli">🔭 ELI'S FIELD NOTES · ep.1</span><span class="badge">COPY</span></div>
+    <div class="copy">Something I keep noticing: the hardest part of onchain finance isn't the tech anymore. It's making it legible.
+
+We can move billions non-custodially, connect a dozen venues, let an agent execute safely. But if a founder can't understand what that unlocks in 10 seconds, none of it matters.
+
+So that's the work now. Not more capability. More clarity.</div><div class="who">Eli, her LinkedIn.</div></div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · GO Battle Plan · Norte 🧭 · July 2026 · All claims from the approved list. BNB campaign built on the published IXS + BNB Chain partnership — confirm the exact angle.<br>
+  Everything here is ready to paste. Post → send → reply. That's the test week.
+</div></footer>
+
+</body>
+</html>

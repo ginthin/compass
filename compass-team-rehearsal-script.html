@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Team Meeting: Your Rehearsal Script</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:920px;margin:0 auto;padding:0 30px}
+  section{padding:50px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:50px;line-height:1.02;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:29px;letter-spacing:-0.02em;font-weight:800;line-height:1.08;margin-bottom:6px}
+  h3{font-size:18px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:18px;color:#4a4458;max-width:820px;margin-top:10px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .js .rv{opacity:0;transform:translateY(20px);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .hero{background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);color:#fff;padding:70px 0 54px;border:none}
+  .hero .kicker{color:var(--c9)}.hero p{color:#cfc8ea;margin-top:18px;font-size:18px;max-width:640px}
+  /* beat */
+  .beat{background:#fff;border:1px solid #e8e5f2;border-radius:16px;margin-top:16px;overflow:hidden}
+  .beat .bh{display:flex;align-items:center;gap:14px;padding:14px 20px;background:#f7f5fc;border-bottom:1px solid #eee}
+  .beat .bh .n{font-family:var(--mono);font-weight:800;color:#fff;background:var(--lav-deep);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .beat .bh h3{font-size:16px}.beat .bh .t{margin-left:auto;font-family:var(--mono);font-size:11px;color:#8a84a0}
+  .beat .say{padding:18px 20px;font-size:19px;line-height:1.5;font-weight:500}
+  .beat .say b{color:var(--lav-deep)}
+  .beat .cue{padding:0 20px 16px;font-size:12.5px;color:#8a84a0;font-style:italic}
+  /* hooks */
+  .hook{background:var(--gold);color:#111;border-radius:12px;padding:16px 20px;font-size:20px;font-weight:800;margin-top:12px;line-height:1.3}
+  .hook small{display:block;font-family:var(--mono);font-size:11px;font-weight:600;opacity:.6;margin-top:6px}
+  /* QA */
+  .qa{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:16px 18px;margin-top:12px}
+  .qa .who{font-family:var(--mono);font-size:11px;font-weight:700;border-radius:5px;padding:2px 7px;color:#fff;background:#8a84a0}
+  .qa .q{font-weight:700;font-size:15px;color:#a33;margin-top:8px}
+  .qa .a{font-size:15px;color:#2c2838;margin-top:6px}
+  .qa .a b{color:var(--lav-deep)}
+  /* cheat card */
+  .cheat{background:#16121f;color:#fff;border-radius:16px;padding:26px}
+  .cheat ol{margin:12px 0 0 20px;font-size:16px;line-height:1.9}
+  .cheat ol b{color:var(--c9)}
+  /* delivery */
+  .tips{list-style:none;margin-top:10px}
+  .tips li{padding:8px 0 8px 26px;position:relative;font-size:15px;border-bottom:1px solid #f0eef7}
+  .tips li::before{content:"→";position:absolute;left:0;color:var(--lav);font-weight:800}
+  footer{padding:40px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:800px){h1{font-size:36px}h2{font-size:23px}.beat .say{font-size:17px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero,.hook,.cheat{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Team Meeting · Your Rehearsal Script · Gin + Norte 🧭</div>
+  <h1>Say it in your sleep.</h1>
+  <p>Your whole team explanation, stripped to the bone and put in your mouth. A 90-second core script in 4 short beats, the lines you must land, and every question they could throw — with your answer ready. Read it out loud 3 times and it's yours.</p>
+</div></div>
+
+<!-- THE CORE SCRIPT -->
+<section><div class="wrap">
+  <div class="kicker rv">The core · 90 seconds · 4 beats</div>
+  <h2 class="rv">Memorize these four. Everything else is extra.</h2>
+  <p class="lede rv">Each beat is 2–3 sentences. Say them in order and you've explained the whole thing. The bold words are your anchors — if you blank, just hit the bold.</p>
+
+  <div class="beat rv"><div class="bh"><div class="n">1</div><h3>The why</h3><span class="t">~20 sec</span></div>
+    <div class="say">"We have the best product in our category — and the market doesn't get it fast enough. <b>Confusion is our most expensive competitor.</b> We're fixing that with a machine that makes Compass impossible to misunderstand, and turns attention into pipeline. And the timing matters: <b>the raise funds marketing and sales, so we prove the motion works before decks go out.</b>"</div>
+    <div class="cue">Cue: start with the pain, not the plan. Energy up.</div></div>
+
+  <div class="beat rv"><div class="bh"><div class="n">2</div><h3>How it runs</h3><span class="t">~25 sec</span></div>
+    <div class="say">"The machine runs on two things — <b>a clock and triggers.</b> The clock is a weekly rhythm that never stops: Monday we decide, mid-week we publish, Friday we activate. And triggers: <b>when something happens in your world — you ship a feature, land a partner, hear an objection — you drop one line in Slack, and the AI turns it into content.</b> Nobody writes from a blank page."</div>
+    <div class="cue">Cue: this is the part that removes their fear of "extra work." Slow down here.</div></div>
+
+  <div class="beat rv"><div class="bh"><div class="n">3</div><h3>Your job is tiny</h3><span class="t">~20 sec</span></div>
+    <div class="say">"AI does the heavy lifting — the drafts, the videos, the analysis. <b>None of you becomes a marketer.</b> Your job is small: flag events in Slack, send a few DMs to your accounts, reshare, and show up to a 30-minute Monday. I run the machine; the AI writes. That's it."</div>
+    <div class="cue">Cue: look at each person as you say "your job is small." Relief is the goal.</div></div>
+
+  <div class="beat rv"><div class="bh"><div class="n">4</div><h3>How we start</h3><span class="t">~20 sec</span></div>
+    <div class="say">"This week we build the foundations quietly — Eli keeps posting so we don't go dark. <b>Next week, August 4, we launch our first campaign together, loud.</b> Then we've got a 5-week sprint to real pipeline and a fundraise story. I'll walk each of you through your exact role right now."</div>
+    <div class="cue">Cue: end on momentum → then go into the role cards, person by person.</div></div>
+</div></section>
+
+<!-- THE HOOKS -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The lines you MUST land · say these clearly</div>
+  <h2 class="rv">If they remember nothing else, these three.</h2>
+  <div class="hook rv">"Confusion is our most expensive competitor — and we're about to end it."<small>THE WHY · beat 1</small></div>
+  <div class="hook rv" style="background:#16121f;color:#fff">"Flag it in Slack. The AI writes it. You never face a blank page."<small>THE HOW · beat 2 — this is THE one</small></div>
+  <div class="hook rv" style="background:var(--lav-deep);color:#fff">"None of you becomes a marketer. Your job is small. I run the machine."<small>THE RELIEF · beat 3</small></div>
+</div></section>
+
+<!-- FAILURE PREVENTION -->
+<section><div class="wrap">
+  <div class="kicker rv">No surprises · the questions they'll throw + your answer</div>
+  <h2 class="rv">Prevent every bump. Have these ready.</h2>
+  <p class="lede rv">Read each person's likely pushback and your one-line answer. If you know these cold, nothing catches you off guard.</p>
+
+  <div class="qa rv"><span class="who" style="background:#2f6bff">AIDAR</span><div class="q">"Is this going to eat engineering time?"</div><div class="a"><b>Your answer:</b> "No — about 30 minutes a week total. A quick claim check in Slack, and occasionally a 15-minute interview that becomes a video. AI does everything else. Engineering is not a content team."</div></div>
+
+  <div class="qa rv"><span class="who" style="background:#e0962e">ELI</span><div class="q">"Do I keep doing my posts? What changes for me?"</div><div class="a"><b>Your answer:</b> "Keep going — don't stop this week, that's important. The only change is the AI will hand you drafts so it's easier, and I'll ask you to sign off the big campaign angles. Your voice stays yours."</div></div>
+
+  <div class="qa rv"><span class="who" style="background:#19b57a">FUNA / PETROS</span><div class="q">"Is this just LATAM? What about my region / my deals?"</div><div class="a"><b>Your answer:</b> "Same machine, your region. The AI localizes the same campaign for Africa/Middle East and drafts your outreach. Every partnership you land becomes free content and reach. You're in from day one."</div></div>
+
+  <div class="qa rv"><span class="who">ANYONE</span><div class="q">"I'm not a writer / I'm not creative — what if I mess it up?"</div><div class="a"><b>Your answer:</b> "You never write anything. You drop one honest line in Slack — 'we shipped X' or 'a customer asked Y' — and the AI turns it into the post. You literally can't mess up a Slack message."</div></div>
+
+  <div class="qa rv"><span class="who">ANYONE</span><div class="q">"What exactly do I do, day to day?"</div><div class="a"><b>Your answer:</b> "Four things: flag events in Slack, reply to comments on our posts, send a few DMs to your accounts (I'll draft them), and show up to the 30-min Monday. That's the whole commitment."</div></div>
+
+  <div class="qa rv"><span class="who">ANYONE</span><div class="q">"What if we forget to flag things / it falls apart?"</div><div class="a"><b>Your answer:</b> "It can't go blank — the weekly clock runs no matter what, and every Friday I sweep Attio and Slack for signals so nothing's forgotten. The machine catches what people miss."</div></div>
+
+  <div class="qa rv"><span class="who">SKEPTIC</span><div class="q">"Does AI-generated content actually work? Won't it look fake?"</div><div class="a"><b>Your answer:</b> "A human — me — approves everything, and it all rests on our real proof and claims. Videos are template-based, not fake avatars, and we launch with clean no-face videos. Nothing embarrassing ships; the claims library makes sure of it."</div></div>
+
+  <div class="qa rv"><span class="who">SKEPTIC</span><div class="q">"Who owns [Buffer / Mailchimp / approvals]? Feels like a lot of loose ends."</div><div class="a"><b>Your answer:</b> "Fair — so every owner is named: I own the machine and publishing, Aidar owns claim checks, Eli owns positioning and case-study sign-off. And we barely use tools — no Buffer yet, Gmail for personal email. Fewer moving parts than it looks."</div></div>
+</div></section>
+
+<!-- CHEAT CARD -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">Your pocket card · the 5 things in your head</div>
+  <h2 class="rv">If you blank, this is all you need.</h2>
+  <div class="cheat rv">
+    <ol>
+      <li><b>The why:</b> confusion is our #1 competitor; we're ending it; the raise scales it.</li>
+      <li><b>The how:</b> a clock (weekly rhythm) + triggers (flag it in Slack → AI writes it).</li>
+      <li><b>Their job:</b> flag events, reshare, a few DMs, show up Monday. Not marketers.</li>
+      <li><b>The start:</b> build this week (Eli keeps posting), launch Aug 4, 5-week sprint.</li>
+      <li><b>The relief line:</b> "You never face a blank page. The AI writes it. I run the machine."</li>
+    </ol>
+  </div>
+</div></section>
+
+<!-- DELIVERY -->
+<section><div class="wrap">
+  <div class="kicker rv">Delivery · small things that make it land</div>
+  <h2 class="rv">How to say it, not just what.</h2>
+  <ul class="tips">
+    <li class="rv"><b>Open with energy and the pain</b> — "confusion is costing us deals" — not with a plan or a doc.</li>
+    <li class="rv"><b>Slow down on beat 2</b> (clock + triggers) — that's the part that removes their fear. Let it land.</li>
+    <li class="rv"><b>Say "your job is small" while looking at each person.</b> Get a nod before moving on.</li>
+    <li class="rv"><b>Go person by person for roles</b> — name them, name their one job, get a yes. (Use the Team Playbook role cards.)</li>
+    <li class="rv"><b>End on the date:</b> "August 4, we go loud together." Momentum, not "any questions?"</li>
+    <li class="rv"><b>If you don't know an answer:</b> "Great question — let me confirm and get back to you." Never wing a claim.</li>
+  </ul>
+  <div class="cheat rv" style="margin-top:18px;background:#241b3a;border:1px solid #3b2c6e"><p style="font-size:18px;font-weight:700;color:#fff">Want to rehearse for real? Tell Norte "play the team and throw me questions" — I'll be Aidar, Eli, a skeptic, and you practice your answers until they're automatic. 🧭</p></div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Team Meeting Rehearsal Script · Gin + Norte 🧭 · July 2026 · Read it aloud 3× and it's yours.<br>
+  ◆ <a href="compass-how-the-machine-runs.html">How the Machine Runs</a> · <a href="compass-team-playbook.html">Team Playbook (role cards)</a> · <a href="compass-execution-simple.html">Execution Made Simple</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*45)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

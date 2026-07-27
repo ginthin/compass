@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Execution &amp; Automation, Made Simple</title>
+<style>
+  :root{--ink:#0d0a14;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff5a5f;--green:#19b57a;--blue:#2f6bff;--amber:#e0962e;--c9:#c9befc;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 30px}
+  section{padding:56px 0;border-bottom:1px solid #eceaf4}
+  h1{font-size:56px;line-height:1;letter-spacing:-0.03em;font-weight:800}
+  h2{font-size:31px;letter-spacing:-0.02em;font-weight:800;line-height:1.07;margin-bottom:8px}
+  h3{font-size:19px;font-weight:700}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav-deep);margin-bottom:14px;font-weight:700}
+  .lede{font-size:19px;color:#4a4458;max-width:840px;margin-top:12px}
+  .note{font-size:13px;color:#8a84a0;margin-top:10px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:var(--lav-soft);color:var(--lav-deep);margin-bottom:10px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(22,18,31,.04)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
+  .hero{min-height:72vh;display:flex;align-items:center;background:linear-gradient(125deg,#0d0a14,#2a1d52,#5b47d6);background-size:280% 280%;animation:flow 18s ease infinite;color:#fff;border:none}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero .kicker{color:var(--c9)}.hero .sub{margin-top:22px;color:#cfc8ea;font-size:19px;max-width:680px}
+  .big{font-size:38px;font-weight:800;line-height:1.15;letter-spacing:-0.02em}
+  /* stack */
+  .stackrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+  .tool{flex:1;min-width:210px;background:#fff;border:2px solid #e8e5f2;border-radius:14px;padding:18px}
+  .tool.core{border-color:var(--lav);background:var(--lav-soft)}
+  .tool .ic{font-size:26px}.tool h3{margin:6px 0 4px;font-size:17px}
+  .tool p{font-size:13px;color:#4a4458}
+  .tool .role{font-family:var(--mono);font-size:11px;color:var(--lav-deep);font-weight:700;margin-top:8px}
+  /* vs */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #e8e5f2;border-radius:14px;overflow:hidden;margin-top:16px}
+  .vs>div{padding:18px 20px;border-bottom:1px solid #efedf6}
+  .vs .h{background:#16121f;color:#fff;font-weight:800;font-size:15px}
+  .vs .lbl{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase;margin-bottom:6px}
+  /* auto table */
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;color:#8a84a0;text-transform:uppercase}
+  .aidone{color:var(--green);font-weight:700}.human{color:var(--amber);font-weight:700}
+  /* owners */
+  .owner{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px dashed #e3e0ee}
+  .owner .b{font-family:var(--mono);font-size:11px;font-weight:700;border-radius:5px;padding:2px 8px;white-space:nowrap}
+  .b-gin{background:var(--lav-soft);color:var(--lav-deep)}.b-cto{background:#eef;color:#3b47a0}.b-eli{background:#fdf1e0;color:#a86308}.b-team{background:#f0eef7;color:#555}
+  .owner p{font-size:14px}
+  /* phase */
+  .phase{border-radius:12px;padding:18px;color:#fff;margin-top:12px}
+  .p1{background:linear-gradient(120deg,#0f8a5f,#19b57a)}.p2{background:linear-gradient(120deg,#2f6bff,#5b47d6)}.p3{background:#16121f}
+  .phase .w{font-family:var(--mono);font-size:11px;opacity:.85}
+  .phase h3{color:#fff;margin:5px 0}
+  .phase p{font-size:14px;opacity:.95}
+  /* checklist */
+  .cl{list-style:none;margin-top:12px}
+  .cl li{padding:9px 0 9px 30px;position:relative;font-size:15px;border-bottom:1px solid #f0eef7}
+  .cl li::before{content:"✓";position:absolute;left:0;top:8px;width:20px;height:20px;background:var(--green);color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+  footer{padding:44px 0;color:#8a84a0;font-size:13px;text-align:center}footer a{color:#8a84a0}
+  @media(max-width:900px){.g2,.g3,.vs,.stackrow{grid-template-columns:1fr;flex-direction:column}h1{font-size:38px}h2{font-size:24px}.big{font-size:24px}}
+  @media print{.js .rv{opacity:1!important;transform:none!important}section{page-break-inside:avoid}.hero{animation:none;min-height:auto;padding:56px 0}.hero,.tool.core,[class^=p],.vs .h{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Compass Labs · Execution &amp; Automation, Made Simple · by Norte 🧭</div>
+  <h1>You need way<br>fewer tools<br><span style="color:var(--gold)">than you think.</span></h1>
+  <p class="sub">The part that's been stressing you out — the automations, Buffer, Mailchimp, "is there ONE tool?" — let's make it dead simple. Short answer: to launch, you need almost nothing, and "automation" mostly means <b>Norte does the drafts, you approve and send.</b> Here's the whole thing, calm and clear.</p>
+</div></div>
+
+<!-- THE REFRAME -->
+<section><div class="wrap">
+  <div class="kicker rv">First, the reframe that removes the stress</div>
+  <h2 class="rv">"Automation" doesn't mean scary software. It means Norte does the boring 90%.</h2>
+  <p class="lede rv">You've been picturing a complex stack of tools wired together. That's not what this is. The automation in our system is <b>me (Norte) doing the heavy lifting</b> — drafting posts, scoring accounts, writing openers, building the campaign, generating reports. You don't operate machinery. You tell me what you need, you approve it, and you (or the tool) sends it. That's the whole model.</p>
+  <div class="grid g2">
+    <div class="card rv" style="background:#f2fbf7;border-color:#cfe"><span class="tag" style="background:#e7f8f0;color:#127a52">WHAT "AUTOMATED" REALLY MEANS HERE</span><p style="font-size:15px">Norte reads your Attio + notes → drafts everything → you review. No software you have to configure. The "engine" is me + you, not a Zapier spaghetti.</p></div>
+    <div class="card rv"><span class="tag">WHAT YOU ACTUALLY OPERATE</span><p style="font-size:15px">Three things you already know how to use: <b>Attio</b> (your CRM), <b>Gmail</b> (your email), and <b>posting on X/LinkedIn</b> (copy-paste). That's it to start.</p></div>
+  </div>
+</div></section>
+
+<!-- BUFFER VS MAILCHIMP -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">Your question, answered directly</div>
+  <h2 class="rv">"Can't I do everything with one tool?"</h2>
+  <p class="lede rv">Honest answer: Buffer and Mailchimp do <b>different jobs</b>, so one can't replace the other — BUT here's the relief: <b>you don't need either one to launch.</b></p>
+  <div class="vs rv">
+    <div class="h">📅 Buffer</div><div class="h">✉️ Mailchimp</div>
+    <div><div class="lbl">Does</div>Schedules social posts (X, LinkedIn) so you don't post live.</div>
+    <div><div class="lbl">Does</div>Sends bulk email / newsletters to lists, with segments.</div>
+    <div><div class="lbl">Can it do the other's job?</div><b>No</b> — Buffer can't send email.</div>
+    <div><div class="lbl">Can it do the other's job?</div><b>No</b> — Mailchimp can't post to social.</div>
+    <div style="border:none;background:#f2fbf7"><div class="lbl">Do you need it to start?</div><b style="color:#127a52">No.</b> Post 2×/week by hand — it's 5 minutes.</div>
+    <div style="border:none;background:#f2fbf7"><div class="lbl">Do you need it to start?</div><b style="color:#127a52">No.</b> First emails are personal, from Gmail — they convert better anyway.</div>
+  </div>
+  <div class="card rv" style="margin-top:16px;background:#16121f;color:#fff"><b style="color:var(--c9)">The truth about "one tool":</b> there's no single app that does CRM + social + email well. But you don't need one. Your <b>hub</b> is Attio (who to contact + measurement). Your <b>production</b> is Norte. Your <b>publishing</b> is native X/LinkedIn + Gmail. That's a complete system with zero new software.</div>
+</div></section>
+
+<!-- MINIMUM STACK -->
+<section><div class="wrap">
+  <div class="kicker rv">The stack · phase 1 (launch with this)</div>
+  <h2 class="rv">4 things. You already have 3 of them.</h2>
+  <div class="stackrow">
+    <div class="tool core rv"><div class="ic">🧭</div><h3>Norte (me)</h3><p>Drafts everything, scores accounts, writes the campaign, reports results.</p><div class="role">THE ENGINE</div></div>
+    <div class="tool core rv"><div class="ic">🗂️</div><h3>Attio</h3><p>Your CRM. Who to contact, what stage, and the measurement (source tags).</p><div class="role">THE HUB</div></div>
+    <div class="tool rv"><div class="ic">✉️</div><h3>Gmail</h3><p>Personal emails to signups + targets. Higher-converting than any blast.</p><div class="role">OUTREACH</div></div>
+    <div class="tool rv"><div class="ic">📱</div><h3>X + LinkedIn</h3><p>Post by hand, 2×/week. Copy-paste from Norte's drafts.</p><div class="role">PUBLISHING</div></div>
+  </div>
+  <div class="card rv" style="margin-top:18px;background:var(--lav-soft);border-color:#d9d2f7"><b>That's the entire launch stack.</b> No Buffer, no Mailchimp, no automation software. Norte drafts, you approve, you post/send. You can run the whole Week-2 launch on exactly this. When it starts to feel like too much manual work, THEN we add a tool — not before.</div>
+</div></section>
+
+<!-- WHEN TO ADD TOOLS -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">Add tools only when it hurts · not before</div>
+  <h2 class="rv">The phased upgrade (each has a clear trigger).</h2>
+  <div class="phase p1 rv"><div class="w">PHASE 1 · NOW</div><h3>Attio + Gmail + hand-posting + Norte</h3><p>Launch on this. Zero new tools. Everything Norte drafts, you send/post. This is enough to run the whole 5-week sprint if you want.</p></div>
+  <div class="phase p2 rv"><div class="w">PHASE 2 · when posting by hand gets annoying</div><h3>+ Buffer (schedule social)</h3><p>Trigger: you're posting 4+ times a week and doing it live is a chore. Buffer just queues them so they auto-post at set times. ~20 min to set up once. <b>Optional.</b></p></div>
+  <div class="phase p3 rv"><div class="w">PHASE 3 · when there's real email volume</div><h3>+ Mailchimp (newsletter + automated sequences)</h3><p>Trigger: you have a real list (100s) and are sending the monthly newsletter + want the signup sequences to run automatically. Until then, personal Gmail wins. <b>Later, not now.</b></p></div>
+  <p class="note rv"><b>The principle:</b> don't buy or wire up software to solve a problem you don't have yet. Start manual, add automation only where the manual version genuinely hurts. This is how you stay in control and not overwhelmed.</p>
+</div></section>
+
+<!-- AUTOMATED VS MANUAL -->
+<section><div class="wrap">
+  <div class="kicker rv">Crystal clear · what's automated vs what you do by hand</div>
+  <h2 class="rv">So nothing is a mystery.</h2>
+  <table class="rv">
+    <tr><th>Task</th><th>Who / how</th></tr>
+    <tr><td>Draft posts, emails, video scripts, openers</td><td class="aidone">🤖 Norte (you just ask)</td></tr>
+    <tr><td>Score accounts, build target lists</td><td class="aidone">🤖 Norte</td></tr>
+    <tr><td>Write the whole campaign (all channels)</td><td class="aidone">🤖 Norte</td></tr>
+    <tr><td>Pull signals from Attio, weekly digest</td><td class="aidone">🤖 Norte</td></tr>
+    <tr><td>Reports (7-day / 30-day)</td><td class="aidone">🤖 Norte</td></tr>
+    <tr><td>Approve the drafts (voice + claims)</td><td class="human">👤 You (5–15 min)</td></tr>
+    <tr><td>Post on X / LinkedIn</td><td class="human">👤 You — copy-paste (or Buffer later)</td></tr>
+    <tr><td>Send the personal emails / DMs</td><td class="human">👤 You — from Gmail/LinkedIn</td></tr>
+    <tr><td>Have the calls, close the deals</td><td class="human">👤 You + the team</td></tr>
+    <tr><td>Decide what matters this week</td><td class="human">👤 You + Eli (30 min Monday)</td></tr>
+  </table>
+  <p class="note rv"><b>Look at the split:</b> everything time-consuming is Norte. Everything left for you is judgment + a few clicks. That's why a tiny team can run this — and why you don't need to be a "tools person."</p>
+</div></section>
+
+<!-- SIGNUP WITH MINIMAL STACK -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The signup fix · with the simple stack (no scary automation)</div>
+  <h2 class="rv">Your #1 growth win, done simply.</h2>
+  <p class="lede rv">The analysis called this the fastest, lowest-effort growth opportunity — and you can do it with just Attio + Gmail + Norte, human-sent at first. No automation software required.</p>
+  <div class="grid g3">
+    <div class="card rv"><span class="tag">STEP 1</span><h3>See who's in the hole</h3><p style="font-size:13.5px;margin-top:6px">Aidar sends the signup export → Norte scores everyone → you get a ranked list of who's worth contacting.</p></div>
+    <div class="card rv"><span class="tag">STEP 2</span><h3>Norte drafts, you send</h3><p style="font-size:13.5px;margin-top:6px">For each warm signup, Norte writes a personal email with their context. You send it from Gmail. Human, not a blast.</p></div>
+    <div class="card rv"><span class="tag">STEP 3</span><h3>Automate later</h3><p style="font-size:13.5px;margin-top:6px">Once you see which messages work, THEN we set the winners to send automatically (Mailchimp or a lifecycle tool). Prove it by hand first.</p></div>
+  </div>
+  <p class="note rv"><b>Quality over quantity:</b> max ~4 touches in 3 weeks, each genuinely useful. The moment someone replies, a human takes over. Fewer, sharper, better-timed — never a spray.</p>
+</div></section>
+
+<!-- OWNERS (fix the analysis concern) -->
+<section><div class="wrap">
+  <div class="kicker rv">The analysis was right · every blocker gets an owner</div>
+  <h2 class="rv">No more owner-less blockers. Assigned, here.</h2>
+  <p class="lede rv">The feedback nailed it: a daily/weekly engine dies if the technical reviewer, the Buffer owner, the Mailchimp owner, and the case-study approver have no name. So — names. Confirm these in the team meeting and the engine has no gaps.</p>
+  <div class="card rv">
+    <div class="owner"><span class="b b-cto">AIDAR</span><p><b>Technical claim reviewer</b> — async 👍 on new claims (~15 min/week). Also: signup data access.</p></div>
+    <div class="owner"><span class="b b-gin">GIN</span><p><b>The machine + Buffer/publishing owner + Mailchimp owner + measurement.</b> You own that content ships and gets tracked. (Norte drafts; you approve + publish.)</p></div>
+    <div class="owner"><span class="b b-eli">ELI</span><p><b>Positioning sign-off + case-study approvals</b> (gets the customer's yes) + founder channel.</p></div>
+    <div class="owner"><span class="b b-gin">GIN</span><p><b>Case-study production owner</b> — chases Arca's approval, Norte writes it. (Eli/relationship owner secures the yes.)</p></div>
+    <div class="owner"><span class="b b-team">FUNA / COMMERCIAL</span><p><b>Regional outreach owners</b> — Africa/ME (Funa) and sales &amp; partnerships (Commercial). Send their own DMs; Norte drafts.</p></div>
+    <div class="owner" style="border:none"><span class="b b-gin">GIN</span><p><b>Weekly ritual owner</b> — runs the 30-min Monday, keeps the loop honest.</p></div>
+  </div>
+  <p class="note rv"><b>Notice:</b> most "tool owner" roles are just you (Gin) — because there's barely any tooling. "Buffer owner" and "Mailchimp owner" only become real jobs if/when we add those tools. Today they don't exist, so they can't block you.</p>
+</div></section>
+
+<!-- NORTH STAR + AB -->
+<section style="background:#f4f2fb"><div class="wrap">
+  <div class="kicker rv">The growth-hacking method · simply</div>
+  <h2 class="rv">One metric. Iterate. Test small.</h2>
+  <div class="grid g3">
+    <div class="card rv"><span class="tag">NORTH STAR</span><h3>One number</h3><p style="font-size:14px;margin-top:6px"><b>Qualified opportunities created or advanced by marketing.</b> Not likes. Everything ladders to this, tracked in Attio.</p></div>
+    <div class="card rv"><span class="tag">ITERATE</span><h3>The value prop</h3><p style="font-size:14px;margin-top:6px">The canonical sentence is a hypothesis. Cold-test it, watch which segment "gets it" fastest, refine. Positioning is an experiment, not a tattoo.</p></div>
+    <div class="card rv"><span class="tag">A/B, LIGHTLY</span><h3>Test wording</h3><p style="font-size:14px;margin-top:6px">Norte always gives 2 versions (safe + sharper). Post both angles over time, keep what gets replies from real buyers. Small tests, real signal.</p></div>
+  </div>
+  <p class="note rv"><b>B2B2C reminder (from the analysis):</b> we sell to fintechs, not end-users. So our metrics = qualified <i>company</i> conversations, not consumer signups. Every message speaks to a fintech founder/CTO, never their user.</p>
+</div></section>
+
+<!-- YOU'RE PREPARED -->
+<section class="wrap" style="border:none"><div class="wrap"><div class="card rv" style="background:#16121f;color:#fff;padding:36px">
+  <div class="kicker" style="color:var(--c9)">You're more prepared than you feel</div>
+  <h2 style="color:#fff">Here's literally everything you need to launch.</h2>
+  <ul class="cl" style="margin-top:14px">
+    <li style="color:#e8e3f7;border-color:#2c2447"><b style="color:#fff">Attio</b> — you have it.</li>
+    <li style="color:#e8e3f7;border-color:#2c2447"><b style="color:#fff">Gmail</b> — you have it.</li>
+    <li style="color:#e8e3f7;border-color:#2c2447"><b style="color:#fff">X + LinkedIn</b> — you have them.</li>
+    <li style="color:#e8e3f7;border-color:#2c2447"><b style="color:#fff">Norte</b> — right here, doing the drafts.</li>
+    <li style="color:#e8e3f7;border-color:#2c2447"><b style="color:#fff">The claims library + target list + campaign</b> — already built ✅.</li>
+    <li style="color:#e8e3f7;border:none"><b style="color:#fff">Owners assigned</b> — confirm them Monday and there are zero gaps.</li>
+  </ul>
+  <p style="font-size:20px;font-weight:700;margin-top:20px;color:#fff">No new software. No complex automation. Just you deciding, Norte producing, and a few clicks to send. <span style="color:var(--c9)">You've got this. 🧭</span></p>
+</div></div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Execution &amp; Automation, Made Simple · Gin + Norte 🧭 · July 2026 · Start manual, add tools only when the manual version hurts.<br>
+  ◆ <a href="compass-roadmap-master.html">Master Roadmap</a> · <a href="compass-team-playbook.html">Team Playbook</a> · <a href="compass-target-list.html">Target List</a> · <a href="START-HERE-compass.html">Start Here</a>
+</div></footer>
+
+<script>
+  document.body.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%4,3)*55)+'ms';io.observe(el);});
+</script>
+
+</body>
+</html>

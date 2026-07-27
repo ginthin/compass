@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaign Draft — Agents on BNB Chain</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#8b7cf6;--lav-deep:#5b47d6;--lav-soft:#eeeaff;--gold:#ffe14d;--coral:#ff7a66;--green:#19b57a;--mono:'SF Mono',Consolas,Menlo,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:920px;margin:0 auto;padding:0 26px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:60px 0 44px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c9befc;font-weight:700;margin-bottom:14px}
+  h1{font-size:44px;line-height:1.02;letter-spacing:-.03em;font-weight:800}
+  .hero .msg{margin-top:18px;color:#e7e3fb;font-size:16px;max-width:660px}
+  .hook{margin-top:16px;background:rgba(255,255,255,.09);border-left:3px solid var(--gold);padding:12px 16px;border-radius:8px;font-size:17px;font-weight:600;max-width:660px}
+  nav{position:sticky;top:0;background:rgba(250,249,252,.94);backdrop-filter:blur(8px);border-bottom:1px solid #e8e5f2;z-index:9;padding:10px 0}
+  nav .wrap{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px}
+  nav a{text-decoration:none;color:var(--lav-deep);background:#fff;border:1px solid #e8e5f2;border-radius:20px;padding:5px 11px;font-weight:600}
+  nav a:hover{background:var(--lav-soft)}
+  section{padding:34px 0;border-bottom:1px solid #eceaf4}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav-deep);font-weight:700}
+  h2{font-size:25px;font-weight:800;margin:2px 0 4px}
+  .sub{color:#6a6480;font-size:14px;margin-bottom:18px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+  .card .label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a84a0;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  .card .label .tag{color:var(--lav-deep)}
+  .post{white-space:pre-wrap;font-size:15px;line-height:1.6}
+  .bb{display:grid;grid-template-columns:1fr;gap:10px}
+  .bbline{background:var(--ink);color:#fff;border-radius:12px;padding:20px 22px;font-size:22px;font-weight:800;letter-spacing:-.01em}
+  .bbline small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#c9befc;margin-top:10px}
+  .bbline.lav{background:var(--lav-deep)}.bbline.gold{background:var(--gold);color:var(--ink)}.bbline.gold small{color:#7a5b00}
+  .bbline.coral{background:var(--coral);color:#3a1108}.bbline.coral small{color:#7a2415}
+  .art{background:var(--lav-soft);border-radius:10px;padding:14px 16px;font-size:13.5px;color:#3b2c6e;margin-top:6px}
+  .art b{color:var(--lav-deep)}
+  .imgs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+  .imgs img{width:100%;border-radius:8px;border:1px solid #e8e5f2}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e8e5f2}
+  th{background:var(--lav-deep);color:#fff;text-align:left;padding:10px 12px;font-size:12px}
+  td{padding:10px 12px;border-top:1px solid #eceaf4;vertical-align:top}
+  tr:nth-child(even) td{background:#faf9fc}
+  .flag{background:#fff8e6;border:1px solid #f0d98a;border-radius:10px;padding:14px 16px;font-size:13.5px;color:#7a5b00;margin-top:8px}
+  .flag b{color:#8a6400}
+  .two{display:grid;grid-template-columns:90px 1fr;gap:0}
+  .two .sp{font-family:var(--mono);font-size:11px;color:var(--lav-deep);font-weight:700;padding:8px 0;border-top:1px solid #eceaf4}
+  .two .tx{padding:8px 0 8px 6px;border-top:1px solid #eceaf4;font-size:14px}
+  .subj{font-size:15px;font-weight:700}
+  .cta{display:inline-block;background:var(--lav-deep);color:#fff;font-size:12px;font-weight:700;border-radius:7px;padding:6px 12px;margin-top:8px;font-family:var(--mono)}
+  footer{padding:34px 0;color:#8a84a0;font-size:12.5px;text-align:center}
+  @media(max-width:620px){h1{font-size:32px}.two{grid-template-columns:70px 1fr}.imgs{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kick">Compass Labs · Campaign DRAFT · Agents on BNB Chain 🧭</div>
+  <h1>Agents now have<br>the rails they deserve.</h1>
+  <div class="msg"><b>The one message — Where Finance Is Going:</b> Agents don’t need more hype — they need real financial infrastructure with real boundaries. Everything Compass does is now live on BNB Chain, including the CLI &amp; MCP agents run on.</div>
+  <div class="hook">The hook: <b>“Your agent can earn, borrow, trade perps and RWAs — while you sleep. Now on BNB Chain.”</b></div>
+</div></div>
+
+<nav><div class="wrap">
+  <a href="#bb">1 · Billboards</a>
+  <a href="#li">2 · LinkedIn</a>
+  <a href="#x">3 · X</a>
+  <a href="#founder">4 · Founder</a>
+  <a href="#email">5 · Emails</a>
+  <a href="#video">6 · Video</a>
+  <a href="#blog">7 · Blog</a>
+  <a href="#map">8 · Post map</a>
+  <a href="#act">9 · Activate + reuse</a>
+</div></nav>
+
+<!-- 1 BILLBOARDS -->
+<section id="bb"><div class="wrap">
+  <div class="snum">SECTION 1</div>
+  <h2>Billboards <span style="font-weight:400;font-size:15px;color:#8a84a0">— real images below</span></h2>
+  <p class="sub">Screenshot-worthy. One becomes the hero visual. PNGs (feed / story / square) are in the resource pack + Drive folder.</p>
+  <div class="bb">
+    <div class="bbline lav">Your agent can earn, borrow and trade. While you sleep.<small>AGENTS · BNB CHAIN</small></div>
+    <div class="bbline">Agents deserve elite infrastructure. Now they have it.<small>WHERE FINANCE IS GOING</small></div>
+    <div class="bbline gold">Everything Compass does. Now on BNB Chain.<small>PROOF</small></div>
+    <div class="bbline coral">An agent with power, and boundaries.<small>AGENTS</small></div>
+  </div>
+  <div class="imgs">
+    <img src="compass-assets/billboards/bnb-chain/feed_1080x1350/bnb1.png" alt="bnb1">
+    <img src="compass-assets/billboards/bnb-chain/feed_1080x1350/bnb2.png" alt="bnb2">
+    <img src="compass-assets/billboards/bnb-chain/feed_1080x1350/bnb3.png" alt="bnb3">
+    <img src="compass-assets/billboards/bnb-chain/feed_1080x1350/bnb4.png" alt="bnb4">
+  </div>
+  <div class="art"><b>Top pick → “…While you sleep.”</b> &nbsp;Deep ink background. Line in white; “While you sleep.” on its own line in lavender. BNB Chain + Compass marks equal size, bottom row. Calm, nocturnal. <b>Drop the official BNB Chain logo</b> into the co-brand lockup before posting.</div>
+</div></section>
+
+<!-- 2 LINKEDIN -->
+<section id="li"><div class="wrap">
+  <div class="snum">SECTION 2</div>
+  <h2>Announcement posts (LinkedIn)</h2>
+  <p class="sub">Three jobs: the news, how it works, why it matters. Link in first comment.</p>
+
+  <div class="card">
+    <div class="label"><span>POST 1 · THE NEWS</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="post">Most “AI agents” in crypto can talk. Very few can act.
+
+Acting means real financial infrastructure — earn, borrow, trade perps, access RWAs — with boundaries that keep user funds safe.
+
+That’s what Compass gives an agent. And as of today, all of it runs on BNB Chain.
+
+Earn, borrow, trade, RWAs. One non-custodial integration. Plus our CLI &amp; MCP, so an agent can do it programmatically.
+
+Power, with boundaries. That’s the part the market keeps skipping.
+
+What agents can now do on BNB Chain 👇 (link in comments)</div>
+  </div>
+
+  <div class="card">
+    <div class="label"><span>POST 2 · HOW IT WORKS</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="post">An agent that can move money but can’t take custody of it is a product you can ship.
+
+Here’s how Compass draws that line.
+
+Your agent calls the same audited infrastructure our fintech customers use — through our CLI and MCP, built for machines to call, not humans to click.
+
+It can earn on idle balances, borrow and repay, trade perps, reach RWAs.
+
+At no point does it hold the funds. Non-custodial, the whole way.
+
+All live on BNB Chain.
+
+See the agent stack 👇 (link in comments)</div>
+  </div>
+
+  <div class="card">
+    <div class="label"><span>POST 3 · WHY IT MATTERS</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="post">The scariest phrase in AI right now: “autonomous agent with access to your funds.”
+
+It shouldn’t be scary. It should have boundaries.
+
+The teams that win the agent race won’t be the ones that remove every limit. They’ll be the ones that give agents real power inside real constraints.
+
+That constraint isn’t a limitation. It’s the product.
+
+We built Compass so an agent can act on money without ever holding it. Now live on BNB Chain.
+
+How we think about agents + boundaries 👇 (link in comments)</div>
+  </div>
+</div></section>
+
+<!-- 3 X -->
+<section id="x"><div class="wrap">
+  <div class="snum">SECTION 3</div>
+  <h2>X — thread + standalone tweets</h2>
+  <div class="card">
+    <div class="label"><span>THREAD · 5 posts</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="post">1/ Agents now possess the elite infrastructure they deserve.
+
+2/ Compass lets your agent earn, borrow, trade perps and RWAs — while you sleep. Non-custodial the whole way.
+
+3/ The hard part was never “can an agent act.” It’s “can it act with boundaries.” Ours can. It never takes custody of the funds.
+
+4/ As of now, all of it is live on @BNBCHAIN — including our CLI &amp; MCP, so agents do it programmatically.
+
+5/ Power, with boundaries. That’s the agent stack. Docs in the reply 👇</div>
+  </div>
+  <div class="card">
+    <div class="label"><span>STANDALONE TWEETS</span></div>
+    <div class="post">• An agent that can move money but can’t take custody of it is a product you can ship. One that holds the keys is a liability you can’t insure. We built the first one. Live on @BNBCHAIN.
+
+• Earn. Borrow. Trade perps. Touch RWAs. While you sleep. Your agent now has the rails — non-custodial — on @BNBCHAIN.</div>
+  </div>
+</div></section>
+
+<!-- 4 FOUNDER -->
+<section id="founder"><div class="wrap">
+  <div class="snum">SECTION 4</div>
+  <h2>Founder post (Eli)</h2>
+  <div class="card">
+    <div class="label"><span>ELI · LinkedIn / X</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="post">Here’s what the market gets wrong about AI agents in finance.
+
+Everyone’s racing to make agents more autonomous. Almost no one is working on the boundaries.
+
+An agent that can move money but can’t take custody of it is far more useful — and far more fundable — than one with the keys to the vault.
+
+That constraint isn’t a limitation. It’s the product.
+
+We built Compass so an agent can earn, borrow, trade and touch RWAs, all without ever holding the funds. It’s now live on BNB Chain.
+
+Give agents power. Keep the boundaries. That’s the whole thesis.</div>
+  </div>
+</div></section>
+
+<!-- 5 EMAILS -->
+<section id="email"><div class="wrap">
+  <div class="snum">SECTION 5</div>
+  <h2>Emails</h2>
+  <div class="card">
+    <div class="label"><span>EMAIL A · agent / infra builders</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="subj">Subjects:</div>
+    <div class="post">1. Your agent can act now — on BNB Chain
+2. Agents with power, and boundaries
+3. Earn, borrow, trade — while you sleep</div>
+    <div style="margin-top:12px;font-family:var(--mono);font-size:12px;color:#8a84a0">PREHEADER: Everything Compass does is now live on BNB Chain.</div>
+    <div class="post" style="margin-top:12px">Hi {First name},
+
+Most agents in crypto can talk. Very few can act.
+
+Acting means real infrastructure — earn, borrow, trade perps, access RWAs — with boundaries that keep user funds non-custodial.
+
+That’s what Compass gives an agent, and as of today all of it runs on BNB Chain, including our CLI &amp; MCP so agents work programmatically.
+
+Power, with boundaries. If you’re building agents that need to touch money safely, this is the layer.
+
+Want the 3 use-cases we’re seeing most traction on?</div>
+    <span class="cta">[ Button: See the agent stack ]</span>
+  </div>
+  <div class="card">
+    <div class="label"><span>EMAIL B · BNB Chain ecosystem projects</span><span class="tag">Proof Not Promises</span></div>
+    <div class="subj">Subjects:</div>
+    <div class="post">1. Compass is live on BNB Chain
+2. Agent rails for your BNB Chain project
+3. A quick one for {Company}</div>
+    <div style="margin-top:12px;font-family:var(--mono);font-size:12px;color:#8a84a0">PREHEADER: Earn, borrow, trade, RWAs — one non-custodial integration.</div>
+    <div class="post" style="margin-top:12px">Hi {First name},
+
+Now that Compass is live on BNB Chain, any project in the ecosystem can add earn, borrow, trade and RWA products — or give an agent those abilities — through one non-custodial integration.
+
+CLI and MCP included, so it works for both apps and agents.
+
+If {Company} is building on BNB Chain and this is useful, I’ll show you exactly what the integration looks like — 20 minutes, no deck.
+
+Worth a look?</div>
+    <span class="cta">[ Button: Grab 20 minutes ]</span>
+  </div>
+</div></section>
+
+<!-- 6 VIDEO -->
+<section id="video"><div class="wrap">
+  <div class="snum">SECTION 6</div>
+  <h2>Video script (~45s)</h2>
+  <div class="card">
+    <div class="label"><span>THE AGENT FILM</span><span class="tag">Where Finance Is Going</span></div>
+    <div class="two">
+      <div class="sp">[SPOKEN]</div><div class="tx"><b>While you sleep, your agent is working.</b></div>
+      <div class="sp">[ON SCREEN]</div><div class="tx">Dark screen. A single agent cursor moving through a calm dashboard.</div>
+      <div class="sp">[SPOKEN]</div><div class="tx">It can earn. Borrow. Trade perps. Touch RWAs.</div>
+      <div class="sp">[ON SCREEN]</div><div class="tx">Four quiet actions light up one by one in lavender.</div>
+      <div class="sp">[SPOKEN]</div><div class="tx">But it never holds the money.</div>
+      <div class="sp">[ON SCREEN]</div><div class="tx">A lock icon stays closed. Text: “non-custodial.”</div>
+      <div class="sp">[SPOKEN]</div><div class="tx">Power, with boundaries.</div>
+      <div class="sp">[ON SCREEN]</div><div class="tx">The agent stays inside a glowing boundary line.</div>
+      <div class="sp">[SPOKEN]</div><div class="tx">All of it, now live on BNB Chain. CLI and MCP included.</div>
+      <div class="sp">[ON SCREEN]</div><div class="tx">BNB Chain + Compass marks, equal size. Green “live” dot.</div>
+      <div class="sp">[SPOKEN]</div><div class="tx">Give your agent the rails it deserves. Compass.</div>
+      <div class="sp">[ON SCREEN]</div><div class="tx">Logo + docs URL. Coral CTA.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 7 BLOG -->
+<section id="blog"><div class="wrap">
+  <div class="snum">SECTION 7</div>
+  <h2>Blog — the anchor</h2>
+  <p class="sub">The long-form piece every post links to. Full article in the resource pack (<span class="mono">blogs/bnb-chain-agents.md</span>) + Drive.</p>
+  <div class="card">
+    <div class="label"><span>TITLE</span><span class="tag">~700 words</span></div>
+    <div class="post"><b>Agents need power — and boundaries. That’s why we brought the full Compass stack to BNB Chain.</b>
+
+The conversation about AI agents in crypto has been stuck on the wrong question. Everyone asks how autonomous an agent can be. The question that actually matters: can an agent act without holding the funds?
+
+An agent that can move money but can’t take custody is a product you can ship. An agent with the keys to the vault is a liability you can’t insure.
+
+→ Sections: The part everyone skips · What Compass gives an agent · Why BNB Chain · Power, with boundaries.
+
+(Open the full article in the pack to publish on the site.)</div>
+  </div>
+</div></section>
+
+<!-- 8 MAP -->
+<section id="map"><div class="wrap">
+  <div class="snum">SECTION 8</div>
+  <h2>The post map</h2>
+  <p class="sub">Run it without thinking. Who posts what, where, which day.</p>
+  <table>
+    <tr><th>Day</th><th>Asset</th><th>Channel</th><th>Who</th><th>Where to paste it</th></tr>
+    <tr><td>Day 1</td><td>Blog live + Post 1 (the news) + X thread</td><td>Site + LinkedIn + X</td><td>Gin / company</td><td>Site · LinkedIn page · X (quote the launch tweet)</td></tr>
+    <tr><td>Day 2</td><td>Email A · openers to agent/infra builders</td><td>Email + DM</td><td>Gin</td><td>Mailchimp · DMs via /opener</td></tr>
+    <tr><td>Day 3</td><td>Founder post (Eli) + Post 2 (how it works)</td><td>LinkedIn / X</td><td>Eli + company</td><td>Eli’s profile · LinkedIn page</td></tr>
+    <tr><td>Day 4</td><td>The Agent film</td><td>LinkedIn + X</td><td>Gin / company</td><td>Pinned</td></tr>
+    <tr><td>Day 5</td><td>Post 3 (why it matters) + Email B to ecosystem</td><td>LinkedIn + Email</td><td>Gin</td><td>LinkedIn page · Mailchimp</td></tr>
+  </table>
+</div></section>
+
+<!-- 9 ACTIVATE -->
+<section id="act"><div class="wrap">
+  <div class="snum">SECTION 9</div>
+  <h2>Activate + reuse</h2>
+  <div class="card">
+    <div class="label"><span>WHO IT MATTERS TO → run /activate</span></div>
+    <div class="post">BNB Chain ecosystem projects · AI-agent teams and frameworks · wallets and infra builders exploring agents. Run <b>/activate</b> in Gin’s Claude to pull named accounts from Attio + draft a DM each.</div>
+  </div>
+  <div class="card">
+    <div class="label"><span>REUSE → run /reuse</span></div>
+    <div class="post"><b>Sales slide:</b> “Give agents the ability to earn, borrow, trade and touch RWAs — non-custodial, one integration, live on BNB Chain.”
+<b>Investor-update line:</b> “We shipped the agent financial stack on BNB Chain.”</div>
+  </div>
+  <div class="flag"><b>⚑ Before publishing — [NEEDS APPROVAL]:</b> any specific numbers (agent volume, # of projects) — none are in the approved list. Product claims (earn, borrow, trade perps, RWAs, CLI &amp; MCP, live on BNB Chain, non-custodial) match the public launch tweet, so they’re cleared. Keep BNB Chain framed as an integration/partner. Custody: non-custodial on every asset.</div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · “Agents on BNB Chain” · DRAFT to review · generated by /campaign 🧭<br>
+  Draft view (this file) + resources (billboards + blog in the pack) + shared home (Google Drive).
+</div></footer>
+</body>
+</html>
