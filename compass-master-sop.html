@@ -77,6 +77,8 @@
     <a href="#measure">14 · Measure it</a>
     <a href="#rules">15 · The rules</a>
     <a class="grp">Reference</a>
+    <a href="#channels">The channels + approvals</a>
+    <a href="#skills">The 15 skills</a>
     <a href="#who">Who does what</a>
     <a href="#stuck">If you're stuck</a>
   </nav>
@@ -299,6 +301,15 @@ When in doubt, drop it. Better a messy note than a missed signal.</div>
       <li><b>Phase 2, build the visuals.</b> Only once the week is locked, Gin says "go" and Norte builds the billboards and the rendered week HTML for the approved pieces. Gin publishes that to the site or Drive whenever she wants. Because it is already approved, no asset is wasted.</li>
     </ol>
     <div class="tip"><b>Where it lives:</b> the canvas in #norte-warroom is the living team view (instant, editable, no upload, this is what Eli reads). The billboards and rendered HTML are the polished extra, published after the plan is locked to one fixed link on the site (<b>compass-week-EVERYTHING.html</b>) or to Drive. Plan and approve in the canvas, then build. Nobody waits on an upload to see the plan.</div>
+
+    <h3 style="margin-top:22px">How feedback and rework happen</h3>
+    <p>Reviewing is not just approve or reject. You leave corrections and Norte redoes the piece, as many rounds as it takes, until it is right.</p>
+    <ol>
+      <li><b>Short pieces (posts, threads):</b> reply in #norte-warroom tagged to the piece. Format: <span class="field">FIX [day / piece]: what to change</span>. Example: <span class="field">FIX Tue BNB thread: too long, cut to 4 posts</span>. To approve, react ✅ or reply <span class="field">lock</span>.</li>
+      <li><b>Long pieces (blogs, newsletters):</b> open the weekly Doc in Drive and use inline comments (highlight, comment). Best for anything long.</li>
+      <li><b>Then Norte reworks:</b> Gin (or Eli from his own Claude) tells Norte "apply the war room feedback and redo those pieces", and Norte updates them in #norte-warroom. Repeat until locked.</li>
+    </ol>
+    <div class="tip"><b>Just reviewing?</b> You need nothing connected, only Slack and the Drive Doc. Connecting Slack and Drive inside your own Claude is only needed if you want to trigger Norte to redo pieces yourself. Separately, <b>#norte-feedback</b> is only for fixing a general Norte habit (tone, a stray long dash), which gets baked into the skill.</div>
     <div class="tip"><b>Your one meeting:</b> the 30-min Monday. Everything else is you + Norte, whenever it fits.</div>
   </section>
 
@@ -337,6 +348,58 @@ When in doubt, drop it. Better a messy note than a missed signal.</div>
       <div class="card"><b>⚠️ Needs a quick 👍</b><p style="font-size:13.5px">A NEW technical number → Aidar. A named customer/partner → the relationship owner.</p></div>
     </div>
     <div class="stop"><b>Never:</b> invent a number, use an unapproved fact, make a price prediction, name a competitor, use hype words ("revolutionary", "thrilled to announce", 🚀), or talk politics. If unsure, Norte writes <span class="field">[NEEDS APPROVAL]</span> and you check first.</div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="card"><b>✋ No long dashes, ever</b><p style="font-size:13.5px">No long dashes in any communication, anywhere. Use a comma, a colon or a full stop instead. It should never read like AI. Norte already writes this way, keep it that way when you edit.</p></div>
+      <div class="card"><b>✋ Never claim volume through Compass</b><p style="font-size:13.5px">Thor Wallet is a customer, but do NOT say any dollar amount was routed or processed "through Compass" (that was Thor's own volume). No "$1.1B", no "$1B through Compass".</p></div>
+    </div>
+    <div class="note">In public partner announcements, do not name Agant or Keyrock. Keep BNB Chain and Centrifuge framed as integrations/partners.</div>
+  </section>
+
+  <!-- CHANNELS -->
+  <section id="channels">
+    <div class="kicker">Reference</div>
+    <h2>The channels, one job each</h2>
+    <p class="lede">Six Slack channels. Each has exactly one job, so nothing gets lost and everyone knows where to put things.</p>
+    <div class="grid g2">
+      <div class="card"><b>#market-news</b><p style="font-size:13.5px">Industry news comes in here. Raw input for Norte to read.</p></div>
+      <div class="card"><b>#marketing-signals</b><p style="font-size:13.5px">Everything that could become content: wins, shipped features, objections, and posts we like (the swipe file). Drop it here.</p></div>
+      <div class="card"><b>#norte-warroom</b><p style="font-size:13.5px">The plan. Norte proposes the week and month in a canvas here. Gin and Eli review and lock it. This is the living team view.</p></div>
+      <div class="card"><b>#content-product</b><p style="font-size:13.5px">The workshop. Locked pieces get built here, each reviewed by its owner and approved by Gin or Eli.</p></div>
+      <div class="card"><b>#social-posts</b><p style="font-size:13.5px">Only for posts that are already live. The link lands here after it publishes.</p></div>
+      <div class="card"><b>#norte-feedback</b><p style="font-size:13.5px">Where we sharpen Norte. Say what felt off, Norte tunes the skills, the next round is better.</p></div>
+    </div>
+    <h3 style="margin-top:20px">Who approves what</h3>
+    <div class="grid g2">
+      <div class="card"><b>Gin or Eli</b><p style="font-size:13.5px">Nothing gets approved or ships without one of them. They lock the plan and sign off the pieces.</p></div>
+      <div class="card"><b>Aidar + engineering</b><p style="font-size:13.5px">Any number or technical claim goes to Aidar before it ships. He keeps the claims honest.</p></div>
+      <div class="card"><b>The relationship owner</b><p style="font-size:13.5px">Anything naming a customer or partner gets a quick 👍 from whoever owns that relationship, and partner quotes need partner sign-off.</p></div>
+      <div class="card"><b>Norte 🧭</b><p style="font-size:13.5px">Drafts everything and flags <span class="field">[NEEDS APPROVAL]</span> on anything that needs a human. It never publishes on its own.</p></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="kicker">Reference</div>
+    <h2>The 15 skills, what to type</h2>
+    <p class="lede">Norte is 15 skills. You just type the slash command (or ask in plain words). The most used ones first.</p>
+    <ol class="steps">
+      <li><b>/post</b>, a finished X or LinkedIn post from any signal.</li>
+      <li><b>/email</b>, a follow-up, customer note, partner ask, or newsletter body.</li>
+      <li><b>/billboard</b>, a sharp headline or key visual line plus rendered billboard images.</li>
+      <li><b>/founder-post</b>, a post in Eli's own voice from a raw thought.</li>
+      <li><b>/franchise</b>, the next episode of a recurring show (like Objection of the Week).</li>
+      <li><b>/video-script</b>, a short outcome-first script to record.</li>
+      <li><b>/own-campaign</b>, the full 360 kit for a Compass launch (blog, posts, billboards, video, emails, day-by-day map).</li>
+      <li><b>/partnership-campaign</b>, the co-marketing kit for a partner moment (needs partner sign-off).</li>
+      <li><b>/campaign-day</b>, everything to post on a given day of a running campaign.</li>
+      <li><b>/weekly-digest</b>, reads the week's signals and ranks what is worth posting.</li>
+      <li><b>/rewrite</b>, fixes a rough draft so it is on-brand and claim-safe.</li>
+      <li><b>/reuse</b>, turns a winning campaign into a sales slide, an investor line and snippets.</li>
+      <li><b>/opener</b>, reads a company's Attio record and writes a personal outreach DM.</li>
+      <li><b>/activate</b>, for a campaign, lists the accounts it matters to and drafts a DM for each.</li>
+      <li><b>/norte</b>, makes any existing thing on-brand, both the words and the visual design.</li>
+    </ol>
+    <div class="tip">Do not remember these. Just describe what you want and Norte picks the right one. The list is only here so you know the range.</div>
   </section>
 
   <!-- WHO -->
@@ -345,12 +408,14 @@ When in doubt, drop it. Better a messy note than a missed signal.</div>
     <h2>Who does what</h2>
     <div class="grid g2">
       <div class="card"><b>Gin</b>, runs the machine, the official accounts, the campaigns, the Monday + Friday sweep, measurement.</div>
-      <div class="card"><b>Aidar (CTO)</b>, keeps the numbers honest (claim checks), signup data. Bezkat produces product videos (script from Norte).</div>
+      <div class="card"><b>Aidar (CTO)</b>, keeps the numbers honest (claim checks), signup data. Signs off every technical claim or number before it ships.</div>
+      <div class="card"><b>Bezkat (Engineering)</b>, records the product videos and demos (Norte writes the script, about 15 min to film), turns what ships into signals, and fronts the build franchise ("what we shipped", on camera).</div>
       <div class="card"><b>Eli (CEO)</b>, founder posts, approves campaign angles + customer stories.</div>
       <div class="card"><b>Funa / Commercial</b>, regional + partner outreach, their own DMs + signals.</div>
-      <div class="card"><b>Everyone</b>, flag signals in Slack, use Norte for your own posts, reshare, log your calls in Attio.</div>
+      <div class="card"><b>Everyone</b>, feed the machine: drop signals in #marketing-signals, market news in #market-news, and Norte feedback in #norte-feedback. Use Norte for your own posts, publish your turn, reshare and support the team, log your calls in Attio.</div>
       <div class="card"><b>Norte 🧭</b>, writes everything. The one thing that's automatic.</div>
     </div>
+    <div class="tip" style="margin-top:12px"><b>Rules on ownership:</b> Norte builds the heartbeat and Gin publishes on the official accounts, with approvals underneath (Gin or Eli, and Aidar with Bezkat on any number or technical claim). <b>Franchises rotate, and when it is your turn you also publish it</b>: personal and founder pieces go out from your own account, official ones Gin publishes. When the official account or a campaign is posting, everyone else keeps posting in their own voice too, and <b>supports Compass and the team</b>: reshare, comment on and amplify each other's posts. Everyone has Norte, so staying on brand is easy. More voices, more reach.</div>
   </section>
 
   <!-- STUCK -->
