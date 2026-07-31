@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Norte System — architecture & storage</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavl:#8b7cf6;--lav-soft:#eeeaff;--gold:#FFE14D;--coral:#ff7a66;--green:#19b57a;--mono:'SF Mono',Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:900px;margin:0 auto;padding:0 26px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:58px 0 44px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c9befc;font-weight:700;margin-bottom:12px}
+  h1{font-size:44px;line-height:1.02;letter-spacing:-.03em;font-weight:800}
+  .hero p{margin-top:12px;color:#e7e3fb;font-size:16px;max-width:640px}
+  section{padding:34px 0;border-bottom:1px solid #eceaf4}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:700}
+  h2{font-size:25px;font-weight:800;margin:3px 0 6px}
+  .sub{color:#6a6480;font-size:14.5px;max-width:740px;margin-bottom:14px}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid #e8e5f2;border-radius:12px;overflow:hidden;margin-top:12px}
+  th{background:var(--lav);color:#fff;text-align:left;padding:10px 12px;font-size:12.5px}
+  td{padding:11px 12px;border-top:1px solid #eceaf4;vertical-align:top}
+  td.k{font-weight:700;white-space:nowrap}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .card{background:#fff;border:1px solid #e8e5f2;border-radius:14px;padding:18px}
+  .card .n{font-family:var(--mono);font-size:11px;color:var(--lav);font-weight:700;letter-spacing:.05em}
+  .card h4{font-size:16px;margin:5px 0 4px}.card p{font-size:13.5px;color:#4a4458}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;font-size:13.5px}
+  .pill{background:var(--lav-soft);color:var(--lav);border-radius:20px;padding:5px 12px;font-weight:700;font-family:var(--mono);font-size:12px}
+  .arr{color:var(--lavl);font-weight:800}
+  .rule{background:var(--ink);color:#fff;border-radius:14px;padding:20px 22px;margin-top:16px}
+  .rule b{color:var(--gold)}
+  .cto{background:#f2fbf7;border-left:4px solid var(--green);border-radius:12px;padding:18px 20px;margin-top:14px;font-size:14.5px}
+  .cto b{color:#127a52}
+  footer{padding:30px 0;color:#8a84a0;font-size:12.5px;text-align:center}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:32px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kick">Compass Labs · The Norte System 🧭</div>
+  <h1>The plugin, the master doc,<br>and where everything lives.</h1>
+  <p>How Norte is built and where all of it is stored. Written so anyone, including the CTO, can see there is no black box: the brain is a file you own, the data is in your own tools.</p>
+</div></div>
+
+<!-- THE BRAIN -->
+<section><div class="wrap">
+  <div class="snum">1 · THE BRAIN · the skills</div>
+  <h2>Norte is 15 skills. They live in two places you control.</h2>
+  <div class="grid">
+    <div class="card"><div class="n">THE PLUGIN</div><h4>norte.plugin (v0.2.1)</h4><p>A single file that bundles all 15 skills. Install once, the whole team gets Norte in their Claude. It is a file you own and can share. Reinstall the new version when we update it.</p></div>
+    <div class="card"><div class="n">THE MASTER DOC · source of truth</div><h4>Compass-Skills (xlsx + md)</h4><p>The one source of truth for every skill: name, description, and the full prompt. The plugin is generated from this. If they ever disagree, the master doc wins.</p></div>
+  </div>
+  <div class="rule"><b>The rule:</b> the master doc is the single source of truth. The plugin is built from it. Never edit the plugin by hand. Change the master, rebuild the plugin, reshare. That keeps everyone in sync and every change traceable.</div>
+</div></section>
+
+<!-- WHERE DATA LIVES -->
+<section><div class="wrap">
+  <div class="snum">2 · WHERE EVERYTHING LIVES</div>
+  <h2>Every part is stored in a tool Compass owns.</h2>
+  <table>
+    <tr><th>What</th><th>Where it lives</th><th>Who owns it</th></tr>
+    <tr><td class="k">The skills (Norte's instructions)</td><td>The plugin file + the master doc, and each person's Claude once installed</td><td>Compass (the files) + Anthropic (hosting the app)</td></tr>
+    <tr><td class="k">Signals, plans, drafts, feedback</td><td>Slack: #market-news, #marketing-signals, #norte-warroom, #content-product, #social-posts, #norte-feedback</td><td>Compass (your Slack workspace)</td></tr>
+    <tr><td class="k">Campaigns, weekly content, assets, billboards</td><td>Google Drive: the Compass Campaigns folder, one subfolder per week</td><td>Compass (your compasslabs.ai Drive)</td></tr>
+    <tr><td class="k">The automation (the 4 triggers)</td><td>Scheduled tasks in the Cowork app</td><td>Compass (on the machine running Cowork)</td></tr>
+    <tr><td class="k">The processing (writing, drafting)</td><td>Claude runs the skills at request time</td><td>Anthropic processes it. It is not stored as a hidden memory.</td></tr>
+  </table>
+</div></section>
+
+<!-- HOW IT REMEMBERS -->
+<section><div class="wrap">
+  <div class="snum">3 · HOW NORTE REMEMBERS AND LEARNS</div>
+  <h2>No hidden brain. The memory is the skill files.</h2>
+  <p class="sub">Norte does not silently evolve on its own. It gets better through one visible, versioned loop, and you control every step.</p>
+  <div class="flow">
+    <span class="pill">feedback in #norte-feedback</span><span class="arr">→</span>
+    <span class="pill">edit the master doc</span><span class="arr">→</span>
+    <span class="pill">rebuild the plugin</span><span class="arr">→</span>
+    <span class="pill">team reinstalls</span>
+  </div>
+  <p class="sub" style="margin-top:12px">So Norte's "memory" is just the current version of the skill files. Every improvement is a change you can see, review and roll back. Cowork also keeps a small project memory note for continuity between sessions, but the source of truth for how Norte behaves is always the master doc.</p>
+</div></section>
+
+<!-- FOR THE CTO -->
+<section><div class="wrap">
+  <div class="snum">4 · FOR THE CTO</div>
+  <h2>Data ownership, in plain terms.</h2>
+  <div class="cto"><b>The short version:</b> Norte's data lives in Compass's own Slack and Google Drive. Its instructions live in a plugin file and a master doc that Compass owns and can export at any time. Claude (Anthropic) does the processing at request time, but the record of truth, the plans, the content and the feedback, all sit in your own tools. Nothing is locked in a black box, every skill change is versioned and reversible, and you can walk away with the plugin file and the Drive folder and keep everything.</div>
+</div></section>
+
+<footer><div class="wrap">Compass Labs · The Norte System 🧭 · the brain is a file you own, the data is in your own tools.</div></footer>
+</body>
+</html>

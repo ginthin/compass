@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Compass Marketing Machine</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavl:#8b7cf6;--lav-soft:#eeeaff;--gold:#FFE14D;--coral:#ff7a66;--green:#19b57a;--mono:'SF Mono',Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:960px;margin:0 auto;padding:0 26px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:60px 0 44px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c9befc;font-weight:700;margin-bottom:14px}
+  h1{font-size:46px;line-height:1.02;letter-spacing:-.03em;font-weight:800}
+  .hero p{margin-top:14px;color:#e7e3fb;font-size:17px;max-width:640px}
+  section{padding:38px 0;border-bottom:1px solid #eceaf4}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:700;letter-spacing:.05em}
+  h2{font-size:26px;font-weight:800;margin:3px 0 6px}
+  .sub{color:#6a6480;font-size:15px;margin-bottom:14px;max-width:720px}
+  /* flow */
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin-top:18px}
+  .fstep{flex:1;min-width:130px;background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:14px}
+  .fstep .n{font-family:var(--mono);font-size:10.5px;color:var(--lav);font-weight:700}
+  .fstep h4{font-size:15px;margin:5px 0 4px}
+  .fstep p{font-size:12.5px;color:#4a4458}
+  .arrow{align-self:center;color:var(--lavl);font-weight:800;font-size:20px}
+  /* layers */
+  .layer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:16px 18px;margin-bottom:10px}
+  .layer .tag{font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;margin-top:2px}
+  .t-beat{background:var(--lav-soft);color:var(--lav)}.t-fran{background:#e6f7f0;color:var(--green)}.t-camp{background:#fff0ec;color:var(--coral)}
+  .layer h4{font-size:16px;margin-bottom:3px}.layer p{font-size:13.5px;color:#4a4458}
+  /* week table */
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid #e8e5f2;border-radius:12px;overflow:hidden;margin-top:14px}
+  th{background:var(--lav);color:#fff;text-align:left;padding:10px 12px;font-size:12.5px}
+  td{padding:11px 12px;border-top:1px solid #eceaf4;vertical-align:top}
+  td.day{font-weight:700;font-family:var(--mono);font-size:12.5px;width:70px}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-right:6px}
+  .p-camp{background:#fff0ec;color:var(--coral)}.p-fran{background:#e6f7f0;color:var(--green)}.p-daily{background:var(--lav-soft);color:var(--lav)}.p-founder{background:#fff8e0;color:#8a6d00}
+  /* cadence */
+  .cad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .cadc{background:#fff;border:1px solid #e8e5f2;border-radius:12px;padding:16px}
+  .cadc .w{font-family:var(--mono);font-size:11px;color:var(--lav);font-weight:700}
+  .cadc h4{font-size:16px;margin:4px 0}.cadc p{font-size:13px;color:#4a4458}
+  .chan{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  .chanc{background:#fff;border:1px solid #e8e5f2;border-radius:10px;padding:12px 14px;font-size:13.5px}
+  .chanc b{color:var(--lav)}
+  .rule{background:var(--ink);color:#fff;border-radius:14px;padding:20px 22px;margin-top:16px}
+  .rule b{color:var(--gold)}
+  footer{padding:34px 0;color:#8a84a0;font-size:13px;text-align:center}
+  @media(max-width:720px){.flow{flex-direction:column}.arrow{transform:rotate(90deg)}.cad,.chan{grid-template-columns:1fr}h1{font-size:34px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kick">Compass Labs 🧭</div>
+  <h1>The Norte Machine.</h1>
+  <p>Our whole marketing engine, in one page. Something happens, Norte proposes a plan, you approve it, it gets built, it ships, and feedback makes the next round sharper. Six channels that talk to each other. Nothing posts by itself. A human always publishes.</p>
+</div></div>
+
+<!-- THE DIAGRAM -->
+<section><div class="wrap">
+  <div class="snum">THE MACHINE AT A GLANCE</div>
+  <h2>One loop. It never stops.</h2>
+  <p class="sub">Inputs become a plan, the plan gets built, it ships, and feedback makes the next round sharper. The content mix (heartbeat, franchise, campaigns) feeds the build.</p>
+  <svg viewBox="0 0 1000 590" style="width:100%;height:auto;margin-top:10px" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Inter,sans-serif">
+    <defs><marker id="ah" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#8b7cf6"/></marker>
+    <marker id="ahg" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#19b57a"/></marker></defs>
+    <!-- stage boxes -->
+    <g>
+      <rect x="24" y="52" width="168" height="94" rx="14" fill="#5B47D6"/>
+      <text x="108" y="84" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">1 · INPUTS</text>
+      <text x="108" y="106" text-anchor="middle" fill="#e7e3fb" font-size="11.5">market-news +</text>
+      <text x="108" y="122" text-anchor="middle" fill="#e7e3fb" font-size="11.5">marketing-signals</text>
+
+      <rect x="220" y="52" width="168" height="94" rx="14" fill="#5B47D6"/>
+      <text x="304" y="84" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">2 · PLAN</text>
+      <text x="304" y="106" text-anchor="middle" fill="#e7e3fb" font-size="11.5">war room</text>
+      <text x="304" y="122" text-anchor="middle" fill="#e7e3fb" font-size="11.5">Gin + Eli lock</text>
+
+      <rect x="416" y="52" width="168" height="94" rx="14" fill="#16121f"/>
+      <text x="500" y="84" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">3 · BUILD</text>
+      <text x="500" y="106" text-anchor="middle" fill="#c9befc" font-size="11.5">content-product</text>
+      <text x="500" y="122" text-anchor="middle" fill="#c9befc" font-size="11.5">approve (Aidar: #s)</text>
+
+      <rect x="612" y="52" width="168" height="94" rx="14" fill="#19b57a"/>
+      <text x="696" y="84" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">4 · SHIP</text>
+      <text x="696" y="106" text-anchor="middle" fill="#eafff5" font-size="11.5">social-posts</text>
+      <text x="696" y="122" text-anchor="middle" fill="#eafff5" font-size="11.5">live posts</text>
+
+      <rect x="808" y="52" width="168" height="94" rx="14" fill="#ff7a66"/>
+      <text x="892" y="84" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">5 · IMPROVE</text>
+      <text x="892" y="106" text-anchor="middle" fill="#fff" font-size="11.5">norte-feedback</text>
+      <text x="892" y="122" text-anchor="middle" fill="#fff" font-size="11.5">tune Norte</text>
+    </g>
+    <!-- arrows between stages -->
+    <g stroke="#8b7cf6" stroke-width="3" fill="none" marker-end="url(#ah)">
+      <line x1="194" y1="99" x2="216" y2="99"/>
+      <line x1="390" y1="99" x2="412" y2="99"/>
+      <line x1="586" y1="99" x2="608" y2="99"/>
+      <line x1="782" y1="99" x2="804" y2="99"/>
+    </g>
+    <!-- loop back -->
+    <path d="M892 146 L892 500 L108 500 L108 146" stroke="#8b7cf6" stroke-width="3" fill="none" stroke-dasharray="2 0" marker-end="url(#ah)"/>
+    <text x="500" y="524" text-anchor="middle" fill="#8a84a0" font-size="13" font-style="italic">the loop never stops. every round gets sharper.</text>
+    <!-- content mix feeding BUILD -->
+    <g>
+      <rect x="404" y="232" width="192" height="34" rx="9" fill="#ff7a66"/><text x="500" y="254" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">CAMPAIGNS · bursts on top</text>
+      <rect x="404" y="272" width="192" height="34" rx="9" fill="#8b7cf6"/><text x="500" y="294" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">FRANCHISE · recurring series</text>
+      <rect x="404" y="312" width="192" height="34" rx="9" fill="#eeeaff"/><text x="500" y="334" text-anchor="middle" fill="#5B47D6" font-size="12.5" font-weight="700">HEARTBEAT · daily posts</text>
+      <text x="610" y="292" fill="#8a84a0" font-size="12" font-style="italic">the content mix</text>
+      <line x1="500" y1="230" x2="500" y2="150" stroke="#8b7cf6" stroke-width="3" fill="none" marker-end="url(#ah)"/>
+    </g>
+    <!-- note -->
+    <text x="500" y="562" text-anchor="middle" fill="#16121f" font-size="14" font-weight="700">Norte writes everything. A human always approves and publishes.</text>
+  </svg>
+</div></section>
+
+<!-- THE FLOW -->
+<section><div class="wrap">
+  <div class="snum">THE FLOW · left to right</div>
+  <h2>Something happens. It becomes content. It ships.</h2>
+  <div class="flow">
+    <div class="fstep"><div class="n">1 · INPUTS</div><h4>News + signals</h4><p>Industry news in #market-news, and everything that could become content in #marketing-signals: signals, priority, and the posts we like (Moonpay, the swipe file).</p></div>
+    <div class="arrow">→</div>
+    <div class="fstep"><div class="n">2 · PLAN</div><h4>The war room</h4><p>Norte reads all of it and proposes the week and the month in #norte-warroom. Gin and Eli lock it.</p></div>
+    <div class="arrow">→</div>
+    <div class="fstep"><div class="n">3 · BUILD</div><h4>Content workshop</h4><p>Locked pieces get built in #content-product, many in parallel. Each reviewed by its owner, approved by Gin or Eli (Aidar for numbers).</p></div>
+    <div class="arrow">→</div>
+    <div class="fstep"><div class="n">4 · SHIP</div><h4>Live posts</h4><p>Final pieces publish and the live link lands in #social-posts. Buffer automates it once connected.</p></div>
+    <div class="arrow">→</div>
+    <div class="fstep"><div class="n">5 · IMPROVE</div><h4>Feedback</h4><p>The team flags what is off in #norte-feedback. Norte tunes the skills, and the next round is sharper.</p></div>
+  </div>
+</div></section>
+
+<!-- THE CONTENT MIX -->
+<section><div class="wrap">
+  <div class="snum">THE PART THAT WAS MISSING · how everything shares one calendar</div>
+  <h2>The content mix: three layers, stacked.</h2>
+  <p class="sub">Campaigns, franchises and daily posts do not fight for the calendar. They stack. This is the heartbeat.</p>
+  <div class="layer"><span class="tag t-beat">HEARTBEAT</span><div><h4>1 · The baseline drumbeat</h4><p>Quick posts so we are never silent, even in a dead week. This is the clock. It always runs.</p></div></div>
+  <div class="layer"><span class="tag t-fran">FRANCHISE</span><div><h4>2 · Recurring series (part of the heartbeat)</h4><p>Named shows on a fixed day, like "Objection of the Week" every Tuesday. Reliable rails, so the calendar is never blank.</p></div></div>
+  <div class="layer"><span class="tag t-camp">CAMPAIGN</span><div><h4>3 · Bursts on top</h4><p>A big moment (a launch, a partner) takes the prime slots for a few days, with its own arc. It sits on top of the heartbeat, it does not replace it.</p></div></div>
+  <div class="rule"><b>The rule Norte follows to build a week:</b> lay the heartbeat first (franchise day + a proof post), then drop the running campaigns into the prime slots, then fill the gaps with daily. Priority: partner-dated campaign, then our own campaign, then franchise, then daily. Never two big things on the same day.</div>
+</div></section>
+
+<!-- (worked example moved to the end, after the machine is explained) -->
+
+<!-- CADENCE -->
+<section><div class="wrap">
+  <div class="snum">THE CADENCE · so you are not doing this daily</div>
+  <h2>When each thing happens.</h2>
+  <div class="cad">
+    <div class="cadc"><div class="w">MONTHLY</div><h4>Big planning</h4><p>Norte proposes the month. You review and lock. The skeleton of the calendar.</p></div>
+    <div class="cadc"><div class="w">WEEKLY · light</div><h4>A quick touch</h4><p>Norte proposes tweaks for the open slots (new signals). Locked items never move.</p></div>
+    <div class="cadc"><div class="w">ON DEMAND</div><h4>Anytime</h4><p>Drop a signal, run a campaign, or say "process the feedback". As often as you want.</p></div>
+    <div class="cadc"><div class="w">DAILY</div><h4>Nothing from you</h4><p>Buffer publishes what is already scheduled and approved. The machine runs itself here.</p></div>
+  </div>
+</div></section>
+
+<!-- THE CLOCK -->
+<section><div class="wrap">
+  <div class="snum">THE CLOCK · every trigger, when it fires</div>
+  <h2>The machine runs on a schedule. You just approve.</h2>
+  <p class="sub">Triggers fire early, on London time, so the plan is ready when the team wakes up. Norte does the work on the clock, a human always approves.</p>
+  <table>
+    <tr><th>When</th><th>Trigger</th><th>What happens</th><th>Auto or you</th></tr>
+    <tr><td><b>1st of the month · 9am London</b></td><td><b>Monthly plan</b></td><td>Norte proposes the month skeleton to the war room</td><td>Auto → Gin + Eli lock the month</td></tr>
+    <tr><td><b>Monday · 9am London</b></td><td><b>Weekly plan</b></td><td>Norte drafts the whole week (the full-content doc) to the war room</td><td>Auto → Gin + Eli comment and lock</td></tr>
+    <tr><td><b>Tue to Fri · 9am London</b></td><td><b>Daily check</b></td><td>Norte reads new signals and news, drafts what is locked and due soon into content-product</td><td>Auto</td></tr>
+    <tr><td><b>Friday · 4pm London</b></td><td><b>Feedback tune-up</b></td><td>Norte reads #norte-feedback and proposes skill fixes</td><td>Auto → you approve</td></tr>
+    <tr><td>Anytime</td><td>A signal</td><td>The team drops it in #marketing-signals</td><td>The team</td></tr>
+    <tr><td>On lock</td><td>Build</td><td>Norte creates the final assets into content-product and the Drive</td><td>Auto</td></tr>
+    <tr><td>On final</td><td>Publish</td><td>Gin or Eli post, or Buffer, and the link lands in #social-posts</td><td>You</td></tr>
+  </table>
+  <div class="rule"><b>Timezone:</b> Gin is in Mexico, the team is in London (about 7 hours ahead). Triggers are set early so the proposal is waiting when London starts the day. <b>Note:</b> scheduled runs happen while the Cowork app is open. If it is closed, the run happens the next time the app opens.</div>
+</div></section>
+
+<!-- HOW AUTOMATED -->
+<section><div class="wrap">
+  <div class="snum">HOW IT IS AUTOMATED · the four triggers, under the hood</div>
+  <h2>Four scheduled tasks run Norte on the clock.</h2>
+  <p class="sub">These are real and already running. Each is a scheduled task in Cowork that fires at its time, does the work, and hands it to a human to approve.</p>
+  <table>
+    <tr><th>Task</th><th>Fires</th><th>What it does by itself</th></tr>
+    <tr><td><b>norte-monthly-plan</b></td><td>1st · 9am London</td><td>Reads signals, proposes the month skeleton to #norte-warroom</td></tr>
+    <tr><td><b>norte-weekly-plan</b></td><td>Monday · 9am London</td><td>Drafts every piece of the week into a Drive doc, posts it to #norte-warroom to comment and lock</td></tr>
+    <tr><td><b>norte-daily-cadence</b></td><td>Tue to Fri · 9am London</td><td>Checks new signals and news, drafts what is locked and due into #content-product</td></tr>
+    <tr><td><b>norte-feedback-tuneup</b></td><td>Friday · 4pm London</td><td>Reads #norte-feedback, proposes the skill fixes</td></tr>
+  </table>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="stepc"><div class="n">HOW IT FIRES</div><p>Each task runs by itself at its hour, inside Cowork, while the app is open. If the app is closed at that time, it runs the next time someone opens Cowork.</p></div>
+    <div class="stepc"><div class="n">HOW TO TURN IT ON</div><p>Open Scheduled in Cowork, find <b>norte-weekly-plan</b>, click <b>Run now</b>. Norte drafts this week and drops it in the war room. That is the machine turning on. The first run also pre-approves the Slack and Drive permissions.</p></div>
+  </div>
+  <div class="rule"><b>The rule stays:</b> the tasks do the writing and planning on the clock, but nothing publishes on its own. A human always approves and posts.</div>
+</div></section>
+
+<!-- CHANNELS -->
+<section><div class="wrap">
+  <div class="snum">THE CHANNELS · one job each</div>
+  <h2>Where everything lives.</h2>
+  <div class="chan">
+    <div class="chanc"><b>#market-news</b> · the radar. Industry news, competitor moves, trends worth a reaction.</div>
+    <div class="chanc"><b>#marketing-signals</b> · the inbox. Signals (win, ship, objection, idea) plus priority and inspiration (the posts we like, like Moonpay). What Norte reads to plan.</div>
+    <div class="chanc"><b>#norte-warroom</b> · the plan. Gin and Eli lock the week and the month here.</div>
+    <div class="chanc"><b>#content-product</b> · the workshop. Locked pieces get built and approved, many in parallel.</div>
+    <div class="chanc"><b>#social-posts</b> · live posts only. The public record of what shipped.</div>
+    <div class="chanc"><b>#norte-feedback</b> · the tuning. Flag what is off, Norte gets better.</div>
+  </div>
+</div></section>
+
+<!-- CHANNELS TALK -->
+<section><div class="wrap">
+  <div class="snum">HOW THE CHANNELS TALK TO EACH OTHER</div>
+  <h2>Each channel hands off to the next.</h2>
+  <p class="sub">No channel is an island. This is exactly what passes from one to the next, all the way around the loop.</p>
+  <table>
+    <tr><th>From</th><th>What passes to the next channel</th><th>To</th></tr>
+    <tr><td><b>#market-news</b></td><td>industry news and the posts we like (inspiration), tagged</td><td>#marketing-signals</td></tr>
+    <tr><td><b>#marketing-signals</b></td><td>Norte reads every signal, ranks by priority and type, and drafts a plan</td><td>#norte-warroom</td></tr>
+    <tr><td><b>#norte-warroom</b></td><td>the plan Gin and Eli lock, plus the drafted content</td><td>#content-product + the Drive</td></tr>
+    <tr><td><b>#content-product</b></td><td>the approved, final pieces (owner reviewed, Aidar signed off numbers)</td><td>#social-posts</td></tr>
+    <tr><td><b>#social-posts</b> + the team</td><td>what landed and what felt off</td><td>#norte-feedback</td></tr>
+    <tr><td><b>#norte-feedback</b></td><td>sharper skills, folded back into Norte</td><td>the whole machine (the loop closes)</td></tr>
+  </table>
+  <div class="rule"><b>The loop:</b> news and signals feed the plan, the plan becomes content, content ships, and feedback makes the next plan sharper. Norte carries the handoff between every channel. You and the team just feed it, approve it, and post it.</div>
+</div></section>
+
+<!-- TRIGGERS -->
+<section><div class="wrap">
+  <div class="snum">WHO OR WHAT TRIGGERS EACH STEP · this was the confusing part</div>
+  <h2>Almost nothing depends on you triggering it.</h2>
+  <p class="sub">Most of the machine runs on a clock or on the team. Your only recurring job is to approve.</p>
+  <table>
+    <tr><th>Step</th><th>Who or what triggers it</th><th>Auto or manual</th></tr>
+    <tr><td>A signal gets posted</td><td>The team, whenever something happens</td><td>Manual (10 sec)</td></tr>
+    <tr><td>Plan the calendar + draft the content</td><td>The clock: the daily task runs at 8am by itself</td><td>Automatic</td></tr>
+    <tr><td>Review and approve the drafts</td><td><b>Gin and Eli.</b> The recurring human job. React 🔒 to approve.</td><td>Manual (about 10 min)</td></tr>
+    <tr><td>Approve any technical claim or number</td><td><b>Aidar.</b> Nothing with a number or a technical claim ships without his sign-off. This is his job in the machine.</td><td>Manual</td></tr>
+    <tr><td>Publish the post</td><td>Gin or Eli schedules it natively (LinkedIn, X). The live link goes to #social-posts.</td><td>Manual</td></tr>
+    <tr><td>Improve Norte from feedback</td><td>The team posts feedback, Norte processes it</td><td>Automatic</td></tr>
+  </table>
+  <div class="rule"><b>In one line:</b> the team feeds it, the clock creates it, <b>Gin and Eli approve it, Aidar signs off the numbers</b>, you publish it. You are the conductors, not the ones doing every task.</div>
+</div></section>
+
+<!-- ROLES -->
+<section><div class="wrap">
+  <div class="snum">WHO OWNS WHAT</div>
+  <h2>Every function feeds the machine.</h2>
+  <div class="chan">
+    <div class="chanc"><b>Gin and Eli · the conductors</b> · review, approve and publish. The two who say yes.</div>
+    <div class="chanc"><b>Sales and Commercial</b> · feed wins, objections and customer quotes. They power the customer-facing franchises. Also own outreach and /activate.</div>
+    <div class="chanc"><b>Engineering</b> (Aidar + the whole eng team) · flag what shipped and give signup data. <b>Aidar signs off every technical claim and number before it ships, no exceptions.</b> Bezkat makes the product videos, and we want to make them with AI so they get infinitely cooler and better explained (this is a separate track we still need to build). HeyGen is a different thing, for the campaign and product-launch avatar videos, starting mid-August.</div>
+    <div class="chanc"><b>Eli</b> · founder posts and the human voice, partner relationships.</div>
+    <div class="chanc"><b>Everyone</b> · feed the machine: drop signals, market news, and feedback. One line, 10 seconds.</div>
+    <div class="chanc"><b>Norte (the AI)</b> · does the work: plans, drafts, improves. Triggered by the clock, not by a person.</div>
+  </div>
+</div></section>
+
+<!-- FRANCHISES -->
+<section><div class="wrap">
+  <div class="snum">HOW EACH TEAM PARTICIPATES · the franchises</div>
+  <h2>Recurring shows, each powered by a team.</h2>
+  <p class="sub">A franchise is a named series on a fixed day. This is how each function shows up in the content without writing anything. They feed the raw material, Norte writes the episode.</p>
+  <table>
+    <tr><th>Franchise</th><th>Powered by</th><th>What they drop</th></tr>
+    <tr><td><b>Objection of the Week</b></td><td>Sales and Commercial</td><td>A real objection they heard, plus the counter that landed</td></tr>
+    <tr><td><b>What we shipped</b></td><td>Engineering</td><td>What went live this week, in plain words</td></tr>
+    <tr><td><b>Customer wins and proof</b></td><td>Sales and Commercial</td><td>A quote or a number from a customer</td></tr>
+    <tr><td><b>Founder take</b></td><td>Eli</td><td>A raw thought or a market view</td></tr>
+    <tr><td><b>Where finance is going</b></td><td>Anyone (fed from #market-news)</td><td>A trend or a piece of news worth a point of view</td></tr>
+  </table>
+  <div class="rule"><b>The point:</b> nobody on these teams has to write. They drop the raw signal (an objection, a ship, a win, a thought) into #marketing-signals, and Norte turns it into that week's franchise episode. That is how sales, engineering and the founders all show up in the content without it being extra work.</div>
+</div></section>
+
+<!-- WORKED EXAMPLE (at the end, now that the machine is explained) -->
+<section><div class="wrap">
+  <div class="snum">A WORKED EXAMPLE · to see it all come together</div>
+  <h2>Next week, two campaigns running.</h2>
+  <p class="sub">Now that you know the machine, here is one real week: BNB and Centrifuge both launch, and the heartbeat still runs. This is how the campaigns, the franchise and the daily posts share one week without chaos.</p>
+  <table>
+    <tr><th>Day</th><th>What goes out</th><th>Why it sits there</th></tr>
+    <tr><td class="day">MON</td><td><span class="pill p-fran">FRANCHISE</span>Objection of the Week</td><td>The heartbeat, warm the audience before the launches</td></tr>
+    <tr><td class="day">TUE</td><td><span class="pill p-camp">CAMPAIGN</span>BNB Chain launch (they repost to 4M)</td><td>Partner date, the biggest reach of the week</td></tr>
+    <tr><td class="day">WED</td><td><span class="pill p-daily">DAILY</span>Swap-and-deposit demo (proof)</td><td>A quick proof post fills the gap between launches</td></tr>
+    <tr><td class="day">THU</td><td><span class="pill p-camp">CAMPAIGN</span>Centrifuge launch + video</td><td>Second campaign, its own prime slot</td></tr>
+    <tr><td class="day">FRI</td><td><span class="pill p-founder">FOUNDER</span>Eli post</td><td>The human voice closes the week</td></tr>
+  </table>
+</div></section>
+
+<footer><div class="wrap">Compass Labs · The Norte Machine 🧭 · signals in, content out, a human always publishes.</div></footer>
+</body>
+</html>
