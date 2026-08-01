@@ -173,7 +173,23 @@
     <div class="chanc"><b>On short pieces</b> (posts, threads): reply in the war room with a quick note tagged to the day and piece. Format: <span class="mono">FIX [day / piece]: what to change</span>. Example: <span class="mono">FIX Tue BNB thread: too long, cut to 4 posts</span>. To approve a piece: react ✅ or reply <span class="mono">lock</span>.</div>
     <div class="chanc"><b>On long pieces</b> (blogs, newsletters): open the weekly Doc in Drive and use inline comments (highlight the text, comment). Best place for anything long. Norte reads those comments and redoes the piece.</div>
   </div>
-  <div class="rule" style="margin-top:14px"><b>Then Norte reworks:</b> Gin (or Eli, from his own Claude) tells Norte "apply the war room feedback and redo those pieces", and Norte updates them in the war room. Repeat until locked. <b>To only review and comment, you need nothing connected, just Slack and the Drive Doc. Connecting Slack and Drive inside your Claude is only needed if you want to trigger Norte to redo pieces yourself.</b></div>
+  <div class="rule" style="margin-top:14px"><b>Then Norte reworks, on its own.</b> Every 15 minutes (8am to 9pm) Norte reads the war room and the Doc, takes each note, redoes the piece with the skills, and updates the war room canvas. The canvas is always the freshest, official version, look for the 🟡 Revised tag in the week table. The Drive Doc can fall behind, so <b>the canvas is the source of truth.</b> As many rounds as it takes, until it is right.</div>
+
+  <h3 style="font-size:18px;margin:20px 0 6px">The two approvals (the gate)</h3>
+  <p class="sub">Nothing gets built or published on one ok. There are two gates, and each one needs <b>both Gin and Eli</b>.</p>
+  <div class="cad">
+    <div class="cadc"><div class="w">GATE 1 · copy approval</div><h4>Approve the words</h4><p>Both react ✅ (or reply <span class="mono">lock</span>) on the copy in the war room. Only then does Norte move to Phase 2 and build the assets: billboards, the campaign HTML, the video.</p></div>
+    <div class="cadc"><div class="w">GATE 2 · package approval</div><h4>Approve the finished package</h4><p>Once the full package is built (assets plus the posting calendar), both approve the finished package in the war room. Only after this second double approval does it move to #content-product as a Draft, ready for a human to publish.</p></div>
+  </div>
+  <div class="rule" style="background:var(--ink)"><b>To only review and comment, you need nothing connected, just Slack and the Drive Doc.</b> Connecting Slack and Drive inside your own Claude is only needed if you want to trigger a redo yourself. And a human always publishes, Norte never posts on its own.</div>
+</div></section>
+
+<!-- SWEEPS -->
+<section><div class="wrap">
+  <div class="snum">SWEEPS · so nothing piles up unseen</div>
+  <h2>If weeks stack up, Norte says hello.</h2>
+  <p class="sub">Life gets busy and sometimes a week does not go out. Norte runs backlog sweeps so nothing quietly rots. It looks across the queued weeks and posts a friendly rundown in the war room: "hello, here is what is still pending, here is what we have not posted yet." So you always know where you stand and can catch up, instead of discovering a backlog by accident.</p>
+  <div class="rule"><b>The point:</b> the machine keeps proposing, and it also keeps you honest about what has not shipped. A sweep is a heads-up, not a nag: here is the pile, here is the fastest way to clear it.</div>
 </div></section>
 
 <!-- THE CONTENT MIX -->
@@ -302,19 +318,43 @@
 
 <!-- FRANCHISES -->
 <section><div class="wrap">
-  <div class="snum">HOW EACH TEAM PARTICIPATES · the franchises</div>
-  <h2>Recurring shows, each powered by a team.</h2>
-  <p class="sub">A franchise is a named series on a fixed day. This is how each function shows up in the content without writing anything. They feed the raw material, Norte writes the episode.</p>
+  <div class="snum">HOW EVERYONE PARTICIPATES · the franchises</div>
+  <h2>Recurring shows. Everyone is part of them.</h2>
+  <p class="sub">A franchise is a named series on a fixed day. Each one has a usual host, but they are <b>open to everyone</b> and the topics are diverse, so everyone does a bit of everything. You drop the raw material, Norte writes the episode. Nobody has to write.</p>
   <table>
-    <tr><th>Franchise</th><th>Powered by</th><th>What they drop</th></tr>
-    <tr><td><b>Objection of the Week</b></td><td>Sales and Commercial</td><td>A real objection they heard, plus the counter that landed</td></tr>
-    <tr><td><b>What we shipped</b></td><td>Engineering (Aidar + Bezkat)</td><td>What went live this week, in plain words. Bezkat can front it on camera.</td></tr>
-    <tr><td><b>Customer wins and proof</b></td><td>Sales and Commercial</td><td>A quote or a number from a customer</td></tr>
-    <tr><td><b>Founder take</b></td><td>Eli</td><td>A raw thought or a market view</td></tr>
+    <tr><th>Franchise</th><th>Usual host (open to all)</th><th>What anyone can drop</th></tr>
+    <tr><td><b>Objection of the Week</b></td><td>Sales and Commercial, but anyone</td><td>A real objection you heard, plus the counter that landed</td></tr>
+    <tr><td><b>What we shipped</b></td><td>Engineering (Aidar + Bezkat), but anyone</td><td>What went live this week, in plain words. Bezkat can front it on camera</td></tr>
+    <tr><td><b>Customer wins and proof</b></td><td>Sales and Commercial, but anyone</td><td>A quote or a number from a customer</td></tr>
+    <tr><td><b>On the ground</b> (region)</td><td>Funa and regional commercial, but anyone</td><td>A real story or signal from your market: Africa, ME, LATAM</td></tr>
+    <tr><td><b>Founder take</b></td><td>Eli, but any founder voice</td><td>A raw thought or a market view</td></tr>
     <tr><td><b>Where finance is going</b></td><td>Anyone (fed from #market-news)</td><td>A trend or a piece of news worth a point of view</td></tr>
   </table>
-  <div class="rule"><b>The point:</b> nobody on these teams has to write. They drop the raw signal (an objection, a ship, a win, a thought) into #marketing-signals, and Norte turns it into that week's franchise episode. That is how sales, engineering and the founders all show up in the content without it being extra work.</div>
+  <div class="rule"><b>The point:</b> the host column is just who usually starts it, not a fence. Funa can drop an objection, Bezkat can drop a market take, sales can front the build story if they saw it land. Topics are diverse and everyone contributes across all of them. You drop the raw signal (an objection, a ship, a win, a story, a thought) into #marketing-signals, and Norte turns it into that week's episode.</div>
   <div class="rule" style="background:var(--lav)"><b>Franchises rotate, you publish your turn, and more the merrier.</b> Different weeks, different people front a franchise: Bezkat or Aidar on the build, Funa or commercial on a region or partner, Eli on the founder take, Gin on the objection. Norte tells you when it is your turn and hands you the finished piece, and <b>publishing it is yours too</b>: personal and founder pieces go out from your own account, official ones Gin publishes. When the official account or a campaign is posting, that does not mean anyone goes quiet. Everyone has Norte and the plugin, so post in your own voice too, on brand. And <b>support Compass and each other</b>: reshare, comment on and amplify the team's posts. Your audience is our audience. More voices, more reach.</div>
+</div></section>
+
+<!-- THE TOPICS -->
+<section><div class="wrap">
+  <div class="snum">THE TOPICS · what anyone can post about</div>
+  <h2>The topic bank. Everyone can pull from all of it.</h2>
+  <p class="sub">These are the themes Compass talks about. Any of them is fair game for anyone, on any channel. You do not have to invent a topic, and you do not have to stay in a lane. Pick one that fits what you saw or think this week.</p>
+  <div class="chan">
+    <div class="chanc"><b>The integration tax</b> · build it yourself (6 to 12 months, a team of engineers) vs one integration, live in days.</div>
+    <div class="chanc"><b>Custody, done right</b> · non-custodial, who holds the keys, what a risk team actually cares about.</div>
+    <div class="chanc"><b>Proof, not promises</b> · a customer win, a real number, a signed-to-live story.</div>
+    <div class="chanc"><b>What we shipped</b> · a new capability, chain or product, in plain words.</div>
+    <div class="chanc"><b>On the ground</b> · a real story from LATAM, Africa or the Middle East.</div>
+    <div class="chanc"><b>Partnerships</b> · a new integration or venue and what it unlocks.</div>
+    <div class="chanc"><b>RWAs and distribution</b> · supply is solved, reach is the game.</div>
+    <div class="chanc"><b>Agents with boundaries</b> · what an agent can do with money without ever holding it.</div>
+    <div class="chanc"><b>Stablecoins as infrastructure</b> · from storing dollars to putting them to work.</div>
+    <div class="chanc"><b>Where finance is going</b> · a market take, fed from #market-news.</div>
+    <div class="chanc"><b>Objection of the week</b> · a real pushback and the counter that landed.</div>
+    <div class="chanc"><b>Behind the build</b> · how a piece of the stack actually works.</div>
+  </div>
+  <div class="rule"><b>Norte proposes, so nobody stares at a blank page.</b> Every week Norte suggests topics and tells each person "it is your turn, here is an angle you could take", then drafts it for you. You never have to wonder whether you can post or what about. You always can, and Norte hands you the starting point. All of it maps back to the three core messages: the integration tax, proof not promises, and where finance is going.</div>
+  <div class="rule" style="background:var(--green)"><b>And you can always propose. This is a team effort.</b> Norte proposing does not mean you wait to be told. Any time, drop your idea, angle or topic in <b>#marketing-signals</b>, or your notes on how Norte should sound in <b>#norte-feedback</b>. That is exactly what those channels are for. Everyone participates, everyone proposes, everyone posts. The more the whole team feeds and shows up, the stronger the machine gets. Vamos team.</div>
 </div></section>
 
 <!-- WORKED EXAMPLE (at the end, now that the machine is explained) -->
