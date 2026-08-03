@@ -357,6 +357,36 @@
   <div class="rule" style="background:var(--green)"><b>And you can always propose. This is a team effort.</b> Norte proposing does not mean you wait to be told. Any time, drop your idea, angle or topic in <b>#marketing-signals</b>, or your notes on how Norte should sound in <b>#norte-feedback</b>. That is exactly what those channels are for. Everyone participates, everyone proposes, everyone posts. The more the whole team feeds and shows up, the stronger the machine gets. Vamos team.</div>
 </div></section>
 
+<!-- SIGNUP LIFECYCLE -->
+<section><div class="wrap">
+  <div class="snum">THE SIGNUP LIFECYCLE · the other half of the machine</div>
+  <h2>Turning API signups into activated customers.</h2>
+  <p class="sub">The content machine creates demand. This is what happens after: when someone signs up for the API, we nurture them from "just signed up" to "real, active customer", and route the good ones to sales. It runs on triggers tied to where each user is in their journey.</p>
+
+  <div class="chan">
+    <div class="chanc"><b>What we have today</b> · a signup event in #user-signups (name and email only), and rich weekly usage in #weekly-metrics (API calls, actions, volume), but aggregated.</div>
+    <div class="chanc"><b>The gap</b> · the two are not connected per person. We cannot see one user's path: signed up, created a key, first call, active or gone quiet. Many signups make zero or one call and never return. That activation gap is the opportunity.</div>
+  </div>
+
+  <h3 style="font-size:18px;margin:20px 0 8px">What we need from engineering (Bezkat + Aidar) to turn it on</h3>
+  <table>
+    <tr><th>Need</th><th>Why</th></tr>
+    <tr><td>Enrich the signup: company or email domain, use case, source (UTM)</td><td>Separate real ICPs from tire-kickers</td></tr>
+    <tr><td>Per-user events with timestamps: key created, first call, first on-chain action, active this week</td><td>These are the triggers. Today they only exist in aggregate</td></tr>
+    <tr><td>Join signup email to its API key and usage</td><td>To build the funnel per person</td></tr>
+    <tr><td>Push events to a webhook, Attio, or a daily sheet (not just Slack)</td><td>So we can actually automate the nurture</td></tr>
+    <tr><td>Email consent + an email tool wired up</td><td>So we are allowed to nurture, and have a way to send</td></tr>
+  </table>
+
+  <h3 style="font-size:18px;margin:20px 0 8px">The flows we build once we have it</h3>
+  <div class="cad">
+    <div class="cadc"><div class="w">ACTIVATE</div><h4>Signup to first call</h4><p>Welcome on signup, a nudge if no key in a couple days, an activation nudge if they have a key but no first call (quickstart, docs, offer a call).</p></div>
+    <div class="cadc"><div class="w">CONVERT + RETAIN</div><h4>First call onward</h4><p>Congrats plus next step on the first successful call, auto-route real ICPs to sales (Attio + a DM via /opener), and a re-engagement flow if an active user goes quiet.</p></div>
+  </div>
+
+  <div class="rule"><b>Status:</b> being scoped with Bezkat now. The content machine drives people to sign up. This lifecycle is how we make those signups stick and become pipeline. It is a real dependency, not a nice-to-have, and it is the half we still need engineering to unblock.</div>
+</div></section>
+
 <!-- WORKED EXAMPLE (at the end, now that the machine is explained) -->
 <section><div class="wrap">
   <div class="snum">A WORKED EXAMPLE · to see it all come together</div>
