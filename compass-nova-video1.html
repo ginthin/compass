@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova · Our North Star — the film</title>
+<style>
+  :root{--ink:#16121F;--paper:#fbf9ff;--lav:#5B47D6;--lav2:#4634b8;--soft:#EFEAFF;--gold:#FFD23F;--red:#FF6B5E;--teal:#2BC2B0;--pink:#FF9ECB;--grey:#6a6480;--line:#e7e3f4;--mono:'SF Mono',ui-monospace,Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  .top{text-align:center;padding:34px 0 10px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav);font-weight:800}
+  h1{font-size:38px;font-weight:850;letter-spacing:-.03em;margin-top:8px}
+  .sub{color:var(--grey);margin-top:6px}
+
+  /* STAGE */
+  .stagewrap{max-width:1000px;margin:22px auto 0;padding:0 24px}
+  .stage{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:radial-gradient(1000px 600px at 50% -10%,#3a2a72,#221646 55%,#160f2e);box-shadow:0 30px 70px rgba(30,18,70,.35)}
+  .scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .7s ease;pointer-events:none}
+  .scene.on{opacity:1}
+  .sky{position:absolute;inset:0}
+  .st{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.6;animation:tw 3.4s ease-in-out infinite}
+  .st.b{width:4px;height:4px;background:var(--gold)}
+  @keyframes tw{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+  .ost{position:absolute;left:0;right:0;top:9%;text-align:center;color:#fff;font-weight:850;font-size:clamp(20px,3.6vw,36px);letter-spacing:-.02em;text-shadow:0 3px 20px rgba(0,0,0,.5);padding:0 8%;opacity:0;transform:translateY(10px);transition:.6s}
+  .scene.on .ost{opacity:1;transform:none;transition-delay:.25s}
+  .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 8% 20px;color:#eae4ff;font-size:clamp(13px,1.9vw,17px);font-weight:600;text-align:center;background:linear-gradient(0deg,rgba(10,6,26,.85),transparent)}
+
+  /* controls */
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(12,7,30,.35);cursor:pointer;z-index:20;transition:.3s}
+  .play.hide{opacity:0;pointer-events:none}
+  .playbtn{width:88px;height:88px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(255,210,63,.5);transition:.2s}
+  .play:hover .playbtn{transform:scale(1.08)}
+  .playbtn svg{width:38px;height:38px;margin-left:5px}
+  .bar{position:absolute;left:0;bottom:0;height:4px;background:var(--gold);width:0;z-index:15;transition:width .25s linear}
+  .replay{position:absolute;right:16px;top:14px;z-index:20;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);color:#fff;border-radius:22px;padding:7px 15px;font-size:13px;font-weight:750;cursor:pointer;display:none}
+  .replay.show{display:block}
+
+  /* Nova + scene bits */
+  .nova{width:34%;max-width:230px}
+  .nova svg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 16px 30px rgba(0,0,0,.4))}
+  @keyframes bob{0%,100%{transform:translateY(5px)}50%{transform:translateY(-9px)}}
+  .bobg{animation:bob 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  .needle{transform-box:fill-box;transform-origin:center;transition:transform 1.1s cubic-bezier(.5,0,.2,1)}
+  .s1 .needle{transform:rotate(0deg)}
+  .s6 .needle{transform:rotate(52deg)}
+  .starflare{transform-box:fill-box;transform-origin:center;animation:flare 1.6s ease-in-out infinite}
+  @keyframes flare{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}
+  .risestar{opacity:0;transform:translateY(30px)}
+  .scene.on .risestar{opacity:1;transform:none;transition:1s ease .3s}
+
+  /* scene 2 bars */
+  .bars{display:flex;gap:16px;align-items:flex-end;height:44%}
+  .barcol{width:38px;background:linear-gradient(180deg,#8b7cf6,#5B47D6);border-radius:6px 6px 0 0;height:20%;position:relative}
+  .scene.on .barcol{animation:fill 1.2s ease forwards}
+  .barcol:nth-child(2){animation-delay:.15s}.barcol:nth-child(3){animation-delay:.3s}.barcol:nth-child(4){animation-delay:.45s}
+  @keyframes fill{to{height:100%}}
+  .barcol::after{content:"$";position:absolute;top:-22px;left:50%;transform:translateX(-50%);color:var(--gold);font-weight:800;font-size:15px}
+
+  /* scene 3 hub */
+  .hub{position:relative;width:60%;max-width:360px;aspect-ratio:1}
+  .hubc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34%;aspect-ratio:1;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--lav);font-weight:850;font-size:clamp(12px,2vw,17px);box-shadow:0 0 40px rgba(255,255,255,.4)}
+  .node{position:absolute;width:20%;aspect-ratio:1;border-radius:12px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:clamp(16px,3vw,26px);opacity:0}
+  .scene.on .node{opacity:1;transition:opacity .5s}
+  .node.n1{top:0;left:40%}.node.n2{right:0;top:40%}.node.n3{bottom:0;left:40%}.node.n4{left:0;top:40%}
+  .scene.on .node.n2{transition-delay:.2s}.scene.on .node.n3{transition-delay:.4s}.scene.on .node.n4{transition-delay:.6s}
+
+  /* scene 4 rings */
+  .rings{position:relative;width:60%;max-width:340px;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+  .ring{position:absolute;border-radius:50%;border:1.5px dashed rgba(201,190,252,.6);left:50%;top:50%;transform:translate(-50%,-50%) scale(.4);opacity:0}
+  .scene.on .ring{opacity:1;transform:translate(-50%,-50%) scale(1);transition:.9s ease}
+  .ring.r1{width:40%;aspect-ratio:1;border-style:solid;border-color:#fff}
+  .ring.r2{width:70%;aspect-ratio:1}.scene.on .ring.r2{transition-delay:.2s}
+  .ring.r3{width:100%;aspect-ratio:1}.scene.on .ring.r3{transition-delay:.4s}
+  .rlab{position:absolute;color:#fff;font-weight:800;font-size:clamp(11px,1.8vw,15px);text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .rlab.a{top:2%;left:50%;transform:translateX(-50%)}.rlab.b{bottom:8%;right:2%}.rlab.c{bottom:8%;left:2%}
+
+  /* scene 5 map nodes */
+  .mapn{position:relative;width:70%;max-width:420px;aspect-ratio:16/9}
+  .city{position:absolute;text-align:center;color:#fff;font-size:11px;font-weight:700;opacity:0}
+  .scene.on .city{opacity:1;transition:.6s}
+  .city .d{width:14px;height:14px;border-radius:50%;background:var(--teal);margin:0 auto 4px;box-shadow:0 0 16px var(--teal);animation:pmp 2s ease-in-out infinite}
+  @keyframes pmp{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+  .city.c1{left:8%;top:20%}.city.c2{right:12%;top:12%}.city.c3{left:44%;bottom:14%}.city.c4{right:26%;bottom:26%}
+  .scene.on .city.c2{transition-delay:.3s}.scene.on .city.c3{transition-delay:.6s}.scene.on .city.c4{transition-delay:.9s}
+
+  /* scene 6 cta */
+  .cta{position:absolute;bottom:14%;left:50%;transform:translateX(-50%);background:var(--gold);color:#2a1d52;font-weight:850;padding:11px 22px;border-radius:26px;font-size:clamp(13px,2vw,17px);opacity:0}
+  .scene.on .cta{opacity:1;transition:.6s .6s}
+
+  /* below */
+  .meta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0 0}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:22px;padding:7px 14px;font-size:12.5px;font-weight:700;color:#4a4560}
+  section{padding:40px 0;border-top:1px solid var(--line);margin-top:34px}
+  h2{font-size:26px;font-weight:850;letter-spacing:-.02em;margin-bottom:14px}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .beat{border-left:3px solid var(--lav);padding:6px 0 6px 16px;margin:14px 0}
+  .beat .lab{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--lav);text-transform:uppercase}
+  .beat .vo{font-size:16px;color:#2c2740;margin-top:4px}
+  .beat .os{font-size:12.5px;color:var(--grey);margin-top:4px;font-weight:700}
+  .note{background:var(--soft);border-radius:12px;padding:16px 18px;font-size:14px;color:#3b2ea0;margin-top:12px}
+  .note b{color:var(--lav)}
+  footer{padding:34px 0 60px;color:var(--grey);font-size:13px;text-align:center}
+  footer a{color:var(--lav);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="kick">Compass Labs · Nova 🌟 · the flagship film</div>
+  <h1>Our North Star</h1>
+  <p class="sub">Press play. Six animated beats — where Compass is going, straight from the star.</p>
+</div></div>
+
+<div class="stagewrap">
+  <div class="stage" id="stage">
+    <div class="sky" id="sky"></div>
+    <div class="bar" id="bar"></div>
+    <button class="replay" id="replay">↻ Replay</button>
+
+    <!-- SCENE 1 -->
+    <div class="scene s1" data-cap="&ldquo;Hi, I'm Nova. Let me show you where this is all going. The compass was invented before the clock — knowing which way mattered more than knowing how fast.&rdquo;">
+      <div class="ost">Direction before speed</div>
+      <div class="nova"><svg viewBox="-130 -170 260 320">
+        <g class="risestar"><path class="starflare" d="M0,-20 L4.8,-6.6 L19,-6.2 L7.8,2.5 L11.7,16.2 L0,8.2 L-11.7,16.2 L-7.8,2.5 L-19,-6.2 L-4.8,-6.6 Z" transform="translate(0,-120)" fill="#FFD23F" stroke="#16121F" stroke-width="4"/></g>
+        <g class="bobg">
+          <circle cx="0" cy="0" r="80" fill="#5B47D6" stroke="#16121F" stroke-width="7"/>
+          <circle cx="0" cy="10" r="52" fill="#EFEAFF" stroke="#16121F" stroke-width="5"/>
+          <circle cx="-37" cy="38" r="9" fill="#FF9ECB" opacity=".85"/><circle cx="37" cy="38" r="9" fill="#FF9ECB" opacity=".85"/>
+          <g transform="translate(0,-80)"><g class="needle">
+            <path d="M0,-8 L46,0 L0,8 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="3.5"/><path d="M0,-8 L-46,0 L0,8 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="3.5"/>
+          </g></g>
+          <circle cx="-24" cy="16" r="11" fill="#16121F"/><circle cx="24" cy="16" r="11" fill="#16121F"/><circle cx="-20" cy="12" r="3.6" fill="#fff"/><circle cx="28" cy="12" r="3.6" fill="#fff"/>
+          <path d="M-18,42 Q0,58 18,42" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"/>
+        </g></svg></div>
+    </div>
+
+    <!-- SCENE 2 -->
+    <div class="scene s2" data-cap="&ldquo;Money moved onchain. Trillions of it. The rails are here — but the products aren't. Fintechs hold digital dollars and can't do anything with them.&rdquo;">
+      <div class="ost">The rails are here.<br>The products aren't.</div>
+      <div class="bars"><div class="barcol"></div><div class="barcol"></div><div class="barcol"></div><div class="barcol"></div></div>
+    </div>
+
+    <!-- SCENE 3 -->
+    <div class="scene s3" data-cap="&ldquo;That's the gap Compass closes. One integration, and a fintech can launch yield, credit, trading and tokenized assets. Non-custodial. Up and running in days.&rdquo;">
+      <div class="ost">One integration.</div>
+      <div class="hub">
+        <div class="hubc">Compass</div>
+        <div class="node n1">💰</div><div class="node n2">🏦</div><div class="node n3">📈</div><div class="node n4">🏛️</div>
+      </div>
+    </div>
+
+    <!-- SCENE 4 -->
+    <div class="scene s4" data-cap="&ldquo;Then everything hard around the product — access, compliance, distribution. A way to operate, not just a way to access.&rdquo;">
+      <div class="ost">Not just access. Operation.</div>
+      <div class="rings">
+        <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+        <div class="rlab a">access</div><div class="rlab b">compliance</div><div class="rlab c">distribution</div>
+      </div>
+    </div>
+
+    <!-- SCENE 5 -->
+    <div class="scene s5" data-cap="&ldquo;The vision: any company, any market, launching real financial products onchain as easily as adding a login. And never seeing the chain.&rdquo;">
+      <div class="ost">Invisible. Everywhere.</div>
+      <div class="mapn">
+        <div class="city c1"><div class="d"></div>Buenos Aires</div>
+        <div class="city c2"><div class="d"></div>Nairobi</div>
+        <div class="city c3"><div class="d"></div>London</div>
+        <div class="city c4"><div class="d"></div>Jakarta</div>
+      </div>
+    </div>
+
+    <!-- SCENE 6 -->
+    <div class="scene s6" data-cap="&ldquo;The best infrastructure is invisible. They ship the product. Compass was underneath the whole time. Point the needle. Then run.&rdquo;">
+      <div class="ost">Point the needle. Then run.</div>
+      <div class="nova"><svg viewBox="-130 -170 260 320">
+        <path class="starflare" d="M0,-20 L4.8,-6.6 L19,-6.2 L7.8,2.5 L11.7,16.2 L0,8.2 L-11.7,16.2 L-7.8,2.5 L-19,-6.2 L-4.8,-6.6 Z" transform="translate(0,-118)" fill="#FFD23F" stroke="#16121F" stroke-width="4"/>
+        <g class="bobg">
+          <circle cx="0" cy="0" r="80" fill="#5B47D6" stroke="#16121F" stroke-width="7"/>
+          <circle cx="0" cy="10" r="52" fill="#EFEAFF" stroke="#16121F" stroke-width="5"/>
+          <circle cx="-37" cy="38" r="9" fill="#FF9ECB" opacity=".85"/><circle cx="37" cy="38" r="9" fill="#FF9ECB" opacity=".85"/>
+          <g transform="translate(0,-80)"><g class="needle">
+            <path d="M0,-8 L46,0 L0,8 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="3.5"/><path d="M0,-8 L-46,0 L0,8 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="3.5"/>
+          </g></g>
+          <circle cx="-16" cy="14" r="11" fill="#16121F"/><circle cx="30" cy="14" r="11" fill="#16121F"/><circle cx="-12" cy="10" r="3.6" fill="#fff"/><circle cx="34" cy="10" r="3.6" fill="#fff"/>
+          <path d="M-16,42 Q0,56 16,42" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"/>
+        </g></svg></div>
+      <div class="cta">compasslabs.ai</div>
+    </div>
+
+    <div class="cap" id="cap"></div>
+    <div class="play" id="play"><div class="playbtn"><svg viewBox="0 0 24 24" fill="#2a1d52"><path d="M8 5v14l11-7z"/></svg></div></div>
+  </div>
+
+  <div class="meta">
+    <span class="chip">~60 sec silent cut</span>
+    <span class="chip">Add ElevenLabs voice in HeyGen</span>
+    <span class="chip">1:1 + 9:16 export</span>
+    <span class="chip">Screen-record to make the MP4</span>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <div class="snum">The script · word for word</div>
+  <h2>Voiceover + shot list</h2>
+  <div class="beat"><div class="lab">Scene 1 · 0:00–0:12 · Open</div><div class="vo">"Hi, I'm Nova. Let me show you where this is all going. There's a reason the compass was invented before the clock. Knowing which way mattered more than knowing how fast. Direction before speed."</div><div class="os">Visual: Nova alone. A star lights above her; the needle turns to point at it. · On screen: Direction before speed.</div></div>
+  <div class="beat"><div class="lab">Scene 2 · 0:12–0:30 · The gap</div><div class="vo">"Money moved onchain. Trillions of it. The rails are here. But the products aren't. Almost every fintech now holds digital dollars, and almost none of them can do anything with those dollars — because building each product is a year of engineering and an audit."</div><div class="os">Visual: wallets fill with value but sit still. · On screen: The rails are here. The products aren't.</div></div>
+  <div class="beat"><div class="lab">Scene 3 · 0:30–0:50 · What Compass does</div><div class="vo">"That's the gap Compass closes. Today: one integration, and a fintech can launch yield, credit, trading and tokenized assets. Non-custodial. Up and running in days."</div><div class="os">Visual: one Compass hub; apps plug in and light up. · On screen: One integration. Up and running in days.</div></div>
+  <div class="beat"><div class="lab">Scene 4 · 0:50–1:08 · The move</div><div class="vo">"Next: not just the product, but everything hard around it. Access, compliance, distribution. The way to operate, not just a way to access."</div><div class="os">Visual: rings form — access, compliance, distribution. · On screen: Not just access. Operation.</div></div>
+  <div class="beat"><div class="lab">Scene 5 · 1:08–1:24 · The vision</div><div class="vo">"The vision: any company, any market, launching real financial products onchain as easily as adding a login. And never seeing the chain."</div><div class="os">Visual: cities light up worldwide; Nova fades to the edge. · On screen: Invisible. Everywhere.</div></div>
+  <div class="beat"><div class="lab">Scene 6 · 1:24–1:30 · Close</div><div class="vo">"The best infrastructure is invisible. They ship the product. Compass was underneath the whole time. Point the needle. Then run."</div><div class="os">Visual: Nova pointing, needle and star aligned; CTA. · On screen: Point the needle. Then run. → compasslabs.ai</div></div>
+
+  <div class="note"><b>Voice:</b> ElevenLabs, Nova — warm, clear, unhurried. <b>Music:</b> soft build that lifts at Scene 3, lands on the close. <b>Rule:</b> never say the word "live" (AI mispronounces it) — say "up and running in days." <b>Claim-safe:</b> non-custodial describes the architecture, never "safer" or "less risk"; the later horizons are direction, not shipped claims.</div>
+  <div class="note"><b>To make the real MP4 two ways:</b> (1) Fastest — open this page, press play, and screen-record the stage (Mac: Shift+Cmd+5). (2) Best — take this script into HeyGen, add Nova's ElevenLabs voice and music, export 1:1 and 9:16.</div>
+</div></section>
+
+<footer><div class="wrap">
+  Compass Labs · Nova 🌟 · "Our North Star" · <a href="index.html">← Home</a> · <a href="compass-learn.html">Compass Learn</a> · <a href="compass-nova-character.html">Nova</a>
+</div></footer>
+
+<script>
+(function(){
+  var sky=document.getElementById('sky');
+  for(var i=0;i<44;i++){var s=document.createElement('div');s.className='st'+(i%7===0?' b':'');s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';s.style.animationDelay=(Math.random()*3.4)+'s';sky.appendChild(s);}
+
+  var scenes=[].slice.call(document.querySelectorAll('.scene'));
+  var durs=[5000,6500,6000,5500,6000,6000]; // ms per scene (silent cut)
+  var cap=document.getElementById('cap'),bar=document.getElementById('bar');
+  var play=document.getElementById('play'),replay=document.getElementById('replay');
+  var total=durs.reduce(function(a,b){return a+b;},0);
+  var timers=[];
+  function clearAll(){timers.forEach(clearTimeout);timers=[];}
+  function show(n){scenes.forEach(function(s,k){s.classList.toggle('on',k===n);});cap.innerHTML=scenes[n].getAttribute('data-cap');}
+  function run(){
+    clearAll();replay.classList.remove('show');
+    var acc=0;
+    scenes.forEach(function(s,n){
+      timers.push(setTimeout(function(){show(n);},acc));
+      acc+=durs[n];
+    });
+    // progress bar
+    var start=Date.now();
+    var iv=setInterval(function(){var p=Math.min(1,(Date.now()-start)/total);bar.style.width=(p*100)+'%';if(p>=1)clearInterval(iv);},120);
+    timers.push(setTimeout(function(){replay.classList.add('show');},total-300));
+    timers.push({});
+  }
+  play.addEventListener('click',function(){play.classList.add('hide');run();});
+  replay.addEventListener('click',function(){bar.style.width='0';run();});
+})();
+</script>
+</body>
+</html>

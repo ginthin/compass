@@ -31,18 +31,99 @@
   a.doc.star{background:var(--lav-soft);border:2px solid var(--lav-deep)}a.doc.star .num{color:var(--lav-deep)}a.doc.star h3{color:#16121f}a.doc.star p{color:#3b2c6e}a.doc.star .who{color:#7a6fb0}
   .order{background:#16121f;color:#fff;border-radius:16px;padding:26px;margin-top:24px;font-size:15px}.order b{color:var(--c9)}
   footer{padding:40px 0;color:#8a84a0;font-size:13px;text-align:center}
-  @media(max-width:760px){.grid{grid-template-columns:1fr}h1{font-size:38px}}
+  /* living Nova hero */
+  .heroin{display:flex;align-items:center;gap:40px;flex-wrap:wrap;position:relative;z-index:2}
+  .heroT{flex:1;min-width:300px}
+  .sky{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.7;animation:twk 3.6s ease-in-out infinite}
+  .star.b{width:4px;height:4px;background:var(--gold)}
+  @keyframes twk{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+  .heroArt{position:relative;width:280px;flex-shrink:0;text-align:center}
+  .heroArt svg#stagesvg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 20px 38px rgba(0,0,0,.4))}
+  .bubble{position:absolute;top:-4px;left:50%;transform:translateX(-50%);background:#fff;color:#16121f;font-weight:750;font-size:13px;padding:8px 14px;border-radius:15px;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.25);z-index:3}
+  .bubble::after{content:"";position:absolute;bottom:-6px;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:#fff}
+  .herobtns{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+  .hbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:11px;font-weight:800;font-size:14.5px;text-decoration:none}
+  .hbtn.p{background:var(--gold);color:#2a1d52}.hbtn.g{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+  @keyframes novaBob{0%,100%{transform:translateY(6px)}50%{transform:translateY(-10px)}}
+  @keyframes bobWob{0%,100%{transform:translateY(4px) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+  @keyframes nblink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+  @keyframes nsway{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(-32deg)}}
+  @keyframes nspin{to{transform:rotate(360deg)}}
+  @keyframes nflare{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+  @keyframes npulse{0%,100%{opacity:.18}50%{opacity:.5}}
+  #stagesvg .shadow{animation:npulse 3.4s ease-in-out infinite}
+  #stagesvg .bob{animation:novaBob 3.4s ease-in-out infinite}
+  #stagesvg .eyesround{transform-box:fill-box;transform-origin:center;animation:nblink 5.2s ease-in-out infinite}
+  #stagesvg .star2,#stagesvg .needleg{transform-box:fill-box;transform-origin:center}
+  #stagesvg .eset,#stagesvg .mset,#stagesvg .brows{display:none}
+  .nova.happy .e-happy,.nova.happy .m-happy{display:block!important}
+  .nova.happy .needleg{animation:nsway 4.6s ease-in-out infinite}
+  .nova.curious .e-curious,.nova.curious .m-curious,.nova.curious .brows{display:block!important}
+  .nova.curious .needleg{animation:nspin 2.4s linear infinite}
+  .nova.clicks .e-click,.nova.clicks .m-click{display:block!important}
+  .nova.clicks .bob{animation:bobWob 1.2s ease-in-out infinite}
+  .nova.clicks .needleg{transform:rotate(-34deg)}
+  .nova.clicks .star2{animation:nflare 1.1s ease-in-out infinite}
+  .nova.point .e-point,.nova.point .m-point{display:block!important}
+  .nova.point .needleg{transform:rotate(58deg)}
+  @media(prefers-reduced-motion:reduce){#stagesvg *{animation:none!important}}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}h1{font-size:38px}.heroArt{width:210px;margin:0 auto}}
   @media print{.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none}}
 </style>
 </head>
 <body>
 
-<div class="hero"><div class="wrap">
-  <div class="kicker">Compass Labs · Marketing · The Norte System 🧭</div>
-  <h1>Start here.</h1>
-  <p>Everything the team needs to run marketing at Compass. One machine, one voice, one place. Fewer docs, no confusion. Click any card.</p>
-  <div class="pill">🧭 New here? Open <b>The Norte Machine</b> first, then <b>How to Use Norte</b>.</div>
-</div></div>
+<div class="hero">
+  <div class="sky" id="sky"></div>
+  <div class="wrap heroin">
+    <div class="heroT">
+      <div class="kicker">Compass Labs · Marketing · The Norte System 🧭</div>
+      <h1>Start here.</h1>
+      <p>Everything the team needs to run marketing at Compass. One machine, one voice, one place — hosted by Nova. Fewer docs, no confusion. Click any card.</p>
+      <div class="herobtns">
+        <a class="hbtn p" href="compass-nova-video1.html">▶ Watch Nova: Our North Star</a>
+        <a class="hbtn g" href="compass-learn-site.html">Open Compass Learn</a>
+      </div>
+    </div>
+    <div class="heroArt">
+      <div class="bubble" id="bubble">Hi, I'm Nova! 👋</div>
+      <svg id="stagesvg" viewBox="-170 -215 340 400" role="img" aria-label="Nova, live">
+        <ellipse class="shadow" cx="0" cy="152" rx="74" ry="15" fill="#16121F"/>
+        <g class="nova happy" id="nova">
+          <g class="bob">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"/>
+            <circle cx="0" cy="0" r="79" fill="none" stroke="#4634b8" stroke-width="5"/>
+            <rect x="80" y="-4.5" width="13" height="9" rx="4.5" fill="#EFEAFF" opacity=".75"/>
+            <rect x="-93" y="-4.5" width="13" height="9" rx="4.5" fill="#EFEAFF" opacity=".75"/>
+            <rect x="-4.5" y="80" width="9" height="13" rx="4.5" fill="#EFEAFF" opacity=".75"/>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"/>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".85"/>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".85"/>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"/>
+            <g transform="translate(0,-95)"><g class="needleg">
+              <path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"/>
+            </g></g>
+            <g class="star2"><path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round"/></g>
+            <g class="brows">
+              <path d="M-42,4 Q-29,-9 -15,1" stroke="#16121F" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <path d="M42,4 Q29,-9 15,1" stroke="#16121F" stroke-width="5" fill="none" stroke-linecap="round"/>
+            </g>
+            <g class="eset e-happy eyesround"><circle cx="-28" cy="20" r="13" fill="#16121F"/><circle cx="28" cy="20" r="13" fill="#16121F"/><circle cx="-23" cy="15" r="4.2" fill="#fff"/><circle cx="33" cy="15" r="4.2" fill="#fff"/></g>
+            <g class="eset e-curious eyesround"><circle cx="-28" cy="22" r="14" fill="#16121F"/><circle cx="28" cy="22" r="14" fill="#16121F"/><circle cx="-22" cy="16" r="4.4" fill="#fff"/><circle cx="34" cy="16" r="4.4" fill="#fff"/></g>
+            <g class="eset e-click"><path d="M-40,24 Q-28,7 -16,24" stroke="#16121F" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M16,24 Q28,7 40,24" stroke="#16121F" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+            <g class="eset e-point eyesround"><circle cx="-20" cy="14" r="13" fill="#16121F"/><circle cx="34" cy="14" r="13" fill="#16121F"/><circle cx="-15" cy="9" r="4.2" fill="#fff"/><circle cx="39" cy="9" r="4.2" fill="#fff"/></g>
+            <path class="mset m-happy" d="M-22,48 Q0,66 22,48" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"/>
+            <path class="mset m-curious" d="M-15,48 Q0,66 15,48 Z" fill="#16121F"/>
+            <path class="mset m-click" d="M-24,44 Q0,76 24,44 Z" fill="#16121F"/>
+            <path class="mset m-point" d="M-18,48 Q0,64 18,48" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
 
 <!-- START HERE -->
 <section><div class="wrap">
@@ -60,10 +141,15 @@
   <div class="grouplbl">🎓 Education · Compass Learn</div>
   <h2>Teach the world Compass. Hosted by Nova.</h2>
   <div class="grid">
-    <a class="doc featured" href="compass-learn-site.html"><div class="num">★ THE HUB · the public site</div><h3>🧭 Compass Learn</h3><p>The education hub: choose your path, the six foundational lessons, every product, onchain 101, and the trust layer. Each lesson is a short Nova video plus a plain page. This is what goes live on the site.</p><div class="who">For: developers, buyers, the market</div></a>
+    <a class="doc featured" href="compass-learn-site.html"><div class="num">★ THE HUB · the public site (live Nova)</div><h3>🧭 Compass Learn</h3><p>The education hub with Nova alive at the top: the foundational lessons (incl. "Our North Star"), the Studio film, the six interfaces, a video card per product with real protocols and risk, onchain 101 across 24 terms, Nova's world, and the trust layer. This is what goes live.</p><div class="who">For: developers, buyers, the market</div></a>
+    <a class="doc star" href="compass-nova-video1.html"><div class="num">▶ WATCH · the flagship film</div><h3>Our North Star — the video</h3><p>Nova's flagship film, playable right here: six animated beats, fog lifting, the needle pointing, captions. Press play, or screen-record it to export the MP4.</p><div class="who">For: everyone · the launch</div></a>
     <a class="doc star" href="compass-nova-character.html"><div class="num">★ THE HOST</div><h3>Nova, our character</h3><p>The little compass who explains onchain finance. How she looks, how she sounds, her first script. Made by Norte, no filming, a franchise like SHIPPED.</p><div class="who">For: everyone</div></a>
     <a class="doc" href="compass-marketing-calendar.html"><div class="num">📅 ONE CALENDAR</div><h3>The marketing calendar</h3><p>Education, campaigns, social and the API in one weekly grid. Same engine, same block. Week 1 prep, Norte and social start Week 2, education starts Week 3.</p><div class="who">For: the whole team</div></a>
     <a class="doc" href="compass-learn-production-map.html"><div class="num">🗺️ WHO · HOW · WHEN · WHERE</div><h3>The production map</h3><p>Every education asset in one table: what Nova hosts and what she doesn't, who makes it, the format, the week, and where it lands. The two flagship films included.</p><div class="who">For: the whole team</div></a>
+    <a class="doc star" href="nova-kit/Nova%20Character.dc.html"><div class="num">🌟 LIVE · from Claude Design</div><h3>Nova, alive (5 expressions)</h3><p>Nova on-model and animated: happy, curious, it-clicks, dim, pointing. The construction ratios, the expression sheet, the palette. Her real design.</p><div class="who">For: everyone · the character</div></a>
+    <a class="doc" href="nova-kit/Nova%20World%20Compass.dc.html"><div class="num">🌊 LIVE · from Claude Design</div><h3>Nova's World — The Onchain Sea</h3><p>The animated world: the map with the North Star, the Harbor, the Fog, the islands, the cast, and the story engine.</p><div class="who">For: everyone</div></a>
+    <a class="doc" href="nova-kit/Newcomers%20Harbor.dc.html"><div class="num">⚓ LIVE · from Claude Design</div><h3>Newcomer's Harbor</h3><p>The basics as a place: the animated harbor, the six docks (Wallet, Stablecoin, Gas, Signing, Custody, Onchain), and the market weather.</p><div class="who">For: newcomers</div></a>
+    <a class="doc" href="nova-kit/Nova%20Design%20and%20Rig%20Brief.dc.html"><div class="num">🎏 LIVE · from Claude Design</div><h3>Design &amp; rig brief</h3><p>The brief to hand an illustrator/animator or studio, so Nova gets rigged and produces episodes forever.</p><div class="who">For: production</div></a>
   </div>
 </div></section>
 
@@ -113,5 +199,16 @@
   Compass Labs · The Norte System 🧭 · by Gin · one machine, one voice, one place.
 </div></footer>
 
+<script>
+(function(){
+  var sky=document.getElementById('sky');
+  if(sky){for(var i=0;i<40;i++){var s=document.createElement('div');s.className='star'+(i%7===0?' b':'');s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*90)+'%';s.style.animationDelay=(Math.random()*3.6)+'s';sky.appendChild(s);}}
+  var nova=document.getElementById('nova'),bubble=document.getElementById('bubble');
+  if(!nova)return;
+  var moods=[['happy',"Hi, I'm Nova! 👋"],['curious',"Ooh, what's this? 🤔"],['clicks',"It clicks! ⭐"],['point',"This way → "]],i=0;
+  function set(m){nova.setAttribute('class','nova '+moods[m][0]);if(bubble)bubble.textContent=moods[m][1];}
+  setInterval(function(){i=(i+1)%moods.length;set(i);},2800);
+})();
+</script>
 </body>
 </html>
