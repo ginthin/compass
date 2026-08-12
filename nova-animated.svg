@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-170 -215 340 400" width="340" height="400" role="img" aria-label="Nova, the Compass star-compass mascot, dancing">
+  <title>Nova (animated)</title>
+  <style>
+    .bob{transform-box:fill-box;transform-origin:center;animation:nvdance 2.4s ease-in-out infinite}
+    .sway{transform-box:fill-box;transform-origin:center;animation:nvsway 3s ease-in-out infinite}
+    .blink{transform-box:fill-box;transform-origin:center;animation:nvblink 4.2s ease-in-out infinite}
+    .shadow{transform-box:fill-box;transform-origin:center;animation:nvshad 2.4s ease-in-out infinite}
+    .tw{transform-box:fill-box;transform-origin:center;animation:nvtw 2.2s ease-in-out infinite}
+    .tw2{transform-box:fill-box;transform-origin:center;animation:nvtw 2.9s ease-in-out infinite}
+    .tw3{transform-box:fill-box;transform-origin:center;animation:nvtw 3.4s ease-in-out infinite}
+    @keyframes nvdance{0%{transform:translateY(0) rotate(-2.5deg)}25%{transform:translateY(-9px) rotate(2.5deg)}50%{transform:translateY(-13px) rotate(-2deg)}75%{transform:translateY(-6px) rotate(2.5deg)}100%{transform:translateY(0) rotate(-2.5deg)}}
+    @keyframes nvsway{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+    @keyframes nvblink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+    @keyframes nvshad{0%,100%{transform:scaleX(1);opacity:.35}50%{transform:scaleX(.82);opacity:.22}}
+    @keyframes nvtw{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.5)}}
+    @media(prefers-reduced-motion:reduce){.bob,.sway,.blink,.shadow,.tw,.tw2,.tw3{animation:none}}
+  </style>
+  <circle cx="-118" cy="-150" r="4" fill="#FFD23F" class="tw"></circle>
+  <circle cx="128" cy="-176" r="3" fill="#FFD23F" class="tw2"></circle>
+  <circle cx="106" cy="-58" r="3.5" fill="#2BC2B0" class="tw3"></circle>
+  <ellipse cx="0" cy="152" rx="74" ry="15" fill="#16121F" class="shadow"></ellipse>
+  <g class="bob">
+    <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+    <circle cx="0" cy="0" r="79" fill="none" stroke="#4634b8" stroke-width="5"></circle>
+    <rect x="80" y="-4.5" width="13" height="9" rx="4.5" fill="#EFEAFF" opacity=".75"></rect>
+    <rect x="-93" y="-4.5" width="13" height="9" rx="4.5" fill="#EFEAFF" opacity=".75"></rect>
+    <rect x="-4.5" y="80" width="9" height="13" rx="4.5" fill="#EFEAFF" opacity=".75"></rect>
+    <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+    <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+    <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+    <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+    <g transform="translate(0,-95)"><g class="sway">
+      <path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+    </g></g>
+    <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round"></path>
+    <g class="blink">
+      <circle cx="-28" cy="20" r="13" fill="#16121F"></circle>
+      <circle cx="28" cy="20" r="13" fill="#16121F"></circle>
+      <circle cx="-23" cy="15" r="4.2" fill="#fff"></circle>
+      <circle cx="33" cy="15" r="4.2" fill="#fff"></circle>
+    </g>
+    <path d="M-22,48 Q0,66 22,48" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+  </g>
+</svg>

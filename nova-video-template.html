@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova video — TEMPLATE (make a new episode)</title>
+<style>
+  :root{--ink:#16121F;--paper:#fbf9ff;--lav:#5B47D6;--soft:#EFEAFF;--gold:#FFD23F;--red:#FF6B5E;--pink:#FF9ECB;--grey:#6a6480;--line:#e7e3f4;--mono:'SF Mono',ui-monospace,Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  .top{text-align:center;padding:34px 0 10px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav);font-weight:800}
+  h1{font-size:34px;font-weight:850;letter-spacing:-.03em;margin-top:8px}
+  .sub{color:var(--grey);margin-top:6px}
+  .stagewrap{max-width:1000px;margin:22px auto 0;padding:0 24px}
+  .stage{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:radial-gradient(1000px 600px at 50% -10%,#3a2a72,#221646 55%,#160f2e);box-shadow:0 30px 70px rgba(30,18,70,.35);display:flex;align-items:center;justify-content:center}
+  .sky{position:absolute;inset:0}
+  .st{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.6;animation:tw 3.4s ease-in-out infinite}
+  .st.b{width:4px;height:4px;background:var(--gold)}
+  @keyframes tw{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+  .ost{position:absolute;left:0;right:0;top:8%;text-align:center;color:#fff;font-weight:850;font-size:clamp(20px,3.6vw,36px);letter-spacing:-.02em;text-shadow:0 3px 20px rgba(0,0,0,.5);padding:0 8%;opacity:0;transform:translateY(10px);transition:.5s}
+  .ost.in{opacity:1;transform:none}
+  .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 8% 20px;color:#eae4ff;font-size:clamp(13px,1.9vw,17px);font-weight:600;text-align:center;background:linear-gradient(0deg,rgba(10,6,26,.85),transparent);opacity:0;transition:.4s}
+  .cap.in{opacity:1}
+  .nova{width:30%;max-width:210px;position:relative;z-index:2}
+  .nova svg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 16px 30px rgba(0,0,0,.4))}
+  @keyframes bob{0%,100%{transform:translateY(5px)}50%{transform:translateY(-9px)}}
+  .bobg{animation:bob 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+  .eyes{transform-box:fill-box;transform-origin:center;animation:blink 5s ease-in-out infinite}
+  @keyframes flare{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+  .star{transform-box:fill-box;transform-origin:center;animation:flare 2s ease-in-out infinite}
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(12,7,30,.35);cursor:pointer;z-index:20;transition:.3s}
+  .play.hide{opacity:0;pointer-events:none}
+  .playbtn{width:88px;height:88px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(255,210,63,.5)}
+  .playbtn svg{width:38px;height:38px;margin-left:5px}
+  .bar{position:absolute;left:0;bottom:0;height:4px;background:var(--gold);width:0;z-index:15;transition:width .3s linear}
+  .replay{position:absolute;right:16px;top:14px;z-index:20;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);color:#fff;border-radius:22px;padding:7px 15px;font-size:13px;font-weight:750;cursor:pointer;display:none}
+  .replay.show{display:block}
+  .guide{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:34px auto 0;max-width:900px}
+  .guide h2{font-size:22px;font-weight:850;margin-bottom:6px}
+  .guide ol{margin:10px 0 0 20px}.guide li{font-size:14.5px;margin:7px 0;color:#2c2740}
+  .guide code{background:#f2eefc;color:#4a3fb0;padding:1px 6px;border-radius:5px;font-size:12.8px;font-family:var(--mono)}
+  .guide .box{background:#0f0b18;color:#e7e0ff;border-radius:12px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;margin-top:12px;overflow-x:auto;white-space:pre;line-height:1.5}
+  .guide .note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:13.5px;color:#3b2ea0;margin-top:12px}
+  footer{padding:34px 0 60px;color:var(--grey);font-size:13px;text-align:center}
+  footer a{color:var(--lav);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="kick">Compass Labs · Nova 🌟 · THE VIDEO TEMPLATE</div>
+  <h1>Make a new Nova episode</h1>
+  <p class="sub">One engine, one locked voice. Change the script, get a new voiced video. This preview runs a sample script.</p>
+</div></div>
+
+<div class="stagewrap">
+  <div class="stage" id="stage">
+    <div class="sky" id="sky"></div>
+    <div class="bar" id="bar"></div>
+    <button class="replay" id="replay">↻ Replay</button>
+    <div class="ost" id="ost"></div>
+    <div class="nova">
+      <svg viewBox="-130 -150 260 300">
+        <g class="bobg">
+          <circle cx="0" cy="0" r="80" fill="#5B47D6" stroke="#16121F" stroke-width="7"/>
+          <circle cx="0" cy="10" r="52" fill="#EFEAFF" stroke="#16121F" stroke-width="5"/>
+          <circle cx="-37" cy="38" r="9" fill="#FF9ECB" opacity=".85"/><circle cx="37" cy="38" r="9" fill="#FF9ECB" opacity=".85"/>
+          <circle cx="0" cy="-80" r="7" fill="#16121F"/>
+          <g transform="translate(0,-80)"><path d="M0,-8 L44,0 L0,8 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="3.5"/><path d="M0,-8 L-44,0 L0,8 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="3.5"/></g>
+          <g class="star"><path d="M0,-19 L4.6,-6.3 L18,-5.9 L7.4,2.4 L11,15.4 L0,7.8 L-11,15.4 L-7.4,2.4 L-18,-5.9 L-4.6,-6.3 Z" transform="translate(0,-24)" fill="#FFD23F" stroke="#16121F" stroke-width="4"/></g>
+          <g class="eyes"><circle cx="-24" cy="16" r="11" fill="#16121F"/><circle cx="24" cy="16" r="11" fill="#16121F"/><circle cx="-20" cy="12" r="3.6" fill="#fff"/><circle cx="28" cy="12" r="3.6" fill="#fff"/></g>
+          <path d="M-18,42 Q0,58 18,42" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cap" id="cap"></div>
+    <div class="play" id="play"><div class="playbtn"><svg viewBox="0 0 24 24" fill="#2a1d52"><path d="M8 5v14l11-7z"/></svg></div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="guide">
+    <h2>How to make a new episode (≈ 10 min)</h2>
+    <ol>
+      <li><b>Write the script</b> — one short line per scene (Norte does this from the topic bank + claims).</li>
+      <li><b>Make the voice</b> — ask Norte: “generate Nova’s voice for [episode]”. It uses the <b>locked voice</b> (<code>voice_id 21m00Tcm4TlvDq8ikWAM</code> = Nova) so every episode sounds the same. Save the clips as <code>scene1.mp3 … sceneN.mp3</code> in <code>nova-vo/[episode]/</code>.</li>
+      <li><b>Duplicate this file</b> → <code>compass-nova-video-[episode].html</code>.</li>
+      <li><b>Edit only the <code>scenes</code> array</b> below (the one block). Set each scene’s <code>ost</code> (big line), <code>cap</code> (what she says), and <code>au</code> (the mp3 path).</li>
+      <li><b>Open it → ▶ Play.</b> Nova narrates in her voice, synced. Screen-record (system audio on) for the MP4, or hand the script + voice to HeyGen for an avatar cut.</li>
+    </ol>
+    <div class="box">// ⬇︎ THE ONLY THING YOU EDIT PER EPISODE
+var scenes = [
+  { ost:"Big line on screen", cap:"What Nova says out loud.", au:"nova-vo/episode/scene1.mp3" },
+  { ost:"Next big line",       cap:"Her next line.",           au:"nova-vo/episode/scene2.mp3" }
+  // add as many scenes as the script has
+];</div>
+    <div class="note"><b>Rules baked in:</b> never write the word “live” (say “up and running in days”); non-custodial describes the architecture, never “safer”. Every line comes from the approved claims. If audio is missing, the browser reads the line so it always talks.</div>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  Compass Labs · Nova 🌟 · the reusable video template · <a href="compass-nova-video1.html">Ep 1</a> · <a href="compass-nova-video2.html">Ep 2</a> · <a href="compass-learn-production-map.html">Production map</a>
+</div></footer>
+
+<script>
+(function(){
+  // ===== SAMPLE SCRIPT (replace this whole array per episode) =====
+  var scenes=[
+    {ost:"This is the template.",cap:"Hi, I'm Nova. This page is the reusable engine. Change the script below and you get a whole new episode, in my voice.",au:"nova-vo/whoisnova/scene1.mp3"},
+    {ost:"One locked voice.",cap:"Every episode uses the same voice, so I always sound like me. Norte writes the lines, generates the audio, and drops it in.",au:"nova-vo/whoisnova/scene2.mp3"},
+    {ost:"Point the needle. Then run.",cap:"That's the whole machine. Point the needle, then run.",au:"nova-vo/whoisnova/scene5.mp3"}
+  ];
+  var durs=[10000,10000,8000];
+  // ===== ENGINE (do not change) =====
+  var sky=document.getElementById('sky');
+  for(var i=0;i<40;i++){var s=document.createElement('div');s.className='st'+(i%7===0?' b':'');s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';s.style.animationDelay=(Math.random()*3.4)+'s';sky.appendChild(s);}
+  var ost=document.getElementById('ost'),cap=document.getElementById('cap'),bar=document.getElementById('bar');
+  var play=document.getElementById('play'),replay=document.getElementById('replay');
+  var cur=null,fb=null,voice=null;
+  function pickVoice(){try{var vs=window.speechSynthesis.getVoices()||[];var pref=['Samantha','Google US English','Karen','Serena','Moira','Victoria','Tessa','Female'];for(var p=0;p<pref.length;p++)for(var v=0;v<vs.length;v++)if((vs[v].name||'').indexOf(pref[p])>-1&&/en/i.test(vs[v].lang))return vs[v];for(var w=0;w<vs.length;w++)if(/en/i.test(vs[w].lang))return vs[w];return vs[0]||null;}catch(e){return null;}}
+  if('speechSynthesis'in window){voice=pickVoice();window.speechSynthesis.onvoiceschanged=function(){voice=pickVoice();};}
+  function show(n){var sc=scenes[n];ost.classList.remove('in');cap.classList.remove('in');setTimeout(function(){ost.textContent=sc.ost;cap.textContent=sc.cap;ost.classList.add('in');cap.classList.add('in');},100);bar.style.width=(((n+1)/scenes.length)*100)+'%';}
+  function stopAll(){if(cur){try{cur.pause();}catch(e){}cur=null;}clearTimeout(fb);if('speechSynthesis'in window){try{window.speechSynthesis.cancel();}catch(e){}}}
+  function startSpeech(n){if('speechSynthesis'in window){try{var u=new SpeechSynthesisUtterance(scenes[n].cap);if(voice)u.voice=voice;u.rate=.98;u.pitch=1.06;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}catch(e){}}}
+  function playScene(n){
+    show(n);clearTimeout(fb);stopAll();var sc=scenes[n],advanced=false;
+    function adv(){if(advanced)return;advanced=true;clearTimeout(fb);if(n<scenes.length-1){playScene(n+1);}else{replay.classList.add('show');}}
+    var wait=(durs[n]||9000);
+    if(sc.au){
+      var au=new Audio(sc.au);cur=au;
+      au.addEventListener('ended',adv);
+      au.addEventListener('loadedmetadata',function(){if(isFinite(au.duration)&&au.duration>0){clearTimeout(fb);fb=setTimeout(adv,au.duration*1000+2500);}});
+      au.addEventListener('error',function(){startSpeech(n);});
+      var p=au.play();if(p&&p.catch)p.catch(function(){startSpeech(n);});
+    } else { startSpeech(n); }
+    fb=setTimeout(adv,wait);
+  }
+  function start(){stopAll();clearTimeout(fb);replay.classList.remove('show');playScene(0);}
+  play.addEventListener('click',function(){play.classList.add('hide');start();});
+  replay.addEventListener('click',start);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap">
+<style>
+  body { margin: 0; background: #fbf9ff; color: #1a1230; font-family: Figtree, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  a { color: #5B47D6; } a:hover { color: #3b2ea0; }
+  @keyframes nwBob { 0%,100% { transform: translateY(8px) } 50% { transform: translateY(-12px) } }
+  @keyframes nwBlink { 0%,90%,100% { transform: scaleY(1) } 94% { transform: scaleY(.08) } }
+  @keyframes nwSway { 0%,100% { transform: rotate(38deg) } 50% { transform: rotate(52deg) } }
+  @keyframes nwTwinkle { 0%,100% { opacity: .3; transform: scale(.9) } 50% { opacity: 1; transform: scale(1.12) } }
+  @keyframes nwFog1 { 0% { transform: translateX(-90px) } 100% { transform: translateX(1290px) } }
+  @keyframes nwFog2 { 0% { transform: translateX(-260px) } 100% { transform: translateX(1290px) } }
+  @keyframes nwBeam { 0%,100% { opacity: .22 } 50% { opacity: .48 } }
+  @keyframes nwLamp { 0%,100% { opacity: .35 } 50% { opacity: 1 } }
+</style>
+</helmet>
+
+<div style="background: #fbf9ff; min-height: 100vh">
+
+  <header style="background: linear-gradient(125deg, #160f2e, #2a1d52 55%, #5B47D6); color: #fff; position: relative; overflow: hidden">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 56px 40px 0">
+      <div style="font-family: ui-monospace, 'SF Mono', Consolas, monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #c9befc; font-weight: 800; margin-bottom: 14px">Compass Labs · Nova 🌟 · her world</div>
+      <h1 style="font-size: 60px; line-height: 1.0; letter-spacing: -.035em; font-weight: 900; margin: 0">The Onchain Sea.</h1>
+      <p style="margin: 18px 0 0; font-size: 18px; line-height: 1.6; max-width: 66ch; color: #e7e3fb; text-wrap: pretty">A vast glowing ocean where value moves in rivers of light, trillions of it. It should be paradise, but a grey Fog hides the islands, and travelers cannot reach the products they came for. The North Star above is the direction everything is sailing toward. Nova is the only one who can read it.</p>
+    </div>
+
+    <svg viewBox="0 0 1200 640" style="width: 100%; height: auto; display: block; margin-top: 26px">
+      <defs>
+        <linearGradient id="nwSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#160f2e" stop-opacity="0"></stop>
+          <stop offset="60%" stop-color="#241a48" stop-opacity=".55"></stop>
+          <stop offset="100%" stop-color="#2f2262"></stop>
+        </linearGradient>
+        <linearGradient id="nwSea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5B47D6"></stop>
+          <stop offset="100%" stop-color="#2a1d52"></stop>
+        </linearGradient>
+        <linearGradient id="nwBeamG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFD23F" stop-opacity=".85"></stop>
+          <stop offset="100%" stop-color="#FFD23F" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="0" width="1200" height="640" fill="url(#nwSky)"></rect>
+
+      <g fill="#fbf9ff">
+        <circle cx="150" cy="96" r="2.5" style="animation: nwTwinkle 3.2s ease-in-out infinite"></circle>
+        <circle cx="322" cy="58" r="2" style="animation: nwTwinkle 4s ease-in-out .7s infinite"></circle>
+        <circle cx="880" cy="70" r="2.5" style="animation: nwTwinkle 3.6s ease-in-out 1.3s infinite"></circle>
+        <circle cx="1064" cy="120" r="2" style="animation: nwTwinkle 4.4s ease-in-out .4s infinite"></circle>
+        <circle cx="700" cy="44" r="1.8" style="animation: nwTwinkle 3s ease-in-out 1.8s infinite"></circle>
+      </g>
+
+      <g transform="translate(600,86)"><g style="transform-box: fill-box; transform-origin: center; animation: nwTwinkle 4.6s ease-in-out infinite">
+        <path d="M0,-34 L8.2,-11.3 L32.3,-10.5 L13.2,4.3 L20,27.5 L0,13.9 L-20,27.5 L-13.2,4.3 L-32.3,-10.5 L-8.2,-11.3 Z" fill="#FFD23F"></path>
+      </g></g>
+      <text x="600" y="146" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" font-weight="800" letter-spacing="3" fill="#FFD23F">THE NORTH STAR</text>
+
+      <path d="M600,120 L505,470 L695,470 Z" fill="url(#nwBeamG)" style="animation: nwBeam 4.2s ease-in-out infinite"></path>
+
+      <g transform="translate(600,262)"><g style="animation: nwBob 3.6s ease-in-out infinite">
+        <ellipse cx="0" cy="86" rx="46" ry="9" fill="#160f2e" opacity=".35"></ellipse>
+        <circle cx="0" cy="0" r="58" fill="#5B47D6" stroke="#16121F" stroke-width="5"></circle>
+        <circle cx="0" cy="0" r="48" fill="none" stroke="#4634b8" stroke-width="3"></circle>
+        <circle cx="0" cy="7" r="38" fill="#EFEAFF" stroke="#16121F" stroke-width="4"></circle>
+        <circle cx="-27" cy="27" r="7" fill="#FF9ECB" opacity=".85"></circle>
+        <circle cx="27" cy="27" r="7" fill="#FF9ECB" opacity=".85"></circle>
+        <circle cx="0" cy="-58" r="6" fill="#16121F"></circle>
+        <g transform="translate(0,-58)"><g style="animation: nwSway 5s ease-in-out infinite">
+          <path d="M0,-6.5 L40,0 L0,6.5 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="2.6" stroke-linejoin="round"></path>
+          <path d="M0,-6.5 L-30,0 L0,6.5 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="2.6" stroke-linejoin="round"></path>
+        </g></g>
+        <path d="M0,-13.5 L3.2,-4.5 L12.8,-4.2 L5.3,1.7 L7.9,10.9 L0,5.5 L-7.9,10.9 L-5.3,1.7 L-12.8,-4.2 L-3.2,-4.5 Z" transform="translate(0,-16)" fill="#FFD23F" stroke="#16121F" stroke-width="3" stroke-linejoin="round"></path>
+        <g style="transform-box: fill-box; transform-origin: center; animation: nwBlink 5.4s ease-in-out infinite">
+          <circle cx="-17" cy="12" r="8" fill="#16121F"></circle>
+          <circle cx="17" cy="12" r="8" fill="#16121F"></circle>
+          <circle cx="-14" cy="9" r="2.6" fill="#fff"></circle>
+          <circle cx="20" cy="9" r="2.6" fill="#fff"></circle>
+        </g>
+        <path d="M-13,29 Q0,40 13,29" fill="none" stroke="#16121F" stroke-width="3.6" stroke-linecap="round"></path>
+      </g></g>
+
+      <g stroke="#16121F" stroke-width="3">
+        <g transform="translate(150,470)">
+          <path d="M-62,0 Q-40,-40 0,-44 Q42,-40 64,0 Z" fill="#3b2ea0"></path>
+          <path d="M-30,-30 Q-14,-42 0,-44 Q16,-42 30,-31" fill="#5B47D6" stroke="none"></path>
+          <circle cx="0" cy="-62" r="13" fill="#FFD23F"></circle>
+          <path d="M0,-49 L0,-44" stroke-width="3"></path>
+        </g>
+        <g transform="translate(330,486)">
+          <path d="M-70,0 Q-56,-34 -30,-36 Q-14,-36 -6,-18 Q4,-36 26,-38 Q56,-34 70,0 Z" fill="#3b2ea0"></path>
+          <path d="M-6,-18 Q-2,-6 -6,0" fill="none" stroke="#2BC2B0" stroke-width="4"></path>
+        </g>
+        <g transform="translate(510,478)">
+          <path d="M-66,0 Q-40,-22 0,-24 Q42,-22 66,0 Z" fill="#3b2ea0"></path>
+          <rect x="-36" y="-44" width="20" height="20" rx="4" fill="#2BC2B0"></rect>
+          <rect x="-8" y="-52" width="20" height="28" rx="4" fill="#EFEAFF"></rect>
+          <rect x="20" y="-38" width="20" height="14" rx="4" fill="#FFD23F"></rect>
+        </g>
+        <g transform="translate(700,470)">
+          <path d="M-58,0 L-14,-92 Q0,-104 14,-92 L58,0 Z" fill="#3b2ea0"></path>
+          <path d="M-14,-92 Q0,-104 14,-92 L22,-72 Q0,-84 -22,-72 Z" fill="#EFEAFF" stroke="none"></path>
+          <path d="M-30,-46 L0,-70 L30,-46" fill="none" stroke="#FF6B5E" stroke-width="5"></path>
+        </g>
+        <g transform="translate(884,484)">
+          <path d="M-72,0 Q-58,-30 -34,-32 Q-16,-32 0,-14 Q16,-32 34,-32 Q58,-30 72,0 Z" fill="#3b2ea0"></path>
+          <circle cx="-34" cy="-44" r="10" fill="#EFEAFF"></circle>
+          <circle cx="34" cy="-44" r="10" fill="#EFEAFF"></circle>
+          <path d="M-34,-44 L34,-44" stroke-width="3"></path>
+        </g>
+        <g transform="translate(1058,472)">
+          <path d="M-60,0 Q-38,-26 0,-28 Q40,-26 62,0 Z" fill="#3b2ea0"></path>
+          <path d="M-14,-28 L-10,-84 L10,-84 L14,-28 Z" fill="#EFEAFF"></path>
+          <circle cx="0" cy="-94" r="12" fill="#FFD23F"></circle>
+          <path d="M14,-94 L52,-108 M14,-88 L52,-74" stroke="#FFD23F" stroke-width="4" style="animation: nwLamp 2.8s ease-in-out infinite"></path>
+        </g>
+        <g transform="translate(120,596)">
+          <path d="M-96,0 Q-70,-26 -20,-28 L64,-28 L64,0 Z" fill="#2a1d52"></path>
+          <path d="M-20,-28 L64,-28" stroke="#EFEAFF" stroke-width="4"></path>
+          <path d="M20,-28 L20,-64 L52,-52 L20,-46" fill="#FF6B5E"></path>
+        </g>
+      </g>
+
+      <g font-family="Figtree, sans-serif" font-size="16" font-weight="800" fill="#EFEAFF" text-anchor="middle">
+        <text x="150" y="500">Earn Isle</text>
+        <text x="330" y="516">Loan Cove</text>
+        <text x="510" y="508">RWA Reef</text>
+        <text x="700" y="500">Perps Peak</text>
+        <text x="884" y="514">Rebalance Bay</text>
+        <text x="1058" y="502">Studio Lighthouse</text>
+        <text x="120" y="626" text-anchor="start" fill="#FFD23F">Newcomer's Harbor</text>
+      </g>
+
+      <g opacity=".5" fill="#c9c4dd">
+        <g style="animation: nwFog1 26s linear infinite">
+          <ellipse cx="0" cy="418" rx="120" ry="26"></ellipse>
+          <ellipse cx="70" cy="404" rx="80" ry="20"></ellipse>
+        </g>
+        <g style="animation: nwFog2 34s linear infinite">
+          <ellipse cx="0" cy="452" rx="150" ry="24"></ellipse>
+          <ellipse cx="-80" cy="438" rx="90" ry="18"></ellipse>
+        </g>
+      </g>
+
+      <path d="M0,540 Q150,516 300,540 T600,540 T900,540 T1200,540 L1200,640 L0,640 Z" fill="url(#nwSea)"></path>
+      <path d="M0,566 Q160,546 320,566 T640,566 T960,566 T1280,566" fill="none" stroke="#2BC2B0" stroke-width="3" opacity=".55"></path>
+      <path d="M0,596 Q170,576 340,596 T680,596 T1020,596 T1360,596" fill="none" stroke="#EFEAFF" stroke-width="3" opacity=".3"></path>
+    </svg>
+  </header>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 64px">
+
+    <section style="padding-top: 60px" data-screen-label="The cast">
+      <div style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #5B47D6; font-weight: 800; margin-bottom: 8px">The cast</div>
+      <h2 style="font-size: 34px; font-weight: 900; letter-spacing: -.025em; margin: 0 0 24px">Who else lives here.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px">
+        <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 20px; padding: 24px">
+          <svg viewBox="0 0 200 90" style="width: 100%; height: 74px">
+            <ellipse cx="70" cy="52" rx="60" ry="20" fill="#c9c4dd" opacity=".8"></ellipse>
+            <ellipse cx="120" cy="40" rx="46" ry="16" fill="#c9c4dd" opacity=".6"></ellipse>
+            <ellipse cx="40" cy="36" rx="34" ry="13" fill="#c9c4dd" opacity=".5"></ellipse>
+          </svg>
+          <div style="font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 800; color: #5B47D6; background: #efeaff; border-radius: 20px; padding: 3px 10px; display: inline-block; margin: 12px 0 8px">the villain</div>
+          <h3 style="font-size: 19px; font-weight: 800; margin: 0 0 6px">The Fog</h3>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: #4a4560">Jargon and "build it yourself." Nova burns it off with her star-light.</p>
+        </div>
+        <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 20px; padding: 24px">
+          <svg viewBox="0 0 200 90" style="width: 100%; height: 74px">
+            <g stroke="#16121F" stroke-width="3">
+              <rect x="18" y="30" width="42" height="34" rx="8" fill="#5B47D6"></rect>
+              <circle cx="49" cy="47" r="6" fill="#FFD23F"></circle>
+              <rect x="80" y="26" width="38" height="38" rx="19" fill="#2BC2B0"></rect>
+              <path d="M92,45 L106,45" stroke="#fbf9ff"></path>
+              <rect x="138" y="32" width="40" height="32" rx="10" fill="#EFEAFF"></rect>
+              <circle cx="150" cy="46" r="4" fill="#16121F"></circle>
+              <circle cx="166" cy="46" r="4" fill="#16121F"></circle>
+              <path d="M158,32 L158,22" stroke-width="3"></path>
+            </g>
+          </svg>
+          <div style="font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 800; color: #5B47D6; background: #efeaff; border-radius: 20px; padding: 3px 10px; display: inline-block; margin: 12px 0 8px">the heroes</div>
+          <h3 style="font-size: 19px; font-weight: 800; margin: 0 0 6px">The Travelers</h3>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: #4a4560">A Wallet, a Fintech, a little robot Agent. Nova never sails for them; they hold the wheel (non-custodial).</p>
+        </div>
+        <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 20px; padding: 24px">
+          <svg viewBox="0 0 200 90" style="width: 100%; height: 74px">
+            <g fill="none" stroke="#FF6B5E" stroke-width="3.5" stroke-linecap="round">
+              <path d="M14,66 Q40,20 62,58 Q84,86 96,34 Q108,64 72,66 Q30,68 46,30"></path>
+              <path d="M22,34 Q56,72 88,58"></path>
+            </g>
+            <path d="M124,50 L188,50" stroke="#2BC2B0" stroke-width="5" stroke-linecap="round"></path>
+          </svg>
+          <div style="font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 800; color: #5B47D6; background: #efeaff; border-radius: 20px; padding: 3px 10px; display: inline-block; margin: 12px 0 8px">the old way</div>
+          <h3 style="font-size: 19px; font-weight: 800; margin: 0 0 6px">The Tangle</h3>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: #4a4560">A knot of ropes (integrating each protocol by hand). Compass hands them one clean rope.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Places up close">
+      <div style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #5B47D6; font-weight: 800; margin-bottom: 8px">The places, up close</div>
+      <h2 style="font-size: 34px; font-weight: 900; letter-spacing: -.025em; margin: 0 0 8px">What the Sea actually looks like.</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; max-width: 62ch; margin: 0 0 26px; color: #3a3352">Three establishing shots. This is the set an episode is staged in, so the same places recur video after video and the world starts to feel real.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 24px">
+
+        <div style="border: 2px solid #e7e2f5; border-radius: 24px; overflow: hidden; background: #fff">
+          <svg viewBox="0 0 1100 420" style="width: 100%; height: auto; display: block">
+            <defs>
+              <linearGradient id="nhSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a1d52"></stop><stop offset="100%" stop-color="#5B47D6"></stop></linearGradient>
+              <linearGradient id="nhWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4634b8"></stop><stop offset="100%" stop-color="#241a48"></stop></linearGradient>
+            </defs>
+            <rect width="1100" height="420" fill="url(#nhSky)"></rect>
+            <g fill="#fbf9ff"><circle cx="120" cy="52" r="2.5" class="tw"></circle><circle cx="420" cy="34" r="2" class="tw2"></circle><circle cx="900" cy="60" r="2.5" class="tw3"></circle></g>
+            <path d="M0,300 Q120,282 250,296 T520,292 T800,300 T1100,290 L1100,420 L0,420 Z" fill="url(#nhWater)"></path>
+
+            <g stroke="#16121F" stroke-width="3">
+              <path d="M0,306 L0,208 Q60,188 150,194 L412,196 L412,306 Z" fill="#6a4f7a"></path>
+              <path d="M0,208 Q60,188 150,194 L412,196" fill="none" stroke="#c9a37a" stroke-width="9" stroke-linecap="round"></path>
+              <rect x="52" y="128" width="86" height="68" rx="10" fill="#2a1d52"></rect>
+              <path d="M40,128 L95,92 L150,128 Z" fill="#FF6B5E"></path>
+              <rect x="80" y="156" width="28" height="40" rx="4" fill="#FFD23F"></rect>
+              <rect x="196" y="140" width="72" height="56" rx="10" fill="#2a1d52"></rect>
+              <path d="M186,140 L232,108 L278,140 Z" fill="#2BC2B0"></path>
+              <rect x="216" y="162" width="24" height="34" rx="4" fill="#FFD23F"></rect>
+              <rect x="318" y="152" width="64" height="44" rx="10" fill="#2a1d52"></rect>
+              <path d="M310,152 L350,124 L390,152 Z" fill="#FF9ECB"></path>
+              <path d="M410,300 L410,238 L520,238 L520,300 Z" fill="#2a1d52"></path>
+              <path d="M410,238 L520,238" stroke="#EFEAFF" stroke-width="5"></path>
+              <path d="M446,238 L446,166 L516,190 L446,206" fill="#FF6B5E"></path>
+              <path d="M612,300 Q622,258 660,254 Q700,258 710,300 Z" fill="#241a48"></path>
+              <path d="M660,254 L660,178 L724,204 L660,220" fill="#EFEAFF"></path>
+              <path d="M836,300 Q846,266 876,262 Q906,266 916,300 Z" fill="#241a48"></path>
+              <path d="M876,262 L876,196 L930,218 L876,232" fill="#2BC2B0"></path>
+            </g>
+
+            <g opacity=".45" fill="#c9c4dd">
+              <g style="animation: nwFog1 24s linear infinite"><ellipse cx="0" cy="252" rx="130" ry="24"></ellipse><ellipse cx="80" cy="240" rx="86" ry="18"></ellipse></g>
+              <g style="animation: nwFog2 32s linear infinite"><ellipse cx="0" cy="276" rx="150" ry="22"></ellipse></g>
+            </g>
+
+            <g transform="translate(760,132)"><g style="animation: nwBob 3.6s ease-in-out infinite">
+              <circle cx="0" cy="0" r="40" fill="#5B47D6" stroke="#16121F" stroke-width="4"></circle>
+              <circle cx="0" cy="5" r="26" fill="#EFEAFF" stroke="#16121F" stroke-width="3"></circle>
+              <circle cx="-18" cy="19" r="5" fill="#FF9ECB" opacity=".85"></circle>
+              <circle cx="18" cy="19" r="5" fill="#FF9ECB" opacity=".85"></circle>
+              <circle cx="0" cy="-40" r="4.5" fill="#16121F"></circle>
+              <g transform="translate(0,-40) rotate(52)"><path d="M0,-4.5 L30,0 L0,4.5 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="2" stroke-linejoin="round"></path><path d="M0,-4.5 L-22,0 L0,4.5 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="2" stroke-linejoin="round"></path></g>
+              <path d="M0,-9.5 L2.2,-3.2 L9,-2.9 L3.7,1.2 L5.5,7.6 L0,3.9 L-5.5,7.6 L-3.7,1.2 L-9,-2.9 L-2.2,-3.2 Z" transform="translate(0,-11)" fill="#FFD23F" stroke="#16121F" stroke-width="2.2" stroke-linejoin="round"></path>
+              <circle cx="-11" cy="8" r="5.5" fill="#16121F"></circle><circle cx="11" cy="8" r="5.5" fill="#16121F"></circle>
+              <circle cx="-9" cy="6" r="1.8" fill="#fff"></circle><circle cx="13" cy="6" r="1.8" fill="#fff"></circle>
+              <path d="M-9,20 Q0,28 9,20" fill="none" stroke="#16121F" stroke-width="2.6" stroke-linecap="round"></path>
+            </g></g>
+
+            <path d="M0,340 Q140,322 280,340 T560,340 T840,340 T1120,340" fill="none" stroke="#2BC2B0" stroke-width="3" opacity=".5"></path>
+            <path d="M0,376 Q150,358 300,376 T600,376 T900,376 T1200,376" fill="none" stroke="#EFEAFF" stroke-width="3" opacity=".28"></path>
+          </svg>
+          <div style="padding: 22px 26px 26px">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px">
+              <h3 style="font-size: 22px; font-weight: 900; margin: 0">Newcomer's Harbor</h3>
+              <span style="font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 800; color: #5B47D6; background: #efeaff; border-radius: 20px; padding: 3px 10px">where every episode opens</span>
+            </div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; max-width: 76ch; color: #3a3352; text-wrap: pretty">Warm lamplit docks at the edge of the Fog. Little boats tied up, sails in Compass colours, travelers milling about with no idea which way is out. This is the first place anyone sees, and it is deliberately cozy — the world is not scary, it is just unmapped. Nova hangs above the pier, needle already pointing.</p>
+          </div>
+        </div>
+
+        <div style="border: 2px solid #e7e2f5; border-radius: 24px; overflow: hidden; background: #fff">
+          <svg viewBox="0 0 1100 420" style="width: 100%; height: auto; display: block">
+            <defs>
+              <linearGradient id="fgSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#160f2e"></stop><stop offset="100%" stop-color="#3b2ea0"></stop></linearGradient>
+              <linearGradient id="fgBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFD23F" stop-opacity=".7"></stop><stop offset="100%" stop-color="#FFD23F" stop-opacity="0"></stop></linearGradient>
+            </defs>
+            <rect width="1100" height="420" fill="url(#fgSky)"></rect>
+            <g fill="#fbf9ff"><circle cx="200" cy="46" r="2.5" class="tw"></circle><circle cx="960" cy="38" r="2" class="tw2"></circle></g>
+
+            <g opacity=".7" fill="#c9c4dd">
+              <ellipse cx="240" cy="200" rx="230" ry="80"></ellipse>
+              <ellipse cx="420" cy="164" rx="180" ry="60"></ellipse>
+              <ellipse cx="130" cy="150" rx="150" ry="54"></ellipse>
+              <ellipse cx="330" cy="256" rx="210" ry="62"></ellipse>
+            </g>
+            <g opacity=".5" fill="#c9c4dd">
+              <g style="animation: nwFog1 22s linear infinite"><ellipse cx="0" cy="230" rx="160" ry="34"></ellipse></g>
+              <g style="animation: nwFog2 30s linear infinite"><ellipse cx="0" cy="188" rx="130" ry="28"></ellipse></g>
+            </g>
+
+            <path d="M660,120 L560,340 L760,340 Z" fill="url(#fgBeam)" style="animation: nwBeam 4s ease-in-out infinite"></path>
+
+            <g transform="translate(660,150)"><g style="animation: nwBob 3.4s ease-in-out infinite">
+              <circle cx="0" cy="0" r="46" fill="#5B47D6" stroke="#16121F" stroke-width="4"></circle>
+              <circle cx="0" cy="6" r="30" fill="#EFEAFF" stroke="#16121F" stroke-width="3.4"></circle>
+              <circle cx="-21" cy="22" r="6" fill="#FF9ECB"></circle>
+              <circle cx="21" cy="22" r="6" fill="#FF9ECB"></circle>
+              <circle cx="0" cy="-46" r="5" fill="#16121F"></circle>
+              <g transform="translate(0,-46) rotate(-34)"><path d="M0,-5 L34,0 L0,5 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="2.2" stroke-linejoin="round"></path><path d="M0,-5 L-26,0 L0,5 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="2.2" stroke-linejoin="round"></path></g>
+              <path d="M0,-13 L3,-4.3 L12.3,-4 L5,1.7 L7.6,10.5 L0,5.3 L-7.6,10.5 L-5,1.7 L-12.3,-4 L-3,-4.3 Z" transform="translate(0,-14)" fill="#FFD23F" stroke="#16121F" stroke-width="2.6" stroke-linejoin="round" style="transform-box: fill-box; transform-origin: center; animation: nwTwinkle 1.6s ease-in-out infinite"></path>
+              <path d="M-19,10 Q-13,2 -7,10" fill="none" stroke="#16121F" stroke-width="3.4" stroke-linecap="round"></path>
+              <path d="M7,10 Q13,2 19,10" fill="none" stroke="#16121F" stroke-width="3.4" stroke-linecap="round"></path>
+              <path d="M-11,21 Q0,36 11,21 Z" fill="#16121F"></path>
+            </g></g>
+
+            <g stroke="#16121F" stroke-width="3">
+              <path d="M900,340 Q940,300 1000,296 Q1064,300 1100,340 Z" fill="#3b2ea0"></path>
+              <path d="M960,296 L960,220 L1030,244 L960,260" fill="#FFD23F"></path>
+            </g>
+            <text x="1000" y="372" text-anchor="middle" font-family="Figtree, sans-serif" font-size="15" font-weight="800" fill="#FFD23F">the island, reachable</text>
+
+            <path d="M0,340 L1100,340" stroke="#4634b8" stroke-width="0"></path>
+            <path d="M0,352 Q140,334 280,352 T560,352 T840,352 T1120,352" fill="none" stroke="#2BC2B0" stroke-width="3" opacity=".45"></path>
+            <path d="M0,388 Q150,370 300,388 T600,388 T900,388 T1200,388" fill="none" stroke="#EFEAFF" stroke-width="3" opacity=".25"></path>
+          </svg>
+          <div style="padding: 22px 26px 26px">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px">
+              <h3 style="font-size: 22px; font-weight: 900; margin: 0">The Fog</h3>
+              <span style="font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 800; color: #5B47D6; background: #efeaff; border-radius: 20px; padding: 3px 10px">the villain, and the middle of every episode</span>
+            </div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; max-width: 76ch; color: #3a3352; text-wrap: pretty">A grey wall of confusion — jargon, twelve tabs, "build it yourself." It has no face and never speaks; it just sits between a traveler and the thing they wanted. Nova flies into it and her star cuts a beam through, and on the far side one island is suddenly visible. That beam is the money shot of the whole series.</p>
+          </div>
+        </div>
+
+        <div style="border: 2px solid #e7e2f5; border-radius: 24px; overflow: hidden; background: #fff">
+          <svg viewBox="0 0 1100 420" style="width: 100%; height: auto; display: block">
+            <defs>
+              <linearGradient id="eiSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b2ea0"></stop><stop offset="100%" stop-color="#7d6ce8"></stop></linearGradient>
+              <linearGradient id="eiSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5B47D6"></stop><stop offset="100%" stop-color="#2a1d52"></stop></linearGradient>
+            </defs>
+            <rect width="1100" height="420" fill="url(#eiSky)"></rect>
+            <g fill="#fbf9ff"><circle cx="150" cy="48" r="2.5" class="tw"></circle><circle cx="640" cy="30" r="2" class="tw2"></circle><circle cx="980" cy="56" r="2.5" class="tw3"></circle></g>
+
+            <g stroke="#16121F" stroke-width="3">
+              <path d="M300,300 Q400,190 550,182 Q700,190 800,300 Z" fill="#3b2ea0"></path>
+              <path d="M380,232 Q460,190 550,182 Q640,190 720,234" fill="#5B47D6" stroke="none"></path>
+              <circle cx="550" cy="128" r="34" fill="#FFD23F"></circle>
+              <path d="M550,162 L550,182" stroke-width="4"></path>
+              <path d="M470,268 Q476,236 500,232 Q524,236 530,268 Z" fill="#241a48"></path>
+              <path d="M620,272 Q626,244 646,240 Q666,244 672,272 Z" fill="#241a48"></path>
+            </g>
+            <g stroke="#FFD23F" stroke-width="4" fill="none" opacity=".8">
+              <path d="M550,162 L470,214"></path>
+              <path d="M550,162 L630,216"></path>
+            </g>
+            <g fill="#FFD23F">
+              <circle cx="440" cy="200" r="5" class="tw"></circle>
+              <circle cx="672" cy="206" r="5" class="tw2"></circle>
+              <circle cx="550" cy="90" r="4" class="tw3"></circle>
+            </g>
+
+            <g transform="translate(200,170)"><g style="animation: nwBob 3.8s ease-in-out infinite">
+              <circle cx="0" cy="0" r="38" fill="#5B47D6" stroke="#16121F" stroke-width="4"></circle>
+              <circle cx="0" cy="5" r="25" fill="#EFEAFF" stroke="#16121F" stroke-width="3"></circle>
+              <circle cx="-17" cy="18" r="5" fill="#FF9ECB" opacity=".85"></circle>
+              <circle cx="17" cy="18" r="5" fill="#FF9ECB" opacity=".85"></circle>
+              <circle cx="0" cy="-38" r="4.5" fill="#16121F"></circle>
+              <g transform="translate(0,-38) rotate(64)"><path d="M0,-4.5 L30,0 L0,4.5 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="2" stroke-linejoin="round"></path><path d="M0,-4.5 L-22,0 L0,4.5 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="2" stroke-linejoin="round"></path></g>
+              <path d="M0,-9.5 L2.2,-3.2 L9,-2.9 L3.7,1.2 L5.5,7.6 L0,3.9 L-5.5,7.6 L-3.7,1.2 L-9,-2.9 L-2.2,-3.2 Z" transform="translate(0,-10.5)" fill="#FFD23F" stroke="#16121F" stroke-width="2.2" stroke-linejoin="round"></path>
+              <circle cx="-9" cy="8" r="5.5" fill="#16121F"></circle><circle cx="13" cy="8" r="5.5" fill="#16121F"></circle>
+              <circle cx="-7" cy="6" r="1.8" fill="#fff"></circle><circle cx="15" cy="6" r="1.8" fill="#fff"></circle>
+              <path d="M-8,19 Q1,27 10,18" fill="none" stroke="#16121F" stroke-width="2.6" stroke-linecap="round"></path>
+            </g></g>
+
+            <g stroke="#16121F" stroke-width="3">
+              <path d="M880,306 Q890,272 920,268 Q950,272 960,306 Z" fill="#241a48"></path>
+              <path d="M920,268 L920,202 L976,224 L920,238" fill="#2BC2B0"></path>
+            </g>
+
+            <path d="M0,300 Q150,282 300,300 T600,300 T900,300 T1200,300 L1200,420 L0,420 Z" fill="url(#eiSea)"></path>
+            <path d="M0,332 Q140,314 280,332 T560,332 T840,332 T1120,332" fill="none" stroke="#2BC2B0" stroke-width="3" opacity=".5"></path>
+            <path d="M0,368 Q150,350 300,368 T600,368 T900,368 T1200,368" fill="none" stroke="#EFEAFF" stroke-width="3" opacity=".28"></path>
+            <path d="M0,400 Q160,384 320,400 T640,400 T960,400 T1280,400" fill="none" stroke="#FFD23F" stroke-width="3" opacity=".2"></path>
+          </svg>
+          <div style="padding: 22px 26px 26px">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px">
+              <h3 style="font-size: 22px; font-weight: 900; margin: 0">An island — Earn Isle</h3>
+              <span style="font-family: ui-monospace, monospace; font-size: 10.5px; font-weight: 800; color: #5B47D6; background: #efeaff; border-radius: 20px; padding: 3px 10px">the arrival, how all six islands are staged</span>
+            </div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; max-width: 76ch; color: #3a3352; text-wrap: pretty">Past the Fog the light changes: warm, open, gold. Every island follows the same recipe — a round green-lavender landmass, one gold landmark on top that says what the island is for (a lantern for yield, a vault door for Loan Cove, a lighthouse for Studio), a small dock, and a traveler's boat pulling in. Swap the landmark and you have the next island without redesigning anything.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="The islands">
+      <div style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #5B47D6; font-weight: 800; margin-bottom: 8px">The islands</div>
+      <h2 style="font-size: 34px; font-weight: 900; letter-spacing: -.025em; margin: 0 0 8px">Every product is a place.</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; max-width: 62ch; margin: 0 0 24px; color: #3a3352">Six islands beyond the Fog. Each one is a destination a traveler can actually reach, which is the whole point of naming them.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+        <div style="background: #efeaff; border-radius: 20px; padding: 22px"><div style="font-size: 18px; font-weight: 800; margin-bottom: 5px; color: #3b2ea0">Earn Isle</div><div style="font-size: 15.5px; color: #4a3fb0">yield</div></div>
+        <div style="background: #efeaff; border-radius: 20px; padding: 22px"><div style="font-size: 18px; font-weight: 800; margin-bottom: 5px; color: #3b2ea0">Loan Cove</div><div style="font-size: 15.5px; color: #4a3fb0">borrow, keep your treasure</div></div>
+        <div style="background: #efeaff; border-radius: 20px; padding: 22px"><div style="font-size: 18px; font-weight: 800; margin-bottom: 5px; color: #3b2ea0">RWA Reef</div><div style="font-size: 15.5px; color: #4a3fb0">tokenized stocks &amp; T-bills</div></div>
+        <div style="background: #efeaff; border-radius: 20px; padding: 22px"><div style="font-size: 18px; font-weight: 800; margin-bottom: 5px; color: #3b2ea0">Perps Peak</div><div style="font-size: 15.5px; color: #4a3fb0">perps</div></div>
+        <div style="background: #efeaff; border-radius: 20px; padding: 22px"><div style="font-size: 18px; font-weight: 800; margin-bottom: 5px; color: #3b2ea0">Rebalance Bay</div><div style="font-size: 15.5px; color: #4a3fb0">one-signature rebalance</div></div>
+        <div style="background: #efeaff; border-radius: 20px; padding: 22px"><div style="font-size: 18px; font-weight: 800; margin-bottom: 5px; color: #3b2ea0">Studio Lighthouse</div><div style="font-size: 15.5px; color: #4a3fb0">try before you sail</div></div>
+      </div>
+    </section>
+
+    <section data-screen-label="Newcomers Harbor">
+      <div style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #5B47D6; font-weight: 800; margin-bottom: 8px">Newcomer's Harbor</div>
+      <h2 style="font-size: 34px; font-weight: 900; letter-spacing: -.025em; margin: 0 0 8px">Where everyone lands.</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; max-width: 62ch; margin: 0 0 24px; color: #3a3352">Overwhelmed, on day one. So the basics are places too, not definitions.</p>
+      <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 24px; padding: 10px 26px">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px">
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #eee9fb"><span style="font-weight: 800; font-size: 16px">Wallet</span><span style="font-size: 16px; color: #4a4560">the Keyhouse</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #eee9fb"><span style="font-weight: 800; font-size: 16px">Signing</span><span style="font-size: 16px; color: #4a4560">your stamp</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #eee9fb"><span style="font-weight: 800; font-size: 16px">Stablecoin</span><span style="font-size: 16px; color: #4a4560">the steady buoy</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #eee9fb"><span style="font-weight: 800; font-size: 16px">Custody</span><span style="font-size: 16px; color: #4a4560">the wheel</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 16px 0"><span style="font-weight: 800; font-size: 16px">Gas</span><span style="font-size: 16px; color: #4a4560">the wind</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 20px; padding: 16px 0"><span style="font-weight: 800; font-size: 16px">Onchain</span><span style="font-size: 16px; color: #4a4560">the Sea</span></div>
+        </div>
+      </div>
+      <div style="background: #efeaff; border-radius: 20px; padding: 20px 24px; margin-top: 16px; font-size: 15.5px; line-height: 1.65; color: #3b2ea0"><b>Market weather:</b> rising tide = money moving onchain · currents = yield and risk · open water = DeFi · native builders = the protocols.</div>
+    </section>
+
+    <section data-screen-label="Story engine">
+      <div style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #5B47D6; font-weight: 800; margin-bottom: 8px">The story engine</div>
+      <h2 style="font-size: 34px; font-weight: 900; letter-spacing: -.025em; margin: 0 0 8px">Every video is the same little voyage.</h2>
+      <p style="font-size: 16.5px; line-height: 1.65; max-width: 62ch; margin: 0 0 24px; color: #3a3352">So Nova always has a story, and it is always short.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+        <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 20px; padding: 24px">
+          <div style="width: 34px; height: 34px; border-radius: 999px; background: #5B47D6; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 14px">1</div>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3a3352">A traveler is lost in the fog, near the thing they want.</p>
+        </div>
+        <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 20px; padding: 24px">
+          <div style="width: 34px; height: 34px; border-radius: 999px; background: #5B47D6; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 14px">2</div>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3a3352">Nova appears, star glowing. She names the confusion in one plain sentence.</p>
+        </div>
+        <div style="background: #fff; border: 2px solid #e7e2f5; border-radius: 20px; padding: 24px">
+          <div style="width: 34px; height: 34px; border-radius: 999px; background: #5B47D6; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 14px">3</div>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3a3352">She points the needle. The fog parts, one clean route lights up.</p>
+        </div>
+        <div style="background: #1f1640; border-radius: 20px; padding: 24px; color: #fff">
+          <div style="width: 34px; height: 34px; border-radius: 999px; background: #FFD23F; color: #1a1230; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 14px">4</div>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #e7e3fb">The traveler arrives and ships. Star flare, happy wobble. "You held the wheel the whole time."</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Palette">
+      <div style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #5B47D6; font-weight: 800; margin-bottom: 8px">Palette</div>
+      <h2 style="font-size: 34px; font-weight: 900; letter-spacing: -.025em; margin: 0 0 24px">The Compass colours, on Nova.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 14px">
+        <div><div style="height: 66px; border-radius: 16px; background: #5B47D6"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Lavender</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#5B47D6</div></div>
+        <div><div style="height: 66px; border-radius: 16px; background: #3b2ea0"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Deep lavender</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#3b2ea0</div></div>
+        <div><div style="height: 66px; border-radius: 16px; background: #efeaff"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Soft lavender</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#efeaff</div></div>
+        <div><div style="height: 66px; border-radius: 16px; background: #FF6B5E"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Needle red</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#FF6B5E</div></div>
+        <div><div style="height: 66px; border-radius: 16px; background: #FFD23F"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Star gold</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#FFD23F</div></div>
+        <div><div style="height: 66px; border-radius: 16px; background: #2BC2B0"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Teal</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#2BC2B0</div></div>
+        <div><div style="height: 66px; border-radius: 16px; background: #1a1230"></div><div style="font-weight: 800; font-size: 15px; margin: 10px 0 2px">Ink</div><div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #6a6480">#1a1230</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="margin-top: 72px; padding: 34px 40px; text-align: center; color: #8a84a0; font-size: 13.5px">Compass Labs · Nova's world 🌟 · <a href="Nova Character.dc.html">Nova, the character</a></footer>
+</div>
+</x-dc>
+</body>
+</html>

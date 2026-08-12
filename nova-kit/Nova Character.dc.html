@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-7b371990-9bda-4c6c-871e-1c5980d81542/styles.css">
+<script src="_ds/organic-7b371990-9bda-4c6c-871e-1c5980d81542/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+  a { color: var(--color-accent-700); } a:hover { color: var(--color-accent-800); }
+  @keyframes novaBob { 0%,100% { transform: translateY(6px) } 50% { transform: translateY(-10px) } }
+  @keyframes novaBlink { 0%,90%,100% { transform: scaleY(1) } 94% { transform: scaleY(.08) } }
+  @keyframes novaSpin { to { transform: rotate(360deg) } }
+  @keyframes novaSway { 0%,100% { transform: rotate(-16deg) } 50% { transform: rotate(-32deg) } }
+  @keyframes novaFlare { 0%,100% { transform: scale(1); filter: none } 50% { transform: scale(1.28); filter: drop-shadow(0 0 14px #FFD23F) } }
+  @keyframes novaWobble { 0%,100% { transform: rotate(-5deg) } 50% { transform: rotate(5deg) } }
+  @keyframes novaPulse { 0%,100% { opacity: .18 } 50% { opacity: .5 } }
+  @keyframes novaTwinkle { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+</style>
+</helmet>
+
+<div style="background: var(--color-bg); min-height: 100vh">
+
+  <header style="background: var(--color-accent-900); color: var(--color-neutral-100); border-radius: 0 0 var(--radius-lg) var(--radius-lg); overflow: hidden; position: relative">
+    <div style="position: absolute; right: -120px; top: -90px; width: 380px; height: 380px; border-radius: 999px; background: var(--color-accent-800)"></div>
+    <div style="position: relative; max-width: 1080px; margin: 0 auto; padding: 64px 44px 56px; display: grid; grid-template-columns: minmax(320px, 1fr) 420px; gap: 48px; align-items: center">
+      <div>
+        <div style="font-weight: 700; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-accent-300); margin-bottom: 16px">Compass Labs · Compass Learn · the education mascot</div>
+        <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 76px; line-height: .98; letter-spacing: -.02em; margin: 0">Nova.</h1>
+        <p style="margin: 22px 0 0; font-size: 19px; line-height: 1.55; max-width: 46ch; color: var(--color-neutral-200); text-wrap: pretty">A little star-compass, about beach-ball size, who floats above the world. Half compass, half star.</p>
+        <p style="margin: 24px 0 0; font-size: 17px; line-height: 1.6; max-width: 46ch; color: var(--color-accent-300); font-style: italic">"Hi! I'm Nova. Lost in the fog? Don't worry, that's literally my whole job. Point the needle, and I'll get you there."</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 26px">
+        <svg viewBox="-170 -215 340 400" style="width: 100%; max-width: 380px; height: auto; overflow: visible">
+          <circle cx="-118" cy="-150" r="4" fill="#FFD23F" style="animation: novaTwinkle 2.6s ease-in-out infinite"></circle>
+          <circle cx="128" cy="-176" r="3" fill="#FFD23F" style="animation: novaTwinkle 3.4s ease-in-out .6s infinite"></circle>
+          <circle cx="106" cy="-58" r="3.5" fill="#2BC2B0" style="animation: novaTwinkle 3s ease-in-out 1.2s infinite"></circle>
+          <ellipse cx="0" cy="152" rx="74" ry="15" fill="#16121F" style="animation: novaPulse 3.4s ease-in-out infinite"></ellipse>
+
+          <g style="animation: novaBob 3.4s ease-in-out infinite">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+            <circle cx="0" cy="0" r="79" fill="none" stroke="#4634b8" stroke-width="5"></circle>
+            <rect x="80" y="-4.5" width="13" height="9" rx="4.5" fill="#EFEAFF" opacity=".75"></rect>
+            <rect x="-93" y="-4.5" width="13" height="9" rx="4.5" fill="#EFEAFF" opacity=".75"></rect>
+            <rect x="-4.5" y="80" width="9" height="13" rx="4.5" fill="#EFEAFF" opacity=".75"></rect>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+
+            <sc-if value="{{ isIdle }}" hint-placeholder-val="{{ true }}">
+              <g>
+                <g transform="translate(0,-95)"><g style="animation: novaSway 4.6s ease-in-out infinite">
+                  <path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                  <path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                </g></g>
+                <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round"></path>
+                <g style="transform-box: fill-box; transform-origin: center; animation: novaBlink 5.2s ease-in-out infinite">
+                  <circle cx="-28" cy="20" r="13" fill="#16121F"></circle>
+                  <circle cx="28" cy="20" r="13" fill="#16121F"></circle>
+                  <circle cx="-23" cy="15" r="4.2" fill="#fff"></circle>
+                  <circle cx="33" cy="15" r="4.2" fill="#fff"></circle>
+                </g>
+                <path d="M-22,48 Q0,66 22,48" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+              </g>
+            </sc-if>
+
+            <sc-if value="{{ isThinking }}">
+              <g>
+                <g transform="translate(0,-95)"><g style="animation: novaSpin 2.4s linear infinite">
+                  <path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                  <path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                </g></g>
+                <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round" opacity=".9"></path>
+                <path d="M-42,3 Q-29,-10 -15,0" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"></path>
+                <path d="M15,0 Q29,-10 42,3" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"></path>
+                <g>
+                  <circle cx="-28" cy="22" r="14" fill="#16121F"></circle>
+                  <circle cx="28" cy="22" r="14" fill="#16121F"></circle>
+                  <circle cx="-28" cy="15" r="5" fill="#fff"></circle>
+                  <circle cx="28" cy="15" r="5" fill="#fff"></circle>
+                </g>
+                <path d="M-15,48 Q0,66 15,48 Z" fill="#16121F"></path>
+              </g>
+            </sc-if>
+
+            <sc-if value="{{ isClick }}">
+              <g style="transform-box: fill-box; transform-origin: center; animation: novaWobble 1.1s ease-in-out infinite">
+                <g transform="translate(0,-95)"><g transform="rotate(-34)">
+                  <path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                  <path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                </g></g>
+                <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round" style="transform-box: fill-box; transform-origin: center; animation: novaFlare 1.1s ease-in-out infinite"></path>
+                <path d="M-40,22 Q-28,6 -16,22" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M16,22 Q28,6 40,22" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M-24,44 Q0,74 24,44 Z" fill="#16121F"></path>
+              </g>
+            </sc-if>
+
+            <sc-if value="{{ isDim }}">
+              <g>
+                <g transform="translate(0,-95)"><g transform="rotate(-6)">
+                  <path d="M0,-10 L54,0 L0,10 Z" fill="#c9564c" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                  <path d="M0,-10 L-54,0 L0,10 Z" fill="#d8d2e4" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                </g></g>
+                <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#c9a94f" stroke="#16121F" stroke-width="5" stroke-linejoin="round"></path>
+                <path d="M-40,20 Q-28,30 -16,20" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M16,20 Q28,30 40,20" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M-16,52 Q0,44 16,52" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+                <circle cx="0" cy="0" r="99" fill="#16121F" opacity=".16"></circle>
+              </g>
+            </sc-if>
+
+            <sc-if value="{{ isPoint }}">
+              <g>
+                <g transform="translate(0,-95)"><g transform="rotate(58)">
+                  <path d="M0,-10 L64,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                  <path d="M0,-10 L-48,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path>
+                </g></g>
+                <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round" style="transform-box: fill-box; transform-origin: center; animation: novaFlare 2.8s ease-in-out infinite"></path>
+                <g>
+                  <circle cx="-24" cy="20" r="13" fill="#16121F"></circle>
+                  <circle cx="32" cy="20" r="13" fill="#16121F"></circle>
+                  <circle cx="-19" cy="16" r="4.2" fill="#fff"></circle>
+                  <circle cx="37" cy="16" r="4.2" fill="#fff"></circle>
+                </g>
+                <path d="M-18,48 Q2,64 24,46" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+              </g>
+            </sc-if>
+          </g>
+        </svg>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 9px; justify-content: center">
+          <button onClick="{{ setIdle }}" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-neutral-100); background: transparent; border: 2px solid var(--color-accent-700); border-radius: 999px; padding: 9px 17px; cursor: pointer" style-hover="background: var(--color-accent-800)">
+            <sc-if value="{{ isIdle }}" hint-placeholder-val="{{ true }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: #FFD23F; display: block"></span></sc-if>Idle
+          </button>
+          <button onClick="{{ setThinking }}" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-neutral-100); background: transparent; border: 2px solid var(--color-accent-700); border-radius: 999px; padding: 9px 17px; cursor: pointer" style-hover="background: var(--color-accent-800)">
+            <sc-if value="{{ isThinking }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: #FFD23F; display: block"></span></sc-if>Thinking
+          </button>
+          <button onClick="{{ setClick }}" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-neutral-100); background: transparent; border: 2px solid var(--color-accent-700); border-radius: 999px; padding: 9px 17px; cursor: pointer" style-hover="background: var(--color-accent-800)">
+            <sc-if value="{{ isClick }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: #FFD23F; display: block"></span></sc-if>It clicks
+          </button>
+          <button onClick="{{ setDim }}" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-neutral-100); background: transparent; border: 2px solid var(--color-accent-700); border-radius: 999px; padding: 9px 17px; cursor: pointer" style-hover="background: var(--color-accent-800)">
+            <sc-if value="{{ isDim }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: #FFD23F; display: block"></span></sc-if>Dim
+          </button>
+          <button onClick="{{ setPoint }}" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-neutral-100); background: transparent; border: 2px solid var(--color-accent-700); border-radius: 999px; padding: 9px 17px; cursor: pointer" style-hover="background: var(--color-accent-800)">
+            <sc-if value="{{ isPoint }}"><span style="width: 8px; height: 8px; border-radius: 999px; background: #FFD23F; display: block"></span></sc-if>Pointing
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width: 1080px; margin: 0 auto; padding: 0 44px; display: flex; flex-direction: column; gap: 72px">
+
+    <section style="padding-top: 72px" data-screen-label="Construction">
+      <div style="font-weight: 700; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 10px">01 · Construction</div>
+      <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 38px; line-height: 1.1; margin: 0 0 8px">How she is built.</h2>
+      <p style="font-size: 17px; line-height: 1.65; max-width: 62ch; margin: 0 0 32px; color: var(--color-neutral-800); text-wrap: pretty">One circle body, one face plate two-thirds its width, the needle mounted at true north, the star sitting on the forehead above the eyes. Keep these ratios and she stays on-model at any size.</p>
+      <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 34px; box-shadow: var(--shadow-sm); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center">
+        <svg viewBox="-150 -190 400 340" style="width: 100%; height: auto">
+          <g stroke="var(--color-accent-2-400)" stroke-width="1.5" stroke-dasharray="5 5" fill="none">
+            <line x1="0" y1="-185" x2="0" y2="145"></line>
+            <line x1="-145" y1="0" x2="145" y2="0"></line>
+            <circle cx="0" cy="0" r="95"></circle>
+            <circle cx="0" cy="12" r="62"></circle>
+            <line x1="-145" y1="20" x2="145" y2="20"></line>
+            <line x1="-145" y1="-26" x2="145" y2="-26"></line>
+          </g>
+          <circle cx="0" cy="0" r="95" fill="none" stroke="#5B47D6" stroke-width="4"></circle>
+          <circle cx="0" cy="12" r="62" fill="none" stroke="#5B47D6" stroke-width="3"></circle>
+          <circle cx="0" cy="-95" r="7" fill="#16121F"></circle>
+          <path d="M0,-8 L44,0 L0,8 Z" transform="translate(0,-95)" fill="#FF6B5E"></path>
+          <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26) scale(.8)" fill="none" stroke="#FFD23F" stroke-width="4"></path>
+          <circle cx="-28" cy="20" r="13" fill="none" stroke="#16121F" stroke-width="3"></circle>
+          <circle cx="28" cy="20" r="13" fill="none" stroke="#16121F" stroke-width="3"></circle>
+          <text x="102" y="-91" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="var(--color-neutral-700)">needle at true north</text>
+          <text x="70" y="-22" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="var(--color-neutral-700)">star line</text>
+          <text x="70" y="36" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="var(--color-neutral-700)">eye line</text>
+          <text x="-142" y="128" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="var(--color-neutral-700)">body = 1 · face plate = 0.65 · star = 0.23</text>
+        </svg>
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 18px; align-items: baseline">
+            <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--color-accent-2-700)">Body</div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-neutral-800)">Round lavender, thick ink outline, one inner compass ring with three cream ticks at E, W and S.</p>
+          </div>
+          <div style="height: 1px; background: var(--color-divider)"></div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 18px; align-items: baseline">
+            <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--color-accent-2-700)">Face</div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-neutral-800)">A soft plate dropped slightly below centre. Big readable eyes on the eye line, rosy cheeks, wide friendly smile.</p>
+          </div>
+          <div style="height: 1px; background: var(--color-divider)"></div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 18px; align-items: baseline">
+            <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--color-accent-2-700)">Needle</div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-neutral-800)">Red half always leads. Pivots on an ink hub at the top of the body; it is her pointing hand, she has no arms.</p>
+          </div>
+          <div style="height: 1px; background: var(--color-divider)"></div>
+          <div style="display: grid; grid-template-columns: 108px 1fr; gap: 18px; align-items: baseline">
+            <div style="font-size: 12.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--color-accent-2-700)">Star</div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-neutral-800)">Gold five-point third-eye on the forehead, above the eyes, never off-centre. It is the only thing that glows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Expressions">
+      <div style="font-weight: 700; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 10px">02 · Expression sheet</div>
+      <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 38px; line-height: 1.1; margin: 0 0 8px">Five faces, one Nova.</h2>
+      <p style="font-size: 17px; line-height: 1.65; max-width: 62ch; margin: 0 0 32px; color: var(--color-neutral-800); text-wrap: pretty">Everything she feels is carried by four parts: eyes, mouth, needle angle and star brightness. Nothing else moves.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px">
+
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 22px 18px; box-shadow: var(--shadow-sm); text-align: center">
+          <svg viewBox="-135 -175 270 300" style="width: 100%; height: auto">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+            <g transform="translate(0,-95) rotate(-22)"><path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path><path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path></g>
+            <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round"></path>
+            <circle cx="-28" cy="20" r="13" fill="#16121F"></circle><circle cx="28" cy="20" r="13" fill="#16121F"></circle>
+            <circle cx="-23" cy="15" r="4.2" fill="#fff"></circle><circle cx="33" cy="15" r="4.2" fill="#fff"></circle>
+            <path d="M-22,48 Q0,66 22,48" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+          </svg>
+          <div style="font-family: var(--font-heading); font-size: 18px; margin-top: 12px">Happy</div>
+          <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--color-neutral-700)">Default. Bobs, blinks, needle swaying gently.</p>
+        </div>
+
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 22px 18px; box-shadow: var(--shadow-sm); text-align: center">
+          <svg viewBox="-135 -175 270 300" style="width: 100%; height: auto">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+            <g transform="translate(0,-95) rotate(128)"><path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path><path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path></g>
+            <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round" opacity=".9"></path>
+            <path d="M-42,3 Q-29,-10 -15,0" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M15,0 Q29,-10 42,3" fill="none" stroke="#16121F" stroke-width="5" stroke-linecap="round"></path>
+            <circle cx="-28" cy="22" r="14" fill="#16121F"></circle><circle cx="28" cy="22" r="14" fill="#16121F"></circle>
+            <circle cx="-28" cy="15" r="5" fill="#fff"></circle><circle cx="28" cy="15" r="5" fill="#fff"></circle>
+            <path d="M-15,48 Q0,66 15,48 Z" fill="#16121F"></path>
+          </svg>
+          <div style="font-family: var(--font-heading); font-size: 18px; margin-top: 12px">Curious</div>
+          <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--color-neutral-700)">Brows up, eyes bright, needle spinning. Eager to figure it out, never worried.</p>
+        </div>
+
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 22px 18px; box-shadow: var(--shadow-sm); text-align: center">
+          <svg viewBox="-135 -175 270 300" style="width: 100%; height: auto">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB"></circle>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB"></circle>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+            <g transform="translate(0,-95) rotate(-34)"><path d="M0,-10 L54,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path><path d="M0,-10 L-54,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path></g>
+            <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26) scale(1.2)" fill="#FFD23F" stroke="#16121F" stroke-width="4.5" stroke-linejoin="round"></path>
+            <path d="M-40,22 Q-28,6 -16,22" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+            <path d="M16,22 Q28,6 40,22" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+            <path d="M-24,44 Q0,74 24,44 Z" fill="#16121F"></path>
+          </svg>
+          <div style="font-family: var(--font-heading); font-size: 18px; margin-top: 12px">It clicks</div>
+          <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--color-neutral-700)">Star flare plus a happy wobble. The payoff beat.</p>
+        </div>
+
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 22px 18px; box-shadow: var(--shadow-sm); text-align: center">
+          <svg viewBox="-135 -175 270 300" style="width: 100%; height: auto">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".6"></circle>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".6"></circle>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+            <g transform="translate(0,-95) rotate(-6)"><path d="M0,-10 L54,0 L0,10 Z" fill="#c9564c" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path><path d="M0,-10 L-54,0 L0,10 Z" fill="#d8d2e4" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path></g>
+            <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#c9a94f" stroke="#16121F" stroke-width="5" stroke-linejoin="round"></path>
+            <path d="M-40,20 Q-28,30 -16,20" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+            <path d="M16,20 Q28,30 40,20" fill="none" stroke="#16121F" stroke-width="7" stroke-linecap="round"></path>
+            <path d="M-16,52 Q0,44 16,52" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+            <circle cx="0" cy="0" r="99" fill="#16121F" opacity=".16"></circle>
+          </svg>
+          <div style="font-family: var(--font-heading); font-size: 18px; margin-top: 12px">Dim</div>
+          <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--color-neutral-700)">Someone is stuck. She dims, she never scowls.</p>
+        </div>
+
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 22px 18px; box-shadow: var(--shadow-sm); text-align: center">
+          <svg viewBox="-135 -175 270 300" style="width: 100%; height: auto">
+            <circle cx="0" cy="0" r="95" fill="#5B47D6" stroke="#16121F" stroke-width="8"></circle>
+            <circle cx="0" cy="12" r="62" fill="#EFEAFF" stroke="#16121F" stroke-width="6"></circle>
+            <circle cx="-44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="44" cy="44" r="11" fill="#FF9ECB" opacity=".85"></circle>
+            <circle cx="0" cy="-95" r="9" fill="#16121F"></circle>
+            <g transform="translate(0,-95) rotate(58)"><path d="M0,-10 L64,0 L0,10 Z" fill="#FF6B5E" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path><path d="M0,-10 L-48,0 L0,10 Z" fill="#EFEAFF" stroke="#16121F" stroke-width="4" stroke-linejoin="round"></path></g>
+            <path d="M0,-22 L5.3,-7.3 L20.9,-6.8 L8.6,2.8 L12.9,17.8 L0,9 L-12.9,17.8 L-8.6,2.8 L-20.9,-6.8 L-5.3,-7.3 Z" transform="translate(0,-26)" fill="#FFD23F" stroke="#16121F" stroke-width="5" stroke-linejoin="round"></path>
+            <circle cx="-24" cy="20" r="13" fill="#16121F"></circle><circle cx="32" cy="20" r="13" fill="#16121F"></circle>
+            <circle cx="-19" cy="16" r="4.2" fill="#fff"></circle><circle cx="37" cy="16" r="4.2" fill="#fff"></circle>
+            <path d="M-18,48 Q2,64 24,46" fill="none" stroke="#16121F" stroke-width="6" stroke-linecap="round"></path>
+          </svg>
+          <div style="font-family: var(--font-heading); font-size: 18px; margin-top: 12px">Pointing</div>
+          <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--color-neutral-700)">The route beat. Needle out, eyes follow it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Palette">
+      <div style="font-weight: 700; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 10px">03 · Palette</div>
+      <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 38px; line-height: 1.1; margin: 0 0 32px">Her seven colours.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px">
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #5B47D6"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Lavender body</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#5B47D6</div></div>
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #EFEAFF"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Soft face</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#EFEAFF</div></div>
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #FF6B5E"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Red needle</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#FF6B5E</div></div>
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #FFD23F"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Gold star</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#FFD23F</div></div>
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #16121F"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Ink features</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#16121F</div></div>
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #2BC2B0"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Teal accent</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#2BC2B0</div></div>
+        <div style="background: var(--color-neutral-100); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm)"><div style="height: 74px; border-radius: var(--radius-md); background: #FF9ECB"></div><div style="font-family: var(--font-heading); font-size: 16px; margin: 14px 0 3px">Pink accent</div><div style="font-family: ui-monospace, monospace; font-size: 13.5px; color: var(--color-neutral-700)">#FF9ECB</div></div>
+      </div>
+    </section>
+
+    <section data-screen-label="Motion tells">
+      <div style="font-weight: 700; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 10px">04 · Motion tells</div>
+      <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 38px; line-height: 1.1; margin: 0 0 32px">How she moves.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px">
+        <div style="background: var(--color-accent-2-200); border-radius: var(--radius-lg); padding: 26px"><div style="font-family: var(--font-heading); font-size: 19px; color: var(--color-accent-2-900); margin-bottom: 8px">Bobs while idle</div><p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--color-accent-2-800)">She never stands still and never slides. Weight floats, it does not translate.</p></div>
+        <div style="background: var(--color-accent-2-200); border-radius: var(--radius-lg); padding: 26px"><div style="font-family: var(--font-heading); font-size: 19px; color: var(--color-accent-2-900); margin-bottom: 8px">Needle spins when thinking</div><p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--color-accent-2-800)">A full clean rotation, then it lands on the answer.</p></div>
+        <div style="background: var(--color-accent-2-200); border-radius: var(--radius-lg); padding: 26px"><div style="font-family: var(--font-heading); font-size: 19px; color: var(--color-accent-2-900); margin-bottom: 8px">Star flares when it clicks</div><p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--color-accent-2-800)">Flare plus a happy wobble. This is the beat the viewer remembers.</p></div>
+        <div style="background: var(--color-accent-2-200); border-radius: var(--radius-lg); padding: 26px"><div style="font-family: var(--font-heading); font-size: 19px; color: var(--color-accent-2-900); margin-bottom: 8px">Dims when someone is stuck</div><p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--color-accent-2-800)">Sympathy, not sadness. She comes back up the moment the fog parts.</p></div>
+      </div>
+      <div style="margin-top: 26px; background: var(--color-accent-200); border-radius: var(--radius-lg); padding: 26px 28px">
+        <div style="font-family: var(--font-heading); font-size: 20px; color: var(--color-accent-900); margin-bottom: 10px">What makes it chafa, avoid all six</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 10px; font-size: 16px; color: var(--color-accent-800)">
+          <span>stiff sliding movement</span><span>·</span><span>flat clip-art</span><span>·</span><span>generic stock</span><span>·</span><span>robotic voices</span><span>·</span><span>a character that looks different every video</span><span>·</span><span>no sound design</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="margin-top: 80px; background: var(--color-accent-900); color: var(--color-neutral-300); border-radius: var(--radius-lg) var(--radius-lg) 0 0">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 40px 44px; font-size: 15px">Compass Labs · Nova Creation Kit · non-custodial infrastructure, users hold custody.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { expr: 'idle' };
+  set(e) { return () => this.setState({ expr: e }); }
+  renderVals() {
+    const e = this.state.expr;
+    return {
+      isIdle: e === 'idle', isThinking: e === 'thinking', isClick: e === 'click',
+      isDim: e === 'dim', isPoint: e === 'point',
+      setIdle: this.set('idle'), setThinking: this.set('thinking'), setClick: this.set('click'),
+      setDim: this.set('dim'), setPoint: this.set('point'),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -190,15 +190,21 @@
       <div class="cta">compasslabs.ai</div>
     </div>
 
+    <audio id="a1" src="nova-vo/scene1.mp3" preload="auto"></audio>
+    <audio id="a2" src="nova-vo/scene2.mp3" preload="auto"></audio>
+    <audio id="a3" src="nova-vo/scene3.mp3" preload="auto"></audio>
+    <audio id="a4" src="nova-vo/scene4.mp3" preload="auto"></audio>
+    <audio id="a5" src="nova-vo/scene5.mp3" preload="auto"></audio>
+    <audio id="a6" src="nova-vo/scene6.mp3" preload="auto"></audio>
     <div class="cap" id="cap"></div>
     <div class="play" id="play"><div class="playbtn"><svg viewBox="0 0 24 24" fill="#2a1d52"><path d="M8 5v14l11-7z"/></svg></div></div>
   </div>
 
   <div class="meta">
-    <span class="chip">~60 sec silent cut</span>
-    <span class="chip">Add ElevenLabs voice in HeyGen</span>
+    <span class="chip">🔊 Nova speaks on ▶ play</span>
+    <span class="chip">Synced scene by scene</span>
     <span class="chip">1:1 + 9:16 export</span>
-    <span class="chip">Screen-record to make the MP4</span>
+    <span class="chip">Screen-record (system audio on) for the MP4</span>
   </div>
 </div>
 
@@ -213,7 +219,8 @@
   <div class="beat"><div class="lab">Scene 6 · 1:24–1:30 · Close</div><div class="vo">"The best infrastructure is invisible. They ship the product. Compass was underneath the whole time. Point the needle. Then run."</div><div class="os">Visual: Nova pointing, needle and star aligned; CTA. · On screen: Point the needle. Then run. → compasslabs.ai</div></div>
 
   <div class="note"><b>Voice:</b> ElevenLabs, Nova — warm, clear, unhurried. <b>Music:</b> soft build that lifts at Scene 3, lands on the close. <b>Rule:</b> never say the word "live" (AI mispronounces it) — say "up and running in days." <b>Claim-safe:</b> non-custodial describes the architecture, never "safer" or "less risk"; the later horizons are direction, not shipped claims.</div>
-  <div class="note"><b>To make the real MP4 two ways:</b> (1) Fastest — open this page, press play, and screen-record the stage (Mac: Shift+Cmd+5). (2) Best — take this script into HeyGen, add Nova's ElevenLabs voice and music, export 1:1 and 9:16.</div>
+  <div class="note"><b>Nova's voice:</b> she talks the moment you press ▶ — no button, it's just how she is. For her <b>premium</b> voice, drop the ElevenLabs clips into <code>nova-vo/scene1.mp3 … scene6.mp3</code> and she uses those. No files yet? Your browser reads her lines aloud, so Nova <b>always</b> has a voice. Each scene advances when her line ends, so it stays in sync.</div>
+  <div class="note"><b>To make the real MP4:</b> (1) Fastest — open this page, press play, screen-record the stage with system audio on (Mac: Shift+Cmd+5 → Options → microphone/system audio). (2) Best — take this script + Nova's ElevenLabs voice into HeyGen, add music, export 1:1 and 9:16.</div>
 </div></section>
 
 <footer><div class="wrap">
@@ -226,28 +233,42 @@
   for(var i=0;i<44;i++){var s=document.createElement('div');s.className='st'+(i%7===0?' b':'');s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';s.style.animationDelay=(Math.random()*3.4)+'s';sky.appendChild(s);}
 
   var scenes=[].slice.call(document.querySelectorAll('.scene'));
-  var durs=[5000,6500,6000,5500,6000,6000]; // ms per scene (silent cut)
+  var durs=[9000,12000,9000,8000,8000,7000]; // fallback ms if neither audio nor speech
   var cap=document.getElementById('cap'),bar=document.getElementById('bar');
   var play=document.getElementById('play'),replay=document.getElementById('replay');
-  var total=durs.reduce(function(a,b){return a+b;},0);
-  var timers=[];
-  function clearAll(){timers.forEach(clearTimeout);timers=[];}
-  function show(n){scenes.forEach(function(s,k){s.classList.toggle('on',k===n);});cap.innerHTML=scenes[n].getAttribute('data-cap');}
-  function run(){
-    clearAll();replay.classList.remove('show');
-    var acc=0;
-    scenes.forEach(function(s,n){
-      timers.push(setTimeout(function(){show(n);},acc));
-      acc+=durs[n];
-    });
-    // progress bar
-    var start=Date.now();
-    var iv=setInterval(function(){var p=Math.min(1,(Date.now()-start)/total);bar.style.width=(p*100)+'%';if(p>=1)clearInterval(iv);},120);
-    timers.push(setTimeout(function(){replay.classList.add('show');},total-300));
-    timers.push({});
+  var auds=[];for(var a=1;a<=6;a++){auds.push(document.getElementById('a'+a));}
+  var fb=null;
+  var tmp=document.createElement('div');
+  function plain(html){tmp.innerHTML=html;return (tmp.textContent||'').replace(/[“”’]/g,function(c){return c==='’'?"'":'';}).trim();}
+  // pick a warm English voice for Nova (browser fallback)
+  var voice=null;
+  function pickVoice(){try{var vs=window.speechSynthesis.getVoices()||[];var pref=['Samantha','Google US English','Karen','Serena','Moira','Victoria','Tessa','Female'];for(var p=0;p<pref.length;p++){for(var v=0;v<vs.length;v++){if((vs[v].name||'').indexOf(pref[p])>-1&&/en/i.test(vs[v].lang))return vs[v];}}for(var w=0;w<vs.length;w++){if(/en/i.test(vs[w].lang))return vs[w];}return vs[0]||null;}catch(e){return null;}}
+  if('speechSynthesis'in window){voice=pickVoice();window.speechSynthesis.onvoiceschanged=function(){voice=pickVoice();};}
+  function show(n){scenes.forEach(function(s,k){s.classList.toggle('on',k===n);});cap.innerHTML=scenes[n].getAttribute('data-cap');bar.style.width=(((n+1)/scenes.length)*100)+'%';}
+  function stopAll(){auds.forEach(function(x){if(!x)return;try{x.pause();x.currentTime=0;x.onended=null;x.onerror=null;}catch(e){}});clearTimeout(fb);if('speechSynthesis'in window)window.speechSynthesis.cancel();}
+  function next(n){ if(n<scenes.length-1){playScene(n+1);} else {replay.classList.add('show');} }
+  function speak(n,cb){
+    clearTimeout(fb);
+    if('speechSynthesis'in window){
+      try{var u=new SpeechSynthesisUtterance(plain(scenes[n].getAttribute('data-cap')));if(voice)u.voice=voice;u.rate=.98;u.pitch=1.06;var g=false;u.onend=function(){if(g)return;g=true;cb();};u.onerror=function(){if(g)return;g=true;cb();};window.speechSynthesis.cancel();window.speechSynthesis.speak(u);return;}catch(e){}
+    }
+    fb=setTimeout(cb,durs[n]);
   }
-  play.addEventListener('click',function(){play.classList.add('hide');run();});
-  replay.addEventListener('click',function(){bar.style.width='0';run();});
+  function playScene(n){
+    show(n);clearTimeout(fb);
+    var au=auds[n],guard=false;
+    function adv(){if(guard)return;guard=true;next(n);}
+    if(au){
+      au.onended=adv;
+      au.onerror=function(){speak(n,adv);};   // no premium clip -> Nova's browser voice
+      try{au.currentTime=0;}catch(e){}
+      var p=au.play();
+      if(p&&p.catch){p.catch(function(){speak(n,adv);});}
+    } else { speak(n,adv); }
+  }
+  function start(){stopAll();replay.classList.remove('show');playScene(0);}
+  play.addEventListener('click',function(){play.classList.add('hide');start();});
+  replay.addEventListener('click',function(){start();});
 })();
 </script>
 </body>
