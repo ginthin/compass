@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova — the Compass host</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavd:#3b2ea0;--lav-soft:#eeeaff;--gold:#FFE14D;--red:#e0574f;--green:#19b57a;--amber:#a9791a;--grey:#6a6480;--line:#e8e5f2;--mono:'SF Mono',Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 26px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:52px 0;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .hero .txt{flex:1;min-width:280px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c9befc;font-weight:700;margin-bottom:12px}
+  h1{font-size:52px;line-height:1;letter-spacing:-.03em;font-weight:800}
+  .hero p{margin-top:14px;color:#e7e3fb;font-size:17px;max-width:500px}
+  .hero .art{width:230px;flex-shrink:0}
+  .starline{margin-top:18px;display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:30px;padding:7px 15px;font-size:13.5px;color:#fff;font-weight:600}
+  section{padding:38px 0;border-bottom:1px solid #eceaf4}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  h2{font-size:26px;font-weight:850;margin:5px 0 10px;letter-spacing:-.02em}
+  p.big{font-size:16.5px;color:#2c2740;max-width:760px}
+  p.big.mb{margin-bottom:12px}
+  .story{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-top:8px;max-width:820px}
+  .story p{font-size:16px;color:#2c2740;margin-bottom:12px}.story p:last-child{margin-bottom:0}
+  .story b{color:var(--lav)}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px 18px}
+  .card h3{font-size:16.5px;font-weight:800;margin-bottom:4px}.card p{font-size:14px;color:#4a4560}
+  .do{background:#eaf8f1;border:1px solid #bfe8d6;border-radius:14px;padding:16px 18px}
+  .dont{background:#fdeceb;border:1px solid #f6cfcc;border-radius:14px;padding:16px 18px}
+  .do h3,.dont h3{font-size:15px;font-weight:800;margin-bottom:8px}
+  .do li,.dont li{font-size:13.5px;margin:5px 0 5px 18px}.do h3{color:#0f8a5f}.dont h3{color:#c0463e}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .chip{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 14px 6px 6px;font-size:13px;font-weight:700}
+  .sw{width:22px;height:22px;border-radius:50%}
+  .intro{background:var(--lav-soft);border-left:4px solid var(--lav);border-radius:12px;padding:18px 20px;font-size:19px;color:#2a1d52;font-weight:700;max-width:760px;line-height:1.5}
+  .nsbox{background:var(--ink);color:#efeafd;border-radius:16px;padding:24px 26px;margin-top:8px}
+  .nsbox h3{color:var(--gold);font-size:17px;margin-bottom:10px}
+  .nsline{font-size:15px;color:#e7e3fb;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .nsline:last-child{border-bottom:none}.nsline b{color:#fff}
+  .nsbox a{color:var(--gold);font-weight:800;display:inline-block;margin-top:12px}
+  table.ep{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  table.ep th{background:var(--lav);color:#fff;text-align:left;padding:9px 12px;font-weight:700}
+  table.ep td{padding:9px 12px;border-bottom:1px solid #eceaf4;color:#3c3752;vertical-align:top}
+  table.ep tr:nth-child(even) td{background:#faf8ff}
+  .ftag{font-family:var(--mono);font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px}
+  .fa{background:#eae6ff;color:#5B47D6}.fs{background:#e7f8f0;color:#0f8a5f}.fv{background:#fff3d6;color:#a9791a}.fh{background:#ffe7e2;color:#c0463e}.star{background:#fff3cf;color:#a9791a}
+  .script{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:14px;max-width:860px}
+  .script .meta{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:700;margin-bottom:12px}
+  .script .line{font-size:16px;color:#2c2740;margin:0 0 12px;line-height:1.7}
+  .script .vis{font-size:13px;color:#8a84a0;font-style:italic;border-left:3px solid #e0dcec;padding-left:12px;margin:10px 0}
+  .disc{font-size:12.5px;color:#8a84a0;margin-top:10px;font-style:italic}
+  footer{padding:30px 0;color:#8a84a0;font-size:13px;text-align:center}
+  @media(max-width:720px){.grid3,.grid2{grid-template-columns:1fr}h1{font-size:38px}.hero .art{width:170px;margin:0 auto}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap" style="display:flex;align-items:center;gap:30px;flex-wrap:wrap">
+  <div class="txt">
+    <div class="kick">Compass Labs · the education host</div>
+    <h1>Meet Nova.</h1>
+    <p>The guiding star of Compass Learn. She makes onchain finance suddenly make sense, and points you toward your own north star: shipping your product.</p>
+    <span class="starline">🧭 Point the needle. Then run.</span>
+  </div>
+  <div class="art">
+    <svg viewBox="0 0 230 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nova">
+      <polygon points="115,26 103,60 127,60" fill="#e0574f"/><circle cx="115" cy="64" r="6" fill="#FFE14D"/>
+      <circle cx="115" cy="135" r="82" fill="#5B47D6"/><circle cx="115" cy="135" r="82" fill="none" stroke="#3b2ea0" stroke-width="7"/>
+      <circle cx="115" cy="138" r="58" fill="#efeaff"/>
+      <circle cx="96" cy="131" r="10" fill="#16121f"/><circle cx="134" cy="131" r="10" fill="#16121f"/>
+      <circle cx="99" cy="127" r="3.4" fill="#fff"/><circle cx="137" cy="127" r="3.4" fill="#fff"/>
+      <circle cx="80" cy="150" r="8" fill="#ffd3cd"/><circle cx="150" cy="150" r="8" fill="#ffd3cd"/>
+      <path d="M92 154 a23 19 0 0 0 46 0 z" fill="#16121f"/>
+      <path d="M190 150 l18 -10 l-6 12 l10 4 l-22 8 z" fill="#FFE14D" stroke="#3b2ea0" stroke-width="2"/>
+    </svg>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="snum">Where the name comes from</div>
+  <h2>Compass points the way. Nova is the star it points to.</h2>
+  <div class="story">
+    <p>Compass Labs is named after the older instrument, the one for <b>direction</b>. There is a reason the compass was invented before the clock: for most of history, knowing <b>which way</b> mattered more than knowing how long. Direction before speed.</p>
+    <p>But a compass never worked alone. It points to a fixed star, the <b>north star</b>. Needle and star, together, are how every sailor found their way.</p>
+    <p>So our education host is that star. A <b>nova</b> is a star that suddenly flares bright, the exact moment something clicks. That is what she is: the flash of understanding that makes onchain finance suddenly make sense, and points a builder toward their own north star, shipping their product.</p>
+    <p><b>Compass points the way. Nova is the star it points to. Together: point the needle, then run.</b></p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">What she does</div>
+  <h2>The guide, not the professor.</h2>
+  <div class="grid3">
+    <div class="card"><h3>She gives direction</h3><p>Nova always points to the next step. She turns a maze into a path. Direction is the whole personality, she is a compass.</p></div>
+    <div class="card"><h3>She makes it click</h3><p>Warm, plain, a little wonder. She takes the abstract and makes a non-crypto person get it, then get excited.</p></div>
+    <div class="card"><h3>She scales the team</h3><p>Made by Norte, voiced by ElevenLabs, no filming. She hosts ~80% of the videos, so a small team ships a whole library.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">How she sounds</div>
+  <h2>The voice.</h2>
+  <div class="grid2">
+    <div class="do"><h3>Nova does</h3><ul>
+      <li>Lead with what you can do, then how.</li>
+      <li>One idea per sentence. Short.</li>
+      <li>Plain words a non-crypto person gets.</li>
+      <li>End by pointing to the next action.</li>
+      <li>Say who controls the funds, precisely.</li>
+    </ul></div>
+    <div class="dont"><h3>Nova never</h3><ul>
+      <li>Uses jargon without explaining it.</li>
+      <li>Says non-custodial means "safer" or "less risk".</li>
+      <li>Promises returns or hides risk.</li>
+      <li>Sounds like a whitepaper.</li>
+      <li>Claims a product is live where it is not.</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">Her look</div>
+  <h2>Simple, flat, always a compass.</h2>
+  <div class="chips">
+    <span class="chip"><span class="sw" style="background:#5B47D6"></span>Lavender, the body</span>
+    <span class="chip"><span class="sw" style="background:#efeaff;border:1px solid #ddd"></span>Soft face</span>
+    <span class="chip"><span class="sw" style="background:#e0574f"></span>Red needle, north</span>
+    <span class="chip"><span class="sw" style="background:#FFE14D"></span>Gold spark, the star</span>
+    <span class="chip"><span class="sw" style="background:#16121f"></span>Ink, the face</span>
+  </div>
+  <p class="big" style="margin-top:14px">The red needle always points somewhere, that is Nova showing the way. The gold spark is her star. Rounded and flat, no gradients, one clear expression per shot.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">Her hello</div>
+  <h2>Every episode opens the same way.</h2>
+  <div class="intro">"Hi, I'm Nova. Onchain finance can feel like a maze. My job is to point the needle, so you always know the next step. Direction first, then you build fast."</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">Connected to the North Star</div>
+  <h2>She is the vision, made friendly.</h2>
+  <p class="big mb">Nova is not a mascot bolted on. She is the North Star of Compass Labs, turned into a face. Everything she says traces back to these lines:</p>
+  <div class="nsbox">
+    <h3>The lines she lives by</h3>
+    <div class="nsline"><b>Direction before speed.</b> The compass came before the clock. So did we.</div>
+    <div class="nsline"><b>The world got the rails. We're building the products.</b> Money moved onchain. Usefulness didn't. Yet.</div>
+    <div class="nsline"><b>The best infrastructure is invisible.</b> They ship the product. We were underneath the whole time.</div>
+    <div class="nsline"><b>Point the needle. Then run.</b> Get the direction right, then move faster than anyone thought a team our size could.</div>
+    <a href="compass-north-star.html">Read the full North Star →</a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">Nova's episodes</div>
+  <h2>Everything she will make.</h2>
+  <p class="big mb">The full catalog, so it is clear what videos exist. The star marks the flagship, the vision film.</p>
+  <table class="ep">
+    <tr><th>Episode</th><th>What it answers</th><th>Format</th></tr>
+    <tr><td><span class="ftag star">★ flagship</span> Our North Star</td><td>The vision. Why Compass exists and where it is heading. The North Star, in 90 seconds.</td><td><span class="ftag fa">animated</span></td></tr>
+    <tr><td><span class="ftag star">★ flagship</span> Who is Nova</td><td>Meet the guide. Where her name comes from, what she does, and her promise: point the needle.</td><td><span class="ftag fa">animated</span></td></tr>
+    <tr><td>1. What is Compass</td><td>What did I sign up for? (Also the API welcome video.)</td><td><span class="ftag fa">animated</span></td></tr>
+    <tr><td>2. How Compass works</td><td>What happens between intent and signature?</td><td><span class="ftag fa">animated</span></td></tr>
+    <tr><td>3. What can you build</td><td>Which outcome applies to me?</td><td><span class="ftag fv">avatar</span></td></tr>
+    <tr><td>4. What non-custodial means</td><td>Who controls funds and keys?</td><td><span class="ftag fa">animated</span></td></tr>
+    <tr><td>5. Make your first API call</td><td>How do I get a first success?</td><td><span class="ftag fs">screen</span></td></tr>
+    <tr><td>6. Test Compass in Studio</td><td>Can I see it before integrating?</td><td><span class="ftag fs">screen</span></td></tr>
+    <tr><td>Products · Earn, Fixed Earn, Loans, Tokenized, Perps, Rebalancer</td><td>One short per product: what, build, risk.</td><td><span class="ftag fa">animated</span> / <span class="ftag fv">avatar</span></td></tr>
+    <tr><td>Interfaces · API, Studio, Widgets, SDK, CLI, MCP</td><td>Which way in fits me?</td><td><span class="ftag fv">avatar</span></td></tr>
+    <tr><td>Onchain 101 · 24 term shorts (3 tracks)</td><td>Every word, in plain language.</td><td><span class="ftag fa">animated</span></td></tr>
+    <tr><td>Updates &amp; FAQs (recurring)</td><td>Changelog, common questions, variations.</td><td><span class="ftag fv">avatar</span></td></tr>
+    <tr><td>Founder note (occasional)</td><td>Vision and big moments, for trust.</td><td><span class="ftag fh">Eli</span></td></tr>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">The flagship script</div>
+  <h2>★ Our North Star.</h2>
+  <div class="script">
+    <div class="meta">Animated · about 90 seconds · Nova hosts · the vision film, straight from the North Star</div>
+    <p class="vis">Nova stands alone with a compass needle. A single star lights up above her. The needle turns to point at it.</p>
+    <p class="line">"Hi, I'm Nova. Let me show you where this is all going. There's a reason the compass was invented before the clock. Knowing which way mattered more than knowing how fast. Direction before speed."</p>
+    <p class="vis">Rivers of value flow onto a glowing network. Wallets and apps fill up, but sit still, unable to do anything.</p>
+    <p class="line">"Money moved onchain. Trillions of it. The rails are here. But the products aren't. Almost every fintech now holds digital dollars, and almost none of them can do anything with those dollars, because building each product is a year of engineering and an audit."</p>
+    <p class="vis">One clean Compass interface appears. Apps plug in and light up: earn, borrow, trade, tokenized assets.</p>
+    <p class="line">"That's the gap Compass closes. Today: one integration, and a fintech can launch yield, credit, trading and tokenized assets, non-custodial, live in days. Next: not just the product, but everything hard around it, access, compliance, distribution. The way to operate, not just a way to access."</p>
+    <p class="vis">Zoom out: a neobank in Buenos Aires, a wallet in Nairobi, a fund in London, all shipping, none seeing the chain. Nova fades to the edge.</p>
+    <p class="line">"The vision: any company, any market, launching real financial products onchain as easily as adding a login, and never seeing the chain. The best infrastructure is invisible. They ship the product. Compass was underneath the whole time. Point the needle. Then run."</p>
+    <p class="line" style="font-weight:700;color:#5B47D6">CTA: This is the direction. Come build on it. → docs / talk to us</p>
+    <p class="disc">Aspirational vision. The later horizons are direction, not shipped claims. Product facts and figures come from the approved claims list, validated before publishing.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Compass Labs · Nova, the guiding star of Compass Learn. Animated by Norte. She is the North Star, made friendly. <a href="compass-north-star.html">The North Star →</a></div></footer>
+</body>
+</html>

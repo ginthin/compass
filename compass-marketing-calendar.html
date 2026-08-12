@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — the one marketing calendar</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavd:#3b2ea0;--lav-soft:#eeeaff;--gold:#FFE14D;--red:#e0574f;--green:#19b57a;--amber:#a9791a;--grey:#6a6480;--line:#e8e5f2;--mono:'SF Mono',Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:48px 0 40px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#c9befc;font-weight:800;margin-bottom:12px}
+  h1{font-size:42px;line-height:1.03;letter-spacing:-.03em;font-weight:850}
+  .hero p{margin-top:13px;color:#e7e3fb;font-size:16px;max-width:780px}
+  section{padding:30px 0}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  h2{font-size:24px;font-weight:850;margin:5px 0 8px}
+  .sub{color:#6a6480;font-size:15px;max-width:840px;margin-bottom:12px}
+  .engine{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);border-radius:14px;padding:16px 18px;color:#efeafd;margin-bottom:8px}
+  .engine b{color:#fff}.engine .g{color:var(--gold);font-weight:800;font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+  .engine .arrow{color:#8b7cf6;font-weight:800}
+  .engine .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:5px 12px;font-size:13px;font-weight:600}
+  .scroller{overflow-x:auto;padding-bottom:6px}
+  .cal{display:grid;grid-template-columns:132px repeat(5,minmax(160px,1fr));gap:8px;min-width:1000px;margin-top:14px}
+  .ch{font-family:var(--mono);font-size:12px;font-weight:800;color:#fff;background:var(--lav);border-radius:10px;padding:12px;text-align:center}
+  .ch small{display:block;font-weight:600;color:#d9d0f7;margin-top:2px}
+  .ch.prep{background:#6a6480}
+  .rl{display:flex;align-items:center;font-weight:800;font-size:13px;border-radius:10px;padding:10px 12px;color:#fff}
+  .rl.edu{background:#5B47D6}.rl.camp{background:#c99a1a}.rl.soc{background:#0f8a5f}.rl.api{background:#c0463e}
+  .cell{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px}
+  .cell.dim{background:#f4f2fa;border-style:dashed}
+  .cell ul{list-style:none;margin:0;padding:0}
+  .cell li{font-size:12.4px;color:#3c3752;padding:4px 0;border-bottom:1px solid #f2f0f8}
+  .cell li:last-child{border-bottom:none}
+  .cell .prep{font-size:11px;color:#8a84a0;font-style:italic;font-weight:600}
+  .tag{font-family:var(--mono);font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:20px;margin-right:4px}
+  .fa{background:#eae6ff;color:#5B47D6}.fs{background:#e7f8f0;color:#0f8a5f}.fv{background:#fff3d6;color:#a9791a}.fh{background:#ffe7e2;color:#c0463e}.fp{background:#eef;color:#3358c4}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .lchip{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#4a4560}
+  .sw{width:12px;height:12px;border-radius:3px}
+  .rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  .rc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .rc h4{font-size:13.5px;font-weight:800}.rc p{font-size:12.5px;color:#6a6480;margin-top:3px}
+  .note{background:var(--lav-soft);border-radius:12px;padding:14px 16px;font-size:14px;color:#3b2ea0;margin-top:16px}
+  footer{padding:30px 0;color:#8a84a0;font-size:13px;text-align:center;border-top:1px solid var(--line);margin-top:24px}
+  @media(max-width:820px){.rhythm{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kick">Compass Labs · Norte 🧭 · one calendar</div>
+  <h1>The marketing calendar.</h1>
+  <p>Everything in one weekly view: the education hub (Nova), campaigns, social and the API, all produced by the same engine. Week 1 is prep. Norte, social and the API start Week 2. Education starts Week 3, with room to breathe.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="snum">The engine feeds every row</div>
+  <div class="engine">
+    <span class="g">SOURCE OF TRUTH</span><span class="arrow">→</span>
+    <span class="chip"><b>Norte</b> writes + designs</span><span class="arrow">→</span>
+    <span class="chip">Nova (animated)</span><span class="chip">HeyGen (avatar)</span><span class="chip">ElevenLabs (voice)</span><span class="chip">Screen rec</span><span class="arrow">→</span>
+    <span class="chip">Hub · Campaigns · Social · API</span>
+  </div>
+  <p class="sub">One asset, made once, serves many rows: a Nova explainer is a hub lesson, a social clip, and a campaign beat. That is why one small team runs all four streams.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">The plan</div>
+  <h2>One grid: who ships what, when.</h2>
+  <div class="scroller"><div class="cal">
+    <div class="ch">Stream</div>
+    <div class="ch prep">Week 1 · prep<small>Aug 18 to 22</small></div>
+    <div class="ch">Week 2<small>Aug 25 to 29</small></div>
+    <div class="ch">Week 3<small>Sep 1 to 5</small></div>
+    <div class="ch">Week 4<small>Sep 8 to 12</small></div>
+    <div class="ch">Week 5<small>Sep 15 to 19</small></div>
+
+    <div class="rl edu">Education<br>(Nova / hub)</div>
+    <div class="cell dim"><span class="prep">Prep only</span><ul><li>Bible sign-off</li><li>Nova finalized</li><li>Hub page built</li><li>Scripts written</li></ul></div>
+    <div class="cell dim"><span class="prep">Still prepping</span><ul><li>Record pipeline set up</li><li>First animations in production (not published)</li></ul></div>
+    <div class="cell"><ul><li><span class="tag fa">anim</span>V1 What is Compass</li><li><span class="tag fa">anim</span>V2 How it works</li><li>Hub goes live</li></ul></div>
+    <div class="cell"><ul><li><span class="tag fa">anim</span>V4 Non-custodial</li><li><span class="tag fs">screen</span>V5 First call</li><li><span class="tag fs">screen</span>V6 Studio</li><li><span class="tag fa">anim</span>101 Track 1</li></ul></div>
+    <div class="cell"><ul><li><span class="tag fv">avatar</span>V3 What you can build</li><li><span class="tag fa">anim</span>Earn + Loans</li><li><span class="tag fa">anim</span>101 T2 + T3</li><li><span class="tag fs">screen</span>Widgets</li></ul></div>
+
+    <div class="rl camp">Campaigns<br>(Norte)</div>
+    <div class="cell dim"><span class="prep">Plan</span><ul><li>Plan first SHIPPED</li></ul></div>
+    <div class="cell"><ul><li><span class="tag fa">SHIPPED</span>episode #1 (a shipped feature)</li></ul></div>
+    <div class="cell"><ul><li>Partnership-campaign if a partner date, else SHIPPED</li></ul></div>
+    <div class="cell"><ul><li><span class="tag fp">own</span>Widgets / product campaign beat</li></ul></div>
+    <div class="cell"><ul><li><span class="tag fa">SHIPPED</span>episode #2</li></ul></div>
+
+    <div class="rl soc">Social<br>(Typefully)</div>
+    <div class="cell dim"><span class="prep">Set up</span><ul><li>Typefully ready</li><li>Draft first posts</li></ul></div>
+    <div class="cell"><ul><li>Clips from SHIPPED #1</li><li>Reuse partnership clips</li><li>3 posts</li></ul></div>
+    <div class="cell"><ul><li>Clips from V1 &amp; V2</li><li>4 posts</li></ul></div>
+    <div class="cell"><ul><li>Clips from V4 &amp; V5</li><li>101 term shorts</li><li>5 posts</li></ul></div>
+    <div class="cell"><ul><li>Product clips</li><li>Founder post</li><li>5 posts</li></ul></div>
+
+    <div class="rl api">API lifecycle<br>(Beka / Eli)</div>
+    <div class="cell dim"><span class="prep">Set up</span><ul><li>Beka verifies domain (DNS)</li><li>Robot dry-run setup</li></ul></div>
+    <div class="cell"><ul><li>Dry-run review</li><li>Test batch to us</li></ul></div>
+    <div class="cell"><ul><li>Go live slowly</li><li>Wire hub links into emails</li></ul></div>
+    <div class="cell"><ul><li>Measure baseline</li><li>Eli sends founder emails (Path 2)</li></ul></div>
+    <div class="cell"><ul><li>Steady, monitor the log</li></ul></div>
+  </div></div>
+
+  <div class="legend">
+    <span class="lchip"><span class="sw" style="background:#5B47D6"></span>Education / Nova</span>
+    <span class="lchip"><span class="sw" style="background:#c99a1a"></span>Campaigns</span>
+    <span class="lchip"><span class="sw" style="background:#0f8a5f"></span>Social</span>
+    <span class="lchip"><span class="sw" style="background:#c0463e"></span>API</span>
+    <span class="lchip"><span class="tag fa">anim</span>Nova animated</span>
+    <span class="lchip"><span class="tag fv">avatar</span>HeyGen</span>
+    <span class="lchip"><span class="tag fs">screen</span>recording</span>
+    <span class="lchip"><span class="tag fh">human</span>Eli / Gin</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">The weekly rhythm (produces all four rows at once)</div>
+  <h2>Same four moments, every week.</h2>
+  <div class="rhythm">
+    <div class="rc"><h4>Mon · Triage (20m)</h4><p>Pick the week's topics across all streams. Unblock sources.</p></div>
+    <div class="rc"><h4>Wed · Fact review (30m)</h4><p>One validator per product, one batch, for everything shipping.</p></div>
+    <div class="rc"><h4>Thu · Production block (90m)</h4><p>Record screens + human together. Queue Nova animations and HeyGen avatars with Norte.</p></div>
+    <div class="rc"><h4>Fri · Publish (20m)</h4><p>Ship to hub, cut social clips, drop into campaigns and the API emails, capture one metric.</p></div>
+  </div>
+  <div class="note"><b>Why education starts Week 3:</b> the source of truth, Nova and the scripts need to be locked first, and that is Weeks 1 and 2. Meanwhile Norte campaigns, social and the API get moving in Week 2, so momentum never stops. When education launches in Week 3 it is already polished, not rushed. Four rows, one calendar, one engine.</div>
+</div></section>
+
+<footer><div class="wrap">Compass Labs · Norte 🧭 · one marketing calendar. Dates are a starting cadence, adjust as validators and production confirm.</div></footer>
+</body>
+</html>

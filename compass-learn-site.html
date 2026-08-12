@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass Learn</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavd:#3b2ea0;--lav-soft:#eeeaff;--gold:#FFE14D;--red:#e0574f;--green:#19b57a;--amber:#a9791a;--grey:#6a6480;--line:#e8e5f2;--mono:'SF Mono',Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,249,252,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:22px;height:62px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px}
+  .brand svg{width:30px;height:30px}
+  .navlinks{display:flex;gap:17px;margin-left:auto;font-size:13.5px;font-weight:600;color:#4a4560}
+  .navlinks a:hover{color:var(--lav)}
+  .navcta{background:var(--lav);color:#fff;padding:8px 15px;border-radius:9px;font-size:13px;font-weight:700}
+  @media(max-width:940px){.navlinks{display:none}}
+  .hero{display:flex;align-items:center;gap:34px;padding:56px 0 40px;flex-wrap:wrap}
+  .hero .t{flex:1;min-width:300px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lav);font-weight:800;margin-bottom:14px}
+  h1{font-size:52px;line-height:1.02;letter-spacing:-.03em;font-weight:850}
+  .hero p{margin-top:16px;color:#4a4560;font-size:18px;max-width:560px}
+  .hero .btns{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 22px;border-radius:11px;font-weight:800;font-size:15px}
+  .btn.p{background:var(--lav);color:#fff}.btn.g{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .hero .art{width:240px;flex-shrink:0}
+  section{padding:44px 0;border-top:1px solid #eceaf4}
+  .shead{max-width:780px;margin-bottom:18px}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  h2{font-size:30px;font-weight:850;margin:6px 0 8px;letter-spacing:-.02em}
+  .shead p{color:#6a6480;font-size:16px}
+  .hostlegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:#4a4560;align-items:center}
+  .hostlegend .h{display:inline-flex;align-items:center;gap:7px;font-weight:700}
+  .dotN{width:22px;height:22px;border-radius:50%;background:#5B47D6;display:inline-flex;align-items:center;justify-content:center}.dotN svg{width:16px;height:16px}
+  .dotT{width:22px;height:22px;border-radius:50%;background:#ffe7e2;color:#c0463e;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+  .paths{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .path{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;transition:.15s}
+  .path:hover{border-color:var(--lav);transform:translateY(-2px)}
+  .path .w{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--lav);text-transform:uppercase}
+  .path h3{font-size:17px;font-weight:800;margin:7px 0 4px}.path p{font-size:13.5px;color:#6a6480}
+  .lesson{display:flex;gap:26px;align-items:flex-start;padding:24px 0;border-bottom:1px solid #eceaf4;flex-wrap:wrap}
+  .lesson:last-child{border-bottom:none}
+  .video{width:330px;flex-shrink:0;border-radius:16px;height:194px;position:relative;overflow:hidden;background:linear-gradient(135deg,#2a1d52,#5b47d6)}
+  .video.team{background:linear-gradient(135deg,#3a2b2b,#7a5a55)}
+  .hostbadge{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:7px;background:#fff;border-radius:20px;padding:5px 12px 5px 5px;font-size:12px;font-weight:800}
+  .hostbadge .av{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .hostbadge.nova{color:#5B47D6}.hostbadge.nova .av{background:#5B47D6}
+  .hostbadge.team{color:#a34a42}.hostbadge.team .av{background:#ffd7d2;font-size:11px;color:#c0463e}
+  .hostbadge .av svg{width:15px;height:15px}
+  .video .len{position:absolute;right:12px;top:14px;color:#fff;font-size:11px;font-weight:700;background:rgba(0,0,0,.28);padding:3px 9px;border-radius:20px}
+  .video .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(255,255,255,.95);border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .video .play::after{content:"";border-left:18px solid var(--lav);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+  .video.team .play::after{border-left-color:#a34a42}
+  .video .cap{position:absolute;left:14px;bottom:12px;color:#fff;font-size:12.5px;font-weight:700}
+  .lesson .body{flex:1;min-width:280px}
+  .lesson .n{font-family:var(--mono);font-size:12px;font-weight:800;color:var(--lav)}
+  .lesson h3{font-size:23px;font-weight:850;margin:4px 0 8px}
+  .lesson p{font-size:15px;color:#3c3752;margin-bottom:10px}
+  .lesson .key{background:var(--lav-soft);border-radius:10px;padding:11px 14px;font-size:14px;color:#3b2ea0}
+  /* studio feature */
+  .studio{display:grid;grid-template-columns:1.05fr 1fr;gap:26px;align-items:center;background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);border-radius:22px;padding:32px}
+  .studio .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:#c9befc;font-weight:800;text-transform:uppercase}
+  .studio h2{color:#fff;font-size:32px;margin:8px 0}
+  .studio p{color:#e7e3fb;font-size:15.5px;max-width:440px}
+  .studio .cta{display:inline-block;margin-top:18px;background:#fff;color:#2a1d52;font-weight:800;padding:12px 20px;border-radius:11px;font-size:14.5px}
+  .stmock{background:#0f0b18;border-radius:16px;padding:16px;position:relative;min-height:236px}
+  .stmock .bar{display:flex;gap:6px;margin-bottom:12px}
+  .stmock .bar i{width:11px;height:11px;border-radius:50%;background:#3a3350;display:block}
+  .stw{background:#fff;border-radius:12px;padding:16px}
+  .stw .apy{font-size:34px;font-weight:850;color:#5B47D6;line-height:1}
+  .stw .lbl{font-size:12px;color:#8a84a0;font-weight:700;margin-bottom:10px}
+  .stw .row{display:flex;justify-content:space-between;font-size:12.5px;color:#4a4560;padding:7px 0;border-bottom:1px solid #eee}
+  .stw .btnw{margin-top:12px;background:#5B47D6;color:#fff;text-align:center;padding:10px;border-radius:9px;font-weight:800;font-size:13px}
+  .stmock .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;background:rgba(255,255,255,.96);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.4)}
+  .stmock .play::after{content:"";border-left:20px solid #5B47D6;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px}
+  .stmock .ov{position:absolute;left:14px;bottom:12px;color:#fff;font-size:12.5px;font-weight:700;background:rgba(0,0,0,.4);padding:4px 11px;border-radius:20px}
+  /* product video cards */
+  .pvcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .pvcard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+  .pvcard:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(22,18,31,.14)}
+  .pvthumb{height:134px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+  .pvthumb .nb{position:absolute;left:11px;top:11px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.93);border-radius:20px;padding:4px 10px 4px 4px;font-size:11px;font-weight:800;color:#5B47D6}
+  .pvthumb .nb .av{width:20px;height:20px;border-radius:50%;background:#5B47D6;display:inline-flex;align-items:center;justify-content:center}
+  .pvthumb .nb .av svg{width:14px;height:14px}
+  .pvthumb .play{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:46px;height:46px;background:rgba(255,255,255,.95);border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .pvthumb .play::after{content:"";border-left:15px solid #16121f;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+  .pvthumb .big{color:#fff;font-size:20px;font-weight:850;position:relative;z-index:1}
+  .pvthumb .stat{color:#fff;font-size:12.5px;font-weight:700;opacity:.92;position:relative;z-index:1}
+  .pvbody{padding:14px 16px}
+  .pvbody p{font-size:13.5px;color:#3c3752;margin-bottom:7px}
+  .pvbody .kv{font-size:12.5px;color:#4a4560}.pvbody .kv b{color:var(--ink)}
+  .pvbody .risk{font-size:12px;color:var(--amber);margin-top:5px}
+  .pvbody .len{font-size:11px;font-weight:800;color:#5B47D6;margin-top:9px;display:inline-flex;align-items:center;gap:5px}
+  /* 101 flash */
+  .tk{border-radius:18px;padding:18px 20px 22px;margin-top:16px}
+  .tk1{background:#eef3ff}.tk2{background:#fff2ec}.tk3{background:#edfaf3}
+  .tkh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .tkh .ic{width:38px;height:38px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:20px}
+  .tk1 .ic{background:#d6e2ff}.tk2 .ic{background:#ffd9c9}.tk3 .ic{background:#c9f0da}
+  .tkh h4{font-size:18px;font-weight:850}.tkh .s{font-size:12.5px;color:#6a6480;margin-top:1px}
+  .fcards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+  .fcard{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:12px;padding:12px 13px;transition:transform .12s}
+  .fcard:hover{transform:translateY(-2px)}
+  .fcard .top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+  .fcard .term{font-size:14.5px;font-weight:850}
+  .fcard .len{font-family:var(--mono);font-size:9.5px;font-weight:800;color:#5B47D6;background:#eee9fb;border-radius:20px;padding:2px 7px;white-space:nowrap}
+  .fcard .def{font-size:12.3px;color:#4a4560;margin-top:6px;line-height:1.45}
+  .fcard .ex{font-size:11.4px;color:#8a84a0;margin-top:7px;font-style:italic;line-height:1.4}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .pill{background:var(--lav-soft);color:#4a3fb0;border-radius:20px;padding:5px 13px;font-size:13px;font-weight:700}
+  .trust{background:var(--ink);color:#efeafd;border-radius:18px;padding:28px}
+  .trust h3{color:var(--gold);font-size:19px;margin-bottom:10px}.trust p{font-size:14.5px;color:#d8d2ef;margin-top:8px}.trust b{color:#fff}
+  .q4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  .q4 div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:13px}
+  .q4 h5{font-size:12px;color:var(--gold);margin-bottom:4px}.q4 p{font-size:12.5px;color:#e7e3fb;margin:0}
+  .build{background:linear-gradient(120deg,#241b3a,#3b2c6e);color:#fff;border-radius:18px;padding:26px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .build h3{font-size:22px;font-weight:800}.build p{color:#cfc8ea;font-size:14.5px;margin-top:4px}
+  footer{padding:40px 0;color:#8a84a0;font-size:13px;border-top:1px solid var(--line);margin-top:20px}
+  @media(max-width:820px){.paths,.q4{grid-template-columns:1fr 1fr}.pvcards,.fcards{grid-template-columns:1fr 1fr}.studio{grid-template-columns:1fr}h1{font-size:38px}.video{width:100%}}
+  @media(max-width:520px){.paths,.q4,.pvcards,.fcards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap nav">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 60 66"><polygon points="30,3 26,13 34,13" fill="#e0574f"/><circle cx="30" cy="38" r="26" fill="#5B47D6" stroke="#3b2ea0" stroke-width="2"/><circle cx="30" cy="39" r="18" fill="#efeaff"/><circle cx="24" cy="37" r="3" fill="#16121f"/><circle cx="36" cy="37" r="3" fill="#16121f"/><path d="M23 44 a7 5 0 0 0 14 0 z" fill="#16121f"/></svg>
+    Compass Learn
+  </a>
+  <div class="navlinks">
+    <a href="#learn">Foundations</a><a href="#studio">Studio</a><a href="#interfaces">Interfaces</a><a href="#build">Products</a><a href="#basics">Onchain 101</a><a href="#trust">Trust</a>
+  </div>
+  <a class="navcta" href="https://studio.compasslabs.ai">Try it in Studio</a>
+</div></nav>
+
+<div id="top"></div>
+<header class="wrap hero">
+  <div class="t">
+    <div class="kick">Compass Labs · learn</div>
+    <h1>Onchain finance, finally explained.</h1>
+    <p>You do not need to read the docs to get it. Nova walks you through everything, right here: what Compass is, what you can build, and every word you need. In plain language.</p>
+    <div class="btns"><a class="btn p" href="#learn">Start learning</a><a class="btn g" href="#studio">See it work</a></div>
+  </div>
+  <div class="art">
+    <svg viewBox="0 0 240 270" role="img" aria-label="Nova">
+      <polygon points="120,24 108,60 132,60" fill="#e0574f"/><circle cx="120" cy="66" r="6" fill="#FFE14D"/>
+      <circle cx="120" cy="140" r="86" fill="#5B47D6"/><circle cx="120" cy="140" r="86" fill="none" stroke="#3b2ea0" stroke-width="7"/>
+      <circle cx="120" cy="143" r="60" fill="#efeaff"/>
+      <circle cx="100" cy="136" r="11" fill="#16121f"/><circle cx="140" cy="136" r="11" fill="#16121f"/>
+      <circle cx="103" cy="132" r="3.6" fill="#fff"/><circle cx="143" cy="132" r="3.6" fill="#fff"/>
+      <circle cx="84" cy="156" r="9" fill="#ffd3cd"/><circle cx="156" cy="156" r="9" fill="#ffd3cd"/>
+      <path d="M96 160 a24 20 0 0 0 48 0 z" fill="#16121f"/>
+      <path d="M196 148 l20 -11 l-7 13 l11 4 l-24 9 z" fill="#FFE14D" stroke="#3b2ea0" stroke-width="2"/>
+    </svg>
+  </div>
+</header>
+
+<section id="learn"><div class="wrap">
+  <div class="shead"><div class="snum">The lessons</div><h2>Learn it here. No docs required.</h2><p>Every lesson is a short video. Notice who is teaching it:</p>
+    <div class="hostlegend">
+      <span class="h"><span class="dotN"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#fff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova explains it (animated)</span>
+      <span class="h"><span class="dotT">▶</span>Someone from the team, on screen (hands-on demos)</span>
+    </div>
+  </div>
+
+  <div class="lesson"><div class="video">
+    <span class="hostbadge nova"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova · flagship</span>
+    <span class="len">90s</span><span class="play"></span><span class="cap">Our North Star</span></div>
+    <div class="body"><div class="n">The vision</div><h3>Our North Star</h3>
+      <p>Money moved onchain, trillions of it, but the products did not, yet. Compass closes that gap: one integration to launch real financial products, non-custodial, live in days. Today the products layer, next everything hard around it, the vision is the operating system for onchain finance. Direction before speed.</p>
+      <div class="key">The best infrastructure is invisible. They ship the product. Compass was underneath the whole time.</div></div></div>
+
+  <div class="lesson"><div class="video">
+    <span class="hostbadge nova"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span>
+    <span class="len">60s</span><span class="play"></span><span class="cap">Lesson 1</span></div>
+    <div class="body"><div class="n">Lesson 1</div><h3>What is Compass?</h3>
+      <p>Building onchain finance usually means wiring up every protocol and chain yourself. Compass gives your app or agent one interface instead. You say what the user wants, Compass finds the product, handles the routing and contract complexity, and hands back a transaction ready to sign.</p>
+      <div class="key">One interface. The user signs. Compass never holds the funds.</div></div></div>
+
+  <div class="lesson"><div class="video">
+    <span class="hostbadge nova"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span>
+    <span class="len">70s</span><span class="play"></span><span class="cap">Lesson 2</span></div>
+    <div class="body"><div class="n">Lesson 2</div><h3>How Compass works</h3>
+      <p>Your app starts with an intent: what the user wants to do. Compass turns it into a route across supported products and chains, prepares the transaction (bundling steps and handling gas where configured), and returns it to the wallet. The user signs, and the funds move straight into the product.</p>
+      <div class="key">Intent → discovery → prepare → sign → execute. Custody never leaves the user.</div></div></div>
+
+  <div class="lesson"><div class="video">
+    <span class="hostbadge nova"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span>
+    <span class="len">90s</span><span class="play"></span><span class="cap">Lesson 4</span></div>
+    <div class="body"><div class="n">Lesson 3</div><h3>What non-custodial means</h3>
+      <p>Custody is about one thing: who can actually move the funds. With Compass the user controls the key, the app or agent starts an action, the user signs, and the funds go from the user straight into the product, never through Compass.</p>
+      <div class="key">Non-custodial is about control, not a promise that nothing can go wrong. Onchain products still carry risk, and we always say where it lives.</div></div></div>
+
+  <div class="lesson"><div class="video team">
+    <span class="hostbadge team"><span class="av">▶</span>Engineering · on screen</span>
+    <span class="len">3 min</span><span class="play"></span><span class="cap">Live demo</span></div>
+    <div class="body"><div class="n">Lesson 4 · hands-on</div><h3>Make your first API call</h3>
+      <p>This one is a real screen recording from engineering, not Nova, because seeing the actual code matters. Grab a free API key (1,000 calls a month, no card). Install the SDK, set your key, prepare a simple Earn deposit. Compass returns a ready transaction, the user signs, it executes on-chain.</p>
+      <div class="key">You describe the action, Compass prepares it, the user signs. Everything you need is in the video, no docs required.</div></div></div>
+</div></section>
+
+<section id="studio"><div class="wrap">
+  <div class="studio">
+    <div>
+      <div class="k">▶ The Studio film · 60 seconds</div>
+      <h2>See a real product work, before you write a line.</h2>
+      <p>Watch Compass go from an idle balance to a live, non-custodial earn position, in the browser, no signup. Then copy the exact code. This is the video that makes it click.</p>
+      <a class="cta" href="https://studio.compasslabs.ai">Open Studio →</a>
+    </div>
+    <div class="stmock">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="stw">
+        <div class="lbl">Earn · USDC</div>
+        <div class="apy">Idle → working</div>
+        <div class="row"><span>Deposit</span><span>1,000 USDC</span></div>
+        <div class="row"><span>Custody</span><span>User signs</span></div>
+        <div class="row"><span>Chain</span><span>Base</span></div>
+        <div class="btnw">Sign &amp; deposit</div>
+      </div>
+      <span class="play"></span>
+      <span class="ov">Studio, live in the browser</span>
+    </div>
+  </div>
+</div></section>
+
+<section id="interfaces"><div class="wrap">
+  <div class="shead"><div class="snum">Six ways in · Nova explains each</div><h2>Start in the right interface.</h2><p>Tap any one. Nova tells you what it is and when to use it, right here.</p></div>
+  <div class="pills"><span class="pill">API</span><span class="pill">Studio</span><span class="pill">Widgets</span><span class="pill">SDKs</span><span class="pill">CLI</span><span class="pill">MCP</span></div>
+  <div class="fcards" style="margin-top:14px">
+    <div class="fcard"><div class="top"><span class="term">API</span><span class="len">Nova · 40s</span></div><div class="def">REST API to prepare any operation. Base api.compasslabs.ai, x-api-key, 1,000 free calls a month.</div></div>
+    <div class="fcard"><div class="top"><span class="term">Studio</span><span class="len">Nova · 40s</span></div><div class="def">See it live and copy the code, no signup, no code.</div></div>
+    <div class="fcard"><div class="top"><span class="term">Widgets</span><span class="len">Nova · 40s</span></div><div class="def">Drop-in React components: Earn, loans, rebalancing, perps.</div></div>
+    <div class="fcard"><div class="top"><span class="term">SDKs</span><span class="len">Nova · 40s</span></div><div class="def">Python and TypeScript SDKs, same power as the API.</div></div>
+    <div class="fcard"><div class="top"><span class="term">CLI</span><span class="len">Nova · 40s</span></div><div class="def">Call Compass from your terminal and CI.</div></div>
+    <div class="fcard"><div class="top"><span class="term">MCP</span><span class="len">Nova · 40s</span></div><div class="def">Connect an AI agent to onchain markets, within policy.</div></div>
+  </div>
+</div></section>
+
+<section id="build"><div class="wrap">
+  <div class="shead"><div class="snum">Products · a Nova short for each</div><h2>What you can build.</h2><p>Six punchy videos, one per product. What it is, what you build, and the risk, plain.</p></div>
+  <div class="pvcards">
+    <div class="pvcard"><div class="pvthumb" style="background:linear-gradient(135deg,#5b47d6,#8b7cf6)"><span class="nb"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span><span class="play"></span><span class="big">Earn</span><span class="stat">Idle balances, working</span></div>
+      <div class="pvbody"><p>Offer yield through Aave, Morpho and Pendle. Find, compare, deposit, withdraw.</p><div class="kv"><b>Build:</b> find, compare, deposit, withdraw.</div><div class="risk">Risk: variable rates, protocol risk, liquidity.</div><span class="len">🧭 Nova explains Earn · 40s</span></div></div>
+
+    <div class="pvcard"><div class="pvthumb" style="background:linear-gradient(135deg,#0f8a5f,#19b57a)"><span class="nb"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span><span class="play"></span><span class="big">Fixed Earn</span><span class="stat">A predictable rate</span></div>
+      <div class="pvbody"><p>Supported fixed-yield markets with a chosen maturity, for users who want a set rate.</p><div class="kv"><b>Build:</b> select maturity, prepare a position.</div><div class="risk">Risk: rate mechanics, maturity, exit.</div><span class="len">🧭 Nova explains Fixed Earn · 40s</span></div></div>
+
+    <div class="pvcard"><div class="pvthumb" style="background:linear-gradient(135deg,#c0463e,#ff7a66)"><span class="nb"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span><span class="play"></span><span class="big">Crypto-Backed Loans</span><span class="stat">Borrow, don't sell</span></div>
+      <div class="pvbody"><p>Borrow USDC against crypto collateral, no credit check, no tax event from selling.</p><div class="kv"><b>Build:</b> collateral, borrow, repay, monitor.</div><div class="risk">Risk: LTV, liquidation, rates.</div><span class="len">🧭 Nova explains loans · 40s</span></div></div>
+
+    <div class="pvcard"><div class="pvthumb" style="background:linear-gradient(135deg,#2a1d52,#5b47d6)"><span class="nb"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span><span class="play"></span><span class="big">Tokenized Assets</span><span class="stat">Stocks &amp; T-bills onchain</span></div>
+      <div class="pvbody"><p>Tokenized equities (via Ondo) and RWA yield like mTBILL, mBASIS (via Midas). Real ownership.</p><div class="kv"><b>Build:</b> eligibility, purchase, portfolio.</div><div class="risk">Risk: issuer, market, compliance.</div><span class="len">🧭 Nova explains this · 40s</span></div></div>
+
+    <div class="pvcard"><div class="pvthumb" style="background:linear-gradient(135deg,#16121f,#3b2c6e)"><span class="nb"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span><span class="play"></span><span class="big">Perpetual Trading</span><span class="stat">Stocks · gold · FX</span></div>
+      <div class="pvbody"><p>Perps on stocks, commodities and forex via Hyperliquid. Sign off-chain, no gas per trade.</p><div class="kv"><b>Build:</b> open, manage, close a position.</div><div class="risk">Risk: leverage, liquidation, market.</div><span class="len">🧭 Nova explains perps · 40s</span></div></div>
+
+    <div class="pvcard"><div class="pvthumb" style="background:linear-gradient(135deg,#a9791a,#e8b84b)"><span class="nb"><span class="av"><svg viewBox="0 0 40 44"><circle cx="20" cy="22" r="15" fill="#efeaff"/><circle cx="16" cy="21" r="2.4" fill="#16121f"/><circle cx="24" cy="21" r="2.4" fill="#16121f"/><path d="M15 26 a5 4 0 0 0 10 0 z" fill="#16121f"/></svg></span>Nova</span><span class="play"></span><span class="big">Rebalancer</span><span class="stat">One signature</span></div>
+      <div class="pvbody"><p>Move a portfolio to target allocations in one atomic transaction: withdraw, swap, deposit.</p><div class="kv"><b>Build:</b> set targets, preview, execute.</div><div class="risk">Risk: execution, slippage.</div><span class="len">🧭 Nova explains this · 40s</span></div></div>
+  </div>
+</div></section>
+
+<section id="basics"><div class="wrap">
+  <div class="shead"><div class="snum">Onchain finance 101 · 24 Nova shorts</div><h2>Every word, in 30 seconds.</h2><p>No crypto knowledge needed. Three tracks, each term a quick Nova clip: a plain definition and a real example.</p></div>
+
+  <div class="tk tk1">
+    <div class="tkh"><span class="ic">💰</span><div><h4>Track 1 · Money, networks and wallets</h4><div class="s">The building blocks. Where value lives and how it moves.</div></div></div>
+    <div class="fcards">
+      <div class="fcard"><div class="top"><span class="term">Blockchain</span><span class="len">30s</span></div><div class="def">A shared network that records transactions and runs rules no one controls alone.</div><div class="ex">Like a ledger every computer agrees on.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Onchain</span><span class="len">30s</span></div><div class="def">Something that lives and runs on a blockchain.</div><div class="ex">A savings position on the network, not in a database.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Token</span><span class="len">30s</span></div><div class="def">A digital asset represented on a blockchain.</div><div class="ex">USDC is a token; so is a tokenized share.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Stablecoin</span><span class="len">30s</span></div><div class="def">A token designed to track a reference like the dollar.</div><div class="ex">1 USDC aims to stay worth about 1 dollar.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Wallet</span><span class="len">30s</span></div><div class="def">The tool a user controls assets with and signs from.</div><div class="ex">MetaMask, or an embedded wallet in your app.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Private key</span><span class="len">30s</span></div><div class="def">The secret that authorizes control of a wallet.</div><div class="ex">Lose it, lose access. Compass never holds it.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Transaction</span><span class="len">30s</span></div><div class="def">An instruction submitted to a blockchain.</div><div class="ex">"Deposit 1,000 USDC into Earn" is one.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Gas</span><span class="len">30s</span></div><div class="def">The fee to process a transaction.</div><div class="ex">A few cents, and Compass can sponsor it.</div></div>
+    </div>
+  </div>
+
+  <div class="tk tk2">
+    <div class="tkh"><span class="ic">🔑</span><div><h4>Track 2 · Control, custody and accounts</h4><div class="s">The most important track. Who can actually move the funds.</div></div></div>
+    <div class="fcards">
+      <div class="fcard"><div class="top"><span class="term">Custody</span><span class="len">30s</span></div><div class="def">Who can actually move the funds.</div><div class="ex">A bank has custody of your cash; here the user keeps it.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Custodial</span><span class="len">30s</span></div><div class="def">A provider controls the keys or assets for the user.</div><div class="ex">An exchange that holds your coins. Not us.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Non-custodial</span><span class="len">30s</span></div><div class="def">The user keeps signing authority and control.</div><div class="ex">The user signs; no one else can move funds.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Self-custody</span><span class="len">30s</span></div><div class="def">The user directly manages the wallet and recovery.</div><div class="ex">You hold your own keys and recovery phrase.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Product account</span><span class="len">30s</span></div><div class="def">A programmable onchain account for product interactions.</div><div class="ex">The account an Earn position lives in.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Wallet connection</span><span class="len">30s</span></div><div class="def">Permission for an app to read an address and request signatures.</div><div class="ex">Not a transfer of ownership.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Approval</span><span class="len">30s</span></div><div class="def">Permission for a contract to use a token under set conditions.</div><div class="ex">Allow a contract to use up to 1,000 USDC.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Relay</span><span class="len">30s</span></div><div class="def">A server submits a signed transaction for processing.</div><div class="ex">Relaying is not controlling funds.</div></div>
+    </div>
+  </div>
+
+  <div class="tk tk3">
+    <div class="tkh"><span class="ic">⚙️</span><div><h4>Track 3 · Protocols, contracts and execution</h4><div class="s">Under the hood. How the action actually happens.</div></div></div>
+    <div class="fcards">
+      <div class="fcard"><div class="top"><span class="term">Smart contract</span><span class="len">30s</span></div><div class="def">Code on a blockchain that runs defined rules.</div><div class="ex">The Aave code that pays yield, automatically.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Protocol</span><span class="len">30s</span></div><div class="def">A system of smart contracts providing a financial function.</div><div class="ex">Aave, Morpho and Pendle are protocols.</div></div>
+      <div class="fcard"><div class="top"><span class="term">DeFi</span><span class="len">30s</span></div><div class="def">Financial products delivered through blockchain protocols.</div><div class="ex">Lending or trading without a bank in the middle.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Intent</span><span class="len">30s</span></div><div class="def">The result the user wants, not every technical step.</div><div class="ex">"Earn yield on my USDC" instead of ten steps.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Quote</span><span class="len">30s</span></div><div class="def">An estimated result and terms for an action.</div><div class="ex">"About 4.8% APY on this deposit."</div></div>
+      <div class="fcard"><div class="top"><span class="term">Routing</span><span class="len">30s</span></div><div class="def">The path chosen to accomplish an action.</div><div class="ex">Compass picks Morpho over Aave for a better rate.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Payload</span><span class="len">30s</span></div><div class="def">The structured data a wallet reviews and signs.</div><div class="ex">The exact data your wallet shows before you sign.</div></div>
+      <div class="fcard"><div class="top"><span class="term">Finality</span><span class="len">30s</span></div><div class="def">When a transaction is considered irreversible.</div><div class="ex">After confirmations, the deposit can't reverse.</div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="trust"><div class="wrap">
+  <div class="shead"><div class="snum">Trust</div><h2>Who controls the money.</h2></div>
+  <div class="trust">
+    <h3>Non-custodial, explained precisely</h3>
+    <p>Every custody question has a clear answer. Compass never holds funds or keys.</p>
+    <div class="q4">
+      <div><h5>Who controls the key?</h5><p>The user.</p></div>
+      <div><h5>Who initiates?</h5><p>The app or agent.</p></div>
+      <div><h5>Who signs?</h5><p>The user.</p></div>
+      <div><h5>Where do assets move?</h5><p>User → protocol, never through Compass.</p></div>
+    </div>
+    <p style="margin-top:14px"><b>We never say non-custodial means safer or less risk.</b> It describes the architecture, not a guarantee. Yield and trading always carry protocol, market and smart-contract risk, and we say so. ISO 27001. 99.99% uptime.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="build">
+    <div><h3>Understood it? Now go build.</h3><p>You learned it here. When you are ready to write code, Studio and a free API key are one click away.</p></div>
+    <a class="btn p" href="https://studio.compasslabs.ai">Open Studio →</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Compass Labs · Compass Learn. Taught by Nova, so you never have to dig through docs. Non-custodial infrastructure, users hold custody.</div></footer>
+</body>
+</html>

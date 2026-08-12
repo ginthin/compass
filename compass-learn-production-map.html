@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass Learn — the production map</title>
+<style>
+  :root{--ink:#16121f;--paper:#faf9fc;--lav:#5B47D6;--lavd:#3b2ea0;--lav-soft:#eeeaff;--gold:#FFE14D;--red:#e0574f;--green:#19b57a;--amber:#a9791a;--grey:#6a6480;--line:#e8e5f2;--mono:'SF Mono',Consolas,monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(125deg,#16121f,#2a1d52,#5b47d6);color:#fff;padding:48px 0 40px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#c9befc;font-weight:800;margin-bottom:12px}
+  h1{font-size:44px;line-height:1.02;letter-spacing:-.03em;font-weight:850}
+  .hero p{margin-top:13px;color:#e7e3fb;font-size:16px;max-width:780px}
+  section{padding:32px 0;border-bottom:1px solid #eceaf4}
+  .snum{font-family:var(--mono);font-size:12px;color:var(--lav);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  h2{font-size:26px;font-weight:850;margin:5px 0 8px}
+  .sub{color:#6a6480;font-size:15px;max-width:860px;margin-bottom:12px}
+  .split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:12px}
+  .b{border-radius:14px;padding:17px 19px}
+  .b.nova{background:#f1eeff;border:1px solid #d9d0f7}
+  .b.av{background:#fff6e0;border:1px solid #f0dca6}
+  .b.team{background:#fdecea;border:1px solid #f6cfcc}
+  .b h3{font-size:16px;margin-bottom:8px}.b.nova h3{color:#5B47D6}.b.av h3{color:#a9791a}.b.team h3{color:#c0463e}
+  .b li{font-size:13.4px;margin:5px 0 5px 18px;color:#3c3752}
+  .b .mini{font-size:12px;color:#8a84a0;margin-top:8px;font-style:italic}
+  .flags{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .flag{background:#16121f;color:#efeafd;border-radius:16px;padding:20px 22px}
+  .flag .bd{display:inline-block;background:var(--gold);color:#2a1d52;font-family:var(--mono);font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;margin-bottom:10px}
+  .flag h3{color:#fff;font-size:19px;margin-bottom:6px}.flag p{font-size:13.5px;color:#d8d2ef}
+  .flag a{color:var(--gold);font-weight:800;font-size:13px;display:inline-block;margin-top:8px}
+  .scroller{overflow-x:auto}
+  table.map{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;min-width:940px}
+  table.map th{background:var(--lav);color:#fff;text-align:left;padding:9px 12px;font-weight:700}
+  table.map td{padding:9px 12px;border-bottom:1px solid #eceaf4;color:#3c3752;vertical-align:top}
+  table.map tr:nth-child(even) td{background:#faf8ff}
+  table.map .flagrow td{background:#fff7dd!important}
+  .tag{font-family:var(--mono);font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .fa{background:#eae6ff;color:#5B47D6}.fs{background:#e7f8f0;color:#0f8a5f}.fv{background:#fff3d6;color:#a9791a}.fh{background:#ffe7e2;color:#c0463e}
+  .nova{background:#5B47D6;color:#fff}.avt{background:#a9791a;color:#fff}.other{background:#eceaf4;color:#4a4560}
+  /* franchises */
+  .fr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .frc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .frc .t{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--lav);text-transform:uppercase}
+  .frc h4{font-size:16px;font-weight:800;margin:6px 0 4px}.frc p{font-size:13px;color:#4a4560}
+  .frc.hi{background:#f1eeff;border-color:#d9d0f7}
+  .conn{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--ink);border-radius:14px;padding:16px 18px;color:#efeafd;margin-top:14px}
+  .conn b{color:#fff}.conn .g{color:var(--gold);font-weight:800;font-family:var(--mono);font-size:12px}.conn .arrow{color:#8b7cf6;font-weight:800}
+  .conn .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:5px 12px;font-size:13px;font-weight:600}
+  .note{background:var(--lav-soft);border-radius:12px;padding:14px 16px;font-size:14px;color:#3b2ea0;margin-top:14px}
+  footer{padding:30px 0;color:#8a84a0;font-size:13px;text-align:center}
+  @media(max-width:900px){.split,.fr{grid-template-columns:1fr}.flags{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="kick">Compass Labs · Norte 🧭 · Compass Learn</div>
+  <h1>The production map.</h1>
+  <p>Everything we will make for education, in one place: what it is, who hosts it, how it is made, when it ships, and where it lands. Plus how it all interlaces with Norte, the franchises and the campaigns.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="snum">First, the three hosts</div>
+  <h2>Who fronts each video.</h2>
+  <p class="sub">Three clear buckets. Nova carries the concepts. Avatars (HeyGen) carry the high-frequency talking-head content. And a few are the real team, on screen.</p>
+  <div class="split">
+    <div class="b nova"><h3>🧭 Nova · animated</h3>
+      <ul><li>The two flagships (Our North Star, Who is Nova)</li><li>Foundations 1 to 4 (concepts)</li><li>Onchain 101, 24 term shorts</li><li>Products, one short each</li></ul>
+      <div class="mini">Made by Norte + ElevenLabs. No camera. ~60% of videos.</div>
+    </div>
+    <div class="b av"><h3>🗣️ Avatar · HeyGen</h3>
+      <ul><li>Ask Nova (FAQ, weekly)</li><li>Objection of the week</li><li>Product quick-takes</li><li>Changelog / what shipped</li><li>Customer story recaps</li><li>Interfaces explainer</li></ul>
+      <div class="mini">Talking-head, fast to produce, high frequency. ~25% of videos.</div>
+    </div>
+    <div class="b team"><h3>▶ Team · on screen</h3>
+      <ul><li>First API call, Studio, Widgets → screen recordings</li><li>Perps and Rebalancer demos → screen</li><li>Founder notes → Eli</li><li>Use-case interviews → Gin</li></ul>
+      <div class="mini">A real screen or a real face. Rare and high-value. ~15%.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">The two flagships</div>
+  <h2>The films that carry the vision.</h2>
+  <div class="flags">
+    <div class="flag"><span class="bd">★ FLAGSHIP · the vision</span><h3>Our North Star</h3><p>The vision in 90 seconds. Money moved onchain, the products didn't yet, Compass closes the gap. Direction before speed. The best infrastructure is invisible.</p><a href="compass-north-star.html">Read the North Star →</a></div>
+    <div class="flag"><span class="bd">★ FLAGSHIP · the host</span><h3>Who is Nova</h3><p>Meet the guide. Where her name comes from (the compass points to a star), what she does, and her promise: point the needle, so you always know the next step.</p><a href="compass-nova-character.html">See Nova's page →</a></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">The full map · who · how · when · where</div>
+  <h2>Every asset, in one table.</h2>
+  <div class="scroller"><table class="map">
+    <tr><th>Asset (what)</th><th>Host (who)</th><th>Format (how)</th><th>Week (when)</th><th>Where it lands</th></tr>
+    <tr class="flagrow"><td>★ Our North Star</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 3</td><td>Hub · campaign · social</td></tr>
+    <tr class="flagrow"><td>★ Who is Nova</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 3</td><td>Hub · social</td></tr>
+    <tr><td>1. What is Compass</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 3</td><td>Hub · API email 1 · social</td></tr>
+    <tr><td>2. How Compass works</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 3</td><td>Hub · social</td></tr>
+    <tr><td>4. What non-custodial means</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 4</td><td>Hub · social</td></tr>
+    <tr><td>3. What you can build</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>Week 4</td><td>Hub · sales · social</td></tr>
+    <tr><td>Interfaces explainer</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>Week 4</td><td>Hub</td></tr>
+    <tr><td>Onchain 101 · Track 1 (8 shorts)</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 4</td><td>Hub · social</td></tr>
+    <tr><td>5. Make your first API call</td><td><span class="tag other">Engineering</span></td><td><span class="tag fs">screen</span></td><td>Week 4</td><td>Hub · API nudge · docs</td></tr>
+    <tr><td>6. Test Compass in Studio</td><td><span class="tag other">Product</span></td><td><span class="tag fs">screen</span></td><td>Week 4</td><td>Hub · API nudge</td></tr>
+    <tr><td>Onchain 101 · Tracks 2 &amp; 3 (16 shorts)</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 5</td><td>Hub · social</td></tr>
+    <tr><td>Products · Earn, Fixed Earn, Loans</td><td><span class="tag nova">Nova</span></td><td><span class="tag fa">animated</span></td><td>Week 5</td><td>Hub · social · campaign</td></tr>
+    <tr><td>Products · Tokenized, quick-takes</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>Week 5</td><td>Hub · social</td></tr>
+    <tr><td>Products · Perps, Rebalancer (demos)</td><td><span class="tag other">Engineering</span></td><td><span class="tag fs">screen</span></td><td>Week 5</td><td>Hub</td></tr>
+    <tr><td>Ask Nova (FAQ series)</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>Weekly, ongoing</td><td>Hub · social · support</td></tr>
+    <tr><td>Objection of the week</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>Weekly, ongoing</td><td>Social · sales</td></tr>
+    <tr><td>Changelog · what shipped</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>On each release</td><td>Hub · social</td></tr>
+    <tr><td>Customer story recap</td><td><span class="tag avt">Avatar</span></td><td><span class="tag fv">avatar</span></td><td>Occasional</td><td>Social · sales · campaign</td></tr>
+    <tr><td>Founder note · the vision</td><td><span class="tag other">Eli</span></td><td><span class="tag fh">human</span></td><td>Week 5</td><td>Campaign · social</td></tr>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">How it interlaces with Norte</div>
+  <h2>Education is a Norte franchise, next to the others.</h2>
+  <p class="sub">Nova is not a separate world. She is one franchise inside Norte, produced the same way as SHIPPED, and her clips feed the same campaigns and social. Same engine, same voice, same source of truth.</p>
+  <div class="fr">
+    <div class="frc hi"><div class="t">education · NEW</div><h4>Compass, explained by Nova</h4><p>The learning hub, the 101, the products. Nova hosts. This is the new franchise.</p></div>
+    <div class="frc"><div class="t">product moments</div><h4>SHIPPED</h4><p>What Compass just shipped. The animated-billboard video series.</p></div>
+    <div class="frc"><div class="t">myth-busting</div><h4>Objection of the week</h4><p>The doubts buyers have, answered. Avatar, fast, weekly.</p></div>
+    <div class="frc"><div class="t">founder</div><h4>Founder takes</h4><p>Eli on vision and big moments. Human, rare, high-trust.</p></div>
+    <div class="frc"><div class="t">co-marketing</div><h4>Partner moments</h4><p>Launches with Euler, BNB, Centrifuge and more.</p></div>
+    <div class="frc"><div class="t">proof</div><h4>Customer stories</h4><p>How teams shipped on Compass. Feeds sales and social.</p></div>
+  </div>
+  <div class="conn">
+    <span class="g">SOURCE OF TRUTH</span><span class="arrow">→</span>
+    <span class="chip"><b>Norte</b> writes every script</span><span class="arrow">→</span>
+    <span class="chip">Nova (animated) · HeyGen (avatar) · screen · human</span><span class="arrow">→</span>
+    <span class="chip">Hub · campaigns · social · API</span>
+  </div>
+  <div class="note"><b>How the pieces feed each other:</b> the flagship <b>Our North Star</b> doubles as a campaign film. Product shorts become <b>own-campaign</b> and <b>partnership-campaign</b> beats. Every clip is cut for <b>social</b> (Typefully). "What is Compass" is the <b>API</b> welcome video. "Objection of the week" arms <b>sales</b>. One library, many surfaces.</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">How it connects to the marketing strategy</div>
+  <h2>Every video serves one of our three angles.</h2>
+  <p class="sub">Education is not off on its own. It reads from the same marketing strategy and pushes the same three angles, so it reinforces every campaign instead of competing with it.</p>
+  <div class="fr">
+    <div class="frc"><div class="t">angle 1</div><h4>The Integration Tax</h4><p>Building each product yourself is a year of work. Nova's "What is Compass", "How it works", the first API call, the interfaces.</p></div>
+    <div class="frc"><div class="t">angle 2</div><h4>Proof</h4><p>It works, here is how. The Studio film, product shorts, customer stories, the demos.</p></div>
+    <div class="frc"><div class="t">angle 3</div><h4>Where finance is going</h4><p>The direction. Our North Star, tokenized assets and RWAs, agents and MCP.</p></div>
+  </div>
+  <div class="note"><b>One language everywhere.</b> Same sentence, same three angles, same proof list, same voice as the <a href="compass-marketing-strategy.html">Marketing Strategy</a> and the <a href="compass-north-star.html">North Star</a>. Nothing education says contradicts a campaign, because both pull from the same source of truth.</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">Publishing cadence · the important one</div>
+  <h2>Produce in batches. Publish on a drip.</h2>
+  <p class="sub">We never ship 10 videos in a day. We record and render in one weekly block, then release slowly, so each video gets its moment and its social push.</p>
+  <div class="fr">
+    <div class="frc hi"><div class="t">to the hub</div><h4>2 lessons a week</h4><p>Two hub videos published per week, on set days (for example Tuesday and Thursday). The full library lands over about 8 weeks, not at once.</p></div>
+    <div class="frc"><div class="t">to social</div><h4>2 to 3 shorts a week</h4><p>101 clips and product takes trickle out through Typefully. Never more than one a day.</p></div>
+    <div class="frc"><div class="t">the rule</div><h4>Max about 2 a day</h4><p>If a day would ship more, it moves to the next slot. Steady beats a dump.</p></div>
+  </div>
+  <div class="note"><b>Why it matters:</b> a video dumped with nine others gets no attention and no social juice. A drip means every asset gets a launch, the feed stays alive all week, and the team is never crushed. <b>Production is batched, publishing is paced.</b></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="snum">Is it too much?</div>
+  <h2>No, because it is one library, reused.</h2>
+  <p class="sub">It looks like a lot of videos, but a small team ships it, for three reasons. Most are animated or avatar, so <b>no filming</b>. Every asset is <b>made once and lands in many places</b> (hub, campaign, social, API), so one video does four jobs. And it is produced in <b>one weekly block</b>, not scattered across the week. The volume is real, the effort is not.</p>
+</div></section>
+
+<footer><div class="wrap">Compass Labs · Norte 🧭 · Compass Learn production map. Who, how, when, where, connected to the franchises. <a href="compass-learn-site.html">The hub</a> · <a href="compass-nova-character.html">Nova</a> · <a href="compass-north-star.html">North Star</a> · <a href="compass-marketing-calendar.html">Calendar</a></div></footer>
+</body>
+</html>
